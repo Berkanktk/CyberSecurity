@@ -3,9 +3,11 @@
 # List of contents
 1. [Concepts](#concepts)
 2. [Links](#links)
-3. [Tools](#tools-for-pentesting-in-general)
-4. [Linux Commands](#linux-commands)
-5. [Steps](#steps)
+3. [Overview of tools](#overview-of-tools-for-pentesting-in-general)
+4. [Tools (CLI)](#tools-cli)
+5. [Tools (GUI)](#tools-gui)
+6. [Linux Commands](#linux-commands)
+7. [Steps](#steps)
 
 # Concepts
 ## Hashing
@@ -27,7 +29,7 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.  
 [CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.
 
-# Tools (For pentesting in general)
+# Overview of Tools (For pentesting in general)
 [Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
 [Burp Suite](https://portswigger.net/burp) - is a tool for testing web app security, intercepting proxy to replay, inject, scan and fuzz.  
 [Gobuster](https://github.com/OJ/gobuster) - is a free and open source directory/file & DNS busting tool written in Go.  
@@ -42,13 +44,73 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 [Vim](https://www.vim.org) - is a highly configurable text editor.  
 [Wireshark](https://www.wireshark.org) - is the world’s foremost and widely-used network protocol analyzer.  
 
+# Tools (CLI)
 ## Aircrack-ng
-## Burp
-## Gobuster## Hashcat## Hydra## Johntheripper
+https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
+## Gobuster
+### Syntax
+`gobuster -w wordlist.txt`
+
+### Example:  
+`gobuster -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
+
+### A list of most useful options:
+`-u` (url) – full URL (including scheme), or base domain name.  
+`-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
+`-a` (user agent string) – specify a user agent string to send in the request header.  
+`-o` (file) – specify a file name to write the output to.  
+`-x` (extensions) – list of extensions to check for, if any.  
+`-P` (password) – HTTP Authorization password (Basic Auth only, prompted if missing).  
+`-U` (username) – HTTP Authorization username (Basic Auth only).  
+
+## Hashcat
+## Hydra
+### Syntax  
+`hydra -options path`  
+
+### Examples:  
+Guess SSH credentials using a given username and a list of passwords:  
+`hydra -l username -P path/to/wordlist.txt host_ip ssh`
+
+Guess Telnet credentials using a list of usernames and a single password, specifying a non-standard port and IPv6: 
+`hydra -L path/to/usernames.txt -p password -s port -6 host_ip telnet`
+
+Guess FTP credentials using usernames and passwords lists, specifying the number of threads:  
+`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -t n_tasks host_ip ftp` 
+
+Guess MySQL credentials using a username and a passwords list, exiting when a username/password pair is found:  
+`hydra -l username -P path/to/wordlist.txt -f host_ip mysql`
+
+Guess IMAP credentials on a range of hosts using a list of colon-separated username/password pairs:  
+`hydra -C path/to/username_password_pairs.txt imap://[host_range_cidr]`
+
+Guess POP3 credentials on a list of hosts using usernames and passwords lists, exiting when a username/password pair is found:
+`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -M path/to/hosts.txt -F pop3`
+
+### A list of most useful options:
+`-S` connect via SSL  
+`-l` LOGIN or `-L` FILE login with LOGIN name, or load several logins from FILE  
+`-p` PASS or `-P` FILE try password PASS, or load several passwords from FILE  
+`-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
+`-o` FILE
+write found login/password pairs to FILE instead of stdout
+## John The Ripper
 ## Metasploit
 ## Nano
+### Shortcuts
+`^G` Display help text.  
+`^O` Write the current file to disk  
+`^X` Exit nano.  
+`^T` Invoke spellc­heck, if installed.  
+`^Y` Next screen.  
+`^V` Previous screen.  
+`^L` Refresh (force redraw) current screen.  
+`^J` Justify current paragraph. (Join together broken lines of text until double newline is encoun­tered.)  
+`^W` Search for a string or regular expres­sion.  
+`^\` Search and replace a string or regular expres­sion  
 ## Netcat
-## Nikto
+https://www.comparitech.com/net-admin/netcat-cheat-sheet/
+## Nikto 2 
 ## Nmap
 ### Syntax
 `nmap -switch1 -switch2 ipaddress`  
@@ -84,7 +146,13 @@ Only open ports = `--open`
 
 Scan an IPv6 address = `-6` 
 ## Vim
+https://cheatography.com/typo209/cheat-sheets/comprehensive-vim-cheat-sheet/
+
+# Tools (GUI) 
+## Burp
+https://twitter.com/Pethuraj/status/1399408069377880064/photo/1
 ## Wireshark
+https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 
 # Linux Commands 
 ## ps
@@ -99,6 +167,6 @@ Scan an IPv6 address = `-6`
 ## apt
 ## dig
 ## perl
-## grep
+## grep  
 
 # Steps
