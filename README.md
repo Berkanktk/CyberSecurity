@@ -52,7 +52,7 @@ https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
 `gobuster -w wordlist.txt`
 
 ### Example:  
-`gobuster -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
+`gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
 
 ### A list of most useful options:
 `-u` (url) – full URL (including scheme), or base domain name.  
