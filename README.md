@@ -35,7 +35,7 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 [Gobuster](https://github.com/OJ/gobuster) - is a free and open source directory/file & DNS busting tool written in Go.  
 [Hashcat](https://hashcat.net/hashcat/) - is world's fastest and most advanced password recovery utility.  
 [Hydra](https://github.com/vanhauser-thc/thc-hydra) - is a parallelized login cracker which supports numerous protocols to attack  
-[John The Ripper](https://www.openwall.com/john/) - is a fast password cracker, currently available for many flavors of Unix, Windows, and other.  
+[The Ripper](https://www.openwall.com/john/) - is a fast password cracker, currently available for many flavors of Unix, Windows, and other.  
 [Metasploit](https://www.metasploit.com) - is a tool and framework for pentesting system, web and many more, contains a lot a ready to use exploits.  
 [Nano](https://nano-editor.org) - is an easy to use command line text editor  
 [Netcat](http://netcat.sourceforge.net) - is an utility which reads and writes data across network connections, using the TCP/IP protocol.  
@@ -98,6 +98,12 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 `-o` FILE
 write found login/password pairs to FILE instead of stdout
 ## John The Ripper
+### SSH Private Key
+Hash the private key  
+`/root/Tools/'Password Attacks'/john/ssh2john.py id_rsa > hash`
+
+Crack the hash  
+`john hash --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.txt`
 ## Metasploit
 ## Nano
 ### Shortcuts
