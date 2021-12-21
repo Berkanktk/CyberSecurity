@@ -179,3 +179,8 @@ https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 ## grep  
 
 # Steps
+## Privilege escalation 
+Check for root password
+Run: `id`  
+Run: `sudo -l`  
+Locate password folder and crack it using johntheripper
