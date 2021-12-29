@@ -1,5 +1,3 @@
-# To be added
-
 # List of contents
 1. [Concepts](#concepts)
 2. [Links](#links)
@@ -179,7 +177,7 @@ https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 ## grep  
 
 # Steps
-## Privilege escalation 
+## Privilege Escalation 
 Check for root password
 Run: `id`  
 Run: `sudo -l`  
