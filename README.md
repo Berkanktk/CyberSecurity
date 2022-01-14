@@ -183,3 +183,39 @@ Run: `id`
 Run: `sudo -l`  
 Locate password folder and crack it using johntheripper  
 Or use [GTFOBins](https://gtfobins.github.io)
+
+## Phishing
+### Phishing terms
+**A BEC (Business Email Compromise)** is when an adversary gains control of an internal employee's account and then uses the compromised email account to convince other internal employees to perform unauthorized or fraudulent actions. 
+
+**A typosquatting attack**, also known as a URL hijacking, a sting site, or a fake URL, is a type of social engineering where threat actors impersonate legitimate domains for malicious purposes such as fraud or malware spreading.
+
+### Types of Phishing attacks
+**Spam** - unsolicited junk emails sent out in bulk to a large number of recipients. The more malicious variant of Spam is known as MalSpam.
+
+**Phishing** -  emails sent to a target(s) purporting to be from a trusted entity to lure individuals into providing sensitive information. 
+
+**Spear phishing** - takes phishing a step further by targeting a specific individual(s) or organization seeking sensitive information.  
+
+**Whaling** - is similar to spear phishing, but it's targeted specifically to C-Level high-position individuals (CEO, CFO, etc.), and the objective is the same. 
+
+**Smishing** - takes phishing to mobile devices by targeting mobile users with specially crafted text messages. 
+
+**Vishing** - is similar to smishing, but instead of using text messages for the social engineering attack, the attacks are based on voice calls. 
+
+### Analyze/identify
+1. Open Email
+2. See its raw format
+3. Analyze the results:
+
+* **X-Originating-IP** - The IP address of the email was sent from (this is known as an X-header)
+* **Smtp.mailfrom/header.from** - The domain the email was sent from (these headers are within Authentication-Results)
+* **Reply-To** - This is the email address a reply email will be sent to instead of the From email address
+
+In case the mail is encoded using base64, the following command can be used to decrypt the message:
+`base64 -d <filename> > decrypted.<filetype>` 
+
+### Phishing security
+Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rsoa-and-rp/32.0?topic=SSBRUQ_32.0.0/com.ibm.resilient.doc/install/resilient_install_defangURLs.htm).
+
+Expand shortened links with this [tool](https://www.expandurl.net).
