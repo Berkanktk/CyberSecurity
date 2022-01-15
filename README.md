@@ -1,11 +1,16 @@
 # List of contents
 1. [Concepts](#concepts)
+   1. [Hashing](#hashing)
+   2. [Encryption](#encryption)
 2. [Links](#links)
 3. [Overview of tools](#overview-of-tools-for-pentesting-in-general)
 4. [Tools (CLI)](#tools-cli)
 5. [Tools (GUI)](#tools-gui)
 6. [Linux Commands](#linux-commands)
 7. [Steps](#steps)
+   1. [Privilege Escalation](#privilege-escalation)
+   2. [Phishing](#phishing)
+   3. [Steganography](#steganography)
 
 # Concepts
 ## Hashing
@@ -163,18 +168,175 @@ https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 
 # Linux Commands 
 ## ps
+Shows the processes for the current shell 
+
+**PID** – the unique process ID   
+**TTY** – terminal type that the user is logged into   
+**TIME** – amount of CPU in minutes and seconds that the process has been running   
+**CMD** – name of the command that launched the process.   
+
+
+`-a` flag stands for all processes  
+`-x` will display all processes even those not associated with the current tty  
+`-t` Processes associated with the terminal run
+## rm
+`-r` Deletes every file in the directory  
+`-f` Suppresses all warnings prompts
+## mv
+Moves files  
+Example:
+`mv file.txt /tmp`
 ## top
+top command is used to show the Linux processes. It provides a dynamic real-time view of the running system
 ## kill
+Used to kill a process
+
+The most commonly used signals are:
+
+1 (HUP) - Reload a process.
+9 (KILL) - Kill a process.
+15 (TERM) - Gracefully stop a process.
+
+`kill -9 PID_ID`
 ## find
+Search for files
+`find -name passwords.txt`
+
+Find any file with the extension of ".txt"
+`find -name *.txt`
 ## diff
-## tail
+diff is a command-line utility that allows you to compare two files line by line
+
+Example usage:
+`diff a.txt b.txt`
+## tail/head
+The tail/head command, as the name implies, print the last/first N number of data of the given input
+
+Options:  
+`-n <number>` number of lines to show  
+`-c <numbers>` number of bytes
+`sort` to sort
 ## pwd
+Find the full Path to our current working directory
 ## chmod
+Chmod allows you to set the different permissions for a file
+
+Example:
+`chmod 777 file.txt`
+
+**Permissions**
+| Digit    |      Meaning   | 
+|----------|:-------------:|
+| 1  |  That file can be executed |
+| 2  |    That file can be written to   | 
+| 3  | That file can be executed and written to |
+| 4  | That file can be read |
+| 5  | That file can be read and executed |
+| 6  | That file can be written to and read |
+| 7  | That file can be read, written to, and executed |
+## chown
+Change the user and group for any file
+
+`chown user:group file` change user/group  
+Example (change the owner):
+chown berkan file.txt
+
+`-R` to operate on every file in the directory at once?
 ## curl
+The curl command transfers data to or from a network server, using one of the supported protocols (HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE). 
+
+Example:
+`curl URL`
+
+Another example is saving the output to a file using either:
+
+-o to save the file under a different name  
+`curl -o loginpage.html https://tryhackme.com/login`
+
+-O to save the file under the same name:  
+`curl -O https://tryhackme.com/login`
+
+Or, you might be interested in fetching the headers silently?  
+`curl -I -s https://tryhackme.com`
+## wget
+The wget command downloads files from HTTP, HTTPS, or FTP connection a network.  
+
+Adding a `-b` switch will allow us to run wget in the background and return the terminal to its initial state.
 ## apt
+apt is a command-line utility for installing, updating, removing, and otherwise managing deb packages
+`sudo apt update` This will pull the latest changes from the APT repositories:
+
+`sudo apt upgrade` To upgrade the installed packages to their latest versions
+
+`sudo apt full-upgrade` The difference between **upgrade** and **full-upgrade** is that the later will remove the installed packages if that is needed to upgrade the whole system.
+
+`sudo apt install package_name` Install packages
+
+`sudo apt remove package_name` Remove packages
+
+`sudo apt autoremove` Remove unused packages
+
+`sudo apt list` List packages
 ## dig
-## perl
-## grep  
+dig command stands for Domain Information Groper. It is used for retrieving information about DNS name servers
+
+`dig [server] [name] [type]`
+`dig google.com` 
+
+Options:  
+`-x`Specify IP adress
+`+noall +answer` dDtailed information
+
+Save to a file:
+`dig -f domain_research.txt +short`
+## tar
+tar is a command that allows creating, maintain, modify, and extracts files that are archived in the tar format.
+
+The most common example for tar extraction would be:
+`tar -xf archive.tar`
+
+`-x` tells tar to extract files from an archive.  
+`-f` tells tar that the next argument will be the name of the archive to operate on.
+## grep
+Search the contents of files for specific values 
+
+`wc -l file.txt` get numbers of entries
+
+`grep "81.143.211.90" file.txt`
+
+Flags:
+`-n` line numbers for every string found? 
+## whoami
+Find out what user we're currently logged in as
+## hexeditor
+Read and modify hex of a file (This tool is also helpful when it comes to CTFs and text is hidden inside a file or when the magic number of a file was altered.)
+## gzip
+gzip - a file format and a software application used for file compression and decompression. gzip-compressed files have .gz extension.
+
+`gzip filename.txt` compression
+
+Switches:  
+`-d` decompression
+
+Example:  
+`gzip -d file.gz`
+## binwalk
+Binwalk allows users to analyze and extract firmware images and helps in identifying code, files, and other information embedded in those, or inside another file
+## sudo
+Sudo is Linux's run as administrator button
+
+Flags:  
+`-u <user>` specify user   
+`-l` list current sudo priviliges   
+## adduser & addgroup
+The syntax for both of these commands are `adduser username` and `addgroup groupname`.
+
+Add a user to a group  
+`usermod -a -G <groups seperated by commas> <user>`
+## Operators
+`>` is the operator for output redirection. Meaning that you can redirect the output of any command to a file  
+`>>` does mainly the same thing as >, with one key difference. >> appends the output of a command to a file, instead of erasing it.
+
 
 # Steps
 ## Privilege Escalation 
@@ -185,6 +347,8 @@ Locate password folder and crack it using johntheripper
 Or use [GTFOBins](https://gtfobins.github.io)
 
 ## Phishing
+
+
 ### Phishing terms
 **A BEC (Business Email Compromise)** is when an adversary gains control of an internal employee's account and then uses the compromised email account to convince other internal employees to perform unauthorized or fraudulent actions. 
 
@@ -219,3 +383,6 @@ In case the mail is encoded using base64, the following command can be used to d
 Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rsoa-and-rp/32.0?topic=SSBRUQ_32.0.0/com.ibm.resilient.doc/install/resilient_install_defangURLs.htm).
 
 Expand shortened links with this [tool](https://www.expandurl.net).
+
+
+## Steganography
