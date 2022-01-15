@@ -39,7 +39,7 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 [Hashcat](https://hashcat.net/hashcat/) - is world's fastest and most advanced password recovery utility.  
 [Hydra](https://github.com/vanhauser-thc/thc-hydra) - is a parallelized login cracker which supports numerous protocols to attack  
 [The Ripper](https://www.openwall.com/john/) - is a fast password cracker, currently available for many flavors of Unix, Windows, and other.  
-[Metasploit](https://www.metasploit.com) - is a tool and framework for pentesting system, web and many more, contains a lot a ready to use exploits.  
+[Metasploit](https://www.metasploit.com) - is a tool and framework for pentesting, it contains a lot a ready to use exploits.  
 [Nano](https://nano-editor.org) - is an easy to use command line text editor  
 [Netcat](http://netcat.sourceforge.net) - is an utility which reads and writes data across network connections, using the TCP/IP protocol.  
 [Nikto 2](https://cirt.net/Nikto2) - is a web server scanner which performs comprehensive tests against web servers for multiple items.  
