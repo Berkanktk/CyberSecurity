@@ -58,7 +58,7 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 ### Example:  
 `gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
 
-### A list of most useful options:
+### A list of most useful flags:
 `-u` (url) – full target URL (including scheme), or base domain name.  
 `-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
 `-a` (user agent string) – specify a user agent string to send in the request header.  
@@ -125,7 +125,27 @@ Crack the hash
 `^W` Search for a string or regular expres­sion.  
 `^\` Search and replace a string or regular expres­sion  
 ## Netcat
-https://www.comparitech.com/net-admin/netcat-cheat-sheet/
+Netcat aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
+
+### Syntax
+Computer B (acts as the receiving server):  
+`nc -l -p 6790 > testfile.txt`  
+Computer A (acts as the sending client):  
+`nc [IP address of computer B] 6790 < testfile.txt`  
+
+### A list of most useful switches:
+`-l` Listen to connections (TCP)
+`-v` Enable verbose mode (allows you to see who connected to you)  
+`-p` Specify a port to listen to  
+`-e` Specify program to execute after connecting to a host  
+`-u` Connect to UDP ports  
+`-n` Fast scan by disabling DNS resolution
+`-w` Define timeout value
+`-4` IPv4 only  
+`-6` IPv6 only
+`>` Server file redirection
+`<` Client file redirection
+
 ## Nikto 2 
 ## Nmap
 ### Syntax
