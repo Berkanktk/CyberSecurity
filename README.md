@@ -24,9 +24,9 @@
    2.  [VIM](#vim)
 9. [Linux Commands](#linux-commands)
 10. [Steps](#steps)
-   1. [Privilege Escalation](#privilege-escalation)
-   2. [Phishing](#phishing)
-   3. [Steganography](#steganography)
+    1. [Privilege Escalation](#privilege-escalation)
+    2. [Phishing](#phishing)
+    3. [Steganography](#steganography)
 11. [Networking](#networking) 
 
 # Concepts
@@ -69,7 +69,8 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 [Hydra](https://github.com/vanhauser-thc/thc-hydra) - is a parallelized login cracker which supports numerous protocols to attack  
 [The Ripper](https://www.openwall.com/john/) - is a fast password cracker, currently available for many flavors of Unix, Windows, and other.  
 [Metasploit](https://www.metasploit.com) - is a tool and framework for pentesting, it contains a lot a ready to use exploits.  
-[Nano](https://nano-editor.org) - is an easy to use command line text editor  
+[Nano](https://nano-editor.org) - is an easy to use command line text editor    
+[Nessus]() - `TO BE ADDED`  
 [Netcat](http://netcat.sourceforge.net) - is an utility which reads and writes data across network connections, using the TCP/IP protocol.  
 [Nikto 2](https://cirt.net/Nikto2) - is a web server scanner which performs comprehensive tests against web servers for multiple items.  
 [Nmap](https://nmap.org) - is a free and open source (license) utility for network discovery and security auditing.  
