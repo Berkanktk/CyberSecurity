@@ -58,6 +58,11 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 ### Example:  
 `gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
 
+### A list of options
+`dir` Directory/file brute forcing mode  
+`dns` DNS bruteforcing mode
+
+
 ### A list of most useful flags:
 `-u` (url) – full target URL (including scheme), or base domain name.  
 `-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
@@ -68,6 +73,9 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `-P` (password) – HTTP Authorization password (Basic Auth only, prompted if missing).  
 `-U` (username) – HTTP Authorization username (Basic Auth only).  
 `-c <http cookies>` (cookie) - Specify a cookie for simulating your auth  
+`-s` (status-codes) - Set status codes that should be interpreted as valid
+`-k` (ssl) - Skip ssl certificate 
+`-H` (HTTP) - Specify HTTP header
 
 
 ## Hashcat
