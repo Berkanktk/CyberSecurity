@@ -51,6 +51,7 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 ## Aircrack-ng
 https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
 ## Gobuster
+GoBuster is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
 ### Syntax
 `gobuster -w wordlist.txt`
 
@@ -58,13 +59,16 @@ https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
 `gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
 
 ### A list of most useful options:
-`-u` (url) – full URL (including scheme), or base domain name.  
+`-u` (url) – full target URL (including scheme), or base domain name.  
 `-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
 `-a` (user agent string) – specify a user agent string to send in the request header.  
+`-e` (print) - Print the full URLs in your console  
 `-o` (file) – specify a file name to write the output to.  
 `-x` (extensions) – list of extensions to check for, if any.  
 `-P` (password) – HTTP Authorization password (Basic Auth only, prompted if missing).  
 `-U` (username) – HTTP Authorization username (Basic Auth only).  
+`-c <http cookies>` (cookie) - Specify a cookie for simulating your auth  
+
 
 ## Hashcat
 ## Hydra
@@ -128,17 +132,19 @@ https://www.comparitech.com/net-admin/netcat-cheat-sheet/
 `nmap -switch1 -switch2 ipaddress`  
 
 Example:  
-`nmap -sT -A 172.162.39.86`  
+`nmap -sT -A -p- 172.162.39.86`  
 
 ### A list of most useful switches:
 TCP scan (Most likely to be filtered)= `-sT`  
-Syn Scan (No logging)= `-sS`  
+TCP Syn Scan (No logging)= `-sS`  
 UDP scan (Slow)= `-sU`  
 
 ICMP Scanning (ping sweep) = `-sn`  
 Default ping scanning) = `-sP` 
 Detect OS = `-O`  
 Detect version of services = `-sV`  
+Scan with the default nmap scripts = `-sC`  
+Disable host discovery and just scan for open ports = `-Pn`  
 Change verbosity = `-v`  
 Change verbosity level two = `-vv` (It's good practice to *always* increase the verbosity in your scans.)  
 
@@ -162,7 +168,28 @@ https://cheatography.com/typo209/cheat-sheets/comprehensive-vim-cheat-sheet/
 
 # Tools (GUI) 
 ## Burp
-https://twitter.com/Pethuraj/status/1399408069377880064/photo/1
+https://twitter.com/Pethuraj/status/1399408069377880064/photo/1  
+Burp Suite, a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
+
+Download [Foxy Proxy](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) in order to fully leverage the proxy, we'll have to install the CA certificate included with Burp Suite (otherwise we won't be able to load anything with SSL).
+
+Now click on the extension -> Options -> Add -> Fill in the fields with the following values:
+Title = Burp  
+Proxy type = HTTP  
+Proxy IP adress or DNS name = 127.0.0.1  
+Port = 8080  
+Username and password is optional.  
+And hit save.
+
+Finally, click on the FoxyProxy extension icon again and select 'Burp'.
+
+With Firefox, navigate to the following address: http://localhost:8080
+
+Click on 'CA Certificate' in the top right to download and save the CA Certificate.
+
+Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
+Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
+
 ## Wireshark
 https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 
