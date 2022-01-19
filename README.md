@@ -57,7 +57,7 @@ Active Directory is a collection of machines and servers connected inside of dom
 Other related terms include: Domain controllers, Trusts & Policies, Services, Authentication & Cloud security.
 
 # Terms
-**Active reconnaissance** - Directly interacting with the system.
+**Active reconnaissance** - Directly interacting with the system.  
 **Passive reconnaissance** - We rely on publicly available information.   
 **IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.  
 
