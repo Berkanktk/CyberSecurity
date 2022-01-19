@@ -76,7 +76,6 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `dir` Directory/file brute forcing mode  
 `dns` DNS bruteforcing mode
 
-
 ### A list of most useful flags:
 `-u` (url) – full target URL (including scheme), or base domain name.  
 `-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
@@ -87,10 +86,9 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `-P` (password) – HTTP Authorization password (Basic Auth only, prompted if missing).  
 `-U` (username) – HTTP Authorization username (Basic Auth only).  
 `-c <http cookies>` (cookie) - Specify a cookie for simulating your auth  
-`-s` (status-codes) - Set status codes that should be interpreted as valid
-`-k` (ssl) - Skip ssl certificate 
-`-H` (HTTP) - Specify HTTP header
-
+`-s` (status-codes) - Set status codes that should be interpreted as valid  
+`-k` (ssl) - Skip ssl certificate   
+`-H` (HTTP) - Specify HTTP header  
 
 ## Hashcat
 ## Hydra
@@ -156,16 +154,16 @@ Computer A (acts as the sending client):
 `nc [IP address of computer B] 6790 < testfile.txt`  
 
 ### A list of most useful switches:
-`-l` Listen to connections (TCP)
+`-l` Listen to connections (TCP)  
 `-v` Enable verbose mode (allows you to see who connected to you)  
 `-p` Specify a port to listen to  
 `-e` Specify program to execute after connecting to a host  
-`-u` Connect to UDP ports  
-`-n` Fast scan by disabling DNS resolution
-`-w` Define timeout value
-`-4` IPv4 only  
-`-6` IPv6 only
-`>` Server file redirection
+`-u` Connect to UDP ports    
+`-n` Fast scan by disabling DNS resolution  
+`-w` Define timeout value  
+`-4` IPv4 only   
+`-6` IPv6 only  
+`>` Server file redirection  
 `<` Client file redirection
 
 ## Nikto 2 
@@ -175,8 +173,8 @@ nikto is a popular web scanning tool that allows users to find common web vulner
 `nikto -h <ip> -port <port>`
 
 ### A list of most useful flags:
-`-h` Hostname/IP adress
-`-port` Specify ports
+`-h` Hostname/IP adress  
+`-port` Specify ports  
 `-nossl` Disable ssl  
 `-ssl` Force ssl  
 `-id` Specify authentication(username & password)  
