@@ -3,8 +3,10 @@
    1. [Hashing](#hashing)
    2. [Encryption](#encryption)
 2. [Links](#links)
-3. [Overview of tools](#overview-of-tools-for-pentesting-in-general)
-4. [Tools (CLI)](#tools-cli)
+3. [Services](#services)
+4. [Terms](#terms)
+5. [Overview of tools](#overview-of-tools-for-pentesting-in-general)
+6. [Tools (CLI)](#tools-cli)
    1. [Aircrack-ng](#aircrack-ng)
    2. [Gobuster](#gobuster)
    3. [Hashcat](#hashcat)
@@ -14,17 +16,18 @@
    7. [Netcat](#netcat)
    8. [Nikto](#nikto-2)
    9.  [Nmap](#nmap)
-5. [Tools (GUI)](#tools-gui)
+7. [Tools (GUI)](#tools-gui)
    1. [Burp Suite](#burp)
    2. [Wireshark](#wireshark)
-6. [Text Editors](#text-editors)
+8. [Text Editors](#text-editors)
    1.  [Nano](#nano)
    2.  [VIM](#vim)
-7. [Linux Commands](#linux-commands)
-8. [Steps](#steps)
+9. [Linux Commands](#linux-commands)
+10. [Steps](#steps)
    1. [Privilege Escalation](#privilege-escalation)
    2. [Phishing](#phishing)
    3. [Steganography](#steganography)
+11. [Networking](#networking) 
 
 # Concepts
 ## Hashing
@@ -45,6 +48,18 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 # Links
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.  
 [CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.
+[GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.
+
+# Services
+## Active directory (Windows)
+Active Directory is a collection of machines and servers connected inside of domains, that are a collective part of a bigger forest of domains, that make up the Active Directory network. 
+
+Other related terms include: Domain controllers, Trusts & Policies, Services, Authentication & Cloud security.
+
+# Terms
+**Active reconnaissance** - Directly interacting with the system.
+**Passive reconnaissance** - We rely on publicly available information.   
+**IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.  
 
 # Overview of Tools (For pentesting in general)
 [Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
@@ -134,6 +149,7 @@ Crack the hash
 ## Metasploit
 ## Nano
 ### Shortcuts
+
 `^G` Display help text.  
 `^O` Write the current file to disk  
 `^X` Exit nano.  
@@ -144,6 +160,9 @@ Crack the hash
 `^J` Justify current paragraph. (Join together broken lines of text until double newline is encoun­tered.)  
 `^W` Search for a string or regular expres­sion.  
 `^\` Search and replace a string or regular expres­sion  
+
+## Nessus
+
 ## Netcat
 Netcat aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
 
@@ -503,3 +522,6 @@ Expand shortened links with this [tool](https://www.expandurl.net).
 
 
 ## Steganography
+## SQL Injection
+
+# Networking
