@@ -155,6 +155,22 @@ Computer A (acts as the sending client):
 `<` Client file redirection
 
 ## Nikto 2 
+nikto is a popular web scanning tool that allows users to find common web vulnerabilities. It is commonly used to check for common CVE's such as shellshock, and to get general information about the web server that you're enumerating.
+
+### Syntax
+`nikto -h <ip> -port <port>`
+
+### A list of most useful flags:
+`-h` Hostname/IP adress
+`-port` Specify ports
+`-nossl` Disable ssl  
+`-ssl` Force ssl  
+`-id` Specify authentication(username & password)  
+`-plugin` Select which plugin to use  
+`-update` Update the plugin list  
+`--list-plugins`  List all possible plugins to use   
+`-output` Output fingerprinted information to a file
+
 ## Nmap
 ### Syntax
 `nmap -switch1 -switch2 ipaddress`  
