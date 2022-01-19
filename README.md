@@ -11,16 +11,17 @@
    4. [Hydra](#hydra)
    5. [John The Ripper](#john-the-ripper)
    6. [Metasploit](#metasploit)
-   7. [Nano](#nano)
-   8. [Netcat](#netcat)
-   9. [Nikto](#nikto-2)
-   10. [Nmap](#nmap)
-   11. [VIM](#vim)
+   7. [Netcat](#netcat)
+   8. [Nikto](#nikto-2)
+   9.  [Nmap](#nmap)
 5. [Tools (GUI)](#tools-gui)
    1. [Burp Suite](#burp)
-   1. [Wireshark](#wireshark)
-6. [Linux Commands](#linux-commands)
-7. [Steps](#steps)
+   2. [Wireshark](#wireshark)
+6. [Text Editors](#text-editors)
+   1.  [Nano](#nano)
+   2.  [VIM](#vim)
+7. [Linux Commands](#linux-commands)
+8. [Steps](#steps)
    1. [Privilege Escalation](#privilege-escalation)
    2. [Phishing](#phishing)
    3. [Steganography](#steganography)
@@ -220,8 +221,6 @@ Fast mode = `-F`
 Only open ports = `--open` 
 
 Scan an IPv6 address = `-6` 
-## Vim
-https://cheatography.com/typo209/cheat-sheets/comprehensive-vim-cheat-sheet/
 
 # Tools (GUI) 
 ## Burp
@@ -242,12 +241,12 @@ Proxy type = HTTP
 Proxy IP adress or DNS name = 127.0.0.1  
 Port = 8080  
 Username and password is optional.  
-3. And hit save.
-4. Finally, click on the FoxyProxy extension icon again and select 'Burp'.
-5. With Firefox, navigate to the following address: http://localhost:8080
-6. Click on 'CA Certificate' in the top right to download and save the CA Certificate.
-7. Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
-8. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
+1. And hit save.  
+2. Finally, click on the FoxyProxy extension icon again and select 'Burp'.
+3. With Firefox, navigate to the following address: http://localhost:8080
+4. Click on 'CA Certificate' in the top right to download and save the CA Certificate.
+5. Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
+6. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
 
 ### Overview of Features
 * **Proxy** - What allows us to funnel traffic through Burp Suite for further analysis
@@ -268,6 +267,23 @@ Username and password is optional.
 
 ## Wireshark
 https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
+
+# Text Editors
+## Nano
+### Shortcuts
+`^G` Display help text.  
+`^O` Write the current file to disk  
+`^X` Exit nano.  
+`^T` Invoke spellc­heck, if installed.  
+`^Y` Next screen.  
+`^V` Previous screen.  
+`^L` Refresh (force redraw) current screen.  
+`^J` Justify current paragraph. (Join together broken lines of text until double newline is encoun­tered.)  
+`^W` Search for a string or regular expres­sion.  
+`^\` Search and replace a string or regular expres­sion  
+
+## Vim
+https://cheatography.com/typo209/cheat-sheets/comprehensive-vim-cheat-sheet/
 
 # Linux Commands 
 ## ps
