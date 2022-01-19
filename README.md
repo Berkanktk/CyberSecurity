@@ -330,8 +330,8 @@ Used to kill a process
 
 The most commonly used signals are:
 
-1 (HUP) - Reload a process.
-9 (KILL) - Kill a process.
+1 (HUP) - Reload a process.  
+9 (KILL) - Kill a process.  
 15 (TERM) - Gracefully stop a process.
 
 `kill -9 PID_ID`
@@ -351,7 +351,7 @@ The tail/head command, as the name implies, print the last/first N number of dat
 
 Options:  
 `-n <number>` number of lines to show  
-`-c <numbers>` number of bytes
+`-c <numbers>` number of bytes  
 `sort` to sort
 ## pwd
 Find the full Path to our current working directory
@@ -417,15 +417,15 @@ apt is a command-line utility for installing, updating, removing, and otherwise 
 ## dig
 dig command stands for Domain Information Groper. It is used for retrieving information about DNS name servers
 
-`dig [server] [name] [type]`
+`dig [server] [name] [type]`  
 `dig google.com` 
 
 Options:  
-`-x`Specify IP adress
-`+noall +answer` dDtailed information
+`-x` Specify IP adress  
+`+noall +answer` Detailed information  
 
-Save to a file:
-`dig -f domain_research.txt +short`
+Save to a file:  
+`dig -f domain_research.txt +short`  
 ## tar
 tar is a command that allows creating, maintain, modify, and extracts files that are archived in the tar format.
 
