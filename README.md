@@ -47,7 +47,7 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 
 # Links
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.  
-[CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.
+[CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.  
 [GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.
 
 # Services
