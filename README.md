@@ -5,8 +5,9 @@
 2. [Links](#links)
 3. [Services](#services)
 4. [Terms](#terms)
-5. [Overview of tools](#overview-of-tools-for-pentesting-in-general)
-6. [Tools (CLI)](#tools-cli)
+5. [Principles and Standards](#principles-and-standards)
+6. [Overview of tools](#overview-of-tools)
+7. [Tools (CLI)](#tools-cli)
    1. [Aircrack-ng](#aircrack-ng)
    2. [Gobuster](#gobuster)
    3. [Hashcat](#hashcat)
@@ -16,18 +17,18 @@
    7. [Netcat](#netcat)
    8. [Nikto](#nikto-2)
    9.  [Nmap](#nmap)
-7. [Tools (GUI)](#tools-gui)
+8. [Tools (GUI)](#tools-gui)
    1. [Burp Suite](#burp)
    2. [Wireshark](#wireshark)
-8. [Text Editors](#text-editors)
+9. [Text Editors](#text-editors)
    1.  [Nano](#nano)
    2.  [VIM](#vim)
-9. [Linux Commands](#linux-commands)
-10. [Steps](#steps)
+10. [Linux Commands](#linux-commands)
+11. [Steps](#steps)
     1. [Privilege Escalation](#privilege-escalation)
     2. [Phishing](#phishing)
     3. [Steganography](#steganography)
-11. [Networking](#networking) 
+12. [Networking](#networking) 
 
 # Concepts
 ## Hashing
@@ -60,8 +61,125 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 **Active reconnaissance** - Directly interacting with the system.  
 **Passive reconnaissance** - We rely on publicly available information.   
 **IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.  
+**Proxy** - 
+**SSL/TLS** - 
 
-# Overview of Tools (For pentesting in general)
+# Principles and Standards
+## CIA Triad
+Consisting of three sections: Confidentiality, Integrity and Availability (CIA), this model has quickly become an industry standard today. This model should help determine the value of data that it applies to, and in turn, the attention it needs from the business.  
+
+**Confidentiality**: This element is the protection of data from unauthorized access and misuse
+Integrity
+
+**Integrity**: This element is the condition where information is kept accurate and consistent unless authorized changes are made.
+
+**Availability**:  In order for data to be useful, it must be available and accessible by the user.
+
+## Principles of privileges
+It is vital to administrate and correctly define the various levels of access to an information technology system individuals require. 
+
+The levels of access given to individuals are determined on two primary factors:
+1. The individual's role/function within the organisation
+2. The sensitivity of the information being stored on the system
+
+Two key concepts are used to assign and manage the access rights of individuals, two key concepts are used: Privileged Identity Management (PIM) and Privileged Access Management (or PAM for short).
+
+**PIM** is used to translate a user's role within an organisation into an access role on a system. Whereas **PAM** is the management of the privileges a system's access role has, amongst other things.
+
+What is essential when discussing privilege and access controls is the principle of least privilege. Simply, users should be given the minimum amount of privileges, and only those that are absolutely necessary for them to perform their duties. Other people should be able to trust what people write to.
+
+## Security models
+### The Bell-La Padula Model
+The Bell-La Padula Model is used to achieve confidentiality. This model has a few assumptions, such as an organisation's hierarchical structure it is used in, where everyone's responsibilities/roles are well-defined.
+
+The model works by granting access to pieces of data (called objects) on a strictly need to know basis. This model uses the rule "no write down, no read up".
+
+The Bell LaPadula Model is popular within organisations such as governmental and military.
+
+### Biba Model
+The Biba model is arguably the equivalent of the Bell-La Padula model but for the integrity of the CIA triad.
+
+This model applies the rule to objects (data) and subjects (users) that can be summarised as "no write up, no read down". This rule means that subjects can create or write content to objects at or below their level but can only read the contents of objects above the subject's level.
+
+## Threat modeling and incidence response
+Threat modelling is the process of reviewing, improving, and testing the security protocols in place in an organisation's information technology infrastructure and services.
+
+The threat modelling process is very similar to a risk assessment made in workplaces for employees and customers. The principles all return to:
+* Preparation
+* Identification
+* Mitigations
+* Review
+  
+It is, however, a complex process that needs constant review and discussion with a dedicated team. An effective threat model includes:
+
+* Threat intelligence
+* Asset identification
+* Mitigation capabilities
+* Risk assessment
+
+To help with this, there are frameworks such as **STRIDE** (Spoofing identity, Tampering with data, Repudiation threats, Information disclosure, Denial of Service and Elevation of privileges) and **PASTA** (Process for Attack Simulation and Threat Analysis)
+
+## Ethics
+### Penetration tests
+Before a penetration test starts, a formal discussion occurs between the penetration tester and the system owner. Various tools, techniques, and systems to be tested are agreed on. This discussion forms the scope of the penetration testing agreement and will determine the course the penetration test takes.
+
+### Rules of Engagement (ROE)
+The ROE is a document that is created at the initial stages of a penetration testing engagement. This document consists of three main sections:
+* Permission
+* Test scope
+* Rules
+
+### Hat categories
+Hackers are sorted into three hats, where their ethics and motivations behind their actions determine what hat category they are placed into.
+| Hat | Description |
+|---|---|
+| Black hat | These people are criminals and often seek to damage organisations or gain some form of financial benefit at the cost of others. |
+| Grey hat | These people use their skills to benefit others often; however, they do not respect/follow the law or ethical standards at all times. |
+| White hat | These hackers are considered the "good people". They remain within the law and use their skills to benefit others. |
+
+## Methodologies
+The steps a penetration tester takes during an engagement is known as the methodology. A practical methodology is a smart one, where the steps taken are relevant to the situation at hand.  
+All of them have a general theme of the following stages:
+| Stage | Description |
+|---|---|
+| Information Gathering | This stage involves collecting as much publically accessible information about a target/organisation as possible, for example, OSINT and research.  Note: This does not involve scanning any systems. |
+| Enumeration/Scanning | This stage involves discovering applications and services running on the systems. For example, finding a web server that may be potentially vulnerable. |
+| Exploitation | This stage involves leveraging vulnerabilities discovered on a system or application. This stage can involve the use of public exploits or exploiting application logic. |
+| Privilege Escalation | Once you have successfully exploited a system or application (known as a foothold), this stage is the attempt to expand your access to a system. You can escalate horizontally and vertically, where horizontally is accessing another account of the same permission group (i.e. another user), whereas vertically is that of another permission group (i.e. an administrator). |
+| Post-exploitation | This stage involves a few sub-stages: 1. What other hosts can be targeted (pivoting) 2. What additional information can we gather from the host now that we are a privileged user 3. Covering your tracks 4. Reporting |
+
+### OSSTMM
+The Open Source Security Testing Methodology Manual provides a detailed framework of testing strategies for systems, software, applications, communications and the human aspect of cybersecurity.
+
+### OWASP
+The "Open Web Application Security Project" framework is a community-driven and frequently updated framework used solely to test the security of web applications and services.
+
+### NIST Cybersecurity Framework 1.1
+The NIST Cybersecurity Framework is a popular framework used to improve an organisations cybersecurity standards and manage the risk of cyber threats.
+
+### NCSC CAF
+The Cyber Assessment Framework (CAF) is an extensive framework of fourteen principles used to assess the risk of various cyber threats and an organisation's defences against these
+
+## Black, grey & white box
+There are three primary scopes when testing an application or service. 
+
+| Box | Description |
+|---|---|
+| Black | This testing process is a high-level process where the tester is not given any information about the inner workings of the application or service. |
+| Grey | The tester will have some limited knowledge of the internal components of the application or piece of software. |
+| White | The tester will have full knowledge of the application and its expected behaviour. |
+
+## ISO27001
+ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies), where ISO27001 is an international standard on how to manage information security.
+
+ISO/IEC 27001 requires that management:
+* Systematically examine the organization's information security risks, taking account of the threats, vulnerabilities, and impacts
+* Design and implement a coherent and comprehensive suite of information security controls and/or other forms of risk treatment (such as risk avoidance or risk transfer) to address those risks that are deemed unacceptable; and
+* Adopt an overarching management process to ensure that the information security controls continue to meet the organization's information security needs on an ongoing basis.
+
+An ISMS(Information Security Management System) may be certified compliant with ISO/IEC 27001 by a number of Accredited Registrars worldwide.
+
+# Overview of Tools
 [Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
 [Burp Suite](https://portswigger.net/burp) - is a tool for testing web app security, intercepting proxy to replay, inject, scan and fuzz.  
 [Gobuster](https://github.com/OJ/gobuster) - is a free and open source directory/file & DNS busting tool written in Go.  
