@@ -81,27 +81,27 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 [Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.  
 [k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.  
 [Cheatography](https://www.cheatography.com/) - over 3,000 free cheat sheets, revision aids and quick references.  
-[Google advanced search](https://www.google.dk/advanced_search) - Google dorking made easy  
-[Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - Juicy information found by dorking  
-[WebToolHub](https://www.webtoolhub.com) - Lots of different web tools  
+[Google advanced search](https://www.google.dk/advanced_search) - google dorking made easy  
+[Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking  
+[WebToolHub](https://www.webtoolhub.com) - lots of different web tools  
 [WebToolHub-LE](https://www.webtoolhub.com/tn561364-link-extractor.aspx) - HTML hyperlink extractor  
-[HTTrack](https://www.httrack.com) - Website copier  
-[WHOIS lookup](https://whois.domaintools.com) - Best whois lookup   
-[DNSDumpster](https://dnsdumpster.com) - Free domain research tool that can discover hosts related to a domain  
-[Archive.org](https://archive.org/web/) - Internet Archieve    
+[HTTrack](https://www.httrack.com) - website copier  
+[WHOIS lookup](https://whois.domaintools.com) - best whois lookup   
+[DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain  
+[Archive.org](https://archive.org/web/) - internet Archieve  
 [Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel  
-[CodeBeautify](https://codebeautify.org) - Code Beautifier, Viewer and converter  
-[Convertcsv](https://www.convertcsv.com/sql-to-csv.htm) - Convert SQL to CSV  
-[Bcrypt Generator](https://bcrypt-generator.com) - A simple bcrypt generator  
+[CodeBeautify](https://codebeautify.org) - code Beautifier, Viewer and converter  
+[Convertcsv](https://www.convertcsv.com/sql-to-csv.htm) - convert SQL to CSV  
+[Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator  
 [Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator  
 [HSV to RGB](https://www.rapidtables.com/convert/color/hsv-to-rgb.html) - HSV to RGB color converter  
-[Convert Binary](https://www.convertbinary.com) - A wide range of different converters for binary numbers  
+[Convert Binary](https://www.convertbinary.com) - a wide range of different converters for binary numbers  
 [HTML Reference](https://htmlreference.io) - HTML reference  
 [CSS Reference](https://cssreference.io) - CSS reference  
 [hilite.me](http://hilite.me) - converts your code snippets into pretty-printed HTML formats  
-[PDF24](https://tools.pdf24.org/) - Free and easy to use online PDF tools  
-[Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - A lists of the common ports  
-[Crackstation](https://crackstation.net) - Hash Cracker  
+[PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools  
+[Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - a lists of the most common ports  
+[Crackstation](https://crackstation.net) - hash cracker  
 [Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file  
 [Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world  
 
@@ -478,7 +478,8 @@ https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 
 ## Vim
 `TO BE ADDED`  
-https://cheatography.com/typo209/cheat-sheets/comprehensive-vim-cheat-sheet/
+https://cheatography.com/typo209/cheat-sheets/comprehensive-vim-cheat-sheet/  
+https://vim.rtorr.com  
 
 # Linux Commands 
 ## ps
