@@ -55,7 +55,55 @@ plaintext ⬅️ 〽️ ⬅️ ciphertext
 # Links
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.  
 [CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.  
-[GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.
+[GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.  
+[Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.  
+[SSL Scanner](http://www.ssltools.com) - analyze website security.   
+[urlscan.io](https://urlscan.io) - service to scan and analyse websites.  
+[urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.  
+[Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.  
+[ViewDNS](http://viewdns.info) - one source for free DNS related tools and information.  
+[Regex101](https://regex101.com) - online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript.  
+[RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).  
+[RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.   
+[CyberChef](https://gchq.github.io/CyberChef/) - a web app for encryption, encoding, compression and data analysis.  
+[Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.  
+[VirusTotal](https://www.virustotal.com/gui/home/upload) - analyze suspicious files and URLs to detect types of malware.  
+[ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.  
+[pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.  
+[malc0de](http://malc0de.com/database) - malware search engine.  
+[Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.   
+[AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.  
+[fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.    
+[have i been pwned?](https://haveibeenpwned.com) - check if you have an account that has been compromised in a data breach.  
+[dehashed](https://www.dehashed.com/) - is a hacked database search engine.  
+[CVE Details](https://www.cvedetails.com/) - CVE security vulnerability advanced database.  
+[sploitus](https://sploitus.com) - the exploit and tools database.  
+[Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.  
+[k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.  
+[Cheatography](https://www.cheatography.com/) - over 3,000 free cheat sheets, revision aids and quick references.  
+[Google advanced search](https://www.google.dk/advanced_search) - Google dorking made easy  
+[Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - Juicy information found by dorking  
+[WebToolHub](https://www.webtoolhub.com) - Lots of different web tools  
+[WebToolHub-LE](https://www.webtoolhub.com/tn561364-link-extractor.aspx) - HTML hyperlink extractor  
+[HTTrack](https://www.httrack.com) - Website copier  
+[WHOIS lookup](https://whois.domaintools.com) - Best whois lookup   
+[DNSDumpster](https://dnsdumpster.com) - Free domain research tool that can discover hosts related to a domain  
+[Archive.org](https://archive.org/web/) - Internet Archieve    
+[Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel  
+[CodeBeautify](https://codebeautify.org) - Code Beautifier, Viewer and converter  
+[Convertcsv](https://www.convertcsv.com/sql-to-csv.htm) - Convert SQL to CSV  
+[Bcrypt Generator](https://bcrypt-generator.com) - A simple bcrypt generator  
+[Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator  
+[HSV to RGB](https://www.rapidtables.com/convert/color/hsv-to-rgb.html) - HSV to RGB color converter  
+[Convert Binary](https://www.convertbinary.com) - A wide range of different converters for binary numbers  
+[HTML Reference](https://htmlreference.io) - HTML reference  
+[CSS Reference](https://cssreference.io) - CSS reference  
+[hilite.me](http://hilite.me) - converts your code snippets into pretty-printed HTML formats  
+[PDF24](https://tools.pdf24.org/) - Free and easy to use online PDF tools  
+[Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - A lists of the common ports  
+[Crackstation](https://crackstation.net) - Hash Cracker  
+[Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file  
+[Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world  
 
 # Services
 ## Active directory (Windows)
@@ -67,8 +115,8 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 **Active reconnaissance** - Directly interacting with the system.  
 **Passive reconnaissance** - We rely on publicly available information.   
 **IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.  
-**Proxy** - 
-**SSL/TLS** - 
+**Proxy** -  `TO BE ADDED`
+**SSL/TLS** - `TO BE ADDED`
 
 # Principles and Standards
 ## CIA Triad
@@ -203,6 +251,7 @@ An ISMS(Information Security Management System) may be certified compliant with 
 
 # Tools (CLI)
 ## Aircrack-ng
+`TO BE ADDED`  
 https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
 ## Gobuster
 GoBuster is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
@@ -231,6 +280,7 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `-H` (HTTP) - Specify HTTP header  
 
 ## Hashcat
+`TO BE ADDED`
 ## Hydra
 ### Syntax  
 `hydra -options path`  
@@ -272,6 +322,7 @@ Hash the private key
 Crack the hash  
 `john hash --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.txt`
 ## Metasploit
+`TO BE ADDED`
 ## Nano
 ### Shortcuts
 
@@ -287,7 +338,7 @@ Crack the hash
 `^\` Search and replace a string or regular expres­sion  
 
 ## Nessus
-
+`TO BE ADDED`
 ## Netcat
 Netcat aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
 
@@ -408,6 +459,7 @@ Username and password is optional.
 4. And last but not least, we can send these requests to other tools such as Repeater and Intruder for modification and manipulation to induce vulnerabilities
 
 ## Wireshark
+`TO BE ADDED`  
 https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 
 # Text Editors
@@ -425,6 +477,7 @@ https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 `^\` Search and replace a string or regular expres­sion  
 
 ## Vim
+`TO BE ADDED`  
 https://cheatography.com/typo209/cheat-sheets/comprehensive-vim-cheat-sheet/
 
 # Linux Commands 
@@ -647,6 +700,8 @@ Expand shortened links with this [tool](https://www.expandurl.net).
 
 
 ## Steganography
+`TO BE ADDED`
 ## SQL Injection
-
+`TO BE ADDED`
 # Networking
+`TO BE ADDED`
