@@ -31,9 +31,10 @@
    2. [VIM](#vim)
 10. [Linux Commands](#linux-commands)
 11. [Steps](#steps)
-    1. [Privilege Escalation](#privilege-escalation)
-    2. [Phishing](#phishing)
-    3. [Steganography](#steganography)
+    1. [Content Discovery](#content-discovery)
+    2. [Privilege Escalation](#privilege-escalation)
+    3. [Phishing](#phishing)
+    4. [Steganography](#steganography)
 12. [Networking](#networking) 
 
 # Concepts
@@ -653,18 +654,17 @@ Add a user to a group
 
 
 # Steps
-## Content Discovery (Web)
+## Content Discovery
 ### Manual
 1. Check the robots file for disallowed/hiddenpages  
 2. Check favicon to find the website frameworks (only works if the website developer doesn't replace this with a custom one)  
 Run this to find its md5 hash:  
 `curl https://static-labs.tryhackme.cloud/sites/favicon/images/favicon.ico | md5sum`  
-Check this database to find the framework:  
-https://wiki.owasp.org/index.php/OWASP_favicon_database
+Check [this](https://wiki.owasp.org/index.php/OWASP_favicon_database) database to find the framework.
 
-3. Check the sitemap file for disallowed/hidden files
+1. Check the sitemap file for disallowed/hidden files
 
-4. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use.   
+2. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use.   
 `curl http://10.10.134.48 -v`  
 The -v switch enables verbose mode, which will output the headers
 
@@ -684,6 +684,7 @@ I personally use gobuster the most.
 
 ### Osint
 **Google Hacking / Dorking**   
+Google hacking / Dorking utilizes Google's advanced search engine features, which allow you to pick out custom content.  
 | Filter | Example | Description |
 |---|---|---|
 | site | site:berkankutuk.dk | returns results only from the specified website address |
@@ -742,7 +743,7 @@ Another option would be to run the following command:
 * **Smtp.mailfrom/header.from** - The domain the email was sent from (these headers are within Authentication-Results)
 * **Reply-To** - This is the email address a reply email will be sent to instead of the From email address
 
-In case the mail is encoded using base64, the following command can be used to decrypt the message:
+In case the mail is encoded using base64, the following command can be used to decrypt the message:  
 `base64 -d <filename> > decrypted.<filetype>` 
 
 ### Phishing security
