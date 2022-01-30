@@ -653,6 +653,50 @@ Add a user to a group
 
 
 # Steps
+## Content Discovery (Web)
+### Manual
+1. Check the robots file for disallowed/hiddenpages  
+2. Check favicon to find the website frameworks (only works if the website developer doesn't replace this with a custom one)  
+Run this to find its md5 hash:  
+`curl https://static-labs.tryhackme.cloud/sites/favicon/images/favicon.ico | md5sum`  
+Check this database to find the framework:  
+https://wiki.owasp.org/index.php/OWASP_favicon_database
+
+3. Check the sitemap file for disallowed/hidden files
+
+4. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use.   
+`curl http://10.10.134.48 -v`  
+The -v switch enables verbose mode, which will output the headers
+
+When successfully finding a framework using on of the methods, Framework Stacking can be used afterwards where you check the framework documentation for potential admin portals etc.
+
+### Automated
+**What is Automated Discovery?**  
+Automated discovery is the process of using tools to discover content rather than doing it manually. This process is automated as it usually contains hundreds, thousands or even millions of requests to a web server. These requests check whether a file or directory exists on a website, giving us access to resources we didn't previously know existed. This process is made possible by using a resource called wordlists.
+
+**What are wordlists?**  
+Wordlists are just text files that contain a long list of commonly used words; they can cover many different use cases. For example, a password wordlist would include the most frequently used passwords, whereas we're looking for content in our case, so we'd require a list containing the most commonly used directory and file names.
+
+**Most common Automation tools**   
+`ffuf`, `dirb` and `gobuster`.   
+I personally use gobuster the most.
+
+
+### Osint
+**Google Hacking / Dorking**   
+| Filter | Example | Description |
+|---|---|---|
+| site | site:berkankutuk.dk | returns results only from the specified website address |
+| inurl | inurl:admin | returns results that have the specified word in the URL |
+| filetype | filetype:pdf | returns results which are a particular file extension |
+| intitle | intitle:admin | returns results that contain the specified word in the title |  
+
+**Wappalyzer**  
+Wappalyzer is an online tool and browser extension that helps identify what technologies a website uses, such as frameworks, Content Management Systems (CMS), payment processors and much more, and it can even find version numbers as well. Read more [here](https://www.wappalyzer.com/).  
+
+**Wayback Machine**  
+The Wayback Machine is a historical archive of websites that dates back to the late 90s. You can search a domain name, and it will show you all the times the service scraped the web page and saved the contents. This service can help uncover old pages that may still be active on the current website. Find the website [here](https://archive.org/web/).
+
 ## Privilege Escalation 
 Check for root password
 Run: `id`  
@@ -664,7 +708,7 @@ You can also run:
 wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh on a target machine to see the files that stand out.
 
 Another option would be to run the following command:  
-`find / -user root -perm 4000 -print 2>/dev/null`
+`find / -user root -perm 4000 -print 2>/dev/null`  
 
 `2>/dev/null` will filter out the errors so that they will not be output to your console
 
