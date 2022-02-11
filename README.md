@@ -531,8 +531,25 @@ No specification = this folder
 -name = specify file specific name/descriptions to be found  
 -iname = Like -name, but the match is case insensitive.  
 -print  = It prints the pathname of the current file to standard output.  
- -regex  = True if the whole path of the file matches pattern using expression  
+-regex  = True if the whole path of the file matches pattern using expression   
+-type = With -type, you can use d to only find directories, and f to only find files.  
+-user = specify owner  
+-size = specify size
+-perm = specify permissions
 
+**Time specific**  
+min and time. a(acessed), m(modified), c
+
+To put it all together: in order to specify that a file was last accessed more than 30 minutes ago, the option `-amin +30` is used. 
+
+To specify that it was modified less than 7 days ago, the option `-mtime -7` is used. 
+
+When you want to specify that a file was modified within the last 24 hours, the option `-mtime 0` is used.
+
+**Note**  
+1. Suppress the output of any possible errors to make the output more readable. This is done by appending `2> /dev/null` to your command. This way, you won’t see any results you’re not allowed to access.
+2. The second thing is the `-exec` flag. You can use it in your find command to execute a new command, following the -exec flag, like so: `-exec whoami \;`. (can be used for privilege escalation)
+ 
 ## diff
 diff is a command-line utility that allows you to compare two files line by line
 
