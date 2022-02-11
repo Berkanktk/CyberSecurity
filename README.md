@@ -514,12 +514,25 @@ The most commonly used signals are:
 
 `kill -9 PID_ID`
 ## find
+Syntax: `find where what`
+
 Search for files
-Syntax: find <where> <what>
 `find -name passwords.txt`
 
 Find any file with the extension of ".txt"
 `find -name *.txt`
+
+**Location specific options**   
+No specification = this folder  
+/ = root folder  
+. = this folder and its subdirectories  
+
+**Other options**  
+-name = specify file specific name/descriptions to be found  
+-iname = Like -name, but the match is case insensitive.  
+-print  = It prints the pathname of the current file to standard output.  
+ -regex  = True if the whole path of the file matches pattern using expression  
+
 ## diff
 diff is a command-line utility that allows you to compare two files line by line
 
