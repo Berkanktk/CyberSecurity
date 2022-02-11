@@ -515,6 +515,7 @@ The most commonly used signals are:
 `kill -9 PID_ID`
 ## find
 Search for files
+Syntax: find <where> <what>
 `find -name passwords.txt`
 
 Find any file with the extension of ".txt"
