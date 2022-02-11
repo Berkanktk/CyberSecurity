@@ -117,7 +117,7 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 **Passive reconnaissance** - We rely on publicly available information.   
 **IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.    
 **Proxy** -  `TO BE ADDED`   
-**SSL/TLS** - `TO BE ADDED`
+**SSL/TLS** - `TO BE ADDED`  
 
 # Principles and Standards
 ## CIA Triad
