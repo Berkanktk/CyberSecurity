@@ -41,8 +41,8 @@
 ## Hashing
 plaintext ➡️ hash  
 hash ⛔ plaintext
-## Encryption
 
+## Encryption
 ### Symetric encryption
 plaintext ➡️ 🔑 ➡️ ciphertext  
 plaintext ⬅️ 🔑 ⬅️ ciphertext  
@@ -52,6 +52,13 @@ plaintext ⬅️ 🔑 ⬅️ ciphertext
 plaintext ➡️ 🔑 ➡️ ciphertext  
 plaintext ⬅️ 〽️ ⬅️ ciphertext  
 (🔑 public key, 〽️ private key
+
+Public key to encrypt, private key to decrypt.
+
+## Encoding
+Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
+
+A very popular encoding is Base64
 
 # Links
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.  
