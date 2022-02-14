@@ -126,6 +126,7 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 **Proxy** -  `TO BE ADDED`   
 **SSL/TLS** - `TO BE ADDED`  
 **XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine 
+**IPP** - Internet Printing Protocol
 
 # Principles and Standards
 ## CIA Triad
@@ -790,6 +791,14 @@ Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rso
 
 Expand shortened links with this [tool](https://www.expandurl.net).
 
+## Printer Hacking (IPP)
+Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET)  
+Printer security cheat sheet can be found [here](http://hacking-printers.net/wiki/index.php/Printer_Security_Testing_Cheat_Sheet)
+
+It allows clients to submit one or more print jobs to the printer or print server, and perform tasks such as querying the status of a printer, obtaining the status of print jobs, or canceling individual print jobs."  
+Most of them appear to run the CUPS server (which is a simple UNIX printing system).  
+
+Running `python pret.py` will start an automatic printer discovery in your local network. 
 
 # Cryptology
 ## Steganography
