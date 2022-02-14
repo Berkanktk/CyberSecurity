@@ -125,6 +125,7 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 **IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.    
 **Proxy** -  `TO BE ADDED`   
 **SSL/TLS** - `TO BE ADDED`  
+**XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine 
 
 # Principles and Standards
 ## CIA Triad
@@ -790,9 +791,19 @@ Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rso
 Expand shortened links with this [tool](https://www.expandurl.net).
 
 
+# Cryptology
 ## Steganography
 `TO BE ADDED`
+
+# Vulnerabilities
 ## SQL Injection
 `TO BE ADDED`
+
+## XSS (Cross-Site Scripting)
+**DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
+
+**Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
+
+**Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
 # Networking
 `TO BE ADDED`
