@@ -300,13 +300,45 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `-H` (HTTP) - Specify HTTP header  
 
 ## Hashcat
-`TO BE ADDED`  
-Link to hash types can be found [here](https://hashcat.net/wiki/doku.php?id=example_hashes).  
-NEVER use `--force` for hashcat. It can lead to false positives  
-https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/
+Hashat is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
+[Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
 
-`hashcat -m <number <hash_file> <dict_file>`
+### Syntax
+`hashcat -m <number> <hash_file> <dict_file>`
 
+### Example 
+Dictionary  
+`hashcat -m 1800 -a 0 hashed.txt /usr/share/wordlists/rockyou.txt -o output.txt`  
+Bruteforce  
+`hashcat -m 0 -a 3 -i hashed.txt ?a?a?a?a?a?a?a -o output.txt`
+
+### Flags
+`-m` sets the [mode](https://hashcat.net/wiki/doku.php?id=example_hashes)   
+`-a` sets the attack mode (0=Straight,1=Combination,3=Bruteforce,6=Hybrid:wlist+mask,7=Hybrid:mask+wlist)  
+`-o` output to filename   
+`-r` sets rules  
+`--status`  keep screen updated   
+`--runtime` abort after X seconds   
+`--force` sets workload to insane (This can lead to false positives)  
+`-i` increment (bruteforce)
+
+### Attack modes
+0=Straight  
+1=Combination  
+3=Bruteforce  
+6=Hybrid:wlist+mask  
+7=Hybrid:mask+wlist  
+
+### Charsets
+`?l`  Lowercase a-z  
+`?u`  Uppercase A-Z  
+`?d`  Decimals  
+`?h`  Hex using lowercase chars    
+`?H`  Hex using uppercase chars  
+`?s`  Special chars     
+`?a`  All (l,u,d,s)  
+`?b`  Binary  
+ 
 ## Hydra
 ### Syntax  
 `hydra -options path`  
