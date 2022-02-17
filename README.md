@@ -290,7 +290,9 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `-H` (HTTP) - Specify HTTP header  
 
 ## Hashcat
-`TO BE ADDED`
+`TO BE ADDED`  
+Link to hash types can be found [here](https://hashcat.net/wiki/doku.php?id=example_hashes).
+
 ## Hydra
 ### Syntax  
 `hydra -options path`  
@@ -837,6 +839,26 @@ Wappalyzer is an online tool and browser extension that helps identify what tech
 
 **Wayback Machine**  
 The Wayback Machine is a historical archive of websites that dates back to the late 90s. You can search a domain name, and it will show you all the times the service scraped the web page and saved the contents. This service can help uncover old pages that may still be active on the current website. Find the website [here](https://archive.org/web/).
+
+### Subdomain enumeration
+
+**SSL/TLS Certificates**  
+When an SSL/TLS (Secure Sockets Layer/Transport Layer Security) certificate is created for a domain by a CA (Certificate Authority), CA's take part in what's called "Certificate Transparency (CT) logs". These are publicly accessible logs of every SSL/TLS certificate created for a domain name.
+The following site consists of a searchable database of certificates that shows current and historical results. [Link](crt.sh) 
+
+**Search Engines**
+The following search would only contain results from subdomain names belonging to domain.com:  
+`-site:www.domain.com site:*.domain.com` 
+
+**DNS Bruteforce**  
+Bruteforce DNS (Domain Name System) enumeration is the method of trying tens, hundreds, thousands or even millions of different possible subdomains from a pre-defined list of commonly used subdomains. Fot this method, the tool [DNSrecon](https://www.kali.org/tools/dnsrecon/) & [Sublist3r](https://github.com/aboul3la/Sublist3r) can be used.
+
+** Virtual Hosts**  
+Some subdomains aren't always hosted in publically accessible DNS results, such as development versions of a web application or administration portals. Instead, the DNS record could be kept on a private DNS server or recorded on the developer's machines in their /etc/hosts file (or c:\windows\system32\drivers\etc\hosts file for Windows users) which maps domain names to IP addresses. 
+
+Because web servers can host multiple websites from one server when a website is requested from a client, the server knows which website the client wants from the Host header. We can utilise this host header by making changes to it and monitoring the response to see if we've discovered a new website.
+
+Bruteforce by using the following command: `ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: {domain}" -u http://{IP} -fs {size}`
 
 ## Privilege Escalation 
 Check for root password
