@@ -38,12 +38,13 @@
     1. [Content Discovery](#content-discovery)
     2. [Privilege Escalation](#privilege-escalation)
     3. [Phishing](#phishing)
-    4. [Steganography](#steganography)
+ 1. [Cryptology](#cryptology)
+    1. [Steganography](#steganography)
 12. [Networking](#networking) 
 13. [Vulnerabilities](#vulnerabilities)
     1.  [SQL Injection](#sql-injection)
-    1.  [XSS](#xss-cross-site-scripting)
-    2.  [Printer Hacking](#printer-hacking-ipp)
+    2.  [XSS](#xss-cross-site-scripting)
+    3.  [Printer Hacking](#printer-hacking-ipp)
 
 # Concepts
 ## Hashing
