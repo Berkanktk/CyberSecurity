@@ -2,16 +2,19 @@
 1. [Concepts](#concepts)
    1. [Hashing](#hashing)
    2. [Encryption](#encryption)
+   3. [Encoding](#encoding)
 2. [Links](#links)
 3. [Services](#services)
 4. [Terms](#terms)
 5. [Principles and Standards](#principles-and-standards)
-   1. [Security Models](#security-models)
-   2. [Threat modeling and incidence response](#threat-modeling-and-incidence-response)
-   3. [Ethics](#ethics)
-   4. [Methodologies](#methodologies)
-   5. [Black, grey & white box](#black-grey--white-box)
-   6. [ISO27001](#iso27001)
+   1. [CIA Triad](#cia-triad)
+   2. [Principle of privileges](#principles-of-privileges)
+   3. [Security Models](#security-models)
+   4. [Threat modeling and incidence response](#threat-modeling-and-incidence-response)
+   5. [Ethics](#ethics)
+   6. [Methodologies](#methodologies)
+   7. [Black, grey & white box](#black-grey--white-box)
+   8. [ISO27001](#iso27001)
 6. [Overview of tools](#overview-of-tools)
 7. [Tools (CLI)](#tools-cli)
    1. [Aircrack-ng](#aircrack-ng)
@@ -20,15 +23,16 @@
    4. [Hydra](#hydra)
    5. [John The Ripper](#john-the-ripper)
    6. [Metasploit](#metasploit)
-   7. [Netcat](#netcat)
-   8. [Nikto](#nikto-2)
-   9.  [Nmap](#nmap)
+   7. [Nessus](#nessus)
+   8. [Netcat](#netcat)
+   9. [Nikto](#nikto-2)
+   10. [Nmap](#nmap)
 8. [Tools (GUI)](#tools-gui)
    1. [Burp Suite](#burp)
    2. [Wireshark](#wireshark)
-9. [Text Editors](#text-editors)
-   1. [Nano](#nano)
-   2. [VIM](#vim)
+9.  [Text Editors](#text-editors)
+    1.  [Nano](#nano)
+    2.  [VIM](#vim)
 10. [Linux Commands](#linux-commands)
 11. [Steps](#steps)
     1. [Content Discovery](#content-discovery)
@@ -36,6 +40,10 @@
     3. [Phishing](#phishing)
     4. [Steganography](#steganography)
 12. [Networking](#networking) 
+13. [Vulnerabilities](#vulnerabilities)
+    1.  [SQL Injection](#sql-injection)
+    1.  [XSS](#xss-cross-site-scripting)
+    2.  [Printer Hacking](#printer-hacking-ipp)
 
 # Concepts
 ## Hashing
@@ -56,8 +64,8 @@ plaintext ⬅️ 🔑 ⬅️ ciphertext
 
 ### Asymetric encryption
 plaintext ➡️ 🔑 ➡️ ciphertext  
-plaintext ⬅️ 〽️ ⬅️ ciphertext  
-(🔑 public key, 〽️ private key
+plaintext ⬅️ 🗝 ⬅️ ciphertext  
+(🔑 public key, 🗝 private key
 
 Public key to encrypt, private key to decrypt.
 
@@ -381,19 +389,7 @@ Crack the hash
 `john hash --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.txt`
 ## Metasploit
 `TO BE ADDED`
-## Nano
-### Shortcuts
 
-`^G` Display help text.  
-`^O` Write the current file to disk  
-`^X` Exit nano.  
-`^T` Invoke spellc­heck, if installed.  
-`^Y` Next screen.  
-`^V` Previous screen.  
-`^L` Refresh (force redraw) current screen.  
-`^J` Justify current paragraph. (Join together broken lines of text until double newline is encoun­tered.)  
-`^W` Search for a string or regular expres­sion.  
-`^\` Search and replace a string or regular expres­sion  
 
 ## Nessus
 `TO BE ADDED`
@@ -959,17 +955,12 @@ Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rso
 
 Expand shortened links with this [tool](https://www.expandurl.net).
 
-## Printer Hacking (IPP)
-Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET)  
-Printer security cheat sheet can be found [here](http://hacking-printers.net/wiki/index.php/Printer_Security_Testing_Cheat_Sheet)
-
-It allows clients to submit one or more print jobs to the printer or print server, and perform tasks such as querying the status of a printer, obtaining the status of print jobs, or canceling individual print jobs."  
-Most of them appear to run the CUPS server (which is a simple UNIX printing system).  
-
-Running `python pret.py` will start an automatic printer discovery in your local network. 
 
 # Cryptology
 ## Steganography
+`TO BE ADDED`
+
+# Networking
 `TO BE ADDED`
 
 # Vulnerabilities
@@ -982,5 +973,12 @@ Running `python pret.py` will start an automatic printer discovery in your local
 **Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
 
 **Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
-# Networking
-`TO BE ADDED`
+
+## Printer Hacking (IPP)
+Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET)  
+Printer security cheat sheet can be found [here](http://hacking-printers.net/wiki/index.php/Printer_Security_Testing_Cheat_Sheet)
+
+It allows clients to submit one or more print jobs to the printer or print server, and perform tasks such as querying the status of a printer, obtaining the status of print jobs, or canceling individual print jobs."  
+Most of them appear to run the CUPS server (which is a simple UNIX printing system).  
+
+Running `python pret.py` will start an automatic printer discovery in your local network. 
