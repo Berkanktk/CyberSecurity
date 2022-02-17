@@ -39,8 +39,14 @@
 
 # Concepts
 ## Hashing
+Hashing is used for 2 main purposes in Cyber Security. To verify integrity of data, or for verifying passwords. 
+
 plaintext ➡️ hash  
 hash ⛔ plaintext
+
+Doing a lookup in a sorted list of hashes that are not salted is quite fast, much much faster than trying to crack the hash. But in case we have to crack, then its done by hashing a large number of different inputs (often rockyou.txt, these are the possible passwords), potentially adding the salt if there is one and comparing it to the target hash. 
+
+Tools like Hashcat and John the Ripper are normally used for this.
 
 ## Encryption
 ### Symetric encryption
@@ -109,9 +115,11 @@ A very popular encoding is Base64
 [hilite.me](http://hilite.me) - converts your code snippets into pretty-printed HTML formats  
 [PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools  
 [Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - a lists of the most common ports  
-[Crackstation](https://crackstation.net) - hash cracker  
+[Crackstation (Rainbow tables)](https://crackstation.net) - hash cracker  
 [Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file  
 [Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world  
+[Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/)  
+[MD5 Online](https://www.md5online.org/md5-decrypt.html)  
 
 # Services
 ## Active directory (Windows)
@@ -126,7 +134,9 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 **Proxy** -  `TO BE ADDED`   
 **SSL/TLS** - `TO BE ADDED`  
 **XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine 
-**IPP** - Internet Printing Protocol
+**IPP** - Internet Printing Protocol  
+**Hash collision** -  When 2 different inputs give the same output  
+**Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts
 
 # Principles and Standards
 ## CIA Triad
@@ -291,7 +301,11 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 
 ## Hashcat
 `TO BE ADDED`  
-Link to hash types can be found [here](https://hashcat.net/wiki/doku.php?id=example_hashes).
+Link to hash types can be found [here](https://hashcat.net/wiki/doku.php?id=example_hashes).  
+NEVER use `--force` for hashcat. It can lead to false positives  
+https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/
+
+`hashcat -m <number <hash_file> <dict_file>`
 
 ## Hydra
 ### Syntax  
