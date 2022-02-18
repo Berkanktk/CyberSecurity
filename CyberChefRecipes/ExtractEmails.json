@@ -1,0 +1,4 @@
+[
+    { "op": "Extract email addresses",
+      "args": [true] }
+]
