@@ -1,0 +1,4 @@
+[
+    { "op": "Defang URL",
+      "args": [true, false, true, "Valid domains and full URLs"] }
+]

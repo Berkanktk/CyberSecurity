@@ -1,0 +1,4 @@
+[
+    { "op": "Generate QR Code",
+      "args": ["PNG", 5, 2, "Medium"] }
+]
