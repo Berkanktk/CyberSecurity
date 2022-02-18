@@ -1,4 +1,4 @@
-# List of contents
+# List of Contents
 1. [Concepts](#concepts)
    1. [Hashing](#hashing)
    2. [Encryption](#encryption)
@@ -142,10 +142,11 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 **IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.    
 **Proxy** -  `TO BE ADDED`   
 **SSL/TLS** - `TO BE ADDED`  
-**XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine 
+**XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine  
 **IPP** - Internet Printing Protocol  
 **Hash collision** -  When 2 different inputs give the same output  
-**Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts
+**Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts  
+**SAM** -  Security Account Manager is a database that is present on computers running Windows that stores user accounts and security descriptors for users on the local computer
 
 # Principles and Standards
 ## CIA Triad
@@ -382,6 +383,7 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 `-o` FILE
 write found login/password pairs to FILE instead of stdout
 ## John The Ripper
+https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
 ### SSH Private Key
 Hash the private key  
 `/root/Tools/'Password Attacks'/john/ssh2john.py id_rsa > hash`
@@ -919,7 +921,6 @@ Another option would be to run the following command:
 `2>/dev/null` will filter out the errors so that they will not be output to your console
 
 ## Phishing
-
 
 ### Phishing terms
 **A BEC (Business Email Compromise)** is when an adversary gains control of an internal employee's account and then uses the compromised email account to convince other internal employees to perform unauthorized or fraudulent actions. 
