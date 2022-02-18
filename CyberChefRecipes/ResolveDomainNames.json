@@ -1,8 +1,8 @@
 [
     { "op": "Fork",
-      "args": ["\\n", "\\n\\n", false] },
+      "args": ["\\n", "", true] },
     { "op": "DNS over HTTPS",
-      "args": ["https://dns.google.com/resolve", "A", false, false] },
-    { "op": "JPath expression",
-      "args": ["Answer[0]['data']", "\\n"] }
+      "args": ["https://dns.google.com/resolve", "A", true, false] },
+    { "op": "Extract IP addresses",
+      "args": [true, false, false, false] }
 ]
