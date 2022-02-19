@@ -534,6 +534,7 @@ https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
 
 ## Vim
 Find full cheatsheet [here](https://vim.rtorr.com).
+https://swafox.com/linux-vim/
 ### Cursor movement
 `h` - move cursor left  
 `j` - move cursor down  
@@ -684,14 +685,14 @@ No specification = this folder
 . = this folder and its subdirectories  
 
 **Other options**  
--name = specify file specific name/descriptions to be found  
--iname = Like -name, but the match is case insensitive.  
--print  = It prints the pathname of the current file to standard output.  
--regex  = True if the whole path of the file matches pattern using expression   
--type = With -type, you can use d to only find directories, and f to only find files.  
--user = specify owner  
--size = specify size
--perm = specify permissions
+`-name` = specify file specific name/descriptions to be found  
+`-iname` = Like -name, but the match is case insensitive.  
+`-print`  = It prints the pathname of the current file to standard output.  
+`-regex`  = True if the whole path of the file matches pattern using expression   
+`-type` = With -type, you can use d to only find directories, and f to only find files.  
+`-user` = specify owner  
+`-size` = specify size
+`-perm` = specify permissions
 
 **Time specific**  
 min and time. a(acessed), m(modified), c
