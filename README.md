@@ -308,7 +308,6 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `-s` (status-codes) - Set status codes that should be interpreted as valid  
 `-k` (ssl) - Skip ssl certificate   
 `-H` (HTTP) - Specify HTTP header  
-
 ## Hashcat
 Hashat is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
 [Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
@@ -348,8 +347,8 @@ Bruteforce
 `?s`  Special chars     
 `?a`  All (l,u,d,s)  
 `?b`  Binary  
- 
 ## Hydra
+Hydra is a tool used to brute-force username and password to different services such as ftp, ssh, telnet, MS-SQL, etc.
 ### Syntax  
 `hydra -options path`  
 
@@ -392,8 +391,6 @@ Crack the hash
 `john hash --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.txt`
 ## Metasploit
 `TO BE ADDED`
-
-
 ## Nessus
 `TO BE ADDED`
 ## Netcat
@@ -417,7 +414,6 @@ Computer A (acts as the sending client):
 `-6` IPv6 only  
 `>` Server file redirection  
 `<` Client file redirection
-
 ## Nikto 2 
 nikto is a popular web scanning tool that allows users to find common web vulnerabilities. It is commonly used to check for common CVE's such as shellshock, and to get general information about the web server that you're enumerating.
 
@@ -434,8 +430,8 @@ nikto is a popular web scanning tool that allows users to find common web vulner
 `-update` Update the plugin list  
 `--list-plugins`  List all possible plugins to use   
 `-output` Output fingerprinted information to a file
-
 ## Nmap
+Nmap is a utility for network discovery and security auditing.
 ### Syntax
 `nmap -switch1 -switch2 ipaddress`  
 
@@ -653,7 +649,7 @@ Shows the processes for the current shell
 `-t` Processes associated with the terminal run
 ## rm
 `-r` Deletes every file in the directory  
-`-f` Suppresses all warning prompts
+`-f` Suppresses all warning prompts 
 ## mv
 Moves files  
 Example:
@@ -729,13 +725,16 @@ Example:
 **Permissions**
 | Digit    |      Meaning   | 
 |----------|:-------------:|
-| 1  |  That file can be executed |
-| 2  |    That file can be written to   | 
+| 1  | That file can be executed |
+| 2  | That file can be written to   | 
 | 3  | That file can be executed and written to |
 | 4  | That file can be read |
 | 5  | That file can be read and executed |
 | 6  | That file can be written to and read |
 | 7  | That file can be read, written to, and executed |
+
+To make a binary file just executable for the owner of the file, you can use:  
+`chmod u+x file.txt`
 ## chown
 Change the user and group for any file
 
