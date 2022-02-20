@@ -852,6 +852,9 @@ Sudo is Linux's 'run as administrator' command
 `-u <user>` specify user   
 `-su` change to root
 `-l` list current sudo priviliges   
+## hashid
+Hashid will analyze and output the potential algorithm that is used to hash your input.  
+`hashid hash`
 ## shasums
 **Find SHA1 hash for a file**  
 `sha1sum file.txt`
