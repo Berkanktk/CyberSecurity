@@ -799,14 +799,24 @@ The most common example for tar extraction would be:
 `-x` tells tar to extract files from an archive.  
 `-f` tells tar that the next argument will be the name of the archive to operate on.
 ## grep
-Search the contents of files for specific values 
+Search the contents of files for specific values   
+`grep "hello world" file.txt`
 
-`wc -l file.txt` get numbers of entries
+Search for an ip using regular expressions  
+`grep -Eo '[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}'`
 
-`grep "81.143.211.90" file.txt`
+**Options**  
+`-n` line numbers for every string found  
+`-E` regular expressions
+## wc
+Word count  
+`wc -l file.txt` get numbers of entries  
 
-Flags:
-`-n` line numbers for every string found? 
+**Options**  
+`-l` count number of lines  
+`-c` count number of bytes  
+`-w` count number of words   
+`-m` count number of characters  
 ## whoami
 Find out what user we're currently logged in as
 ## hexeditor
@@ -824,11 +834,29 @@ Example:
 ## binwalk
 Binwalk allows users to analyze and extract firmware images and helps in identifying code, files, and other information embedded in those, or inside another file
 ## sudo
-Sudo is Linux's run as administrator button
+Sudo is Linux's 'run as administrator' command
 
-Flags:  
+**Options**
 `-u <user>` specify user   
+`-su` change to root
 `-l` list current sudo priviliges   
+## shasums
+**Find SHA1 hash for a file**  
+`sha1sum file.txt`
+
+**Find MD5 hash for a file**  
+`md5sum file.txt`
+## base64
+Decrypt base64  
+`base64 -d file.txt`
+## gpg
+Gpg encrypt a file  
+`gpg -c data.txt`  
+Enter keyphrase
+
+Decrypt the file  
+`gpg -d data.txt.gpg`  
+Enter keyphrase
 ## adduser & addgroup
 The syntax for both of these commands are `adduser username` and `addgroup groupname`.
 
@@ -837,7 +865,6 @@ Add a user to a group
 ## Operators
 `>` is the operator for output redirection. Meaning that you can redirect the output of any command to a file  
 `>>` does mainly the same thing as >, with one key difference. >> appends the output of a command to a file, instead of erasing it.
-
 
 # Steps
 ## Content Discovery
@@ -912,12 +939,32 @@ Locate password folder and crack it using johntheripper
 Or use [GTFOBins](https://gtfobins.github.io)
 
 You can also run:  
-wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh on a target machine to see the files that stand out.
+`wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh` on a target machine to see the files that stand out.
 
-Another option would be to run the following command:  
-`find / -user root -perm 4000 -print 2>/dev/null`  
+Another option would be to run the following command to find all files with the SUID bit set:  
+`find / -user root -perm 4000 -print 2>/dev/null` good  
+`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null` better  
+`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null | grep 'bin'` best  
 
 `2>/dev/null` will filter out the errors so that they will not be output to your console
+
+### Find info about the users of the system
+Find users on a system  
+`cat /etc/passwd | grep “/bin/bash”`
+
+Find passwords  
+`cat /etc/passwd`
+
+If you don't have privilege, try this  
+`find / -name shadow* 2>/dev/null | head`
+
+### Privilege Escalation using SUID Binaries
+`-rwsr-xr-x`  
+“s” = SUID. This means that any user can execute these commands and they will be ran as the original owner.
+
+**Example**  
+Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command:  
+`find /home/berkan/flag1.txt -exec cat {} \;`
 
 ## Phishing
 
