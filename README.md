@@ -76,59 +76,59 @@ Encoded data can be decoded immediately, without keys. It's NOT a form of encryp
 A very popular encoding is Base64
 
 # Links
-[ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.  
-[CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.  
-[GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.  
-[Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.  
-[SSL Scanner](http://www.ssltools.com) - analyze website security.   
-[urlscan.io](https://urlscan.io) - service to scan and analyse websites.  
-[urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.  
-[Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.  
-[ViewDNS](http://viewdns.info) - one source for free DNS related tools and information.  
-[Regex101](https://regex101.com) - online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript.  
-[RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).  
-[RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.   
-[CyberChef](https://gchq.github.io/CyberChef/) - a web app for encryption, encoding, compression and data analysis.  
-[Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.  
-[VirusTotal](https://www.virustotal.com/gui/home/upload) - analyze suspicious files and URLs to detect types of malware.  
-[ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.  
-[pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.  
-[malc0de](http://malc0de.com/database) - malware search engine.  
-[Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.   
-[AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.  
-[fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.    
-[have i been pwned?](https://haveibeenpwned.com) - check if you have an account that has been compromised in a data breach.  
-[dehashed](https://www.dehashed.com/) - is a hacked database search engine.  
-[CVE Details](https://www.cvedetails.com/) - CVE security vulnerability advanced database.  
-[sploitus](https://sploitus.com) - the exploit and tools database.  
-[Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.  
-[k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.  
-[Cheatography](https://www.cheatography.com/) - over 3,000 free cheat sheets, revision aids and quick references.  
-[Google advanced search](https://www.google.dk/advanced_search) - google dorking made easy  
-[Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking  
-[WebToolHub](https://www.webtoolhub.com) - lots of different web tools  
-[WebToolHub-LE](https://www.webtoolhub.com/tn561364-link-extractor.aspx) - HTML hyperlink extractor  
-[HTTrack](https://www.httrack.com) - website copier  
-[WHOIS lookup](https://whois.domaintools.com) - best whois lookup   
-[DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain  
-[Archive.org](https://archive.org/web/) - internet Archieve  
-[Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel  
-[CodeBeautify](https://codebeautify.org) - code Beautifier, Viewer and converter  
-[Convertcsv](https://www.convertcsv.com/sql-to-csv.htm) - convert SQL to CSV  
-[Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator  
-[Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator  
-[HSV to RGB](https://www.rapidtables.com/convert/color/hsv-to-rgb.html) - HSV to RGB color converter  
-[Convert Binary](https://www.convertbinary.com) - a wide range of different converters for binary numbers  
-[HTML Reference](https://htmlreference.io) - HTML reference  
-[CSS Reference](https://cssreference.io) - CSS reference  
-[hilite.me](http://hilite.me) - converts your code snippets into pretty-printed HTML formats  
-[PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools  
-[Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - a lists of the most common ports  
-[Crackstation (Rainbow tables)](https://crackstation.net) - hash cracker  
-[Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file  
-[Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world  
-[Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/)  
-[MD5 Online](https://www.md5online.org/md5-decrypt.html)  
+[AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
+[Archive.org](https://archive.org/web/) - internet Archieve    
+[Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator     
+[Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.      
+[Cheatography](https://www.cheatography.com/) - over 3,000 free cheat sheets, revision aids and quick references.    
+[CodeBeautify](https://codebeautify.org) - code Beautifier, Viewer and converter    
+[Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - a lists of the most common ports    
+[Convert Binary](https://www.convertbinary.com) - a wide range of different converters for binary numbers      
+[Convertcsv](https://www.convertcsv.com/sql-to-csv.htm) - convert SQL to CSV     
+[Crackstation (Rainbow tables)](https://crackstation.net) - hash cracker      
+[CSS Reference](https://cssreference.io) - CSS reference    
+[CVE Details](https://www.cvedetails.com/) - CVE security vulnerability advanced database.      
+[CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.      
+[CyberChef](https://gchq.github.io/CyberChef/) - a web app for encryption, encoding, compression and data analysis.     
+[Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.      
+[dehashed](https://www.dehashed.com/) - is a hacked database search engine.      
+[DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
+[ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
+[fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.      
+[Google advanced search](https://www.google.dk/advanced_search) - google dorking made easy      
+[Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking      
+[GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.    
+[Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/) - tool to identify hash types      
+[have i been pwned?](https://haveibeenpwned.com) - check if you have an account that has been compromised in a data breach.      
+[hilite.me](http://hilite.me) - converts your code snippets into pretty-printed HTML formats    
+[HSV to RGB](https://www.rapidtables.com/convert/color/hsv-to-rgb.html) - HSV to RGB color converter     
+[HTML Reference](https://htmlreference.io) - HTML reference    
+[HTTrack](https://www.httrack.com) - website copier      
+[Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel     
+[k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.      
+[Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.    
+[malc0de](http://malc0de.com/database) - malware search engine.   
+[MD5 Online](https://www.md5online.org/md5-decrypt.html) - md5Online offers several tools related to the MD5 cryptographic algorithm.     
+[Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.      
+[PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools     
+[Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.      
+[pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.     
+[Regex101](https://regex101.com) - online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript.    
+[RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.      
+[RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).      
+[ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
+[sploitus](https://sploitus.com) - the exploit and tools database.      
+[SSL Scanner](http://www.ssltools.com) - analyze website security.      
+[Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file     
+[Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator     
+[urlscan.io](https://urlscan.io) - service to scan and analyse websites.      
+[urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.      
+[ViewDNS](http://viewdns.info) - one source for free DNS related tools and information.      
+[VirusTotal](https://www.virustotal.com/gui/home/upload) - analyze suspicious files and URLs to detect types of malware.      
+[WebToolHub-LE](https://www.webtoolhub.com/tn561364-link-extractor.aspx) - HTML hyperlink extractor      
+[WebToolHub](https://www.webtoolhub.com) - lots of different web tools     
+[WHOIS lookup](https://whois.domaintools.com) - best whois lookup    
+[Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world      
 
 # Services
 ## Active directory (Windows)
@@ -706,7 +706,6 @@ When you want to specify that a file was modified within the last 24 hours, the 
 **Note**  
 1. Suppress the output of any possible errors to make the output more readable. This is done by appending `2> /dev/null` to your command. This way, you won’t see any results you’re not allowed to access.
 2. The second thing is the `-exec` flag. You can use it in your find command to execute a new command, following the -exec flag, like so: `-exec whoami \;`. (can be used for privilege escalation)
- 
 ## diff
 diff is a command-line utility that allows you to compare two files line by line
 
