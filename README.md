@@ -865,7 +865,20 @@ Install with:
 
 Usage  
 `exiftool file.jpeg`
+## fcrackzip 
+Is a password cracker that runs on .zip files 
 
+Install  
+`sudo apt-get install fcrackzip`
+
+Usage  
+`fcrackzip -vbDp <wordlist path> <filepath>`
+
+**Options**
+`-b` for using brute force algorithms.   
+`-D` for using a dictionary.  
+`-v` for verbose mode.  
+`-p` for using a string as a password.
 ## adduser & addgroup
 The syntax for both of these commands are `adduser username` and `addgroup groupname`.
 
