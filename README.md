@@ -819,6 +819,18 @@ Word count
 `-m` count number of characters  
 ## whoami
 Find out what user we're currently logged in as
+## uname
+Prints basic information about the operating system name and system hardware
+
+`uname -a` will print all available information
+## ssh
+SSH or Secure Shell is a network communication protocol that enables two computers to communicate
+
+Standard use  
+`ssh user@ip` and type the password
+
+Specify other ports than 22  
+`ssh user@ip -p <port>` and type the password
 ## hexeditor
 Read and modify hex of a file (This tool is also helpful when it comes to CTFs and text is hidden inside a file or when the magic number of a file was altered.)
 ## gzip
