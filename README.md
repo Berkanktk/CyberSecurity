@@ -869,6 +869,15 @@ Enter keyphrase
 Decrypt the file  
 `gpg -d data.txt.gpg`  
 Enter keyphrase
+## hexdump
+hexdump is used to filter and display the specified files, or standard input in a human readable specified format.  
+
+**Syntax**  
+hd {options} {files}
+
+**Options**  
+`-c` One-byte character display.   
+`-C` Canonical hex + ASCII display.
 ## exiftool
 Is a command-line application for reading, writing and editing meta information in a wide variety of files.
 
