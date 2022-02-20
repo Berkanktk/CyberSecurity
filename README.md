@@ -857,6 +857,15 @@ Enter keyphrase
 Decrypt the file  
 `gpg -d data.txt.gpg`  
 Enter keyphrase
+## exiftool
+Is a command-line application for reading, writing and editing meta information in a wide variety of files.
+
+Install with:  
+`sudo apt install libimage-exiftool-perl`
+
+Usage  
+`exiftool file.jpeg`
+
 ## adduser & addgroup
 The syntax for both of these commands are `adduser username` and `addgroup groupname`.
 
