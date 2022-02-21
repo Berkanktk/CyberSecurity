@@ -352,7 +352,7 @@ Hydra is a tool used to brute-force username and password to different services 
 ### Syntax  
 `hydra -options path`  
 
-**Example**
+**Example**  
 `hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.46.127 http-post-form "/admin/index.php:user=^USER^&pass=^PASS^:Username or password invalid" -V`
 
 ### Examples:  
@@ -898,7 +898,7 @@ Install
 Usage  
 `fcrackzip -vbDp <wordlist path> <filepath>`
 
-**Options**
+**Options**  
 `-b` for using brute force algorithms.   
 `-D` for using a dictionary.  
 `-v` for verbose mode.  
