@@ -1062,6 +1062,8 @@ Expand shortened links with this [tool](https://www.expandurl.net).
 
 
 # Cryptology
+Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
+
 ## Generate keys
 To generate a private key we use the following command (8912 creates the key 8912 bits long):  
 `openssl genrsa -aes256 -out private.key 8912`
