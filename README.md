@@ -146,7 +146,18 @@ Other related terms include: Domain controllers, Trusts & Policies, Services, Au
 **IPP** - Internet Printing Protocol  
 **Hash collision** -  When 2 different inputs give the same output  
 **Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts  
-**SAM** -  Security Account Manager is a database that is present on computers running Windows that stores user accounts and security descriptors for users on the local computer
+**SAM** -  Security Account Manager is a database that is present on computers running Windows that stores user accounts and security descriptors for users on the local computer  
+**Ciphertext** - The result of encrypting a plaintext, encrypted data  
+**Cipher** - A method of encrypting or decrypting data. Modern ciphers are cryptographic, but there are many non cryptographic ciphers like Caesar.  
+**Plaintext** - Data before encryption, often text but not always. Could be a photograph or other file  
+**Encryption** - Transforming data into ciphertext, using a cipher.  
+**Encoding** - NOT a form of encryption, just a form of data representation like base64. Immediately reversible.  
+**Key** - Some information that is needed to correctly decrypt the ciphertext and obtain the plaintext.  
+**Passphrase** - Separate to the key, a passphrase is similar to a password and used to protect a key.  
+**Asymmetric** encryption - Uses different keys to encrypt and decrypt.  
+**Symmetric encryption** - Uses the same key to encrypt and decrypt  
+**Brute force** - Attacking cryptography by trying every different password or every different key  
+**Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths
 
 # Principles and Standards
 ## CIA Triad
