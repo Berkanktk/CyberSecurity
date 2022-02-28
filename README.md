@@ -1008,8 +1008,73 @@ Lets now encrypt a file (plaintext.txt) using our public key:
 
 Now, if we use our private key, we can decrypt the file and get the original message:  
 `openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
+
 ## Steganography
-`TO BE ADDED`
+Steganography is the practice of hiding a secret message in something that is not secret
+
+### Steghide
+Steghide is a steganography program that hides data in various kinds of image and audio files ,
+only supports these file formats : JPEG, BMP, WAV and AU . but it’s also useful for extracting
+embedded and encrypted data from other files.
+
+**Useful commands:**  
+`steghide info file`  displays info about a file whether it has embedded data or not.  
+`steghide extract -sf file`  extracts embedded data from a file
+
+### Stegsolve
+Sometimes there is a message or a text hidden in the image itself and in order to view it you
+need to apply some color filters or play with the color levels. You can do it with GIMP or
+Photoshop or any other image editing software but stegsolve made it easier. it’s a small java tool
+that applies many color filters on images.
+
+### Strings
+Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego challenges. Usually the embedded data is password protected or encrypted
+and sometimes the password is actaully in the file itself and can be easily viewed by using strings.
+It’s a default linux tool so you don’t need to install anything.
+
+**Useful commands:**  
+`strings file`  displays printable strings in the given file
+
+### Exiftool
+Sometimes important stuff is hidden in the metadata of the image or the file , exiftool can be
+very helpful to view the metadata of the files.
+
+**Useful commands:**  
+`exiftool file`  shows the metadata of the given file
+
+### Exiv2
+A tool similar to exiftool.
+
+**Useful commands:**  
+`exiv2 file` shows the metadata of the given file  
+
+### Binwalk
+Binwalk is a tool for searching binary files like images and audio files for embedded files and
+data.
+
+**Useful commands:**  
+`binwalk file` Displays the embedded data in the given file  
+`binwalk -e file` Displays and extracts the data from the given file
+
+### Zsteg
+zsteg is a tool that can detect hidden data in png and bmp files.
+
+**Useful commands:**  
+`zsteg -a file` Runs all the methods on the given file  
+`zsteg -E file` Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy
+name.png)
+
+### Wavsteg
+WavSteg is a python3 tool that can hide data and files in wav files and can also extract data from
+wav files.
+
+**Useful commands:**  
+`python3 WavSteg.py -r -s soundfile -o outputfile` extracts data from a wav sound file and
+outputs the data into a new file
+
+### Sonic visualizer
+Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
+helpful when dealing with audio steganography. You can reveal hidden shapes in audio files.
 
 # Networking
 `TO BE ADDED`
