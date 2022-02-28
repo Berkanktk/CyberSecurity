@@ -90,7 +90,8 @@ A very popular encoding is Base64
 [CVE Details](https://www.cvedetails.com/) - CVE security vulnerability advanced database.      
 [CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.      
 [CyberChef](https://gchq.github.io/CyberChef/) - a web app for encryption, encoding, compression and data analysis.     
-[Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.      
+[Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.  
+[dCode](https://www.dcode.fr/en) - dcode.fr has many decoders for a lot of ciphers  
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.      
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
