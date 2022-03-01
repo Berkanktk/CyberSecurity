@@ -999,24 +999,74 @@ Is simply 'the art of uncovering'
 
 Digital forensics is a branch of forensic science that focuses on identifying, acquiring, processing, analysing, and reporting on data stored electronically.
 
-# Cryptology
-Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
+Use case  
+* Find hidden information in files or meta data
+* Recover lost or deleted data
+* Reconstruct corrupted files
+* Recognize file structures and identify file formats
+* Understand a course of events from network logs or memory dumps
+* Hash cracking 
 
-## Generate keys
-To generate a private key we use the following command (8912 creates the key 8912 bits long):  
-`openssl genrsa -aes256 -out private.key 8912`
+## File analysis
+### Encodings
+* Decimal: 70 111 114 101 110 115 105 99 115 33
+* Hex: 46 6f 72 65 6e 73 69 63 73 21
+* Octal: 106 157 162 145 156 163 151 143 163 41
+* ASCII: Forensics!
+* Base64: Rm9yZW5zaWNzIQ==
+* Base85: 7W3<YDKBN%F!1
 
-To generate a public key we use our previously generated private key:  
-`openssl rsa -in private.key -pubout -out public.key`
+### File type
+The file type is often indicated by the file extension in the file name, e.g. .png, .mp4
+* Typically what the OS uses to assess how to open / interpret the file
+* Do not rely on extensions! Can be modified to trick the OS into misinterpreting data
 
-Lets now encrypt a file (plaintext.txt) using our public key:  
-`openssl rsautl -encrypt -pubin -inkey public.key -in plaintext.txt -out encrypted.txt`
+The file type is indicated in the contents of the file with a file signature - a magic number
+* Hex string at a specific offset
+* Eg PNG files: 89 50 4e 47 (last three hex is PNG in ASCII)
+* Tool: `file`
 
-Now, if we use our private key, we can decrypt the file and get the original message:  
-`openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
+### Metadata
+The file extension is one form of metadata: (data about data)
+
+Additional information about a file in addition to the content itself
+* General: File name, extension, size, time of origin, permissions
+* Specific: GPS data in images, number of frames in GIF, CPU architecture in executables, etc.
+
+Why analyze metadata?
+* Can store important info - maybe even info that should have been hidden
+* In some cases even more important than content - eg with encrypted HTTPS traffic
+* Tool: `exiftool` 
+
+### File format
+A file type has a specific format - the structure of the file
+
+Typical structure
+* Signature file - magic number
+
+Header - typical info to be used to understand the content (metadata)
+* Possibly meta data
+* Data
+* Trailer that completes the file
+
+The format is precisely defined in a specification doc - often publicly available
+* Corrupted files: compare file with specification, correct differences with hex editor
+* Unknown file types: search for tracks from a file format 
 
 ## Steganography
 Steganography is the practice of hiding a secret message in something that is not secret
+
+**File Carving**  
+File carving: extract files based on the file format
+* Look for file signatures, headers, trailers, etc.
+* Originally used in connection with. extraction of files from disk images and memory dumps
+* Useful for extracting files stored in other files in stego challenges
+
+File carving tools:
+* binwalk
+* foremost
+* dd (manual extraction)
+  * dd if = input.png or = output.txt bs = 1 skip = 1000 count = 32 
 
 ### Steghide
 Steghide is a steganography program that hides data in various kinds of image and audio files ,
@@ -1081,6 +1131,25 @@ outputs the data into a new file
 ### Sonic visualizer
 Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
 helpful when dealing with audio steganography. You can reveal hidden shapes in audio files.
+
+## Memory analysis
+
+# Cryptology
+Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
+
+## Generate keys
+To generate a private key we use the following command (8912 creates the key 8912 bits long):  
+`openssl genrsa -aes256 -out private.key 8912`
+
+To generate a public key we use our previously generated private key:  
+`openssl rsa -in private.key -pubout -out public.key`
+
+Lets now encrypt a file (plaintext.txt) using our public key:  
+`openssl rsautl -encrypt -pubin -inkey public.key -in plaintext.txt -out encrypted.txt`
+
+Now, if we use our private key, we can decrypt the file and get the original message:  
+`openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
+
 
 # Networking
 `TO BE ADDED`
