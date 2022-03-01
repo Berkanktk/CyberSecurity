@@ -994,6 +994,10 @@ Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rso
 
 Expand shortened links with this [tool](https://www.expandurl.net).
 
+# Forensics
+Is simply 'the art of uncovering'
+
+Digital forensics is a branch of forensic science that focuses on identifying, acquiring, processing, analysing, and reporting on data stored electronically.
 
 # Cryptology
 Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
