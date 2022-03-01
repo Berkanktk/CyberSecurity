@@ -1133,6 +1133,25 @@ Sonic visualizer is a tool for viewing and analyzing the contents of audio files
 helpful when dealing with audio steganography. You can reveal hidden shapes in audio files.
 
 ## Memory analysis
+Traditionel computer forensics can be made out of volatile memory.
+
+What is volatile data?
+* Volatile data: non-permanent data, disappears when the power goes out
+* Typically the contents of main memory RAM
+* "Live box forensics"
+* Analysis takes place on a memory dump - provides a snapshot 
+
+Data that can be found in volatile memory
+* Running processes and services
+* Open files
+* Network connections
+* Run commands
+* Passwords, keys
+* Unencrypted data that is encrypted on disk but must be used in decrypted mode in memory
+* Stateless malware - malware that lives only in memory
+* Even things like a basic screenshot or the user's clipboard 
+
+A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
 
 # Cryptology
 Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
