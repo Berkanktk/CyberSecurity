@@ -95,7 +95,8 @@ A very popular encoding is Base64
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.      
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
-[fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.      
+[fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.     
+[File Signature](https://www.garykessler.net/library/file_sigs.html) -  a table of file signatures (aka "magic numbers")   
 [Google advanced search](https://www.google.dk/advanced_search) - google dorking made easy      
 [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking      
 [GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.    
