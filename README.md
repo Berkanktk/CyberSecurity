@@ -374,7 +374,7 @@ Guess Telnet credentials using a list of usernames and a single password, specif
 `hydra -L path/to/usernames.txt -p password -s port -6 host_ip telnet`
 
 Guess FTP credentials using usernames and passwords lists, specifying the number of threads:  
-`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -t n_tasks host_ip ftp` 
+`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -t n_threads host_ip ftp` 
 
 Guess MySQL credentials using a username and a passwords list, exiting when a username/password pair is found:  
 `hydra -l username -P path/to/wordlist.txt -f host_ip mysql`
