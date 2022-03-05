@@ -118,6 +118,7 @@ A very popular encoding is Base64
 [Regex101](https://regex101.com) - online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript.    
 [RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.      
 [RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).      
+[Revshell](https://www.revshells.com) - reverse shell generator.  
 [ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
 [Shodan](https://www.shodan.io) - learn various pieces of information about the client’s network, without actively connecting to it.  
 [sploitus](https://sploitus.com) - the exploit and tools database.      
@@ -810,13 +811,19 @@ Binwalk allows users to analyze and extract firmware images and helps in identif
 ## sudo
 Sudo is Linux's 'run as administrator' command
 
-**Options**
+**Options**  
 `-u <user>` specify user   
-`-su` change to root
+`su` change to root  
 `-l` list current sudo priviliges   
 ## hashid
 Hashid will analyze and output the potential algorithm that is used to hash your input.  
-`hashid hash`
+`hashid option hash`
+
+`-e` - list all possible hash algorithms including salted passwords  
+`-m` - include corresponding hashcat mode in output  
+`-j` - include corresponding JohnTheRipper format in output  
+`-o FILE` - write output to file (default: STDOUT)  
+`-h` - show help message and exit  
 ## shasums
 **Find SHA1 hash for a file**  
 `sha1sum file.txt`
