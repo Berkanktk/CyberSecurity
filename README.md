@@ -487,6 +487,8 @@ Only open ports = `--open`
 
 Scan an IPv6 address = `-6` 
 
+Subnet mask with 255.255.255.0 = `<ip>/24`
+
 # Tools (GUI) 
 ## Burp 
 Burp Suite, a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
