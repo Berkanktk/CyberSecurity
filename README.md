@@ -119,6 +119,7 @@ A very popular encoding is Base64
 [RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.      
 [RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).      
 [ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
+[Shodan](https://www.shodan.io) - learn various pieces of information about the client’s network, without actively connecting to it.  
 [sploitus](https://sploitus.com) - the exploit and tools database.      
 [SSL Scanner](http://www.ssltools.com) - analyze website security.      
 [Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file     
