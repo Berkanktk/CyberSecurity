@@ -139,6 +139,19 @@ Active Directory is a collection of machines and servers connected inside of dom
 
 Other related terms include: Domain controllers, Trusts & Policies, Services, Authentication & Cloud security.
 
+## Network security
+An Intrusion Detection System (IDS) is a system that detects network or system intrusions.  
+
+An Intrusion Detection and Prevention System (IDPS) or simply Intrusion Prevention System (IPS) is a system that can detect and prevent intrusions.
+
+IDS setups can be divided based on their location in the network into:
+* Host-based IDS (HIDS)
+* Network-based IDS (NIDS)
+
+The host-based IDS (HIDS) is installed on an OS along with the other running applications. This setup will give the HIDS the ability to monitor the traffic going in and out of the host; moreover, it can monitor the processes running on the host.
+
+The network-based IDS (NIDS) is a dedicated appliance or server to monitor the network traffic. The NIDS should be connected so that it can monitor all the network traffic of the network or VLANs we want to protect. This can be achieved by connecting the NIDS to a monitor port on the switch. The NIDS will process the network traffic to detect malicious traffic.
+
 # Terms
 **Active reconnaissance** - Directly interacting with the system.  
 **Passive reconnaissance** - We rely on publicly available information.   
