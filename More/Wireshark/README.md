@@ -35,7 +35,7 @@ Syntax: `ip.src == <SRC IP Address> and ip.dst == <DST IP Address>`
 
 Wireshark can filter by both port numbers as well as protocol names.
 
-Syntax:` tcp.port eq <Port #> or <Protocol Name>`
+Syntax: `tcp.port eq <Port #> or <Protocol Name>`
 Also works for udp
 
 
@@ -51,9 +51,9 @@ Also works for udp
 # Usage and filtering
 
 ## ARP Traffic
-Sort after opcode
-arp.opcode == 1 - request 
-arp.opcode == 2 - reply
+Sort after opcode  
+`arp.opcode == 1` - request  
+`arp.opcode == 2` - reply  
 
 ## ICMP Traffic
 
