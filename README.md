@@ -922,6 +922,22 @@ Add a user to a group
 `>` is the operator for output redirection. Meaning that you can redirect the output of any command to a file  
 `>>` does mainly the same thing as >, with one key difference. >> appends the output of a command to a file, instead of erasing it.
 
+## File Descriptors
+A file descriptor (FD) in Unix/Linux operating systems is an indicator of connection maintained by the kernel to perform Input/Output (I/O) operations. In Windows-based operating systems, it is called filehandle. It is the connection (generally to a file) from the Operating system to perform I/O operations (Input/Output of Bytes). By default, the first three file descriptors in Linux are:
+
+**Data Stream for Input**  
+`STDIN – 0`  
+**Data Stream for Output**    
+`STDOUT – 1`  
+**Data Stream for Output that relates to an error occurring.**    
+`STDERR – 2`  
+
+Redirects the file descriptors for the errors (STDERR) to "`/dev/null`" This way, we redirect the resulting errors to the "null device," which discards all data.  
+`find /etc/ -name shadow 2>/dev/null > results.txt`
+
+**Redirect STDOUT and STDERR to Separate Files**  
+`find /etc/ -name shadow 2> stderr.txt 1> stdout.txt`
+
 # Steps
 ## Content Discovery
 ### Manual
