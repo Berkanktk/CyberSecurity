@@ -821,6 +821,53 @@ Word count
 `-c` count number of bytes  
 `-w` count number of words   
 `-m` count number of characters  
+## cut
+Cut parts of lines from specified files or piped data and print the result to standard output.
+
+**Syntax**  
+`cut OPTION FILE`
+
+**Example usage**  
+`/etc/passwd | cut -d":" -f1`
+
+**Options**  
+`-f` - Select by specifying a field, a set of fields, or a range of fields. This is the most commonly used option.  
+`-c` - Select by specifying a character, a set of characters, or a range of characters.  
+`-d`  - Specify a delimiter that will be used instead of the default “TAB” delimiter.  
+## tr
+Another possibility to replace certain characters from a line with characters defined by us is the tool tr
+
+**Example usage**
+Change delimeter from ":" to " " (space).
+`tr ":" " "`
+
+Change from lowercase to uppercase
+`tr 'a-z' 'A-Z`
+## column
+Since such results can often have an unclear representation, the tool column is well suited to display such results in tabular form using the "`-t`"
+
+**Example usage:**  
+`column -t`
+## awk
+Awk is a utility that enables a programmer to write tiny but effective programs in the form of statement
+
+**Example usage**  
+`awk '{print $1, $2}`  
+
+`$0`: Represents the entire line of text.  
+`$1`: Represents the first field.  
+`$2`: Represents the second field.  
+`$7`: Represents the seventh field.  
+`$45`: Represents the 45th field.  
+`$NF`: Stands for “number of fields,” and represents the last field.  
+## sed
+sed looks for patterns we have defined in the form of regular expressions (regex) and replaces them with another pattern that we have also defined
+
+**Example usage**  
+Replace the word "bin" with "BK."  
+`sed 's/bin/BK/g'`
+
+The "s" flag at the beginning stands for the substitute command. Then we specify the pattern we want to replace. After the slash (/), we enter the pattern we want to use as a replacement in the third position. Finally, we use the "g" flag, which stands for replacing all matches.
 ## whoami
 Find out what user we're currently logged in as
 ## uname
@@ -921,7 +968,6 @@ Add a user to a group
 ## Operators
 `>` is the operator for output redirection. Meaning that you can redirect the output of any command to a file  
 `>>` does mainly the same thing as >, with one key difference. >> appends the output of a command to a file, instead of erasing it.
-
 ## File Descriptors
 A file descriptor (FD) in Unix/Linux operating systems is an indicator of connection maintained by the kernel to perform Input/Output (I/O) operations. In Windows-based operating systems, it is called filehandle. It is the connection (generally to a file) from the Operating system to perform I/O operations (Input/Output of Bytes). By default, the first three file descriptors in Linux are:
 
