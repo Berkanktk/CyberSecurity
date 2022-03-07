@@ -609,7 +609,19 @@ ls is a Linux shell command that lists directory contents of files and directori
 `-S`	sort by file size  
 `-t`	sort by time & date  
 `-X`	sort by extension name  
- 
+## mkdir
+Created directories
+
+**Syntax**  
+`mkdir <name>`
+
+The command mkdir has an option marked -p to add parent directories.  
+`mkdir -p Folder/i/am/in`
+## tree
+We can look at the whole structure after creating the parent directories with the tool tree.
+
+Syntax:  
+`tree .` 
 ## ps
 Shows the processes for the current shell 
 
@@ -683,7 +695,17 @@ When you want to specify that a file was modified within the last 24 hours, the 
 
 **Note**  
 1. Suppress the output of any possible errors to make the output more readable. This is done by appending `2> /dev/null` to your command. This way, you won’t see any results you’re not allowed to access.
-2. The second thing is the `-exec` flag. You can use it in your find command to execute a new command, following the -exec flag, like so: `-exec whoami \;`. (can be used for privilege escalation)
+2. The second thing is the `-exec` flag. You can use it in your find command to execute a new command, following the -exec flag, like so: `-exec whoami \;`. (can be used for privilege escalation)'
+## where
+This tool returns the path to the file or link that should be executed.
+
+Syntax
+`where python3`
+## stat
+Displays detailed information about given files or file systems. These informations can be: file name, file size, blocks, type, inode, UID, GID, access, modify, change and creation times.
+
+Example usage:  
+`stat file.txt`
 ## diff
 diff is a command-line utility that allows you to compare two files line by line
 
