@@ -642,12 +642,19 @@ The most commonly used signals are:
 
 `kill -9 PID_ID`
 ## find
-Syntax: `find where what`
+The find command is used to search and locate the list of files and directories  
 
-Search for files
+**Syntax**  
+`find <location> <options>`
+
+**Examples**
+Find all config files that are bigger than 25kilobytes and are newer than 2020-03-03, and then execure the ls -la command without printing the error in the terminal  
+`find / -type f -name *.conf -size +25k -newermt 2020-03-03 -exec ls -al {} \; 2>/dev/null`  
+
+Search for files  
 `find -name passwords.txt`
 
-Find any file with the extension of ".txt"
+Find any file with the extension of ".txt"  
 `find -name *.txt`
 
 **Location specific options**   
@@ -658,8 +665,8 @@ No specification = this folder
 **Other options**  
 `-name` = specify file specific name/descriptions to be found  
 `-iname` = Like -name, but the match is case insensitive.  
-`-print`  = It prints the pathname of the current file to standard output.  
-`-regex`  = True if the whole path of the file matches pattern using expression   
+`-print` = It prints the pathname of the current file to standard output.  
+`-regex` = True if the whole path of the file matches pattern using expression   
 `-type` = With -type, you can use d to only find directories, and f to only find files.  
 `-user` = specify owner  
 `-size` = specify size
