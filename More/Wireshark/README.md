@@ -20,7 +20,7 @@ greater than - operator: gt /  >
 less than - operator: lt / <  
 
 ## Colors
-![Wireshark Colors](../../Other/Wireshark-colors.png)
+![Wireshark Colors](../../Images/Wireshark-colors.png)
 
 ## Basic Filtering
 **Filtering by IP**: The first filter we will look at is ip.addr, this filter will allow you to comb through the traffic and only see packets with a specific IP address contained in those packets, whether it be from the source or destination. 

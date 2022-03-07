@@ -20,7 +20,7 @@ Proxychains - a tool that forces any TCP connection made by any given applicat
 
 Proxychains is widely used by pentesters during the reconnaissance stage (For example with nmap).
 
-![Proxy Chains](/Other/Proxy-chains.png/)
+![Proxy Chains](/Images/Proxy-chains.png/)
 
 Start with running `apt install proxychains` to install/update proxychains tool
 

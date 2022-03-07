@@ -8,7 +8,7 @@ The ssh backdoor essentially consists of leaving our ssh keys in some user’s h
 
 So start with generating a set of ssh keys with ssh-keygen.
 
-![SSH Backdoor](/Other/SSH-Backdoor.png)
+![SSH Backdoor](/Images/SSH-Backdoor.png)
 
 Now that we have 2 keys. 1 private key and 1 public key, we can now go to `/root/.ssh` and leave our public key there. Don't forget to rename the public key to: `authorized_keys`
 
