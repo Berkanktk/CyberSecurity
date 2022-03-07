@@ -598,6 +598,18 @@ Find other very usefull commands [here](/More/VIM/README.md), or a full cheatshe
 
 
 # Linux Commands 
+## ls
+ls is a Linux shell command that lists directory contents of files and directories.
+
+`-i` list file's inode index number  
+`-a` list all files including hidden file starting with '.'  
+`-l` list with long format - show permissions   
+`-d`	list directories - with ' */'  
+`-s`	list file size  
+`-S`	sort by file size  
+`-t`	sort by time & date  
+`-X`	sort by extension name  
+ 
 ## ps
 Shows the processes for the current shell 
 
