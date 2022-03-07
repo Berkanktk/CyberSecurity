@@ -1,5 +1,5 @@
 # Logic Gates
-![Logic Gates](/Other/Logic-gates.png)
+![Logic Gates](/Images/Logic-gates.png)
 ## NOT
 | A | F |
 |---|---|

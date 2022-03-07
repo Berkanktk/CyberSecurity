@@ -19,12 +19,12 @@ Media files are specially suitable for steganography
 Pixels
 Color channels: RGB
 Plans: typically 8 
-![Image Stego](../../Other/Image-stego.png)
+![Image Stego](../../Images/Image-stego.png)
 
 ## Examples
-![Stego image](../../Other/Stego-image.png)
+![Stego image](../../Images/Stego-image.png)
 
-![Stego cover](../../Other/Stego-cover.png)
+![Stego cover](../../Images/Stego-cover.png)
 
 ## Tools
 * Step Solve: inspect the individual color channels and bit planes of images
