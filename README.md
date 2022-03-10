@@ -419,10 +419,10 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
 ### SSH Private Key
 Hash the private key  
-`/root/Tools/'Password Attacks'/john/ssh2john.py id_rsa > hash`
+`python /usr/share/john/ssh2john.py id_rsa > hash.txt`
 
 Crack the hash (or a shadow file)
-`john hash --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.txt`
+`john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
 ## Metasploit
 `TO BE ADDED`
 ## Nessus
