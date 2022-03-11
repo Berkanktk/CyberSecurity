@@ -58,3 +58,23 @@ We can use dig DOMAIN_NAME, but to specify the record type, we would use `dig DO
 * TYPE contains the DNS record type, as shown in the table provided earlier.
 
 # Active Reconnaissance
+Active reconnaissance requires you to make some kind of contact with your target. This contact can be a phone call or a visit to the target company under some pretence to gather more information, usually as part of social engineering. Alternatively, it can be a direct connection to the target system, whether visiting their website or checking if their firewall has an SSH port open
+
+Examples of active reconnaissance activities include:
+* Connecting to one of the company servers such as HTTP, FTP, and SMTP.
+* Calling the company in an attempt to get information (social engineering).
+* Entering company premises pretending to be a repairman.
+
+Tools
+* traceroute
+* telnet
+* nc
+
+**Important!**  
+Considering the invasive nature of active reconnaissance, one can quickly get into legal trouble unless one obtains proper legal authorisation.
+
+## ping
+## traceroute
+## telnet
+## netcat
+## Putting it all together
