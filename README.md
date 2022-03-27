@@ -473,8 +473,6 @@ See what a machine could be vulnerable to
 
 Spawn a normal system shell  
 `shell`
-## Nessus
-`TO BE ADDED`
 ## Netcat
 Netcat aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
 
@@ -594,9 +592,31 @@ Username and password is optional.
 3. We can also drop requests we don't want to be sent. This can be useful to see the request attempt after clicking a button or performing another action on the website. 
 4. And last but not least, we can send these requests to other tools such as Repeater and Intruder for modification and manipulation to induce vulnerabilities
 
+## Nessus
+Nessus is a GUI based vulnerability scanner
+### Download and installation
+1. Click [here](https://www.tenable.com/products/nessus/nessus-essentials) and register an account.
+2. Download the Nessus-#.##.#-debian6_amd64.deb file
+3. Navigate to the download and run the following command: `sudo dpkg -i package_file.deb`
+4. Start the nessus service wit the command: `sudo /bin/systemctl start nessusd.service` 
+5. Open up Firefox and goto the following URL: `https://localhost:8834/` (Accept risk in case you get prompted)
+6. Choose "Nessus Essentials" and click next. Skip when asked for a activation code
+7. Login with your account
+8. Wait for installation and then login again
+
+### Navigation and Scans
+Launch a scan = Hit the "New Scan"    
+Side menu option that allows us to create custom templates = Policies    
+Change plugin properties such as hiding them or changing their severity = Plugin rules  
+
+### Scans
+![Nessus Scans](Images/Nessus.png)
+
 ## Wireshark
-`TO BE ADDED`  
-https://packetlife.net/media/library/13/Wireshark_Display_Filters.pdf
+Wireshark is a tool used for creating and analyzing PCAPs (network packet capture files)  
+
+Since this section is very large, I've created an individual page for this, which can be found inside this repository by clicking [here](More/Wireshark/README.md).
+
 
 # Text Editors
 ## Nano
