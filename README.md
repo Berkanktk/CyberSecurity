@@ -131,7 +131,8 @@ A very popular encoding is Base64
 [ViewDNS](http://viewdns.info) - one source for free DNS related tools and information.      
 [VirusTotal](https://www.virustotal.com/gui/home/upload) - analyze suspicious files and URLs to detect types of malware.      
 [WebToolHub-LE](https://www.webtoolhub.com/tn561364-link-extractor.aspx) - HTML hyperlink extractor      
-[WebToolHub](https://www.webtoolhub.com) - lots of different web tools     
+[WebToolHub](https://www.webtoolhub.com) - lots of different web tools  
+[WhatsMyName](https://whatsmyname.app) - social media username enumeration     
 [WHOIS lookup](https://whois.domaintools.com) - best whois lookup    
 [Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world      
 
@@ -424,7 +425,54 @@ Hash the private key
 Crack the hash (or a shadow file)
 `john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
 ## Metasploit
-`TO BE ADDED`
+Metasploit is a collection of not only thoroughly tested exploits but also auxiliary and post-exploitation tools
+
+Initialize the database  
+`msfdb init`  
+
+View advanced options for starting the console  
+`msfconsole -h`  
+
+Start metasploit  
+`msfconsole`
+
+Check db connection  
+`db_status`
+
+Msf commands  
+`help` or `?` - shows the help page
+
+Search exploit  
+`search <exploit_for>`
+
+Select module  
+`use <module>`
+
+Change value of a variable  
+`set <variablename> <value>`  
+`get <variablename>`  
+`unset <variablename>` 
+
+Save msfconsole session  
+`save`
+
+Save console outputs  
+`spool` 
+
+See privileges of a current user  
+`getprivs`
+
+Tranfer files to victim computer  
+`upload`
+
+Check if the victim pc is in a VM (Windows)  
+`run post/windows/gather/checkvm`
+
+See what a machine could be vulnerable to  
+`run post/multi/recon/local_exploit_suggester`
+
+Spawn a normal system shell  
+`shell`
 ## Nessus
 `TO BE ADDED`
 ## Netcat
