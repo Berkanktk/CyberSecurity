@@ -563,17 +563,17 @@ We need to install a CA certificate as BurpSuite acts as a proxy between your br
 
 1. Download [Foxy Proxy](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) in order to fully leverage the proxy, we'll have to install the CA certificate included with Burp Suite (otherwise we won't be able to load anything with SSL).
 2. Now click on the extension -> Options -> Add -> Fill in the fields with the following values:  
-Title = Burp  
-Proxy type = HTTP  
-Proxy IP adress or DNS name = 127.0.0.1  
-Port = 8080  
-Username and password is optional.  
-1. And hit save.  
-2. Finally, click on the FoxyProxy extension icon again and select 'Burp'.
-3. With Firefox, navigate to the following address: http://localhost:8080
-4. Click on 'CA Certificate' in the top right to download and save the CA Certificate.
-5. Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
-6. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
+   1. Title = Burp  
+   2. Proxy type = HTTP  
+   3. Proxy IP adress or DNS name = `127.0.0.1`  
+   4. Port = `8080`  
+   5. Username and password is optional.  
+3. And hit save.  
+4. Finally, click on the FoxyProxy extension icon again and select 'Burp'.
+5. With Firefox, navigate to the following address: `http://localhost:8080`
+6. Click on 'CA Certificate' in the top right to download and save the CA Certificate.
+7. Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
+8. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
 
 ### Overview of Features
 * **Proxy** - What allows us to funnel traffic through Burp Suite for further analysis
