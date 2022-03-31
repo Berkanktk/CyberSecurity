@@ -82,7 +82,8 @@ A very popular encoding is Base64
 [Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.      
 [Cheatography](https://www.cheatography.com/) - over 3,000 free cheat sheets, revision aids and quick references.    
 [CodeBeautify](https://codebeautify.org) - code Beautifier, Viewer and converter    
-[Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - a lists of the most common ports    
+[Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - a lists of the most common ports 
+[Cipher Identifier](https://www.boxentriq.com/code-breaking/cipher-identifier) - cipher identifier    
 [Convert Binary](https://www.convertbinary.com) - a wide range of different converters for binary numbers      
 [Convertcsv](https://www.convertcsv.com/sql-to-csv.htm) - convert SQL to CSV     
 [Crackstation (Rainbow tables)](https://crackstation.net) - hash cracker      
