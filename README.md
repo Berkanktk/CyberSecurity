@@ -415,7 +415,6 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 `-I` ignore the resume dialog  
 `-t <number> `specifies the number of threads to use  
 `-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
-
 ## John The Ripper
 https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
 ### SSH Private Key
@@ -950,6 +949,18 @@ Standard use
 
 Specify other ports than 22  
 `ssh user@ip -p <port>` and type the password
+## xfreerdp
+xfreerdp is an X11 Remote Desktop Protocol (RDP) client 
+
+Usage:  
+`xfreerdp [options] server[:port] [[options] server[:port] ...]`
+
+Options:   
+`/u:<username>` - Username  
+`/p:<password>` - Password  
+`/v:<hostname>:<port>` - Server hostname  
+`/cert:ignore` - Ignore certificate  
+`/ipv6`, `/6` - Prefer IPv6 AAA record over IPv4 A record
 ## hexeditor
 Read and modify hex of a file (This tool is also helpful when it comes to CTFs and text is hidden inside a file or when the magic number of a file was altered.)
 ## gzip
