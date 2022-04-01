@@ -379,7 +379,7 @@ feroxbuster uses brute force combined with a wordlist to search for unlinked con
 `--time-limit <TIME_SPEC>` - Limit total run time of all scans (ex: --time-limit 10m)  
 `-w, --wordlist <FILE>` - Path to the wordlist  
 `-o, --output <FILE>` - Output file to write results  
-`-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. [CAUTION] 4 -v's is probably too much)
+`-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. '4' -v's is probably too much)
 ## Hashcat
 Hashat is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
 [Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
