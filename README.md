@@ -351,6 +351,36 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `-s` (status-codes) - Set status codes that should be interpreted as valid  
 `-k` (ssl) - Skip ssl certificate   
 `-H` (HTTP) - Specify HTTP header  
+
+## feroxbuster
+feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories.
+
+**Syntax:**    
+`feroxbuster [OPTIONS]`
+
+**Example:**  
+`feroxbuster -u https://berkankutuk.dk -w /usr/share/wordlists/dirb/big.txt` 
+
+**Options:**  
+`-h, --help` - Print help information    
+`-V, --version` - Print version information    
+`-u, --url <URL>` - The target URL   
+`-b, --cookies <COOKIE>` - Specify HTTP cookies to be used in each request   
+`-m, --methods <HTTP_METHODS>` -  Which HTTP request method(s) should be sent (default: GET)  
+`-x, --extensions <FILE_EXTENSION>` - File extension(s) to search for (ex: -x php -x pdf js)  
+`-C, --filter-status <STATUS_CODE>` - Filter out status codes (deny list) (ex: -C 200 -C 401)  
+`-s, --status-codes <STATUS_CODE>` - Filter status codes (allow list) (default: 200 204 301 302 307 308 401 403 405)  
+`-r, --redirects` - Allow client to follow redirects  
+`-T, --timeout <SECONDS>` - Number of seconds before a client's request times out (default: 7)  
+`-d, --depth <RECURSION_DEPTH>` - Maximum recursion depth, a depth of 0 is infinite recursion (default: 4)  
+`-e, --extract-links` - Extract links from response body and make new requests based on findings  
+`-L, --scan-limit <SCAN_LIMIT>` - Limit total number of concurrent scans (default: 0, i.e. no limit)  
+`-n, --no-recursion` - Do not scan recursively  
+`-t, --threads <THREADS>` - Number of concurrent threads (default: 50)  
+`--time-limit <TIME_SPEC>` - Limit total run time of all scans (ex: --time-limit 10m)  
+`-w, --wordlist <FILE>` - Path to the wordlist  
+`-o, --output <FILE>` - Output file to write results  
+`-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. [CAUTION] 4 -v's is probably too much)
 ## Hashcat
 Hashat is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
 [Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
