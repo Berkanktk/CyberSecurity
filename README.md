@@ -351,8 +351,7 @@ GoBuster is a tool used to brute-force URIs (directories and files), DNS subdoma
 `-s` (status-codes) - Set status codes that should be interpreted as valid  
 `-k` (ssl) - Skip ssl certificate   
 `-H` (HTTP) - Specify HTTP header  
-
-## feroxbuster
+## Feroxbuster
 feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories.
 
 **Syntax:**    
