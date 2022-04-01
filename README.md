@@ -917,8 +917,9 @@ Search the contents of files for specific values
 
 Search for an ip using regular expressions  
 `grep -Eo '[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}'`  
-or simply  
-`grep '^/.../.../....$'` (ex. "/usr/bin/sudo")  
+
+Search for binaries (ex. "/usr/bin/sudo")  
+`grep '^/.../.../....$'` 
 
 **Options**  
 `-n` line numbers for every string found  
