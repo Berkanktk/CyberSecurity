@@ -916,7 +916,9 @@ Search the contents of files for specific values
 `grep "hello world" file.txt`
 
 Search for an ip using regular expressions  
-`grep -Eo '[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}'`
+`grep -Eo '[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}'`  
+or simply  
+`grep '^/.../.../....$'` (ex. "/usr/bin/sudo")  
 
 **Options**  
 `-n` line numbers for every string found  
