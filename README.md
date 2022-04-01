@@ -1180,7 +1180,8 @@ Or use [GTFOBins](https://gtfobins.github.io)
 You can also run:  
 `wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh` on a target machine to see the files that stand out.
 
-Another option would be to run the following command to find all files with the SUID bit set:  
+Another option would be to run the following command to find all files with the SUID bit set:   
+`find / -perm -u=s -type f 2>/dev/null` fine  
 `find / -user root -perm 4000 -print 2>/dev/null` good  
 `find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null` better  
 `find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null | grep 'bin'` best  
