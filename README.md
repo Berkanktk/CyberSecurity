@@ -127,6 +127,7 @@ A very popular encoding is Base64
 [Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file     
 [Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator     
 [Subnet Cheatsheet](https://www.freecodecamp.org/news/subnet-cheat-sheet-24-subnet-mask-30-26-27-29-and-other-ip-address-cidr-network-references/) - subnet cheatsheet  
+[Tabulate](https://pypi.org/project/tabulate/) - create clean looking tables  
 [urlscan.io](https://urlscan.io) - service to scan and analyse websites.      
 [urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.      
 [ViewDNS](http://viewdns.info) - one source for free DNS related tools and information.      
