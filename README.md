@@ -156,6 +156,15 @@ The host-based IDS (HIDS) is installed on an OS along with the other running app
 
 The network-based IDS (NIDS) is a dedicated appliance or server to monitor the network traffic. The NIDS should be connected so that it can monitor all the network traffic of the network or VLANs we want to protect. This can be achieved by connecting the NIDS to a monitor port on the switch. The NIDS will process the network traffic to detect malicious traffic.
 
+## VPS Providers
+A Virtual Private Server (VPS) is an isolated environment created on a physical server using virtualization technology.
+
+Some of these providers are:  
+* [Vultr](https://www.vultr.com/products/cloud-compute/)	 
+* [Linode](https://www.linode.com/pricing/)
+* [DigitalOcean](https://www.digitalocean.com/pricing)	
+* [OneHostCloud](https://onehostcloud.hosting)
+
 # Terms
 **Active reconnaissance** - Directly interacting with the system.  
 **Passive reconnaissance** - We rely on publicly available information.   
@@ -177,7 +186,9 @@ The network-based IDS (NIDS) is a dedicated appliance or server to monitor the n
 **Asymmetric** encryption - Uses different keys to encrypt and decrypt.  
 **Symmetric encryption** - Uses the same key to encrypt and decrypt  
 **Brute force** - Attacking cryptography by trying every different password or every different key  
-**Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths
+**Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths  
+**VPS** - Virtual Private Server (is a IaaS)  
+**IaaS** - Infrastructure-as-a-Service
 
 # Principles and Standards
 ## CIA Triad
