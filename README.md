@@ -994,6 +994,22 @@ Standard use
 
 Specify other ports than 22  
 `ssh user@ip -p <port>` and type the password
+## searchsploit
+Searchsploit is a command line search tool for Exploit-DB 
+
+Usage:  
+`searchsploit [options] term1 term2 term3 ...`
+
+Example:  
+`searchsploit afd windows local`
+
+Options:  
+`-c, --case [Term]` - Perform a case-sensitive search (Default is inSEnsITiVe)  
+`-e, --exact [Term]` - Perform an EXACT search (e.g. "WordPress 4.1" would not detect "WordPress Core 4.1")  
+`-s, --strict` - Perform a strict search, so input values must exist("1.1" would not be detected in "1.0 < 1.3")  
+`-t, --title [Term]` - Search JUST the exploit title (Default is title AND the file's path   
+`-p, --path [EDB-ID]` -  Show the full path to an exploit   
+`--exclude="term"` Remove values from results. By using "|" to separate, you can chain  multiple values e.g. --exclude="term1|term2|term3”  
 ## xfreerdp
 xfreerdp is an X11 Remote Desktop Protocol (RDP) client 
 
