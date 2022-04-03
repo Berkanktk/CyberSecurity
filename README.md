@@ -460,8 +460,10 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 ## John The Ripper
 https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
 ### SSH Private Key
-Hash the private key  
+Crack hashed private key  
 `python /usr/share/john/ssh2john.py id_rsa > hash.txt`
+
+ssh2john.py can sometimes also be located under `/opt/john/ssh2john.py`
 
 Crack the hash (or a shadow file)
 `john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
