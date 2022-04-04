@@ -390,6 +390,7 @@ Hashat is a particularly fast, efficient, and versatile hacking tool that assist
 ### Example 
 Dictionary  
 `hashcat -m 1800 -a 0 hashed.txt /usr/share/wordlists/rockyou.txt -o output.txt`  
+
 Bruteforce  
 `hashcat -m 0 -a 3 -i hashed.txt ?a?a?a?a?a?a?a -o output.txt`
 
@@ -443,7 +444,7 @@ Web form credentials:
 Guess IMAP credentials on a range of hosts using a list of colon-separated username/password pairs:  
 `hydra -C path/to/username_password_pairs.txt imap://[host_range_cidr]`
 
-Guess POP3 credentials on a list of hosts using usernames and passwords lists, exiting when a username/password pair is found:
+Guess POP3 credentials on a list of hosts using usernames and passwords lists, exiting when a username/password pair is found:  
 `hydra -L path/to/usernames.txt -P path/to/wordlist.txt -M path/to/hosts.txt -F pop3`
 
 ### A list of most useful options:
@@ -774,7 +775,7 @@ The find command is used to search and locate the list of files and directories
 Find all config files that are bigger than 25kilobytes and are newer than 2020-03-03, and then execure the ls -la command without printing the error in the terminal  
 `find / -type f -name *.conf -size +25k -newermt 2020-03-03 -exec ls -al {} \; 2>/dev/null`  
 
-Search for files from root 
+Search for files from root  
 `find / -type f -name passwords.txt`
 
 Find any file with the extension of ".txt"  
@@ -1189,7 +1190,8 @@ Some subdomains aren't always hosted in publically accessible DNS results, such 
 
 Because web servers can host multiple websites from one server when a website is requested from a client, the server knows which website the client wants from the Host header. We can utilise this host header by making changes to it and monitoring the response to see if we've discovered a new website.
 
-Bruteforce by using the following command: `ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: {domain}" -u http://{IP} -fs {size}`
+Bruteforce by using the following command:   
+`ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: {domain}" -u http://{IP} -fs {size}`
 
 ## Privilege Escalation 
 Check for root password
@@ -1367,7 +1369,7 @@ embedded and encrypted data from other files.
 
 **Useful commands:**  
 `steghide info file`  displays info about a file whether it has embedded data or not.  
-`steghide extract -sf file`  extracts embedded data from a file
+`steghide extract -sf <filepath>`  extracts embedded data from a file
 
 ### Stegsolve
 Sometimes there is a message or a text hidden in the image itself and in order to view it you
