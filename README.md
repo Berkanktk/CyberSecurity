@@ -599,7 +599,6 @@ Only open ports = `--open`
 Scan an IPv6 address = `-6` 
 
 Subnet mask with 255.255.255.0 = `<ip>/24`
-
 # Tools (GUI) 
 ## Burp 
 Burp Suite, a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
@@ -1427,6 +1426,22 @@ wav files.
 **Useful commands:**  
 `python3 WavSteg.py -r -s soundfile -o outputfile` extracts data from a wav sound file and
 outputs the data into a new file
+
+### Outguess
+OutGuess is a universal tool for steganography that allows the insertion of hidden information into the redundant bits of data sources. The supported formats are JPEG, PPM and PNM.
+
+**Useful commands:**  
+To embed the message hidden.txt into the monkey.jpg image:  
+`outguess -k "my secret pass phrase" -d hidden.txt monkey.jpg out.jpg`
+
+Retrieve the hidden message from the image:   
+`outguess -k "my secret pass phrase" -r out.jpg message.txt`
+
+**Options:**   
+`-k <key>`  key  
+`-d <name>` filename of dataset  
+`-p <param>`   parameter passed to destination data handler  
+`-r`           retrieve message from data  
 
 ### Sonic visualizer
 Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
