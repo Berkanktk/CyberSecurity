@@ -1374,7 +1374,7 @@ only supports these file formats : JPEG, BMP, WAV and AU . but it’s also usefu
 embedded and encrypted data from other files.
 
 **Useful commands:**  
-`steghide info file`  displays info about a file whether it has embedded data or not.  
+`steghide info <filepath>`  displays info about whether a file has embedded data or not.  
 `steghide extract -sf <filepath>`  extracts embedded data from a file
 
 ### Stegsolve
@@ -1409,8 +1409,8 @@ Binwalk is a tool for searching binary files like images and audio files for emb
 data.
 
 **Useful commands:**  
-`binwalk file` Displays the embedded data in the given file  
-`binwalk -e file` Displays and extracts the data from the given file
+`binwalk <filepath>` Displays the embedded data in the given file  
+`binwalk -e <filepath>` Displays and extracts the data from the given file
 
 ### Zsteg
 zsteg is a tool that can detect hidden data in png and bmp files.
