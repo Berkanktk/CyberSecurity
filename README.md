@@ -1146,22 +1146,269 @@ Now, if we use our private key, we can decrypt the file and get the original mes
 `TO BE ADDED`
 
 # Exploitation
-## Web Eploitation
+## Web Exploitation
 ### Content Discovery
+#### Manual
+1. Check the robots file for disallowed/hiddenpages  
+2. Check favicon to find the website frameworks (only works if the website developer doesn't replace this with a custom one)  
+Run this to find its md5 hash:  
+`curl https://static-labs.tryhackme.cloud/sites/favicon/images/favicon.ico | md5sum`  
+Check [this](https://wiki.owasp.org/index.php/OWASP_favicon_database) database to find the framework.
+
+1. Check the sitemap file for disallowed/hidden files
+
+2. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use.   
+`curl http://10.10.134.48 -v`  
+The -v switch enables verbose mode, which will output the headers
+
+When successfully finding a framework using on of the methods, Framework Stacking can be used afterwards where you check the framework documentation for potential admin portals etc.
+
+#### Automated
+**What is Automated Discovery?**  
+Automated discovery is the process of using tools to discover content rather than doing it manually. This process is automated as it usually contains hundreds, thousands or even millions of requests to a web server. These requests check whether a file or directory exists on a website, giving us access to resources we didn't previously know existed. This process is made possible by using a resource called wordlists.
+
+**What are wordlists?**  
+Wordlists are just text files that contain a long list of commonly used words; they can cover many different use cases. For example, a password wordlist would include the most frequently used passwords, whereas we're looking for content in our case, so we'd require a list containing the most commonly used directory and file names.
+
+**Most common Automation tools**   
+`ffuf`, `dirb` and `gobuster`.   
+I personally use gobuster the most.
+
+
+#### Osint
+**Google Hacking / Dorking**   
+Google hacking / Dorking utilizes Google's advanced search engine features, which allow you to pick out custom content.  
+| Filter | Example | Description |
+|---|---|---|
+| site | site:berkankutuk.dk | returns results only from the specified website address |
+| inurl | inurl:admin | returns results that have the specified word in the URL |
+| filetype | filetype:pdf | returns results which are a particular file extension |
+| intitle | intitle:admin | returns results that contain the specified word in the title |  
+
+**Wappalyzer**  
+Wappalyzer is an online tool and browser extension that helps identify what technologies a website uses, such as frameworks, Content Management Systems (CMS), payment processors and much more, and it can even find version numbers as well. Read more [here](https://www.wappalyzer.com/).  
+
+**Wayback Machine**  
+The Wayback Machine is a historical archive of websites that dates back to the late 90s. You can search a domain name, and it will show you all the times the service scraped the web page and saved the contents. This service can help uncover old pages that may still be active on the current website. Find the website [here](https://archive.org/web/).
+
+#### Subdomain enumeration
+
+**SSL/TLS Certificates**  
+When an SSL/TLS (Secure Sockets Layer/Transport Layer Security) certificate is created for a domain by a CA (Certificate Authority), CA's take part in what's called "Certificate Transparency (CT) logs". These are publicly accessible logs of every SSL/TLS certificate created for a domain name.
+The following site consists of a searchable database of certificates that shows current and historical results. [Link](crt.sh) 
+
+**Search Engines**
+The following search would only contain results from subdomain names belonging to domain.com:  
+`-site:www.domain.com site:*.domain.com` 
+
+**DNS Bruteforce**  
+Bruteforce DNS (Domain Name System) enumeration is the method of trying tens, hundreds, thousands or even millions of different possible subdomains from a pre-defined list of commonly used subdomains. Fot this method, the tool [DNSrecon](https://www.kali.org/tools/dnsrecon/) & [Sublist3r](https://github.com/aboul3la/Sublist3r) can be used.
+
+**Virtual Hosts**  
+Some subdomains aren't always hosted in publically accessible DNS results, such as development versions of a web application or administration portals. Instead, the DNS record could be kept on a private DNS server or recorded on the developer's machines in their /etc/hosts file (or c:\windows\system32\drivers\etc\hosts file for Windows users) which maps domain names to IP addresses. 
+
+Because web servers can host multiple websites from one server when a website is requested from a client, the server knows which website the client wants from the Host header. We can utilise this host header by making changes to it and monitoring the response to see if we've discovered a new website.
+
+Bruteforce by using the following command:   
+`ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: {domain}" -u http://{IP} -fs {size}`
 ### SQL Injection
+This occurs when user controlled input is passed to SQL queries. As a result, an attacker can pass in SQL queries to manipulate the outcome of such queries. 
+
+If an attacker is able to successfully pass input that is interpreted correctly, they would be able to do the following:
+
+* Access, Modify and Delete information in a database when this input is passed into database queries. This would mean that an attacker can steal sensitive information such as personal details and credentials.
+* Execute Arbitrary system commands on a server that would allow an attacker to gain access to users’ systems. This would enable them to steal sensitive data and carry out more attacks against infrastructure linked to the server on which the command is executed.
+
+
+`TO BE ADDED`
 ### Command Injection
 ### Directory Traversal
 ### Cross Site Request Forgery
 ### Cross Site Scripting
+**DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
+
+**Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
+
+**Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
 ### Server Side Request Forgery
 
 
 ## Forensics
+Is simply 'the art of uncovering'
+
+Digital forensics is a branch of forensic science that focuses on identifying, acquiring, processing, analysing, and reporting on data stored electronically.
+
+Use case  
+* Find hidden information in files or meta data
+* Recover lost or deleted data
+* Reconstruct corrupted files
+* Recognize file structures and identify file formats
+* Understand a course of events from network logs or memory dumps
+* Hash cracking 
 ### File analysis
-### Metadata
+#### Encodings
+* Decimal: 70 111 114 101 110 115 105 99 115 33
+* Hex: 46 6f 72 65 6e 73 69 63 73 21
+* Octal: 106 157 162 145 156 163 151 143 163 41
+* ASCII: Forensics!
+* Base64: Rm9yZW5zaWNzIQ==
+* Base85: 7W3<YDKBN%F!1
+
+#### File type
+The file type is often indicated by the file extension in the file name, e.g. .png, .mp4
+* Typically what the OS uses to assess how to open / interpret the file
+* Do not rely on extensions! Can be modified to trick the OS into misinterpreting data
+
+The file type is indicated in the contents of the file with a file signature - a magic number
+* Hex string at a specific offset
+* Eg PNG files: 89 50 4e 47 (last three hex is PNG in ASCII)
+* Tool: `file`
+
+#### Metadata
+The file extension is one form of metadata: (data about data)
+
+Additional information about a file in addition to the content itself
+* General: File name, extension, size, time of origin, permissions
+* Specific: GPS data in images, number of frames in GIF, CPU architecture in executables, etc.
+
+Why analyze metadata?
+* Can store important info - maybe even info that should have been hidden
+* In some cases even more important than content - eg with encrypted HTTPS traffic
+* Tool: `exiftool`
+
+#### File format
+A file type has a specific format - the structure of the file
+
+Typical structure
+* Signature file - magic number
+
+Header - typical info to be used to understand the content (metadata)
+* Possibly meta data
+* Data
+* Trailer that completes the file
+
+The format is precisely defined in a specification doc - often publicly available
+* Corrupted files: compare file with specification, correct differences with hex editor
+* Unknown file types: search for tracks from a file format 
+
 ### PCAP Analysis
+
 ### Stegonography
+Steganography is the practice of hiding a secret message in something that is not secret
+
+**File Carving**  
+File carving: extract files based on the file format
+* Look for file signatures, headers, trailers, etc.
+* Originally used in connection with. extraction of files from disk images and memory dumps
+* Useful for extracting files stored in other files in stego challenges
+
+File carving tools:
+* binwalk
+* foremost
+* dd (manual extraction)
+  * dd if = input.png or = output.txt bs = 1 skip = 1000 count = 32 
+
+#### Steghide
+Steghide is a steganography program that hides data in various kinds of image and audio files ,
+only supports these file formats : JPEG, BMP, WAV and AU . but it’s also useful for extracting
+embedded and encrypted data from other files.
+
+**Useful commands:**  
+`steghide info <filepath>`  displays info about whether a file has embedded data or not.  
+`steghide extract -sf <filepath>`  extracts embedded data from a file
+
+#### Stegsolve
+Sometimes there is a message or a text hidden in the image itself and in order to view it you
+need to apply some color filters or play with the color levels. You can do it with GIMP or
+Photoshop or any other image editing software but stegsolve made it easier. it’s a small java tool
+that applies many color filters on images.
+
+#### Strings
+Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego challenges. Usually the embedded data is password protected or encrypted
+and sometimes the password is actaully in the file itself and can be easily viewed by using strings.
+It’s a default linux tool so you don’t need to install anything.
+
+**Useful commands:**  
+`strings file`  displays printable strings in the given file
+
+#### Exiftool
+Sometimes important stuff is hidden in the metadata of the image or the file , exiftool can be
+very helpful to view the metadata of the files.
+
+**Useful commands:**  
+`exiftool file`  shows the metadata of the given file
+
+#### Exiv2
+A tool similar to exiftool.
+
+**Useful commands:**  
+`exiv2 file` shows the metadata of the given file  
+
+#### Binwalk
+Binwalk is a tool for searching binary files like images and audio files for embedded files and
+data.
+
+**Useful commands:**  
+`binwalk <filepath>` Displays the embedded data in the given file  
+`binwalk -e <filepath>` Displays and extracts the data from the given file
+
+#### Zsteg
+zsteg is a tool that can detect hidden data in png and bmp files.
+
+**Useful commands:**  
+`zsteg -a file` Runs all the methods on the given file  
+`zsteg -E file` Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy
+name.png)
+
+#### Wavsteg
+WavSteg is a python3 tool that can hide data and files in wav files and can also extract data from
+wav files.
+
+**Useful commands:**  
+`python3 WavSteg.py -r -s soundfile -o outputfile` extracts data from a wav sound file and
+outputs the data into a new file
+
+#### Outguess
+OutGuess is a universal tool for steganography that allows the insertion of hidden information into the redundant bits of data sources. The supported formats are JPEG, PPM and PNM.
+
+**Useful commands:**  
+To embed the message hidden.txt into the monkey.jpg image:  
+`outguess -k "my secret pass phrase" -d hidden.txt monkey.jpg out.jpg`
+
+Retrieve the hidden message from the image:   
+`outguess -k "my secret pass phrase" -r out.jpg message.txt`
+
+**Options:**   
+`-k <key>`  key  
+`-d <name>` filename of dataset  
+`-p <param>`   parameter passed to destination data handler  
+`-r`           retrieve message from data  
+
+#### Sonic visualizer
+Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
+helpful when dealing with audio steganography. You can reveal hidden shapes in audio files.
+
 ### Memory analysis
+Traditionel computer forensics can be made out of volatile memory.
+
+What is volatile data?
+* Volatile data: non-permanent data, disappears when the power goes out
+* Typically the contents of main memory RAM
+* "Live box forensics"
+* Analysis takes place on a memory dump - provides a snapshot 
+
+Data that can be found in volatile memory
+* Running processes and services
+* Open files
+* Network connections
+* Run commands
+* Passwords, keys
+* Unencrypted data that is encrypted on disk but must be used in decrypted mode in memory
+* Stateless malware - malware that lives only in memory
+* Even things like a basic screenshot or the user's clipboard 
+
+A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
+
 ### Disk imaging
 
 ## Binary Exploitation
@@ -1198,114 +1445,6 @@ Now, if we use our private key, we can decrypt the file and get the original mes
 
 ## Shells and Priviege Escalation
 ### TTY Shell
-### Privilege Escalation
-
-## Vulnerabilities
-### Printer hacking
-
-# Steps
-## Content Discovery
-### Manual
-1. Check the robots file for disallowed/hiddenpages  
-2. Check favicon to find the website frameworks (only works if the website developer doesn't replace this with a custom one)  
-Run this to find its md5 hash:  
-`curl https://static-labs.tryhackme.cloud/sites/favicon/images/favicon.ico | md5sum`  
-Check [this](https://wiki.owasp.org/index.php/OWASP_favicon_database) database to find the framework.
-
-1. Check the sitemap file for disallowed/hidden files
-
-2. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use.   
-`curl http://10.10.134.48 -v`  
-The -v switch enables verbose mode, which will output the headers
-
-When successfully finding a framework using on of the methods, Framework Stacking can be used afterwards where you check the framework documentation for potential admin portals etc.
-
-### Automated
-**What is Automated Discovery?**  
-Automated discovery is the process of using tools to discover content rather than doing it manually. This process is automated as it usually contains hundreds, thousands or even millions of requests to a web server. These requests check whether a file or directory exists on a website, giving us access to resources we didn't previously know existed. This process is made possible by using a resource called wordlists.
-
-**What are wordlists?**  
-Wordlists are just text files that contain a long list of commonly used words; they can cover many different use cases. For example, a password wordlist would include the most frequently used passwords, whereas we're looking for content in our case, so we'd require a list containing the most commonly used directory and file names.
-
-**Most common Automation tools**   
-`ffuf`, `dirb` and `gobuster`.   
-I personally use gobuster the most.
-
-
-### Osint
-**Google Hacking / Dorking**   
-Google hacking / Dorking utilizes Google's advanced search engine features, which allow you to pick out custom content.  
-| Filter | Example | Description |
-|---|---|---|
-| site | site:berkankutuk.dk | returns results only from the specified website address |
-| inurl | inurl:admin | returns results that have the specified word in the URL |
-| filetype | filetype:pdf | returns results which are a particular file extension |
-| intitle | intitle:admin | returns results that contain the specified word in the title |  
-
-**Wappalyzer**  
-Wappalyzer is an online tool and browser extension that helps identify what technologies a website uses, such as frameworks, Content Management Systems (CMS), payment processors and much more, and it can even find version numbers as well. Read more [here](https://www.wappalyzer.com/).  
-
-**Wayback Machine**  
-The Wayback Machine is a historical archive of websites that dates back to the late 90s. You can search a domain name, and it will show you all the times the service scraped the web page and saved the contents. This service can help uncover old pages that may still be active on the current website. Find the website [here](https://archive.org/web/).
-
-### Subdomain enumeration
-
-**SSL/TLS Certificates**  
-When an SSL/TLS (Secure Sockets Layer/Transport Layer Security) certificate is created for a domain by a CA (Certificate Authority), CA's take part in what's called "Certificate Transparency (CT) logs". These are publicly accessible logs of every SSL/TLS certificate created for a domain name.
-The following site consists of a searchable database of certificates that shows current and historical results. [Link](crt.sh) 
-
-**Search Engines**
-The following search would only contain results from subdomain names belonging to domain.com:  
-`-site:www.domain.com site:*.domain.com` 
-
-**DNS Bruteforce**  
-Bruteforce DNS (Domain Name System) enumeration is the method of trying tens, hundreds, thousands or even millions of different possible subdomains from a pre-defined list of commonly used subdomains. Fot this method, the tool [DNSrecon](https://www.kali.org/tools/dnsrecon/) & [Sublist3r](https://github.com/aboul3la/Sublist3r) can be used.
-
-**Virtual Hosts**  
-Some subdomains aren't always hosted in publically accessible DNS results, such as development versions of a web application or administration portals. Instead, the DNS record could be kept on a private DNS server or recorded on the developer's machines in their /etc/hosts file (or c:\windows\system32\drivers\etc\hosts file for Windows users) which maps domain names to IP addresses. 
-
-Because web servers can host multiple websites from one server when a website is requested from a client, the server knows which website the client wants from the Host header. We can utilise this host header by making changes to it and monitoring the response to see if we've discovered a new website.
-
-Bruteforce by using the following command:   
-`ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: {domain}" -u http://{IP} -fs {size}`
-
-## Privilege Escalation 
-Check for root password
-Run: `id`  
-Run: `sudo -l`  
-Locate password folder and crack it using johntheripper  
-Or use [GTFOBins](https://gtfobins.github.io)
-
-You can also run:  
-`wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh` on a target machine to see the files that stand out.
-
-Another option would be to run the following command to find all files with the SUID bit set:   
-`find / -perm -u=s -type f 2>/dev/null` fine  
-`find / -user root -perm 4000 -print 2>/dev/null` good  
-`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null` better  
-`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null | grep 'bin'` best  
-
-`2>/dev/null` will filter out the errors so that they will not be output to your console
-
-### Find info about the users of the system
-Find users on a system  
-`cat /etc/passwd | grep “/bin/bash”`
-
-Find passwords  
-`cat /etc/passwd`
-
-If you don't have privilege, try this  
-`find / -name shadow* 2>/dev/null | head`
-
-### Privilege Escalation using SUID Binaries
-`-rwsr-xr-x`  
-“s” = SUID. This means that any user can execute these commands and they will be ran as the original owner.
-
-**Example**  
-Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command to read a flag:  
-`find /home/berkan/flag1.txt -exec cat {} \;`
-
-## TTY Shell
 The tty command of terminal basically prints the file name of the terminal connected to standard input. tty is short of teletype, but popularly known as a terminal it allows you to interact with the system by passing on the data (you input) to the system, and displaying the output produced by the system
 
 **Shell Spawning**  
@@ -1326,15 +1465,52 @@ From within nmap
 `!sh`  
 
 Many of these will also allow you to escape jail shells. The top 3 would be my most successful in general for spawning from the command line.
+### Privilege Escalation 
+Check for root password
+Run: `id`  
+Run: `sudo -l`  
+Locate password folder and crack it using johntheripper  
+Or use [GTFOBins](https://gtfobins.github.io)
 
-## Phishing
+You can also run:  
+`wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh` on a target machine to see the files that stand out.
 
-### Phishing terms
+Another option would be to run the following command to find all files with the SUID bit set:   
+`find / -perm -u=s -type f 2>/dev/null` fine  
+`find / -user root -perm 4000 -print 2>/dev/null` good  
+`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null` better  
+`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null | grep 'bin'` best  
+
+`2>/dev/null` will filter out the errors so that they will not be output to your console
+
+#### Find info about the users of the system
+Find users on a system  
+`cat /etc/passwd | grep “/bin/bash”`
+
+Find passwords  
+`cat /etc/passwd`
+
+If you don't have privilege, try this  
+`find / -name shadow* 2>/dev/null | head`
+
+#### Privilege Escalation using SUID Binaries
+`-rwsr-xr-x`  
+“s” = SUID. This means that any user can execute these commands and they will be ran as the original owner.
+
+**Example**  
+Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command to read a flag:  
+`find /home/berkan/flag1.txt -exec cat {} \;`
+
+## Vulnerabilities
+### Social Engineering
+#### Phishing
+
+##### Phishing terms
 **A BEC (Business Email Compromise)** is when an adversary gains control of an internal employee's account and then uses the compromised email account to convince other internal employees to perform unauthorized or fraudulent actions. 
 
 **A typosquatting attack**, also known as a URL hijacking, a sting site, or a fake URL, is a type of social engineering where threat actors impersonate legitimate domains for malicious purposes such as fraud or malware spreading.
 
-### Types of Phishing attacks
+##### Types of Phishing attacks
 **Spam** - unsolicited junk emails sent out in bulk to a large number of recipients. The more malicious variant of Spam is known as MalSpam.
 
 **Phishing** -  emails sent to a target(s) purporting to be from a trusted entity to lure individuals into providing sensitive information. 
@@ -1347,7 +1523,7 @@ Many of these will also allow you to escape jail shells. The top 3 would be my m
 
 **Vishing** - is similar to smishing, but instead of using text messages for the social engineering attack, the attacks are based on voice calls. 
 
-### Analyze/identify
+##### Analyze/identify
 1. Open Email
 2. See its raw format
 3. Analyze the results:
@@ -1359,211 +1535,12 @@ Many of these will also allow you to escape jail shells. The top 3 would be my m
 In case the mail is encoded using base64, the following command can be used to decrypt the message:  
 `base64 -d <filename> > decrypted.<filetype>` 
 
-### Phishing security
+##### Phishing security
 Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rsoa-and-rp/32.0?topic=SSBRUQ_32.0.0/com.ibm.resilient.doc/install/resilient_install_defangURLs.htm).
 
 Expand shortened links with this [tool](https://www.expandurl.net).
-
-# Forensics
-Is simply 'the art of uncovering'
-
-Digital forensics is a branch of forensic science that focuses on identifying, acquiring, processing, analysing, and reporting on data stored electronically.
-
-Use case  
-* Find hidden information in files or meta data
-* Recover lost or deleted data
-* Reconstruct corrupted files
-* Recognize file structures and identify file formats
-* Understand a course of events from network logs or memory dumps
-* Hash cracking 
-
-## File analysis
-### Encodings
-* Decimal: 70 111 114 101 110 115 105 99 115 33
-* Hex: 46 6f 72 65 6e 73 69 63 73 21
-* Octal: 106 157 162 145 156 163 151 143 163 41
-* ASCII: Forensics!
-* Base64: Rm9yZW5zaWNzIQ==
-* Base85: 7W3<YDKBN%F!1
-
-### File type
-The file type is often indicated by the file extension in the file name, e.g. .png, .mp4
-* Typically what the OS uses to assess how to open / interpret the file
-* Do not rely on extensions! Can be modified to trick the OS into misinterpreting data
-
-The file type is indicated in the contents of the file with a file signature - a magic number
-* Hex string at a specific offset
-* Eg PNG files: 89 50 4e 47 (last three hex is PNG in ASCII)
-* Tool: `file`
-
-### Metadata
-The file extension is one form of metadata: (data about data)
-
-Additional information about a file in addition to the content itself
-* General: File name, extension, size, time of origin, permissions
-* Specific: GPS data in images, number of frames in GIF, CPU architecture in executables, etc.
-
-Why analyze metadata?
-* Can store important info - maybe even info that should have been hidden
-* In some cases even more important than content - eg with encrypted HTTPS traffic
-* Tool: `exiftool` 
-
-### File format
-A file type has a specific format - the structure of the file
-
-Typical structure
-* Signature file - magic number
-
-Header - typical info to be used to understand the content (metadata)
-* Possibly meta data
-* Data
-* Trailer that completes the file
-
-The format is precisely defined in a specification doc - often publicly available
-* Corrupted files: compare file with specification, correct differences with hex editor
-* Unknown file types: search for tracks from a file format 
-
-## Steganography
-Steganography is the practice of hiding a secret message in something that is not secret
-
-**File Carving**  
-File carving: extract files based on the file format
-* Look for file signatures, headers, trailers, etc.
-* Originally used in connection with. extraction of files from disk images and memory dumps
-* Useful for extracting files stored in other files in stego challenges
-
-File carving tools:
-* binwalk
-* foremost
-* dd (manual extraction)
-  * dd if = input.png or = output.txt bs = 1 skip = 1000 count = 32 
-
-### Steghide
-Steghide is a steganography program that hides data in various kinds of image and audio files ,
-only supports these file formats : JPEG, BMP, WAV and AU . but it’s also useful for extracting
-embedded and encrypted data from other files.
-
-**Useful commands:**  
-`steghide info <filepath>`  displays info about whether a file has embedded data or not.  
-`steghide extract -sf <filepath>`  extracts embedded data from a file
-
-### Stegsolve
-Sometimes there is a message or a text hidden in the image itself and in order to view it you
-need to apply some color filters or play with the color levels. You can do it with GIMP or
-Photoshop or any other image editing software but stegsolve made it easier. it’s a small java tool
-that applies many color filters on images.
-
-### Strings
-Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego challenges. Usually the embedded data is password protected or encrypted
-and sometimes the password is actaully in the file itself and can be easily viewed by using strings.
-It’s a default linux tool so you don’t need to install anything.
-
-**Useful commands:**  
-`strings file`  displays printable strings in the given file
-
-### Exiftool
-Sometimes important stuff is hidden in the metadata of the image or the file , exiftool can be
-very helpful to view the metadata of the files.
-
-**Useful commands:**  
-`exiftool file`  shows the metadata of the given file
-
-### Exiv2
-A tool similar to exiftool.
-
-**Useful commands:**  
-`exiv2 file` shows the metadata of the given file  
-
-### Binwalk
-Binwalk is a tool for searching binary files like images and audio files for embedded files and
-data.
-
-**Useful commands:**  
-`binwalk <filepath>` Displays the embedded data in the given file  
-`binwalk -e <filepath>` Displays and extracts the data from the given file
-
-### Zsteg
-zsteg is a tool that can detect hidden data in png and bmp files.
-
-**Useful commands:**  
-`zsteg -a file` Runs all the methods on the given file  
-`zsteg -E file` Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy
-name.png)
-
-### Wavsteg
-WavSteg is a python3 tool that can hide data and files in wav files and can also extract data from
-wav files.
-
-**Useful commands:**  
-`python3 WavSteg.py -r -s soundfile -o outputfile` extracts data from a wav sound file and
-outputs the data into a new file
-
-### Outguess
-OutGuess is a universal tool for steganography that allows the insertion of hidden information into the redundant bits of data sources. The supported formats are JPEG, PPM and PNM.
-
-**Useful commands:**  
-To embed the message hidden.txt into the monkey.jpg image:  
-`outguess -k "my secret pass phrase" -d hidden.txt monkey.jpg out.jpg`
-
-Retrieve the hidden message from the image:   
-`outguess -k "my secret pass phrase" -r out.jpg message.txt`
-
-**Options:**   
-`-k <key>`  key  
-`-d <name>` filename of dataset  
-`-p <param>`   parameter passed to destination data handler  
-`-r`           retrieve message from data  
-
-### Sonic visualizer
-Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
-helpful when dealing with audio steganography. You can reveal hidden shapes in audio files.
-
-## Memory analysis
-Traditionel computer forensics can be made out of volatile memory.
-
-What is volatile data?
-* Volatile data: non-permanent data, disappears when the power goes out
-* Typically the contents of main memory RAM
-* "Live box forensics"
-* Analysis takes place on a memory dump - provides a snapshot 
-
-Data that can be found in volatile memory
-* Running processes and services
-* Open files
-* Network connections
-* Run commands
-* Passwords, keys
-* Unencrypted data that is encrypted on disk but must be used in decrypted mode in memory
-* Stateless malware - malware that lives only in memory
-* Even things like a basic screenshot or the user's clipboard 
-
-A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
-
-
-
-
-
-
-# Vulnerabilities
-## SQL Injection
-This occurs when user controlled input is passed to SQL queries. As a result, an attacker can pass in SQL queries to manipulate the outcome of such queries. 
-
-If an attacker is able to successfully pass input that is interpreted correctly, they would be able to do the following:
-
-* Access, Modify and Delete information in a database when this input is passed into database queries. This would mean that an attacker can steal sensitive information such as personal details and credentials.
-* Execute Arbitrary system commands on a server that would allow an attacker to gain access to users’ systems. This would enable them to steal sensitive data and carry out more attacks against infrastructure linked to the server on which the command is executed.
-
-
-`TO BE ADDED`
-
-## XSS (Cross-Site Scripting)
-**DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
-
-**Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
-
-**Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
-
-## Printer Hacking (IPP)
+### Misconfigurations
+#### Printer Hacking (IPP)
 Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET)  
 Printer security cheat sheet can be found [here](http://hacking-printers.net/wiki/index.php/Printer_Security_Testing_Cheat_Sheet)
 
