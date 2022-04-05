@@ -1145,6 +1145,17 @@ Now, if we use our private key, we can decrypt the file and get the original mes
 # Networking
 `TO BE ADDED`
 
+# Exploitation
+## Web Eploitation
+## Forensics
+## Binary Exploitation
+## Reverse Engineering
+## Cryptography
+## Miscellaneous
+## Windows Exploitation
+## Shells and Priviege Escalation
+## Vulnerabilities
+
 # Steps
 ## Content Discovery
 ### Manual
