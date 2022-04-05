@@ -1314,7 +1314,7 @@ The format is precisely defined in a specification doc - often publicly availabl
 
 ## PCAP Analysis
 
-## Stegonography
+## Stegonagraphy
 Steganography is the practice of hiding a secret message in something that is not secret
 
 **File Carving**  
@@ -1486,7 +1486,7 @@ Public key to encrypt, private key to decrypt.
 # Windows Exploitation
 ## Active directory
 
-# Shells and Priviege Escalation
+# Shells and Privilege Escalation
 ## TTY Shell
 The tty command of terminal basically prints the file name of the terminal connected to standard input. tty is short of teletype, but popularly known as a terminal it allows you to interact with the system by passing on the data (you input) to the system, and displaying the output produced by the system
 
