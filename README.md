@@ -1314,7 +1314,7 @@ The format is precisely defined in a specification doc - often publicly availabl
 
 ## PCAP Analysis
 
-## Stegonagraphy
+## Steganography
 Steganography is the practice of hiding a secret message in something that is not secret
 
 **File Carving**  
