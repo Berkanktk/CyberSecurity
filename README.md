@@ -146,6 +146,12 @@
 [Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world      
 
 # CTF Sites
+[TryHackMe](https://tryhackme.com) - TryHackMe is a free online platform for learning cyber security, using hands-on exercises and labs.
+[HackTheBox](https://www.hackthebox.com/) - HackTheBox is a massive, online cybersecurity practical training platform.  
+[CTFLearn](https://ctflearn.com) - An online platform built to help ethical hackers learn, practice, and compete.   
+[Challenges](https://challenges.re) - Reverse engineering CTF training platform      
+[Root Me](https://www.root-me.org) - Root Me is a platform for everyone to test and improve knowledge in computer security and hacking.  
+
 # Books
 
 # Services
