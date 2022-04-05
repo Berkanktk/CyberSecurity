@@ -1126,6 +1126,22 @@ Generally speaking, there are three basic modes in Vim:
 
 Find other very usefull commands [here](/More/VIM/README.md), or a full cheatsheet [here](https://vim.rtorr.com).
 
+# Cryptology
+Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
+
+## Generate keys
+To generate a private key we use the following command (8912 creates the key 8912 bits long):  
+`openssl genrsa -aes256 -out private.key 8912`
+
+To generate a public key we use our previously generated private key:  
+`openssl rsa -in private.key -pubout -out public.key`
+
+Lets now encrypt a file (plaintext.txt) using our public key:  
+`openssl rsautl -encrypt -pubin -inkey public.key -in plaintext.txt -out encrypted.txt`
+
+Now, if we use our private key, we can decrypt the file and get the original message:  
+`openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
+
 # Steps
 ## Content Discovery
 ### Manual
@@ -1462,21 +1478,7 @@ Data that can be found in volatile memory
 
 A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
 
-# Cryptology
-Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
 
-## Generate keys
-To generate a private key we use the following command (8912 creates the key 8912 bits long):  
-`openssl genrsa -aes256 -out private.key 8912`
-
-To generate a public key we use our previously generated private key:  
-`openssl rsa -in private.key -pubout -out public.key`
-
-Lets now encrypt a file (plaintext.txt) using our public key:  
-`openssl rsautl -encrypt -pubin -inkey public.key -in plaintext.txt -out encrypted.txt`
-
-Now, if we use our private key, we can decrypt the file and get the original message:  
-`openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
 
 
 # Networking
