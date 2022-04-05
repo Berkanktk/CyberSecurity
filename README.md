@@ -1,3 +1,8 @@
+# A collapsible section with markdown
+<details>
+  <summary>SOMETHING</summary>
+</details>
+
 # List of Contents
 1. [Links](#links)
 2. [CTF Sites](#ctf-sites)
@@ -35,48 +40,47 @@
 11. [Cryptology](#cryptology)
     1. [Generate Keys](#generate-keys)
 12. [Networking](#networking) 
-13. [Exploitation](#exploitation)
-    1.  [Web Exploitation](#web-exploitation)
-        1.  [Content Discovery](#content-discovery)
-        2.  [SQL Injection](#sql-injection)
-        3.  [Command Injection](#command-injection)
-        4.  [Directory Traversak](#directory-traversal)
-        5.  [Cross Site Request Forgery](#cross-site-request-forgery)
-        6.  [Cross Site Scripting](#cross-site-scripting)
-        7.  [Server Side Request Forgery](#server-side-request-forgery)
-    2.  [Forensics](#forensics)
-        1.  [File Analysis](#file-analysis)
-        2.  [PCAP Analysis](#pcap-analysis)
-        3.  [Stegonography](#stegonography)
-        4.  [Memory analysis](#memory-analysis)
-        5.  [Disk imaging](#disk-imaging)
-    3.  [Binary Exploitation](#binary-exploitation)
-        1.  [Registers](#registers)
-        2.  [The Stack](#the-stack)
-        3.  [Calling Conventions](#calling-conventions)
-        4.  [Global Offset Table (GOT)](#global-offset-table-got)
-        5.  [Buffers and Buffer Overflows](#buffers)
-        6.  [Return Oriented Programming (ROP)](#return-oriented-programming-rop)
-        7.  [Binary Security](#binary-security)
-        8.  [The Heap and Exploitation](#the-heap)
-        9.  [Format String Vulnerability](#format-string-vulnerability)
-    4.  [Reverse Engineering](#reverse-engineering)
-        1.  [Assembly](#assembly)
-        2.  [Disassemblers](#disassemblers)
-    5.  [Cryptography](#cryptography)
-        1.  [Encoding](#encoding)
-        2.  [Hashing](#hashing)
-        3.  [Ciphers](#ciphers)
-        4.  [Encryption (RSA)](#encryption-rsa)
-    6.  [Miscellaneous](#miscellaneous)
-    7.  [Windows Exploitation](#windows-exploitation)
-        1.  [Active Directory](#active-directory)   
-    8.  [Shells and Privilege Escalation](#shells-and-priviege-escalation)
-        1.  [TTY Shell](#tty-shell)
-        2.  [Privilege Escalation](#privilege-escalation)
-    9.  [Vulnerabilities](#vulnerabilities)
-        1.  [Social Engineering](#social-engineering)
-        2.  [Misconfigurations](#misconfigurations)
+13. [Web Exploitation](#web-exploitation)
+    1.  [Content Discovery](#content-discovery)
+    2.  [SQL Injection](#sql-injection)
+    3.  [Command Injection](#command-injection)
+    4.  [Directory Traversak](#directory-traversal)
+    5.  [Cross Site Request Forgery](#cross-site-request-forgery)
+    6.  [Cross Site Scripting](#cross-site-scripting)
+    7.  [Server Side Request Forgery](#server-side-request-forgery)
+14. [Forensics](#forensics)
+    1.  [File Analysis](#file-analysis)
+    2.  [PCAP Analysis](#pcap-analysis)
+    3.  [Stegonography](#stegonography)
+    4.  [Memory analysis](#memory-analysis)
+    5.  [Disk imaging](#disk-imaging)
+15. [Binary Exploitation](#binary-exploitation)
+    1.  [Registers](#registers)
+    2.  [The Stack](#the-stack)
+    3.  [Calling Conventions](#calling-conventions)
+    4.  [Global Offset Table (GOT)](#global-offset-table-got)
+    5.  [Buffers and Buffer Overflows](#buffers)
+    6.  [Return Oriented Programming (ROP)](#return-oriented-programming-rop)
+    7.  [Binary Security](#binary-security)
+    8.  [The Heap and Exploitation](#the-heap)
+    9.  [Format String Vulnerability](#format-string-vulnerability)
+16. [Reverse Engineering](#reverse-engineering)
+    1.  [Assembly](#assembly)
+    2.  [Disassemblers](#disassemblers)
+17. [Cryptography](#cryptography)
+    1.  [Encoding](#encoding)
+    2.  [Hashing](#hashing)
+    3.  [Ciphers](#ciphers)
+    4.  [Encryption (RSA)](#encryption-rsa)
+18. [Miscellaneous](#miscellaneous)
+19. [Windows Exploitation](#windows-exploitation)
+    1.  [Active Directory](#active-directory)   
+20. [Shells and Privilege Escalation](#shells-and-priviege-escalation)
+    1.  [TTY Shell](#tty-shell)
+    2.  [Privilege Escalation](#privilege-escalation)
+21. [Vulnerabilities](#vulnerabilities)
+    1.  [Social Engineering](#social-engineering)
+    2.  [Misconfigurations](#misconfigurations)
 
 # Links
 [AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
@@ -1167,10 +1171,10 @@ Now, if we use our private key, we can decrypt the file and get the original mes
 # Networking
 `TO BE ADDED`
 
-# Exploitation
-## Web Exploitation
-### Content Discovery
-#### Manual
+
+# Web Exploitation
+## Content Discovery
+### Manual
 1. Check the robots file for disallowed/hiddenpages  
 2. Check favicon to find the website frameworks (only works if the website developer doesn't replace this with a custom one)  
 Run this to find its md5 hash:  
@@ -1185,7 +1189,7 @@ The -v switch enables verbose mode, which will output the headers
 
 When successfully finding a framework using on of the methods, Framework Stacking can be used afterwards where you check the framework documentation for potential admin portals etc.
 
-#### Automated
+### Automated
 **What is Automated Discovery?**  
 Automated discovery is the process of using tools to discover content rather than doing it manually. This process is automated as it usually contains hundreds, thousands or even millions of requests to a web server. These requests check whether a file or directory exists on a website, giving us access to resources we didn't previously know existed. This process is made possible by using a resource called wordlists.
 
@@ -1197,7 +1201,7 @@ Wordlists are just text files that contain a long list of commonly used words; t
 I personally use gobuster the most.
 
 
-#### Osint
+### Osint
 **Google Hacking / Dorking**   
 Google hacking / Dorking utilizes Google's advanced search engine features, which allow you to pick out custom content.  
 | Filter | Example | Description |
@@ -1213,7 +1217,7 @@ Wappalyzer is an online tool and browser extension that helps identify what tech
 **Wayback Machine**  
 The Wayback Machine is a historical archive of websites that dates back to the late 90s. You can search a domain name, and it will show you all the times the service scraped the web page and saved the contents. This service can help uncover old pages that may still be active on the current website. Find the website [here](https://archive.org/web/).
 
-#### Subdomain enumeration
+### Subdomain enumeration
 
 **SSL/TLS Certificates**  
 When an SSL/TLS (Secure Sockets Layer/Transport Layer Security) certificate is created for a domain by a CA (Certificate Authority), CA's take part in what's called "Certificate Transparency (CT) logs". These are publicly accessible logs of every SSL/TLS certificate created for a domain name.
@@ -1233,7 +1237,7 @@ Because web servers can host multiple websites from one server when a website is
 
 Bruteforce by using the following command:   
 `ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: {domain}" -u http://{IP} -fs {size}`
-### SQL Injection
+## SQL Injection
 This occurs when user controlled input is passed to SQL queries. As a result, an attacker can pass in SQL queries to manipulate the outcome of such queries. 
 
 If an attacker is able to successfully pass input that is interpreted correctly, they would be able to do the following:
@@ -1243,19 +1247,19 @@ If an attacker is able to successfully pass input that is interpreted correctly,
 
 
 `TO BE ADDED`
-### Command Injection
-### Directory Traversal
-### Cross Site Request Forgery
-### Cross Site Scripting
+## Command Injection
+## Directory Traversal
+## Cross Site Request Forgery
+## Cross Site Scripting
 **DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
 
 **Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
 
 **Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
-### Server Side Request Forgery
+## Server Side Request Forgery
 
 
-## Forensics
+# Forensics
 Is simply 'the art of uncovering'
 
 Digital forensics is a branch of forensic science that focuses on identifying, acquiring, processing, analysing, and reporting on data stored electronically.
@@ -1267,8 +1271,8 @@ Use case
 * Recognize file structures and identify file formats
 * Understand a course of events from network logs or memory dumps
 * Hash cracking 
-### File analysis
-#### Encodings
+## File analysis
+### Encodings
 * Decimal: 70 111 114 101 110 115 105 99 115 33
 * Hex: 46 6f 72 65 6e 73 69 63 73 21
 * Octal: 106 157 162 145 156 163 151 143 163 41
@@ -1276,7 +1280,7 @@ Use case
 * Base64: Rm9yZW5zaWNzIQ==
 * Base85: 7W3<YDKBN%F!1
 
-#### File type
+### File type
 The file type is often indicated by the file extension in the file name, e.g. .png, .mp4
 * Typically what the OS uses to assess how to open / interpret the file
 * Do not rely on extensions! Can be modified to trick the OS into misinterpreting data
@@ -1286,7 +1290,7 @@ The file type is indicated in the contents of the file with a file signature - a
 * Eg PNG files: 89 50 4e 47 (last three hex is PNG in ASCII)
 * Tool: `file`
 
-#### Metadata
+### Metadata
 The file extension is one form of metadata: (data about data)
 
 Additional information about a file in addition to the content itself
@@ -1298,7 +1302,7 @@ Why analyze metadata?
 * In some cases even more important than content - eg with encrypted HTTPS traffic
 * Tool: `exiftool`
 
-#### File format
+### File format
 A file type has a specific format - the structure of the file
 
 Typical structure
@@ -1313,9 +1317,9 @@ The format is precisely defined in a specification doc - often publicly availabl
 * Corrupted files: compare file with specification, correct differences with hex editor
 * Unknown file types: search for tracks from a file format 
 
-### PCAP Analysis
+## PCAP Analysis
 
-### Stegonography
+## Stegonography
 Steganography is the practice of hiding a secret message in something that is not secret
 
 **File Carving**  
@@ -1330,7 +1334,7 @@ File carving tools:
 * dd (manual extraction)
   * dd if = input.png or = output.txt bs = 1 skip = 1000 count = 32 
 
-#### Steghide
+### Steghide
 Steghide is a steganography program that hides data in various kinds of image and audio files ,
 only supports these file formats : JPEG, BMP, WAV and AU . but it’s also useful for extracting
 embedded and encrypted data from other files.
@@ -1339,13 +1343,13 @@ embedded and encrypted data from other files.
 `steghide info <filepath>`  displays info about whether a file has embedded data or not.  
 `steghide extract -sf <filepath>`  extracts embedded data from a file
 
-#### Stegsolve
+### Stegsolve
 Sometimes there is a message or a text hidden in the image itself and in order to view it you
 need to apply some color filters or play with the color levels. You can do it with GIMP or
 Photoshop or any other image editing software but stegsolve made it easier. it’s a small java tool
 that applies many color filters on images.
 
-#### Strings
+### Strings
 Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego challenges. Usually the embedded data is password protected or encrypted
 and sometimes the password is actaully in the file itself and can be easily viewed by using strings.
 It’s a default linux tool so you don’t need to install anything.
@@ -1353,20 +1357,20 @@ It’s a default linux tool so you don’t need to install anything.
 **Useful commands:**  
 `strings file`  displays printable strings in the given file
 
-#### Exiftool
+### Exiftool
 Sometimes important stuff is hidden in the metadata of the image or the file , exiftool can be
 very helpful to view the metadata of the files.
 
 **Useful commands:**  
 `exiftool file`  shows the metadata of the given file
 
-#### Exiv2
+### Exiv2
 A tool similar to exiftool.
 
 **Useful commands:**  
 `exiv2 file` shows the metadata of the given file  
 
-#### Binwalk
+### Binwalk
 Binwalk is a tool for searching binary files like images and audio files for embedded files and
 data.
 
@@ -1374,7 +1378,7 @@ data.
 `binwalk <filepath>` Displays the embedded data in the given file  
 `binwalk -e <filepath>` Displays and extracts the data from the given file
 
-#### Zsteg
+### Zsteg
 zsteg is a tool that can detect hidden data in png and bmp files.
 
 **Useful commands:**  
@@ -1382,7 +1386,7 @@ zsteg is a tool that can detect hidden data in png and bmp files.
 `zsteg -E file` Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy
 name.png)
 
-#### Wavsteg
+### Wavsteg
 WavSteg is a python3 tool that can hide data and files in wav files and can also extract data from
 wav files.
 
@@ -1390,7 +1394,7 @@ wav files.
 `python3 WavSteg.py -r -s soundfile -o outputfile` extracts data from a wav sound file and
 outputs the data into a new file
 
-#### Outguess
+### Outguess
 OutGuess is a universal tool for steganography that allows the insertion of hidden information into the redundant bits of data sources. The supported formats are JPEG, PPM and PNM.
 
 **Useful commands:**  
@@ -1406,11 +1410,11 @@ Retrieve the hidden message from the image:
 `-p <param>`   parameter passed to destination data handler  
 `-r`           retrieve message from data  
 
-#### Sonic visualizer
+### Sonic visualizer
 Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
 helpful when dealing with audio steganography. You can reveal hidden shapes in audio files.
 
-### Memory analysis
+## Memory analysis
 Traditionel computer forensics can be made out of volatile memory.
 
 What is volatile data?
@@ -1431,35 +1435,35 @@ Data that can be found in volatile memory
 
 A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
 
-### Disk imaging
+## Disk imaging
 
-## Binary Exploitation
-### Registers
-### The Stack
-### Calling Conventions
-### Global Offset Table (GOT)
-### Buffers
-#### Buffer Overflow
-### Return Oriented Programming (ROP)
-### Binary Security
-#### No eXecute (NX)
-#### Address Space Layout Randomization (ASLR)
-#### Stack Canaries
-#### Relocation Read-Only (RELRO)
-### The Heap
-#### Heap Exploitation
-### Format String Vulnerability
+# Binary Exploitation
+## Registers
+## The Stack
+## Calling Conventions
+## Global Offset Table (GOT)
+## Buffers
+### Buffer Overflow
+## Return Oriented Programming (ROP)
+## Binary Security
+### No eXecute (NX)
+### Address Space Layout Randomization (ASLR)
+### Stack Canaries
+### Relocation Read-Only (RELRO)
+## The Heap
+### Heap Exploitation
+## Format String Vulnerability
 
-## Reverse Engineering
-### Assembly
-### Disassemblers
+# Reverse Engineering
+## Assembly
+## Disassemblers
 
-## Cryptography
-### Encoding
+# Cryptography
+## Encoding
 Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
 
 A very popular encoding is Base64
-### Hashing
+## Hashing
 Hashing is used for 2 main purposes in Cyber Security. To verify integrity of data, or for verifying passwords. 
 
 plaintext ➡️ hash  
@@ -1468,27 +1472,27 @@ hash ⛔ plaintext
 Doing a lookup in a sorted list of hashes that are not salted is quite fast, much much faster than trying to crack the hash. But in case we have to crack, then its done by hashing a large number of different inputs (often rockyou.txt, these are the possible passwords), potentially adding the salt if there is one and comparing it to the target hash. 
 
 Tools like Hashcat and John the Ripper are normally used for this.
-### Ciphers
-### Encryption (RSA)
-#### Symetric encryption
+## Ciphers
+## Encryption (RSA)
+### Symetric encryption
 plaintext ➡️ 🔑 ➡️ ciphertext  
 plaintext ⬅️ 🔑 ⬅️ ciphertext  
 (🔑 shared key)
 
-#### Asymetric encryption
+### Asymetric encryption
 plaintext ➡️ 🔑 ➡️ ciphertext  
 plaintext ⬅️ 🗝 ⬅️ ciphertext  
 (🔑 public key, 🗝 private key
 
 Public key to encrypt, private key to decrypt.
 
-## Miscellaneous
+# Miscellaneous
 
-## Windows Exploitation
-### Active directory
+# Windows Exploitation
+## Active directory
 
-## Shells and Priviege Escalation
-### TTY Shell
+# Shells and Priviege Escalation
+## TTY Shell
 The tty command of terminal basically prints the file name of the terminal connected to standard input. tty is short of teletype, but popularly known as a terminal it allows you to interact with the system by passing on the data (you input) to the system, and displaying the output produced by the system
 
 **Shell Spawning**  
@@ -1509,7 +1513,7 @@ From within nmap
 `!sh`  
 
 Many of these will also allow you to escape jail shells. The top 3 would be my most successful in general for spawning from the command line.
-### Privilege Escalation 
+## Privilege Escalation 
 Check for root password
 Run: `id`  
 Run: `sudo -l`  
@@ -1527,7 +1531,7 @@ Another option would be to run the following command to find all files with the 
 
 `2>/dev/null` will filter out the errors so that they will not be output to your console
 
-#### Find info about the users of the system
+### Find info about the users of the system
 Find users on a system  
 `cat /etc/passwd | grep “/bin/bash”`
 
@@ -1537,7 +1541,7 @@ Find passwords
 If you don't have privilege, try this  
 `find / -name shadow* 2>/dev/null | head`
 
-#### Privilege Escalation using SUID Binaries
+### Privilege Escalation using SUID Binaries
 `-rwsr-xr-x`  
 “s” = SUID. This means that any user can execute these commands and they will be ran as the original owner.
 
@@ -1545,16 +1549,16 @@ If you don't have privilege, try this
 Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command to read a flag:  
 `find /home/berkan/flag1.txt -exec cat {} \;`
 
-## Vulnerabilities
-### Social Engineering
-#### Phishing
+# Vulnerabilities
+## Social Engineering
+### Phishing
 
-##### Phishing terms
+#### Phishing terms
 **A BEC (Business Email Compromise)** is when an adversary gains control of an internal employee's account and then uses the compromised email account to convince other internal employees to perform unauthorized or fraudulent actions. 
 
 **A typosquatting attack**, also known as a URL hijacking, a sting site, or a fake URL, is a type of social engineering where threat actors impersonate legitimate domains for malicious purposes such as fraud or malware spreading.
 
-##### Types of Phishing attacks
+#### Types of Phishing attacks
 **Spam** - unsolicited junk emails sent out in bulk to a large number of recipients. The more malicious variant of Spam is known as MalSpam.
 
 **Phishing** -  emails sent to a target(s) purporting to be from a trusted entity to lure individuals into providing sensitive information. 
@@ -1567,7 +1571,7 @@ Lets say the `cat` command had the 's' in its SUID. Then you would be able to us
 
 **Vishing** - is similar to smishing, but instead of using text messages for the social engineering attack, the attacks are based on voice calls. 
 
-##### Analyze/identify
+#### Analyze/identify
 1. Open Email
 2. See its raw format
 3. Analyze the results:
@@ -1579,12 +1583,12 @@ Lets say the `cat` command had the 's' in its SUID. Then you would be able to us
 In case the mail is encoded using base64, the following command can be used to decrypt the message:  
 `base64 -d <filename> > decrypted.<filetype>` 
 
-##### Phishing security
+#### Phishing security
 Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rsoa-and-rp/32.0?topic=SSBRUQ_32.0.0/com.ibm.resilient.doc/install/resilient_install_defangURLs.htm).
 
 Expand shortened links with this [tool](https://www.expandurl.net).
-### Misconfigurations
-#### Printer Hacking (IPP)
+## Misconfigurations
+### Printer Hacking (IPP)
 Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET)  
 Printer security cheat sheet can be found [here](http://hacking-printers.net/wiki/index.php/Printer_Security_Testing_Cheat_Sheet)
 
