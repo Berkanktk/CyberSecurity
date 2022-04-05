@@ -52,35 +52,6 @@
     2.  [XSS](#xss-cross-site-scripting)
     3.  [Printer Hacking](#printer-hacking-ipp)
 
-# Concepts
-## Hashing
-Hashing is used for 2 main purposes in Cyber Security. To verify integrity of data, or for verifying passwords. 
-
-plaintext ➡️ hash  
-hash ⛔ plaintext
-
-Doing a lookup in a sorted list of hashes that are not salted is quite fast, much much faster than trying to crack the hash. But in case we have to crack, then its done by hashing a large number of different inputs (often rockyou.txt, these are the possible passwords), potentially adding the salt if there is one and comparing it to the target hash. 
-
-Tools like Hashcat and John the Ripper are normally used for this.
-
-## Encryption
-### Symetric encryption
-plaintext ➡️ 🔑 ➡️ ciphertext  
-plaintext ⬅️ 🔑 ⬅️ ciphertext  
-(🔑 shared key)
-
-### Asymetric encryption
-plaintext ➡️ 🔑 ➡️ ciphertext  
-plaintext ⬅️ 🗝 ⬅️ ciphertext  
-(🔑 public key, 🗝 private key
-
-Public key to encrypt, private key to decrypt.
-
-## Encoding
-Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
-
-A very popular encoding is Base64
-
 # Links
 [AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
 [Archive.org](https://archive.org/web/) - internet Archieve    
@@ -1434,9 +1405,31 @@ A tool used for analyzing memory dumps is [volatility 3](https://github.com/vola
 
 ## Cryptography
 ### Encoding
+Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
+
+A very popular encoding is Base64
 ### Hashing
+Hashing is used for 2 main purposes in Cyber Security. To verify integrity of data, or for verifying passwords. 
+
+plaintext ➡️ hash  
+hash ⛔ plaintext
+
+Doing a lookup in a sorted list of hashes that are not salted is quite fast, much much faster than trying to crack the hash. But in case we have to crack, then its done by hashing a large number of different inputs (often rockyou.txt, these are the possible passwords), potentially adding the salt if there is one and comparing it to the target hash. 
+
+Tools like Hashcat and John the Ripper are normally used for this.
 ### Ciphers
 ### Encryption (RSA)
+#### Symetric encryption
+plaintext ➡️ 🔑 ➡️ ciphertext  
+plaintext ⬅️ 🔑 ⬅️ ciphertext  
+(🔑 shared key)
+
+#### Asymetric encryption
+plaintext ➡️ 🔑 ➡️ ciphertext  
+plaintext ⬅️ 🗝 ⬅️ ciphertext  
+(🔑 public key, 🗝 private key
+
+Public key to encrypt, private key to decrypt.
 
 ## Miscellaneous
 
