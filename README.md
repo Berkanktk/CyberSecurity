@@ -1147,14 +1147,61 @@ Now, if we use our private key, we can decrypt the file and get the original mes
 
 # Exploitation
 ## Web Eploitation
+### Content Discovery
+### SQL Injection
+### Command Injection
+### Directory Traversal
+### Cross Site Request Forgery
+### Cross Site Scripting
+### Server Side Request Forgery
+
+
 ## Forensics
+### File analysis
+### Metadata
+### PCAP Analysis
+### Stegonography
+### Memory analysis
+### Disk imaging
+
 ## Binary Exploitation
+### Registers
+### The Stack
+### Calling Conventions
+### Global Offset Table (GOT)
+### Buffers
+#### Buffer Overflow
+### Return Oriented Programming (ROP)
+### Binary Security
+#### No eXecute (NX)
+#### Address Space Layout Randomization (ASLR)
+#### Stack Canaries
+#### Relocation Read-Only (RELRO)
+### The Heap
+#### Heap Exploitation
+### Format String Vulnerability
+
 ## Reverse Engineering
+### Assembly
+### Disassemblers
+
 ## Cryptography
+### Encoding
+### Hashing
+### Ciphers
+### Encryption (RSA)
+
 ## Miscellaneous
+
 ## Windows Exploitation
+### Active directory
+
 ## Shells and Priviege Escalation
+### TTY Shell
+### Privilege Escalation
+
 ## Vulnerabilities
+### Printer hacking
 
 # Steps
 ## Content Discovery
