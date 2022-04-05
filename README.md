@@ -144,6 +144,9 @@ A very popular encoding is Base64
 [WHOIS lookup](https://whois.domaintools.com) - best whois lookup    
 [Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world      
 
+# CTF Sites
+# Books
+
 # Services
 ## Active directory (Windows)
 Active Directory is a collection of machines and servers connected inside of domains, that are a collective part of a bigger forest of domains, that make up the Active Directory network. 
@@ -312,28 +315,14 @@ ISO/IEC 27001 requires that management:
 
 An ISMS(Information Security Management System) may be certified compliant with ISO/IEC 27001 by a number of Accredited Registrars worldwide.
 
-# Overview of Tools
-[Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
-[Burp Suite](https://portswigger.net/burp) - is a tool for testing web app security, intercepting proxy to replay, inject, scan and fuzz.  
-[Gobuster](https://github.com/OJ/gobuster) - is a free and open source directory/file & DNS busting tool written in Go.  
-[Hashcat](https://hashcat.net/hashcat/) - is world's fastest and most advanced password recovery utility.  
-[Hydra](https://github.com/vanhauser-thc/thc-hydra) - is a parallelized login cracker which supports numerous protocols to attack  
-[The Ripper](https://www.openwall.com/john/) - is a fast password cracker, currently available for many flavors of Unix, Windows, and other.  
-[Metasploit](https://www.metasploit.com) - is a tool and framework for pentesting, it contains a lot a ready to use exploits.  
-[Nano](https://nano-editor.org) - is an easy to use command line text editor    
-[Nessus]() - `TO BE ADDED`  
-[Netcat](http://netcat.sourceforge.net) - is an utility which reads and writes data across network connections, using the TCP/IP protocol.  
-[Nikto 2](https://cirt.net/Nikto2) - is a web server scanner which performs comprehensive tests against web servers for multiple items.  
-[Nmap](https://nmap.org) - is a free and open source (license) utility for network discovery and security auditing.  
-[Vim](https://www.vim.org) - is a highly configurable text editor.  
-[Wireshark](https://www.wireshark.org) - is the world’s foremost and widely-used network protocol analyzer.  
-
 # Tools (CLI)
 ## Aircrack-ng
+[Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
+
 `TO BE ADDED`  
 https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
 ## Gobuster
-GoBuster is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
+[Gobuster](https://github.com/OJ/gobuster) is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
 ### Syntax
 `gobuster -w wordlist.txt`
 
@@ -387,7 +376,7 @@ feroxbuster uses brute force combined with a wordlist to search for unlinked con
 `-o, --output <FILE>` - Output file to write results  
 `-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. '4' -v's is probably too much)
 ## Hashcat
-Hashat is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
+[Hashcat](https://hashcat.net/hashcat/) is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
 [Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
 
 ### Syntax
@@ -427,7 +416,7 @@ Bruteforce
 `?a`  All (l,u,d,s)  
 `?b`  Binary  
 ## Hydra
-Hydra is a tool used to brute-force username and password to different services such as ftp, ssh, telnet, MS-SQL, etc.
+[Hydra](https://github.com/vanhauser-thc/thc-hydra) is a tool used to brute-force username and password to different services such as ftp, ssh, telnet, MS-SQL, etc.
 ### Syntax  
 `hydra -options path`  
 
@@ -465,7 +454,9 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 `-t <number> `specifies the number of threads to use  
 `-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
 ## John The Ripper
+[John The Ripper](https://www.openwall.com/john/) is a fast password cracker, currently available for many flavors of Unix, Windows, and other.
 https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
+
 ### SSH Private Key
 Crack hashed private key  
 `python /usr/share/john/ssh2john.py id_rsa > hash.txt`
@@ -475,7 +466,7 @@ ssh2john.py can sometimes also be located under `/opt/john/ssh2john.py`
 Crack the hash (or a shadow file)
 `john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
 ## Metasploit
-Metasploit is a collection of not only thoroughly tested exploits but also auxiliary and post-exploitation tools
+Metasploit is a collection of not only thoroughly tested exploits but also ready to use auxiliary and post-exploitation tools
 
 Initialize the database  
 `msfdb init`  
@@ -524,7 +515,7 @@ See what a machine could be vulnerable to
 Spawn a normal system shell  
 `shell`
 ## Netcat
-Netcat aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
+[Netcat](http://netcat.sourceforge.net) aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
 
 ### Syntax
 Computer B (acts as the receiving server):  
@@ -545,7 +536,7 @@ Computer A (acts as the sending client):
 `>` Server file redirection  
 `<` Client file redirection
 ## Nikto 2 
-nikto is a popular web scanning tool that allows users to find common web vulnerabilities. It is commonly used to check for common CVE's such as shellshock, and to get general information about the web server that you're enumerating.
+[Nikto 2](https://cirt.net/Nikto2) or nikto is a popular web scanning tool that allows users to find common web vulnerabilities. It is commonly used to check for common CVE's such as shellshock, and to get general information about the web server that you're enumerating.
 
 ### Syntax
 `nikto -h <ip> -port <port>`
@@ -561,7 +552,7 @@ nikto is a popular web scanning tool that allows users to find common web vulner
 `--list-plugins`  List all possible plugins to use   
 `-output` Output fingerprinted information to a file
 ## Nmap
-Nmap is a utility for network discovery and security auditing.
+[Nmap](https://nmap.org) is a utility for network discovery and security auditing.
 ### Syntax
 `nmap -switch1 -switch2 ipaddress`  
 
@@ -601,7 +592,7 @@ Scan an IPv6 address = `-6`
 Subnet mask with 255.255.255.0 = `<ip>/24`
 # Tools (GUI) 
 ## Burp 
-Burp Suite, a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
+[Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
 
 ### Setting up Burp Suite
 Download Burp Suite [here](https://portswigger.net/burp/communitydownload)  
@@ -642,7 +633,8 @@ We need to install a CA certificate as BurpSuite acts as a proxy between your br
 4. And last but not least, we can send these requests to other tools such as Repeater and Intruder for modification and manipulation to induce vulnerabilities
 
 ## Nessus
-Nessus is a GUI based vulnerability scanner
+[Nessus](https://www.tenable.com/products/nessus) is a GUI based vulnerability scanner
+
 ### Download and installation
 1. Click [here](https://www.tenable.com/products/nessus/nessus-essentials) and register an account.
 2. Download the Nessus-#.##.#-debian6_amd64.deb file
@@ -662,13 +654,15 @@ Change plugin properties such as hiding them or changing their severity = Plugin
 ![Nessus Scans](Images/Nessus.png)
 
 ## Wireshark
-Wireshark is a tool used for creating and analyzing PCAPs (network packet capture files)  
+[Wireshark](https://www.wireshark.org is a tool used for creating and analyzing PCAPs (network packet capture files)  
 
 Since this section is very large, I've created an individual page for this, which can be found inside this repository by clicking [here](More/Wireshark/README.md).
 
 
 # Text Editors
 ## Nano
+[Nano](https://nano-editor.org) is an easy to use command line text editor  
+
 ### Shortcuts
 `^G` Display help text.  
 `^O` Write the current file to disk  
@@ -682,7 +676,7 @@ Since this section is very large, I've created an individual page for this, whic
 `^\` Search and replace a string or regular expres­sion  
 
 ## Vim
-Vim is a free and open-source, screen-based text editor program for Unix
+[Vim](https://www.vim.org) is a free and open-source, screen-based and highly customizable text editor program for Unix
 
 ### Modes
 Generally speaking, there are three basic modes in Vim:
