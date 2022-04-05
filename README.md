@@ -315,399 +315,6 @@ ISO/IEC 27001 requires that management:
 
 An ISMS(Information Security Management System) may be certified compliant with ISO/IEC 27001 by a number of Accredited Registrars worldwide.
 
-# Tools (CLI)
-## Aircrack-ng
-[Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
-
-`TO BE ADDED`  
-https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
-## Gobuster
-[Gobuster](https://github.com/OJ/gobuster) is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
-### Syntax
-`gobuster -w wordlist.txt`
-
-### Example:  
-`gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
-
-### A list of options
-`dir` Directory/file brute forcing mode  
-`dns` DNS bruteforcing mode
-
-### A list of most useful flags:
-`-u` (url) – full target URL (including scheme), or base domain name.  
-`-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
-`-a` (user agent string) – specify a user agent string to send in the request header.  
-`-e` (print) - Print the full URLs in your console  
-`-o` (file) – specify a file name to write the output to.  
-`-x` (extensions) – list of extensions to check for, if any.  
-`-P` (password) – HTTP Authorization password (Basic Auth only, prompted if missing).  
-`-U` (username) – HTTP Authorization username (Basic Auth only).  
-`-c <http cookies>` (cookie) - Specify a cookie for simulating your auth  
-`-s` (status-codes) - Set status codes that should be interpreted as valid  
-`-k` (ssl) - Skip ssl certificate   
-`-H` (HTTP) - Specify HTTP header  
-## Feroxbuster
-feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories.
-
-**Syntax:**    
-`feroxbuster [OPTIONS]`
-
-**Example:**  
-`feroxbuster -u https://berkankutuk.dk -w /usr/share/wordlists/dirb/big.txt` 
-
-**Options:**  
-`-h, --help` - Print help information    
-`-V, --version` - Print version information    
-`-u, --url <URL>` - The target URL   
-`-b, --cookies <COOKIE>` - Specify HTTP cookies to be used in each request   
-`-m, --methods <HTTP_METHODS>` -  Which HTTP request method(s) should be sent (default: GET)  
-`-x, --extensions <FILE_EXTENSION>` - File extension(s) to search for (ex: -x php -x pdf js)  
-`-C, --filter-status <STATUS_CODE>` - Filter out status codes (deny list) (ex: -C 200 -C 401)  
-`-s, --status-codes <STATUS_CODE>` - Filter status codes (allow list) (default: 200 204 301 302 307 308 401 403 405)  
-`-r, --redirects` - Allow client to follow redirects  
-`-T, --timeout <SECONDS>` - Number of seconds before a client's request times out (default: 7)  
-`-d, --depth <RECURSION_DEPTH>` - Maximum recursion depth, a depth of 0 is infinite recursion (default: 4)  
-`-e, --extract-links` - Extract links from response body and make new requests based on findings  
-`-L, --scan-limit <SCAN_LIMIT>` - Limit total number of concurrent scans (default: 0, i.e. no limit)  
-`-n, --no-recursion` - Do not scan recursively  
-`-t, --threads <THREADS>` - Number of concurrent threads (default: 50)  
-`--time-limit <TIME_SPEC>` - Limit total run time of all scans (ex: --time-limit 10m)  
-`-w, --wordlist <FILE>` - Path to the wordlist  
-`-o, --output <FILE>` - Output file to write results  
-`-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. '4' -v's is probably too much)
-## Hashcat
-[Hashcat](https://hashcat.net/hashcat/) is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
-[Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
-
-### Syntax
-`hashcat -m <number> <hash_file> <dict_file>`
-
-### Example 
-Dictionary  
-`hashcat -m 1800 -a 0 hashed.txt /usr/share/wordlists/rockyou.txt -o output.txt`  
-
-Bruteforce  
-`hashcat -m 0 -a 3 -i hashed.txt ?a?a?a?a?a?a?a -o output.txt`
-
-### Flags
-`-m` sets the [mode](https://hashcat.net/wiki/doku.php?id=example_hashes)   
-`-a` sets the attack mode (0=Straight,1=Combination,3=Bruteforce,6=Hybrid:wlist+mask,7=Hybrid:mask+wlist)  
-`-o` output to filename   
-`-r` sets rules  
-`--status`  keep screen updated   
-`--runtime` abort after X seconds   
-`--force` sets workload to insane (This can lead to false positives)  
-`-i` increment (bruteforce)
-
-### Attack modes
-0=Straight  
-1=Combination  
-3=Bruteforce  
-6=Hybrid:wlist+mask  
-7=Hybrid:mask+wlist  
-
-### Charsets
-`?l`  Lowercase a-z  
-`?u`  Uppercase A-Z  
-`?d`  Decimals  
-`?h`  Hex using lowercase chars    
-`?H`  Hex using uppercase chars  
-`?s`  Special chars     
-`?a`  All (l,u,d,s)  
-`?b`  Binary  
-## Hydra
-[Hydra](https://github.com/vanhauser-thc/thc-hydra) is a tool used to brute-force username and password to different services such as ftp, ssh, telnet, MS-SQL, etc.
-### Syntax  
-`hydra -options path`  
-
-### Examples:  
-Guess SSH credentials using a given username and a list of passwords:  
-`hydra -l username -P path/to/wordlist.txt host_ip -t 4 ssh -V`
-
-Guess Telnet credentials using a list of usernames and a single password, specifying a non-standard port and IPv6: 
-`hydra -L path/to/usernames.txt -p password -s port -6 host_ip telnet`
-
-Guess FTP credentials using usernames and passwords lists, specifying the number of threads:  
-`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -t n_threads host_ip ftp` 
-
-Guess MySQL credentials using a username and a passwords list, exiting when a username/password pair is found:  
-`hydra -l username -P path/to/wordlist.txt -f host_ip mysql`
-
-Web form credentials:   
-`hydra -l admin -P /usr/share/wordlists/rockyou.txt <ip_adress> http-post-form "/login:username=^USER^&password=^PASS^:F=Username or password invalid" -V`
-
-Guess IMAP credentials on a range of hosts using a list of colon-separated username/password pairs:  
-`hydra -C path/to/username_password_pairs.txt imap://[host_range_cidr]`
-
-Guess POP3 credentials on a list of hosts using usernames and passwords lists, exiting when a username/password pair is found:  
-`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -M path/to/hosts.txt -F pop3`
-
-### A list of most useful options:
-`-S` connect via SSL  
-`-l` single username  
-`-L` wordlist username(s)   
-`-p` single password   
-`-P` wordlist password(s)    
-`-o` FILE write found login/password pairs to FILE instead of stdout  
-`-V` verbose mode, see output for every attempt  
-`-I` ignore the resume dialog  
-`-t <number> `specifies the number of threads to use  
-`-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
-## John The Ripper
-[John The Ripper](https://www.openwall.com/john/) is a fast password cracker, currently available for many flavors of Unix, Windows, and other.
-https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
-
-### SSH Private Key
-Crack hashed private key  
-`python /usr/share/john/ssh2john.py id_rsa > hash.txt`
-
-ssh2john.py can sometimes also be located under `/opt/john/ssh2john.py`
-
-Crack the hash (or a shadow file)
-`john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
-## Metasploit
-Metasploit is a collection of not only thoroughly tested exploits but also ready to use auxiliary and post-exploitation tools
-
-Initialize the database  
-`msfdb init`  
-
-View advanced options for starting the console  
-`msfconsole -h`  
-
-Start metasploit  
-`msfconsole`
-
-Check db connection  
-`db_status`
-
-Msf commands  
-`help` or `?` - shows the help page
-
-Search exploit  
-`search <exploit_for>`
-
-Select module  
-`use <module>`
-
-Change value of a variable  
-`set <variablename> <value>`  
-`get <variablename>`  
-`unset <variablename>` 
-
-Save msfconsole session  
-`save`
-
-Save console outputs  
-`spool` 
-
-See privileges of a current user  
-`getprivs`
-
-Tranfer files to victim computer  
-`upload`
-
-Check if the victim pc is in a VM (Windows)  
-`run post/windows/gather/checkvm`
-
-See what a machine could be vulnerable to  
-`run post/multi/recon/local_exploit_suggester`
-
-Spawn a normal system shell  
-`shell`
-## Netcat
-[Netcat](http://netcat.sourceforge.net) aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
-
-### Syntax
-Computer B (acts as the receiving server):  
-`nc -lvnp 6790 > testfile.txt`  
-Computer A (acts as the sending client):  
-`nc [IP address of computer B] 6790 < testfile.txt`  
-
-### A list of most useful switches:
-`-l` Listen to connections (TCP)  
-`-v` Enable verbose mode (allows you to see who connected to you)  
-`-p` Specify a port to listen to  
-`-e` Specify program to execute after connecting to a host  
-`-u` Connect to UDP ports    
-`-n` Fast scan by disabling DNS resolution  
-`-w` Define timeout value  
-`-4` IPv4 only   
-`-6` IPv6 only  
-`>` Server file redirection  
-`<` Client file redirection
-## Nikto 2 
-[Nikto 2](https://cirt.net/Nikto2) or nikto is a popular web scanning tool that allows users to find common web vulnerabilities. It is commonly used to check for common CVE's such as shellshock, and to get general information about the web server that you're enumerating.
-
-### Syntax
-`nikto -h <ip> -port <port>`
-
-### A list of most useful flags:
-`-h` Hostname/IP adress  
-`-port` Specify ports  
-`-nossl` Disable ssl  
-`-ssl` Force ssl  
-`-id` Specify authentication(username & password)  
-`-plugin` Select which plugin to use  
-`-update` Update the plugin list  
-`--list-plugins`  List all possible plugins to use   
-`-output` Output fingerprinted information to a file
-## Nmap
-[Nmap](https://nmap.org) is a utility for network discovery and security auditing.
-### Syntax
-`nmap -switch1 -switch2 ipaddress`  
-
-Example:  
-`nmap -sT -A -p- 172.162.39.86`  
-
-### A list of most useful switches:
-TCP scan (Most likely to be filtered)= `-sT`  
-TCP Syn Scan (No logging)= `-sS`  
-UDP scan (Slow)= `-sU`  
-
-ICMP Scanning (ping sweep) = `-sn`  
-Default ping scanning) = `-sP` 
-Detect OS = `-O`  
-Detect version of services = `-sV`  
-Scan with the default nmap scripts = `-sC`  
-Disable host discovery and just scan for open ports = `-Pn`  
-Change verbosity = `-v`  
-Change verbosity level two = `-vv` (It's good practice to *always* increase the verbosity in your scans.)  
-
-Save nmap results in three major formats = `-oA [filename] [target]`  
-Save nmap results in a text file = `-oN [filename] [target]`  
-Save nmap results in grepable format = `-oG [filename] [target]`  
-
-Aggresive mode (Enable OS detection, version detection, script scanning, and traceroute) = `-A`  
-Timing leves (Speed of scans, can make errors) = `-T<Level>` (0-5)  
-Port scan (specific)= `-p <port>`   
-Port scan (range) = `-p <from>-<to>`  
-Port scan (all) = `-p-`  
-Activate a script= `—-script=<script_name>`   
-Decoy an ip adress =  `-D`  
-Fast mode = `-F`
-Only open ports = `--open` 
-
-Scan an IPv6 address = `-6` 
-
-Subnet mask with 255.255.255.0 = `<ip>/24`
-# Tools (GUI) 
-## Burp 
-[Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
-
-### Setting up Burp Suite
-Download Burp Suite [here](https://portswigger.net/burp/communitydownload)  
-Burp Suite requires Java JRE in order to run. Download and install Java [here](https://www.java.com/en/download/)
-
-### Gettin' CA Certified
-We need to install a CA certificate as BurpSuite acts as a proxy between your browser and sending it through the internet - It allows the BurpSuite Application to read and send on HTTPS data. 
-
-1. Download [Foxy Proxy](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) in order to fully leverage the proxy, we'll have to install the CA certificate included with Burp Suite (otherwise we won't be able to load anything with SSL).
-2. Now click on the extension -> Options -> Add -> Fill in the fields with the following values:  
-   1. Title = Burp  
-   2. Proxy type = HTTP  
-   3. Proxy IP adress or DNS name = `127.0.0.1`  
-   4. Port = `8080`  
-   5. Username and password is optional.  
-3. And hit save.  
-4. Finally, click on the FoxyProxy extension icon again and select 'Burp'.
-5. With Firefox, navigate to the following address: `http://localhost:8080`
-6. Click on 'CA Certificate' in the top right to download and save the CA Certificate.
-7. Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
-8. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
-
-### Overview of Features
-* **Proxy** - What allows us to funnel traffic through Burp Suite for further analysis
-* **Target** - How we set the scope of our project. We can also use this to effectively create a site map of the application we are testing
-* **Intruder** - Incredibly powerful tool for everything from field fuzzing to credential stuffing and more
-* **Repeater** - Allows us to 'repeat' requests that have previously been made with or without modification. Often used in a precursor step to fuzzing with the aforementioned Intruder
-* **Sequencer** - Analyzes the 'randomness' present in parts of the web app which are intended to be unpredictable. This is commonly used for testing session cookies
-* **Decoder** - As the name suggests, Decoder is a tool that allows us to perform various transforms on pieces of data. These transforms vary from decoding/encoding to various bases or URL encoding.
-* **Comparer** - Comparer as you might have guessed is a tool we can use to compare different responses or other pieces of data such as site maps or proxy histories (awesome for access control issue testing). This is very similar to the Linux tool diff.
-* **Extender** - Similar to adding mods to a game like Minecraft, Extender allows us to add components such as tool integrations, additional scan definitions, and more!
-* **Scanner** - Automated web vulnerability scanner that can highlight areas of the application for further manual investigation or possible exploitation with another section of Burp. This feature, while not in the community edition of Burp Suite, is still a key facet of performing a web application test.
-
-### Benefits
-1. Requests will by default require our authorization to be sent.
-2. We can modify our requests in-line similar to what you might see in a man-in-the-middle attack and then send them on.
-3. We can also drop requests we don't want to be sent. This can be useful to see the request attempt after clicking a button or performing another action on the website. 
-4. And last but not least, we can send these requests to other tools such as Repeater and Intruder for modification and manipulation to induce vulnerabilities
-
-## Nessus
-[Nessus](https://www.tenable.com/products/nessus) is a GUI based vulnerability scanner
-
-### Download and installation
-1. Click [here](https://www.tenable.com/products/nessus/nessus-essentials) and register an account.
-2. Download the Nessus-#.##.#-debian6_amd64.deb file
-3. Navigate to the download and run the following command: `sudo dpkg -i package_file.deb`
-4. Start the nessus service wit the command: `sudo /bin/systemctl start nessusd.service` 
-5. Open up Firefox and goto the following URL: `https://localhost:8834/` (Accept risk in case you get prompted)
-6. Choose "Nessus Essentials" and click next. Skip when asked for a activation code
-7. Login with your account
-8. Wait for installation and then login again
-
-### Navigation and Scans
-Launch a scan = Hit the "New Scan"    
-Side menu option that allows us to create custom templates = Policies    
-Change plugin properties such as hiding them or changing their severity = Plugin rules  
-
-### Scans
-![Nessus Scans](Images/Nessus.png)
-
-## Wireshark
-[Wireshark](https://www.wireshark.org is a tool used for creating and analyzing PCAPs (network packet capture files)  
-
-Since this section is very large, I've created an individual page for this, which can be found inside this repository by clicking [here](More/Wireshark/README.md).
-
-
-# Text Editors
-## Nano
-[Nano](https://nano-editor.org) is an easy to use command line text editor  
-
-### Shortcuts
-`^G` Display help text.  
-`^O` Write the current file to disk  
-`^X` Exit nano.  
-`^T` Invoke spellc­heck, if installed.  
-`^Y` Next screen.  
-`^V` Previous screen.  
-`^L` Refresh (force redraw) current screen.  
-`^J` Justify current paragraph. (Join together broken lines of text until double newline is encoun­tered.)  
-`^W` Search for a string or regular expres­sion.  
-`^\` Search and replace a string or regular expres­sion  
-
-## Vim
-[Vim](https://www.vim.org) is a free and open-source, screen-based and highly customizable text editor program for Unix
-
-### Modes
-Generally speaking, there are three basic modes in Vim:
-
-`Command mode` – allows you to run commands (Default).  
-`Insert mode` – allows you to insert/write text.  
-`Visual mode` – visual text selector.  
-
-### Basic keybinds
-`h` – move the cursor left  
-`j` – cursor down  
-`k` – cursor up  
-`l` – move the cursor right  
-`i` – enter the insert mode  
-`esc` – enter the command mode  
-`$` – move to the end of the line  
-`yy` – copy a line  
-`p` – paste  
-`d` – delete a line  
-`x` – cut a character  
-
-### Basic commands:
-`:q` – quit  
-`:wq` – write & quit  
-`:q!` – quit without saving  
-`/word` – search for ‘word’ in the document  
-`:vimgrep` – grep integration in Vim (allows to search in multiple files)
-
-Find other very usefull commands [here](/More/VIM/README.md), or a full cheatsheet [here](https://vim.rtorr.com).
-
-
 # Linux Commands 
 ## ls
 ls is a Linux shell command that lists directory contents of files and directories.
@@ -1125,6 +732,399 @@ Redirects the file descriptors for the errors (STDERR) to "`/dev/null`" This way
 
 **Redirect STDOUT and STDERR to Separate Files**  
 `find /etc/ -name shadow 2> stderr.txt 1> stdout.txt`
+
+
+# Tools (CLI)
+## Aircrack-ng
+[Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
+
+`TO BE ADDED`  
+https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
+## Gobuster
+[Gobuster](https://github.com/OJ/gobuster) is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
+### Syntax
+`gobuster -w wordlist.txt`
+
+### Example:  
+`gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
+
+### A list of options
+`dir` Directory/file brute forcing mode  
+`dns` DNS bruteforcing mode
+
+### A list of most useful flags:
+`-u` (url) – full target URL (including scheme), or base domain name.  
+`-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
+`-a` (user agent string) – specify a user agent string to send in the request header.  
+`-e` (print) - Print the full URLs in your console  
+`-o` (file) – specify a file name to write the output to.  
+`-x` (extensions) – list of extensions to check for, if any.  
+`-P` (password) – HTTP Authorization password (Basic Auth only, prompted if missing).  
+`-U` (username) – HTTP Authorization username (Basic Auth only).  
+`-c <http cookies>` (cookie) - Specify a cookie for simulating your auth  
+`-s` (status-codes) - Set status codes that should be interpreted as valid  
+`-k` (ssl) - Skip ssl certificate   
+`-H` (HTTP) - Specify HTTP header  
+## Feroxbuster
+feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories.
+
+**Syntax:**    
+`feroxbuster [OPTIONS]`
+
+**Example:**  
+`feroxbuster -u https://berkankutuk.dk -w /usr/share/wordlists/dirb/big.txt` 
+
+**Options:**  
+`-h, --help` - Print help information    
+`-V, --version` - Print version information    
+`-u, --url <URL>` - The target URL   
+`-b, --cookies <COOKIE>` - Specify HTTP cookies to be used in each request   
+`-m, --methods <HTTP_METHODS>` -  Which HTTP request method(s) should be sent (default: GET)  
+`-x, --extensions <FILE_EXTENSION>` - File extension(s) to search for (ex: -x php -x pdf js)  
+`-C, --filter-status <STATUS_CODE>` - Filter out status codes (deny list) (ex: -C 200 -C 401)  
+`-s, --status-codes <STATUS_CODE>` - Filter status codes (allow list) (default: 200 204 301 302 307 308 401 403 405)  
+`-r, --redirects` - Allow client to follow redirects  
+`-T, --timeout <SECONDS>` - Number of seconds before a client's request times out (default: 7)  
+`-d, --depth <RECURSION_DEPTH>` - Maximum recursion depth, a depth of 0 is infinite recursion (default: 4)  
+`-e, --extract-links` - Extract links from response body and make new requests based on findings  
+`-L, --scan-limit <SCAN_LIMIT>` - Limit total number of concurrent scans (default: 0, i.e. no limit)  
+`-n, --no-recursion` - Do not scan recursively  
+`-t, --threads <THREADS>` - Number of concurrent threads (default: 50)  
+`--time-limit <TIME_SPEC>` - Limit total run time of all scans (ex: --time-limit 10m)  
+`-w, --wordlist <FILE>` - Path to the wordlist  
+`-o, --output <FILE>` - Output file to write results  
+`-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. '4' -v's is probably too much)
+## Hashcat
+[Hashcat](https://hashcat.net/hashcat/) is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
+[Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
+
+### Syntax
+`hashcat -m <number> <hash_file> <dict_file>`
+
+### Example 
+Dictionary  
+`hashcat -m 1800 -a 0 hashed.txt /usr/share/wordlists/rockyou.txt -o output.txt`  
+
+Bruteforce  
+`hashcat -m 0 -a 3 -i hashed.txt ?a?a?a?a?a?a?a -o output.txt`
+
+### Flags
+`-m` sets the [mode](https://hashcat.net/wiki/doku.php?id=example_hashes)   
+`-a` sets the attack mode (0=Straight,1=Combination,3=Bruteforce,6=Hybrid:wlist+mask,7=Hybrid:mask+wlist)  
+`-o` output to filename   
+`-r` sets rules  
+`--status`  keep screen updated   
+`--runtime` abort after X seconds   
+`--force` sets workload to insane (This can lead to false positives)  
+`-i` increment (bruteforce)
+
+### Attack modes
+0=Straight  
+1=Combination  
+3=Bruteforce  
+6=Hybrid:wlist+mask  
+7=Hybrid:mask+wlist  
+
+### Charsets
+`?l`  Lowercase a-z  
+`?u`  Uppercase A-Z  
+`?d`  Decimals  
+`?h`  Hex using lowercase chars    
+`?H`  Hex using uppercase chars  
+`?s`  Special chars     
+`?a`  All (l,u,d,s)  
+`?b`  Binary  
+## Hydra
+[Hydra](https://github.com/vanhauser-thc/thc-hydra) is a tool used to brute-force username and password to different services such as ftp, ssh, telnet, MS-SQL, etc.
+### Syntax  
+`hydra -options path`  
+
+### Examples:  
+Guess SSH credentials using a given username and a list of passwords:  
+`hydra -l username -P path/to/wordlist.txt host_ip -t 4 ssh -V`
+
+Guess Telnet credentials using a list of usernames and a single password, specifying a non-standard port and IPv6: 
+`hydra -L path/to/usernames.txt -p password -s port -6 host_ip telnet`
+
+Guess FTP credentials using usernames and passwords lists, specifying the number of threads:  
+`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -t n_threads host_ip ftp` 
+
+Guess MySQL credentials using a username and a passwords list, exiting when a username/password pair is found:  
+`hydra -l username -P path/to/wordlist.txt -f host_ip mysql`
+
+Web form credentials:   
+`hydra -l admin -P /usr/share/wordlists/rockyou.txt <ip_adress> http-post-form "/login:username=^USER^&password=^PASS^:F=Username or password invalid" -V`
+
+Guess IMAP credentials on a range of hosts using a list of colon-separated username/password pairs:  
+`hydra -C path/to/username_password_pairs.txt imap://[host_range_cidr]`
+
+Guess POP3 credentials on a list of hosts using usernames and passwords lists, exiting when a username/password pair is found:  
+`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -M path/to/hosts.txt -F pop3`
+
+### A list of most useful options:
+`-S` connect via SSL  
+`-l` single username  
+`-L` wordlist username(s)   
+`-p` single password   
+`-P` wordlist password(s)    
+`-o` FILE write found login/password pairs to FILE instead of stdout  
+`-V` verbose mode, see output for every attempt  
+`-I` ignore the resume dialog  
+`-t <number> `specifies the number of threads to use  
+`-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
+## John The Ripper
+[John The Ripper](https://www.openwall.com/john/) is a fast password cracker, currently available for many flavors of Unix, Windows, and other.
+https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
+
+### SSH Private Key
+Crack hashed private key  
+`python /usr/share/john/ssh2john.py id_rsa > hash.txt`
+
+ssh2john.py can sometimes also be located under `/opt/john/ssh2john.py`
+
+Crack the hash (or a shadow file)
+`john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
+## Metasploit
+Metasploit is a collection of not only thoroughly tested exploits but also ready to use auxiliary and post-exploitation tools
+
+Initialize the database  
+`msfdb init`  
+
+View advanced options for starting the console  
+`msfconsole -h`  
+
+Start metasploit  
+`msfconsole`
+
+Check db connection  
+`db_status`
+
+Msf commands  
+`help` or `?` - shows the help page
+
+Search exploit  
+`search <exploit_for>`
+
+Select module  
+`use <module>`
+
+Change value of a variable  
+`set <variablename> <value>`  
+`get <variablename>`  
+`unset <variablename>` 
+
+Save msfconsole session  
+`save`
+
+Save console outputs  
+`spool` 
+
+See privileges of a current user  
+`getprivs`
+
+Tranfer files to victim computer  
+`upload`
+
+Check if the victim pc is in a VM (Windows)  
+`run post/windows/gather/checkvm`
+
+See what a machine could be vulnerable to  
+`run post/multi/recon/local_exploit_suggester`
+
+Spawn a normal system shell  
+`shell`
+## Netcat
+[Netcat](http://netcat.sourceforge.net) aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
+
+### Syntax
+Computer B (acts as the receiving server):  
+`nc -lvnp 6790 > testfile.txt`  
+Computer A (acts as the sending client):  
+`nc [IP address of computer B] 6790 < testfile.txt`  
+
+### A list of most useful switches:
+`-l` Listen to connections (TCP)  
+`-v` Enable verbose mode (allows you to see who connected to you)  
+`-p` Specify a port to listen to  
+`-e` Specify program to execute after connecting to a host  
+`-u` Connect to UDP ports    
+`-n` Fast scan by disabling DNS resolution  
+`-w` Define timeout value  
+`-4` IPv4 only   
+`-6` IPv6 only  
+`>` Server file redirection  
+`<` Client file redirection
+## Nikto 2 
+[Nikto 2](https://cirt.net/Nikto2) or nikto is a popular web scanning tool that allows users to find common web vulnerabilities. It is commonly used to check for common CVE's such as shellshock, and to get general information about the web server that you're enumerating.
+
+### Syntax
+`nikto -h <ip> -port <port>`
+
+### A list of most useful flags:
+`-h` Hostname/IP adress  
+`-port` Specify ports  
+`-nossl` Disable ssl  
+`-ssl` Force ssl  
+`-id` Specify authentication(username & password)  
+`-plugin` Select which plugin to use  
+`-update` Update the plugin list  
+`--list-plugins`  List all possible plugins to use   
+`-output` Output fingerprinted information to a file
+## Nmap
+[Nmap](https://nmap.org) is a utility for network discovery and security auditing.
+### Syntax
+`nmap -switch1 -switch2 ipaddress`  
+
+Example:  
+`nmap -sT -A -p- 172.162.39.86`  
+
+### A list of most useful switches:
+TCP scan (Most likely to be filtered)= `-sT`  
+TCP Syn Scan (No logging)= `-sS`  
+UDP scan (Slow)= `-sU`  
+
+ICMP Scanning (ping sweep) = `-sn`  
+Default ping scanning) = `-sP` 
+Detect OS = `-O`  
+Detect version of services = `-sV`  
+Scan with the default nmap scripts = `-sC`  
+Disable host discovery and just scan for open ports = `-Pn`  
+Change verbosity = `-v`  
+Change verbosity level two = `-vv` (It's good practice to *always* increase the verbosity in your scans.)  
+
+Save nmap results in three major formats = `-oA [filename] [target]`  
+Save nmap results in a text file = `-oN [filename] [target]`  
+Save nmap results in grepable format = `-oG [filename] [target]`  
+
+Aggresive mode (Enable OS detection, version detection, script scanning, and traceroute) = `-A`  
+Timing leves (Speed of scans, can make errors) = `-T<Level>` (0-5)  
+Port scan (specific)= `-p <port>`   
+Port scan (range) = `-p <from>-<to>`  
+Port scan (all) = `-p-`  
+Activate a script= `—-script=<script_name>`   
+Decoy an ip adress =  `-D`  
+Fast mode = `-F`
+Only open ports = `--open` 
+
+Scan an IPv6 address = `-6` 
+
+Subnet mask with 255.255.255.0 = `<ip>/24`
+# Tools (GUI) 
+## Burp 
+[Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
+
+### Setting up Burp Suite
+Download Burp Suite [here](https://portswigger.net/burp/communitydownload)  
+Burp Suite requires Java JRE in order to run. Download and install Java [here](https://www.java.com/en/download/)
+
+### Gettin' CA Certified
+We need to install a CA certificate as BurpSuite acts as a proxy between your browser and sending it through the internet - It allows the BurpSuite Application to read and send on HTTPS data. 
+
+1. Download [Foxy Proxy](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) in order to fully leverage the proxy, we'll have to install the CA certificate included with Burp Suite (otherwise we won't be able to load anything with SSL).
+2. Now click on the extension -> Options -> Add -> Fill in the fields with the following values:  
+   1. Title = Burp  
+   2. Proxy type = HTTP  
+   3. Proxy IP adress or DNS name = `127.0.0.1`  
+   4. Port = `8080`  
+   5. Username and password is optional.  
+3. And hit save.  
+4. Finally, click on the FoxyProxy extension icon again and select 'Burp'.
+5. With Firefox, navigate to the following address: `http://localhost:8080`
+6. Click on 'CA Certificate' in the top right to download and save the CA Certificate.
+7. Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
+8. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
+
+### Overview of Features
+* **Proxy** - What allows us to funnel traffic through Burp Suite for further analysis
+* **Target** - How we set the scope of our project. We can also use this to effectively create a site map of the application we are testing
+* **Intruder** - Incredibly powerful tool for everything from field fuzzing to credential stuffing and more
+* **Repeater** - Allows us to 'repeat' requests that have previously been made with or without modification. Often used in a precursor step to fuzzing with the aforementioned Intruder
+* **Sequencer** - Analyzes the 'randomness' present in parts of the web app which are intended to be unpredictable. This is commonly used for testing session cookies
+* **Decoder** - As the name suggests, Decoder is a tool that allows us to perform various transforms on pieces of data. These transforms vary from decoding/encoding to various bases or URL encoding.
+* **Comparer** - Comparer as you might have guessed is a tool we can use to compare different responses or other pieces of data such as site maps or proxy histories (awesome for access control issue testing). This is very similar to the Linux tool diff.
+* **Extender** - Similar to adding mods to a game like Minecraft, Extender allows us to add components such as tool integrations, additional scan definitions, and more!
+* **Scanner** - Automated web vulnerability scanner that can highlight areas of the application for further manual investigation or possible exploitation with another section of Burp. This feature, while not in the community edition of Burp Suite, is still a key facet of performing a web application test.
+
+### Benefits
+1. Requests will by default require our authorization to be sent.
+2. We can modify our requests in-line similar to what you might see in a man-in-the-middle attack and then send them on.
+3. We can also drop requests we don't want to be sent. This can be useful to see the request attempt after clicking a button or performing another action on the website. 
+4. And last but not least, we can send these requests to other tools such as Repeater and Intruder for modification and manipulation to induce vulnerabilities
+
+## Nessus
+[Nessus](https://www.tenable.com/products/nessus) is a GUI based vulnerability scanner
+
+### Download and installation
+1. Click [here](https://www.tenable.com/products/nessus/nessus-essentials) and register an account.
+2. Download the Nessus-#.##.#-debian6_amd64.deb file
+3. Navigate to the download and run the following command: `sudo dpkg -i package_file.deb`
+4. Start the nessus service wit the command: `sudo /bin/systemctl start nessusd.service` 
+5. Open up Firefox and goto the following URL: `https://localhost:8834/` (Accept risk in case you get prompted)
+6. Choose "Nessus Essentials" and click next. Skip when asked for a activation code
+7. Login with your account
+8. Wait for installation and then login again
+
+### Navigation and Scans
+Launch a scan = Hit the "New Scan"    
+Side menu option that allows us to create custom templates = Policies    
+Change plugin properties such as hiding them or changing their severity = Plugin rules  
+
+### Scans
+![Nessus Scans](Images/Nessus.png)
+
+## Wireshark
+[Wireshark](https://www.wireshark.org is a tool used for creating and analyzing PCAPs (network packet capture files)  
+
+Since this section is very large, I've created an individual page for this, which can be found inside this repository by clicking [here](More/Wireshark/README.md).
+
+
+# Text Editors
+## Nano
+[Nano](https://nano-editor.org) is an easy to use command line text editor  
+
+### Shortcuts
+`^G` Display help text.  
+`^O` Write the current file to disk  
+`^X` Exit nano.  
+`^T` Invoke spellc­heck, if installed.  
+`^Y` Next screen.  
+`^V` Previous screen.  
+`^L` Refresh (force redraw) current screen.  
+`^J` Justify current paragraph. (Join together broken lines of text until double newline is encoun­tered.)  
+`^W` Search for a string or regular expres­sion.  
+`^\` Search and replace a string or regular expres­sion  
+
+## Vim
+[Vim](https://www.vim.org) is a free and open-source, screen-based and highly customizable text editor program for Unix
+
+### Modes
+Generally speaking, there are three basic modes in Vim:
+
+`Command mode` – allows you to run commands (Default).  
+`Insert mode` – allows you to insert/write text.  
+`Visual mode` – visual text selector.  
+
+### Basic keybinds
+`h` – move the cursor left  
+`j` – cursor down  
+`k` – cursor up  
+`l` – move the cursor right  
+`i` – enter the insert mode  
+`esc` – enter the command mode  
+`$` – move to the end of the line  
+`yy` – copy a line  
+`p` – paste  
+`d` – delete a line  
+`x` – cut a character  
+
+### Basic commands:
+`:q` – quit  
+`:wq` – write & quit  
+`:q!` – quit without saving  
+`/word` – search for ‘word’ in the document  
+`:vimgrep` – grep integration in Vim (allows to search in multiple files)
+
+Find other very usefull commands [here](/More/VIM/README.md), or a full cheatsheet [here](https://vim.rtorr.com).
 
 # Steps
 ## Content Discovery
