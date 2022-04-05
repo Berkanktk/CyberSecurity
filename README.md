@@ -111,7 +111,8 @@
 [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking      
 [GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.    
 [Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/) - tool to identify hash types      
-[have i been pwned?](https://haveibeenpwned.com) - check if you have an account that has been compromised in a data breach.      
+[have i been pwned?](https://haveibeenpwned.com) - check if you have an account that has been compromised in a data breach.        
+[HexEd](https://hexed.it) - HexEd is a powerful online hex editor running in your web browser  
 [hilite.me](http://hilite.me) - converts your code snippets into pretty-printed HTML formats    
 [HSV to RGB](https://www.rapidtables.com/convert/color/hsv-to-rgb.html) - HSV to RGB color converter     
 [HTML Reference](https://htmlreference.io) - HTML reference    
