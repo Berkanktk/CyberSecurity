@@ -1,8 +1,3 @@
-# A collapsible section with markdown
-<details>
-  <summary>SOMETHING</summary>
-</details>
-
 # List of Contents
 1. [Links](#links)
 2. [CTF Sites](#ctf-sites)
