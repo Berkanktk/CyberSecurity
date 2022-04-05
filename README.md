@@ -116,11 +116,14 @@
 [HSV to RGB](https://www.rapidtables.com/convert/color/hsv-to-rgb.html) - HSV to RGB color converter     
 [HTML Reference](https://htmlreference.io) - HTML reference    
 [HTTrack](https://www.httrack.com) - website copier      
-[Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel     
+[Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel   
+[Intelix](https://intelx.io) - Search Tor, I2P, data leaks and the public web by email, domain, IP, CIDR, Bitcoin address and more.    
 [k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.      
-[Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.    
+[Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.   
+[LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/) - learn about local file inclusion       
 [malc0de](http://malc0de.com/database) - malware search engine.   
 [MD5 Online](https://www.md5online.org/md5-decrypt.html) - md5Online offers several tools related to the MD5 cryptographic algorithm.     
+[NerdyData](https://www.nerdydata.com) - the search engine for source code  
 [Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.      
 [PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools     
 [Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.      
