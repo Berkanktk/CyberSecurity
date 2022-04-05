@@ -99,6 +99,8 @@
 [CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.      
 [CyberChef](https://gchq.github.io/CyberChef/) - a web app for encryption, encoding, compression and data analysis.     
 [Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.  
+[CTF 101](https://ctf101.org) - learn the different CTF topics in cybersecurity  
+[CTF Cryptography](https://charcharbinks.com/post/ctf_crypto_for_beginners/#cryptography-concepts-and-terms) - ctf cryptography for beginners  
 [dCode](https://www.dcode.fr/en) - dcode.fr has many decoders for a lot of ciphers  
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.      
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
