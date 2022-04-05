@@ -4,9 +4,11 @@
    2. [Encryption](#encryption)
    3. [Encoding](#encoding)
 2. [Links](#links)
-3. [Services](#services)
-4. [Terms](#terms)
-5. [Principles and Standards](#principles-and-standards)
+3. [CTF Sites](#ctf-sites)
+4. [Books](#books)
+5. [Services](#services)
+6. [Terms](#terms)
+7. [Principles and Standards](#principles-and-standards)
    1. [CIA Triad](#cia-triad)
    2. [Principle of privileges](#principles-of-privileges)
    3. [Security Models](#security-models)
@@ -15,8 +17,8 @@
    6. [Methodologies](#methodologies)
    7. [Black, grey & white box](#black-grey--white-box)
    8. [ISO27001](#iso27001)
-6. [Overview of tools](#overview-of-tools)
-7. [Tools (CLI)](#tools-cli)
+8.  [Linux Commands](#linux-commands)
+9. [Tools (CLI)](#tools-cli)
    1. [Aircrack-ng](#aircrack-ng)
    2. [Feroxbuster](#feroxbuster)
    3. [Hashcat](#hashcat)
@@ -27,59 +29,58 @@
    8. [Netcat](#netcat)
    9.  [Nikto](#nikto-2)
    10. [Nmap](#nmap)
-8. [Tools (GUI)](#tools-gui)
-   1. [Burp Suite](#burp)
-   2. [Nessus](#nessus)
-   3. [Wireshark](#wireshark)
-9.  [Text Editors](#text-editors)
+10. [Tools (GUI)](#tools-gui)
+    1.  [Burp Suite](#burp)
+    2.  [Nessus](#nessus)
+    3.  [Wireshark](#wireshark)
+11. [Text Editors](#text-editors)
     1.  [Nano](#nano)
     2.  [VIM](#vim)
-10. [Linux Commands](#linux-commands)
-11. [Steps](#steps)
-    1. [Content Discovery](#content-discovery)
-    2. [Privilege Escalation](#privilege-escalation)
-    3. [TTY Shell](#tty-shell)
-    4. [Phishing](#phishing)
-12. [Forensics](#forensics)
-    1.  [File Analysis](#file-analysis)
-    2.  [Stegonography](#steganography)
-    3.  [Memory Analysis](#memory-analysis)
-13. [Cryptology](#cryptology)
+12. [Cryptology](#cryptology)
     1. [Generate Keys](#generate-keys)
-14. [Networking](#networking) 
-15. [Vulnerabilities](#vulnerabilities)
-    1.  [SQL Injection](#sql-injection)
-    2.  [XSS](#xss-cross-site-scripting)
-    3.  [Printer Hacking](#printer-hacking-ipp)
-
-# Concepts
-## Hashing
-Hashing is used for 2 main purposes in Cyber Security. To verify integrity of data, or for verifying passwords. 
-
-plaintext ➡️ hash  
-hash ⛔ plaintext
-
-Doing a lookup in a sorted list of hashes that are not salted is quite fast, much much faster than trying to crack the hash. But in case we have to crack, then its done by hashing a large number of different inputs (often rockyou.txt, these are the possible passwords), potentially adding the salt if there is one and comparing it to the target hash. 
-
-Tools like Hashcat and John the Ripper are normally used for this.
-
-## Encryption
-### Symetric encryption
-plaintext ➡️ 🔑 ➡️ ciphertext  
-plaintext ⬅️ 🔑 ⬅️ ciphertext  
-(🔑 shared key)
-
-### Asymetric encryption
-plaintext ➡️ 🔑 ➡️ ciphertext  
-plaintext ⬅️ 🗝 ⬅️ ciphertext  
-(🔑 public key, 🗝 private key
-
-Public key to encrypt, private key to decrypt.
-
-## Encoding
-Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
-
-A very popular encoding is Base64
+13. [Networking](#networking) 
+14. [Exploitation]
+    1.  [Web Exploitation](#web-exploitation)
+        1.  [Content Discovery](#content-discovery)
+        2.  [SQL Injection](#sql-injection)
+        3.  [Command Injection](#command-injection)
+        4.  [Directory Traversak](#directory-traversal)
+        5.  [Cross Site Request Forgery](#cross-site-request-forgery)
+        6.  [Cross Site Scripting](#cross-site-scripting)
+        7.  [Server Side Request Forgery](#server-side-request-forgery)
+    2.  [Forensics](#forensics)
+        1.  [File Analysis](#file-analysis)
+        2.  [PCAP Analysis](#pcap-analysis)
+        3.  [Stegonography](#stegonography)
+        4.  [Memory analysis](#memory-analysis)
+        5.  [Disk imaging](#disk-imaging)
+    3.  [Binary Exploitation](#binary-exploitation)
+        1.  [Registers](#registers)
+        1.  [The Stack](#the-stack)
+        2.  [Calling Conventions](#calling-conventions)
+        3.  [Global Offset Table (GOT)](#global-offset-table-got)
+        4.  [Buffers and Buffer Overflows](#buffers)
+        5.  [Return Oriented Programming (ROP)](#return-oriented-programming-rop)
+        6.  [Binary Security](#binary-security)
+        7.  [The Heap and Exploitation](#the-heap)
+        8.  [Format String Vulnerability](#format-string-vulnerability)
+    4.  [Reverse Engineering](#reverse-engineering)
+        1.  [Assembly](#assembly)
+        1.  [Disassemblers](#disassemblers)
+    5.  [Cryptography](#cryptography)
+        1.  [Encoding](#encoding)
+        2.  [Hashing](#hashing)
+        2.  [Ciphers](#ciphers)
+        3.  [Encryption (RSA)](#encryption-rsa)
+    6.  [Miscellaneous](#miscellaneous)
+    7.  [Windows Exploitation](#windows-exploitation)
+        1.  [Active Directory](#active-directory)   
+    8.  [Shells and Privilege Escalation](#shells-and-priviege-escalation)
+        1.  [TTY Shell](#tty-shell)
+        2.  [Privilege Escalation](#privilege-escalation)
+    9.  [Vulnerabilities](#vulnerabilities)
+        1.  [Social Engineering](#social-engineering)
+        2.  [Misconfigurations](#misconfigurations)
 
 # Links
 [AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
@@ -143,6 +144,9 @@ A very popular encoding is Base64
 [WhatsMyName](https://whatsmyname.app) - social media username enumeration     
 [WHOIS lookup](https://whois.domaintools.com) - best whois lookup    
 [Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world      
+
+# CTF Sites
+# Books
 
 # Services
 ## Active directory (Windows)
@@ -311,408 +315,6 @@ ISO/IEC 27001 requires that management:
 * Adopt an overarching management process to ensure that the information security controls continue to meet the organization's information security needs on an ongoing basis.
 
 An ISMS(Information Security Management System) may be certified compliant with ISO/IEC 27001 by a number of Accredited Registrars worldwide.
-
-# Overview of Tools
-[Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
-[Burp Suite](https://portswigger.net/burp) - is a tool for testing web app security, intercepting proxy to replay, inject, scan and fuzz.  
-[Gobuster](https://github.com/OJ/gobuster) - is a free and open source directory/file & DNS busting tool written in Go.  
-[Hashcat](https://hashcat.net/hashcat/) - is world's fastest and most advanced password recovery utility.  
-[Hydra](https://github.com/vanhauser-thc/thc-hydra) - is a parallelized login cracker which supports numerous protocols to attack  
-[The Ripper](https://www.openwall.com/john/) - is a fast password cracker, currently available for many flavors of Unix, Windows, and other.  
-[Metasploit](https://www.metasploit.com) - is a tool and framework for pentesting, it contains a lot a ready to use exploits.  
-[Nano](https://nano-editor.org) - is an easy to use command line text editor    
-[Nessus]() - `TO BE ADDED`  
-[Netcat](http://netcat.sourceforge.net) - is an utility which reads and writes data across network connections, using the TCP/IP protocol.  
-[Nikto 2](https://cirt.net/Nikto2) - is a web server scanner which performs comprehensive tests against web servers for multiple items.  
-[Nmap](https://nmap.org) - is a free and open source (license) utility for network discovery and security auditing.  
-[Vim](https://www.vim.org) - is a highly configurable text editor.  
-[Wireshark](https://www.wireshark.org) - is the world’s foremost and widely-used network protocol analyzer.  
-
-# Tools (CLI)
-## Aircrack-ng
-`TO BE ADDED`  
-https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
-## Gobuster
-GoBuster is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
-### Syntax
-`gobuster -w wordlist.txt`
-
-### Example:  
-`gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
-
-### A list of options
-`dir` Directory/file brute forcing mode  
-`dns` DNS bruteforcing mode
-
-### A list of most useful flags:
-`-u` (url) – full target URL (including scheme), or base domain name.  
-`-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
-`-a` (user agent string) – specify a user agent string to send in the request header.  
-`-e` (print) - Print the full URLs in your console  
-`-o` (file) – specify a file name to write the output to.  
-`-x` (extensions) – list of extensions to check for, if any.  
-`-P` (password) – HTTP Authorization password (Basic Auth only, prompted if missing).  
-`-U` (username) – HTTP Authorization username (Basic Auth only).  
-`-c <http cookies>` (cookie) - Specify a cookie for simulating your auth  
-`-s` (status-codes) - Set status codes that should be interpreted as valid  
-`-k` (ssl) - Skip ssl certificate   
-`-H` (HTTP) - Specify HTTP header  
-## Feroxbuster
-feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories.
-
-**Syntax:**    
-`feroxbuster [OPTIONS]`
-
-**Example:**  
-`feroxbuster -u https://berkankutuk.dk -w /usr/share/wordlists/dirb/big.txt` 
-
-**Options:**  
-`-h, --help` - Print help information    
-`-V, --version` - Print version information    
-`-u, --url <URL>` - The target URL   
-`-b, --cookies <COOKIE>` - Specify HTTP cookies to be used in each request   
-`-m, --methods <HTTP_METHODS>` -  Which HTTP request method(s) should be sent (default: GET)  
-`-x, --extensions <FILE_EXTENSION>` - File extension(s) to search for (ex: -x php -x pdf js)  
-`-C, --filter-status <STATUS_CODE>` - Filter out status codes (deny list) (ex: -C 200 -C 401)  
-`-s, --status-codes <STATUS_CODE>` - Filter status codes (allow list) (default: 200 204 301 302 307 308 401 403 405)  
-`-r, --redirects` - Allow client to follow redirects  
-`-T, --timeout <SECONDS>` - Number of seconds before a client's request times out (default: 7)  
-`-d, --depth <RECURSION_DEPTH>` - Maximum recursion depth, a depth of 0 is infinite recursion (default: 4)  
-`-e, --extract-links` - Extract links from response body and make new requests based on findings  
-`-L, --scan-limit <SCAN_LIMIT>` - Limit total number of concurrent scans (default: 0, i.e. no limit)  
-`-n, --no-recursion` - Do not scan recursively  
-`-t, --threads <THREADS>` - Number of concurrent threads (default: 50)  
-`--time-limit <TIME_SPEC>` - Limit total run time of all scans (ex: --time-limit 10m)  
-`-w, --wordlist <FILE>` - Path to the wordlist  
-`-o, --output <FILE>` - Output file to write results  
-`-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. '4' -v's is probably too much)
-## Hashcat
-Hashat is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
-[Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
-
-### Syntax
-`hashcat -m <number> <hash_file> <dict_file>`
-
-### Example 
-Dictionary  
-`hashcat -m 1800 -a 0 hashed.txt /usr/share/wordlists/rockyou.txt -o output.txt`  
-
-Bruteforce  
-`hashcat -m 0 -a 3 -i hashed.txt ?a?a?a?a?a?a?a -o output.txt`
-
-### Flags
-`-m` sets the [mode](https://hashcat.net/wiki/doku.php?id=example_hashes)   
-`-a` sets the attack mode (0=Straight,1=Combination,3=Bruteforce,6=Hybrid:wlist+mask,7=Hybrid:mask+wlist)  
-`-o` output to filename   
-`-r` sets rules  
-`--status`  keep screen updated   
-`--runtime` abort after X seconds   
-`--force` sets workload to insane (This can lead to false positives)  
-`-i` increment (bruteforce)
-
-### Attack modes
-0=Straight  
-1=Combination  
-3=Bruteforce  
-6=Hybrid:wlist+mask  
-7=Hybrid:mask+wlist  
-
-### Charsets
-`?l`  Lowercase a-z  
-`?u`  Uppercase A-Z  
-`?d`  Decimals  
-`?h`  Hex using lowercase chars    
-`?H`  Hex using uppercase chars  
-`?s`  Special chars     
-`?a`  All (l,u,d,s)  
-`?b`  Binary  
-## Hydra
-Hydra is a tool used to brute-force username and password to different services such as ftp, ssh, telnet, MS-SQL, etc.
-### Syntax  
-`hydra -options path`  
-
-### Examples:  
-Guess SSH credentials using a given username and a list of passwords:  
-`hydra -l username -P path/to/wordlist.txt host_ip -t 4 ssh -V`
-
-Guess Telnet credentials using a list of usernames and a single password, specifying a non-standard port and IPv6: 
-`hydra -L path/to/usernames.txt -p password -s port -6 host_ip telnet`
-
-Guess FTP credentials using usernames and passwords lists, specifying the number of threads:  
-`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -t n_threads host_ip ftp` 
-
-Guess MySQL credentials using a username and a passwords list, exiting when a username/password pair is found:  
-`hydra -l username -P path/to/wordlist.txt -f host_ip mysql`
-
-Web form credentials:   
-`hydra -l admin -P /usr/share/wordlists/rockyou.txt <ip_adress> http-post-form "/login:username=^USER^&password=^PASS^:F=Username or password invalid" -V`
-
-Guess IMAP credentials on a range of hosts using a list of colon-separated username/password pairs:  
-`hydra -C path/to/username_password_pairs.txt imap://[host_range_cidr]`
-
-Guess POP3 credentials on a list of hosts using usernames and passwords lists, exiting when a username/password pair is found:  
-`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -M path/to/hosts.txt -F pop3`
-
-### A list of most useful options:
-`-S` connect via SSL  
-`-l` single username  
-`-L` wordlist username(s)   
-`-p` single password   
-`-P` wordlist password(s)    
-`-o` FILE write found login/password pairs to FILE instead of stdout  
-`-V` verbose mode, see output for every attempt  
-`-I` ignore the resume dialog  
-`-t <number> `specifies the number of threads to use  
-`-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
-## John The Ripper
-https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
-### SSH Private Key
-Crack hashed private key  
-`python /usr/share/john/ssh2john.py id_rsa > hash.txt`
-
-ssh2john.py can sometimes also be located under `/opt/john/ssh2john.py`
-
-Crack the hash (or a shadow file)
-`john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
-## Metasploit
-Metasploit is a collection of not only thoroughly tested exploits but also auxiliary and post-exploitation tools
-
-Initialize the database  
-`msfdb init`  
-
-View advanced options for starting the console  
-`msfconsole -h`  
-
-Start metasploit  
-`msfconsole`
-
-Check db connection  
-`db_status`
-
-Msf commands  
-`help` or `?` - shows the help page
-
-Search exploit  
-`search <exploit_for>`
-
-Select module  
-`use <module>`
-
-Change value of a variable  
-`set <variablename> <value>`  
-`get <variablename>`  
-`unset <variablename>` 
-
-Save msfconsole session  
-`save`
-
-Save console outputs  
-`spool` 
-
-See privileges of a current user  
-`getprivs`
-
-Tranfer files to victim computer  
-`upload`
-
-Check if the victim pc is in a VM (Windows)  
-`run post/windows/gather/checkvm`
-
-See what a machine could be vulnerable to  
-`run post/multi/recon/local_exploit_suggester`
-
-Spawn a normal system shell  
-`shell`
-## Netcat
-Netcat aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
-
-### Syntax
-Computer B (acts as the receiving server):  
-`nc -lvnp 6790 > testfile.txt`  
-Computer A (acts as the sending client):  
-`nc [IP address of computer B] 6790 < testfile.txt`  
-
-### A list of most useful switches:
-`-l` Listen to connections (TCP)  
-`-v` Enable verbose mode (allows you to see who connected to you)  
-`-p` Specify a port to listen to  
-`-e` Specify program to execute after connecting to a host  
-`-u` Connect to UDP ports    
-`-n` Fast scan by disabling DNS resolution  
-`-w` Define timeout value  
-`-4` IPv4 only   
-`-6` IPv6 only  
-`>` Server file redirection  
-`<` Client file redirection
-## Nikto 2 
-nikto is a popular web scanning tool that allows users to find common web vulnerabilities. It is commonly used to check for common CVE's such as shellshock, and to get general information about the web server that you're enumerating.
-
-### Syntax
-`nikto -h <ip> -port <port>`
-
-### A list of most useful flags:
-`-h` Hostname/IP adress  
-`-port` Specify ports  
-`-nossl` Disable ssl  
-`-ssl` Force ssl  
-`-id` Specify authentication(username & password)  
-`-plugin` Select which plugin to use  
-`-update` Update the plugin list  
-`--list-plugins`  List all possible plugins to use   
-`-output` Output fingerprinted information to a file
-## Nmap
-Nmap is a utility for network discovery and security auditing.
-### Syntax
-`nmap -switch1 -switch2 ipaddress`  
-
-Example:  
-`nmap -sT -A -p- 172.162.39.86`  
-
-### A list of most useful switches:
-TCP scan (Most likely to be filtered)= `-sT`  
-TCP Syn Scan (No logging)= `-sS`  
-UDP scan (Slow)= `-sU`  
-
-ICMP Scanning (ping sweep) = `-sn`  
-Default ping scanning) = `-sP` 
-Detect OS = `-O`  
-Detect version of services = `-sV`  
-Scan with the default nmap scripts = `-sC`  
-Disable host discovery and just scan for open ports = `-Pn`  
-Change verbosity = `-v`  
-Change verbosity level two = `-vv` (It's good practice to *always* increase the verbosity in your scans.)  
-
-Save nmap results in three major formats = `-oA [filename] [target]`  
-Save nmap results in a text file = `-oN [filename] [target]`  
-Save nmap results in grepable format = `-oG [filename] [target]`  
-
-Aggresive mode (Enable OS detection, version detection, script scanning, and traceroute) = `-A`  
-Timing leves (Speed of scans, can make errors) = `-T<Level>` (0-5)  
-Port scan (specific)= `-p <port>`   
-Port scan (range) = `-p <from>-<to>`  
-Port scan (all) = `-p-`  
-Activate a script= `—-script=<script_name>`   
-Decoy an ip adress =  `-D`  
-Fast mode = `-F`
-Only open ports = `--open` 
-
-Scan an IPv6 address = `-6` 
-
-Subnet mask with 255.255.255.0 = `<ip>/24`
-# Tools (GUI) 
-## Burp 
-Burp Suite, a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
-
-### Setting up Burp Suite
-Download Burp Suite [here](https://portswigger.net/burp/communitydownload)  
-Burp Suite requires Java JRE in order to run. Download and install Java [here](https://www.java.com/en/download/)
-
-### Gettin' CA Certified
-We need to install a CA certificate as BurpSuite acts as a proxy between your browser and sending it through the internet - It allows the BurpSuite Application to read and send on HTTPS data. 
-
-1. Download [Foxy Proxy](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) in order to fully leverage the proxy, we'll have to install the CA certificate included with Burp Suite (otherwise we won't be able to load anything with SSL).
-2. Now click on the extension -> Options -> Add -> Fill in the fields with the following values:  
-   1. Title = Burp  
-   2. Proxy type = HTTP  
-   3. Proxy IP adress or DNS name = `127.0.0.1`  
-   4. Port = `8080`  
-   5. Username and password is optional.  
-3. And hit save.  
-4. Finally, click on the FoxyProxy extension icon again and select 'Burp'.
-5. With Firefox, navigate to the following address: `http://localhost:8080`
-6. Click on 'CA Certificate' in the top right to download and save the CA Certificate.
-7. Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
-8. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
-
-### Overview of Features
-* **Proxy** - What allows us to funnel traffic through Burp Suite for further analysis
-* **Target** - How we set the scope of our project. We can also use this to effectively create a site map of the application we are testing
-* **Intruder** - Incredibly powerful tool for everything from field fuzzing to credential stuffing and more
-* **Repeater** - Allows us to 'repeat' requests that have previously been made with or without modification. Often used in a precursor step to fuzzing with the aforementioned Intruder
-* **Sequencer** - Analyzes the 'randomness' present in parts of the web app which are intended to be unpredictable. This is commonly used for testing session cookies
-* **Decoder** - As the name suggests, Decoder is a tool that allows us to perform various transforms on pieces of data. These transforms vary from decoding/encoding to various bases or URL encoding.
-* **Comparer** - Comparer as you might have guessed is a tool we can use to compare different responses or other pieces of data such as site maps or proxy histories (awesome for access control issue testing). This is very similar to the Linux tool diff.
-* **Extender** - Similar to adding mods to a game like Minecraft, Extender allows us to add components such as tool integrations, additional scan definitions, and more!
-* **Scanner** - Automated web vulnerability scanner that can highlight areas of the application for further manual investigation or possible exploitation with another section of Burp. This feature, while not in the community edition of Burp Suite, is still a key facet of performing a web application test.
-
-### Benefits
-1. Requests will by default require our authorization to be sent.
-2. We can modify our requests in-line similar to what you might see in a man-in-the-middle attack and then send them on.
-3. We can also drop requests we don't want to be sent. This can be useful to see the request attempt after clicking a button or performing another action on the website. 
-4. And last but not least, we can send these requests to other tools such as Repeater and Intruder for modification and manipulation to induce vulnerabilities
-
-## Nessus
-Nessus is a GUI based vulnerability scanner
-### Download and installation
-1. Click [here](https://www.tenable.com/products/nessus/nessus-essentials) and register an account.
-2. Download the Nessus-#.##.#-debian6_amd64.deb file
-3. Navigate to the download and run the following command: `sudo dpkg -i package_file.deb`
-4. Start the nessus service wit the command: `sudo /bin/systemctl start nessusd.service` 
-5. Open up Firefox and goto the following URL: `https://localhost:8834/` (Accept risk in case you get prompted)
-6. Choose "Nessus Essentials" and click next. Skip when asked for a activation code
-7. Login with your account
-8. Wait for installation and then login again
-
-### Navigation and Scans
-Launch a scan = Hit the "New Scan"    
-Side menu option that allows us to create custom templates = Policies    
-Change plugin properties such as hiding them or changing their severity = Plugin rules  
-
-### Scans
-![Nessus Scans](Images/Nessus.png)
-
-## Wireshark
-Wireshark is a tool used for creating and analyzing PCAPs (network packet capture files)  
-
-Since this section is very large, I've created an individual page for this, which can be found inside this repository by clicking [here](More/Wireshark/README.md).
-
-
-# Text Editors
-## Nano
-### Shortcuts
-`^G` Display help text.  
-`^O` Write the current file to disk  
-`^X` Exit nano.  
-`^T` Invoke spellc­heck, if installed.  
-`^Y` Next screen.  
-`^V` Previous screen.  
-`^L` Refresh (force redraw) current screen.  
-`^J` Justify current paragraph. (Join together broken lines of text until double newline is encoun­tered.)  
-`^W` Search for a string or regular expres­sion.  
-`^\` Search and replace a string or regular expres­sion  
-
-## Vim
-Vim is a free and open-source, screen-based text editor program for Unix
-
-### Modes
-Generally speaking, there are three basic modes in Vim:
-
-`Command mode` – allows you to run commands (Default).  
-`Insert mode` – allows you to insert/write text.  
-`Visual mode` – visual text selector.  
-
-### Basic keybinds
-`h` – move the cursor left  
-`j` – cursor down  
-`k` – cursor up  
-`l` – move the cursor right  
-`i` – enter the insert mode  
-`esc` – enter the command mode  
-`$` – move to the end of the line  
-`yy` – copy a line  
-`p` – paste  
-`d` – delete a line  
-`x` – cut a character  
-
-### Basic commands:
-`:q` – quit  
-`:wq` – write & quit  
-`:q!` – quit without saving  
-`/word` – search for ‘word’ in the document  
-`:vimgrep` – grep integration in Vim (allows to search in multiple files)
-
-Find other very usefull commands [here](/More/VIM/README.md), or a full cheatsheet [here](https://vim.rtorr.com).
-
 
 # Linux Commands 
 ## ls
@@ -1132,9 +734,422 @@ Redirects the file descriptors for the errors (STDERR) to "`/dev/null`" This way
 **Redirect STDOUT and STDERR to Separate Files**  
 `find /etc/ -name shadow 2> stderr.txt 1> stdout.txt`
 
-# Steps
-## Content Discovery
-### Manual
+
+# Tools (CLI)
+## Aircrack-ng
+[Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
+
+`TO BE ADDED`  
+https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
+## Gobuster
+[Gobuster](https://github.com/OJ/gobuster) is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
+### Syntax
+`gobuster -w wordlist.txt`
+
+### Example:  
+`gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
+
+### A list of options
+`dir` Directory/file brute forcing mode  
+`dns` DNS bruteforcing mode
+
+### A list of most useful flags:
+`-u` (url) – full target URL (including scheme), or base domain name.  
+`-w` (wordlist) – path to the wordlist used for brute forcing (use – for stdin).  
+`-a` (user agent string) – specify a user agent string to send in the request header.  
+`-e` (print) - Print the full URLs in your console  
+`-o` (file) – specify a file name to write the output to.  
+`-x` (extensions) – list of extensions to check for, if any.  
+`-P` (password) – HTTP Authorization password (Basic Auth only, prompted if missing).  
+`-U` (username) – HTTP Authorization username (Basic Auth only).  
+`-c <http cookies>` (cookie) - Specify a cookie for simulating your auth  
+`-s` (status-codes) - Set status codes that should be interpreted as valid  
+`-k` (ssl) - Skip ssl certificate   
+`-H` (HTTP) - Specify HTTP header  
+## Feroxbuster
+feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories.
+
+**Syntax:**    
+`feroxbuster [OPTIONS]`
+
+**Example:**  
+`feroxbuster -u https://berkankutuk.dk -w /usr/share/wordlists/dirb/big.txt` 
+
+**Options:**  
+`-h, --help` - Print help information    
+`-V, --version` - Print version information    
+`-u, --url <URL>` - The target URL   
+`-b, --cookies <COOKIE>` - Specify HTTP cookies to be used in each request   
+`-m, --methods <HTTP_METHODS>` -  Which HTTP request method(s) should be sent (default: GET)  
+`-x, --extensions <FILE_EXTENSION>` - File extension(s) to search for (ex: -x php -x pdf js)  
+`-C, --filter-status <STATUS_CODE>` - Filter out status codes (deny list) (ex: -C 200 -C 401)  
+`-s, --status-codes <STATUS_CODE>` - Filter status codes (allow list) (default: 200 204 301 302 307 308 401 403 405)  
+`-r, --redirects` - Allow client to follow redirects  
+`-T, --timeout <SECONDS>` - Number of seconds before a client's request times out (default: 7)  
+`-d, --depth <RECURSION_DEPTH>` - Maximum recursion depth, a depth of 0 is infinite recursion (default: 4)  
+`-e, --extract-links` - Extract links from response body and make new requests based on findings  
+`-L, --scan-limit <SCAN_LIMIT>` - Limit total number of concurrent scans (default: 0, i.e. no limit)  
+`-n, --no-recursion` - Do not scan recursively  
+`-t, --threads <THREADS>` - Number of concurrent threads (default: 50)  
+`--time-limit <TIME_SPEC>` - Limit total run time of all scans (ex: --time-limit 10m)  
+`-w, --wordlist <FILE>` - Path to the wordlist  
+`-o, --output <FILE>` - Output file to write results  
+`-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. '4' -v's is probably too much)
+## Hashcat
+[Hashcat](https://hashcat.net/hashcat/) is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
+[Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
+
+### Syntax
+`hashcat -m <number> <hash_file> <dict_file>`
+
+### Example 
+Dictionary  
+`hashcat -m 1800 -a 0 hashed.txt /usr/share/wordlists/rockyou.txt -o output.txt`  
+
+Bruteforce  
+`hashcat -m 0 -a 3 -i hashed.txt ?a?a?a?a?a?a?a -o output.txt`
+
+### Flags
+`-m` sets the [mode](https://hashcat.net/wiki/doku.php?id=example_hashes)   
+`-a` sets the attack mode (0=Straight,1=Combination,3=Bruteforce,6=Hybrid:wlist+mask,7=Hybrid:mask+wlist)  
+`-o` output to filename   
+`-r` sets rules  
+`--status`  keep screen updated   
+`--runtime` abort after X seconds   
+`--force` sets workload to insane (This can lead to false positives)  
+`-i` increment (bruteforce)
+
+### Attack modes
+0=Straight  
+1=Combination  
+3=Bruteforce  
+6=Hybrid:wlist+mask  
+7=Hybrid:mask+wlist  
+
+### Charsets
+`?l`  Lowercase a-z  
+`?u`  Uppercase A-Z  
+`?d`  Decimals  
+`?h`  Hex using lowercase chars    
+`?H`  Hex using uppercase chars  
+`?s`  Special chars     
+`?a`  All (l,u,d,s)  
+`?b`  Binary  
+## Hydra
+[Hydra](https://github.com/vanhauser-thc/thc-hydra) is a tool used to brute-force username and password to different services such as ftp, ssh, telnet, MS-SQL, etc.
+### Syntax  
+`hydra -options path`  
+
+### Examples:  
+Guess SSH credentials using a given username and a list of passwords:  
+`hydra -l username -P path/to/wordlist.txt host_ip -t 4 ssh -V`
+
+Guess Telnet credentials using a list of usernames and a single password, specifying a non-standard port and IPv6: 
+`hydra -L path/to/usernames.txt -p password -s port -6 host_ip telnet`
+
+Guess FTP credentials using usernames and passwords lists, specifying the number of threads:  
+`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -t n_threads host_ip ftp` 
+
+Guess MySQL credentials using a username and a passwords list, exiting when a username/password pair is found:  
+`hydra -l username -P path/to/wordlist.txt -f host_ip mysql`
+
+Web form credentials:   
+`hydra -l admin -P /usr/share/wordlists/rockyou.txt <ip_adress> http-post-form "/login:username=^USER^&password=^PASS^:F=Username or password invalid" -V`
+
+Guess IMAP credentials on a range of hosts using a list of colon-separated username/password pairs:  
+`hydra -C path/to/username_password_pairs.txt imap://[host_range_cidr]`
+
+Guess POP3 credentials on a list of hosts using usernames and passwords lists, exiting when a username/password pair is found:  
+`hydra -L path/to/usernames.txt -P path/to/wordlist.txt -M path/to/hosts.txt -F pop3`
+
+### A list of most useful options:
+`-S` connect via SSL  
+`-l` single username  
+`-L` wordlist username(s)   
+`-p` single password   
+`-P` wordlist password(s)    
+`-o` FILE write found login/password pairs to FILE instead of stdout  
+`-V` verbose mode, see output for every attempt  
+`-I` ignore the resume dialog  
+`-t <number> `specifies the number of threads to use  
+`-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
+## John The Ripper
+[John The Ripper](https://www.openwall.com/john/) is a fast password cracker, currently available for many flavors of Unix, Windows, and other.
+https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
+
+### SSH Private Key
+Crack hashed private key  
+`python /usr/share/john/ssh2john.py id_rsa > hash.txt`
+
+ssh2john.py can sometimes also be located under `/opt/john/ssh2john.py`
+
+Crack the hash (or a shadow file)
+`john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
+## Metasploit
+Metasploit is a collection of not only thoroughly tested exploits but also ready to use auxiliary and post-exploitation tools
+
+Initialize the database  
+`msfdb init`  
+
+View advanced options for starting the console  
+`msfconsole -h`  
+
+Start metasploit  
+`msfconsole`
+
+Check db connection  
+`db_status`
+
+Msf commands  
+`help` or `?` - shows the help page
+
+Search exploit  
+`search <exploit_for>`
+
+Select module  
+`use <module>`
+
+Change value of a variable  
+`set <variablename> <value>`  
+`get <variablename>`  
+`unset <variablename>` 
+
+Save msfconsole session  
+`save`
+
+Save console outputs  
+`spool` 
+
+See privileges of a current user  
+`getprivs`
+
+Tranfer files to victim computer  
+`upload`
+
+Check if the victim pc is in a VM (Windows)  
+`run post/windows/gather/checkvm`
+
+See what a machine could be vulnerable to  
+`run post/multi/recon/local_exploit_suggester`
+
+Spawn a normal system shell  
+`shell`
+## Netcat
+[Netcat](http://netcat.sourceforge.net) aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
+
+### Syntax
+Computer B (acts as the receiving server):  
+`nc -lvnp 6790 > testfile.txt`  
+Computer A (acts as the sending client):  
+`nc [IP address of computer B] 6790 < testfile.txt`  
+
+### A list of most useful switches:
+`-l` Listen to connections (TCP)  
+`-v` Enable verbose mode (allows you to see who connected to you)  
+`-p` Specify a port to listen to  
+`-e` Specify program to execute after connecting to a host  
+`-u` Connect to UDP ports    
+`-n` Fast scan by disabling DNS resolution  
+`-w` Define timeout value  
+`-4` IPv4 only   
+`-6` IPv6 only  
+`>` Server file redirection  
+`<` Client file redirection
+## Nikto 2 
+[Nikto 2](https://cirt.net/Nikto2) or nikto is a popular web scanning tool that allows users to find common web vulnerabilities. It is commonly used to check for common CVE's such as shellshock, and to get general information about the web server that you're enumerating.
+
+### Syntax
+`nikto -h <ip> -port <port>`
+
+### A list of most useful flags:
+`-h` Hostname/IP adress  
+`-port` Specify ports  
+`-nossl` Disable ssl  
+`-ssl` Force ssl  
+`-id` Specify authentication(username & password)  
+`-plugin` Select which plugin to use  
+`-update` Update the plugin list  
+`--list-plugins`  List all possible plugins to use   
+`-output` Output fingerprinted information to a file
+## Nmap
+[Nmap](https://nmap.org) is a utility for network discovery and security auditing.
+### Syntax
+`nmap -switch1 -switch2 ipaddress`  
+
+Example:  
+`nmap -sT -A -p- 172.162.39.86`  
+
+### A list of most useful switches:
+TCP scan (Most likely to be filtered)= `-sT`  
+TCP Syn Scan (No logging)= `-sS`  
+UDP scan (Slow)= `-sU`  
+
+ICMP Scanning (ping sweep) = `-sn`  
+Default ping scanning) = `-sP` 
+Detect OS = `-O`  
+Detect version of services = `-sV`  
+Scan with the default nmap scripts = `-sC`  
+Disable host discovery and just scan for open ports = `-Pn`  
+Change verbosity = `-v`  
+Change verbosity level two = `-vv` (It's good practice to *always* increase the verbosity in your scans.)  
+
+Save nmap results in three major formats = `-oA [filename] [target]`  
+Save nmap results in a text file = `-oN [filename] [target]`  
+Save nmap results in grepable format = `-oG [filename] [target]`  
+
+Aggresive mode (Enable OS detection, version detection, script scanning, and traceroute) = `-A`  
+Timing leves (Speed of scans, can make errors) = `-T<Level>` (0-5)  
+Port scan (specific)= `-p <port>`   
+Port scan (range) = `-p <from>-<to>`  
+Port scan (all) = `-p-`  
+Activate a script= `—-script=<script_name>`   
+Decoy an ip adress =  `-D`  
+Fast mode = `-F`
+Only open ports = `--open` 
+
+Scan an IPv6 address = `-6` 
+
+Subnet mask with 255.255.255.0 = `<ip>/24`
+# Tools (GUI) 
+## Burp 
+[Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
+
+### Setting up Burp Suite
+Download Burp Suite [here](https://portswigger.net/burp/communitydownload)  
+Burp Suite requires Java JRE in order to run. Download and install Java [here](https://www.java.com/en/download/)
+
+### Gettin' CA Certified
+We need to install a CA certificate as BurpSuite acts as a proxy between your browser and sending it through the internet - It allows the BurpSuite Application to read and send on HTTPS data. 
+
+1. Download [Foxy Proxy](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) in order to fully leverage the proxy, we'll have to install the CA certificate included with Burp Suite (otherwise we won't be able to load anything with SSL).
+2. Now click on the extension -> Options -> Add -> Fill in the fields with the following values:  
+   1. Title = Burp  
+   2. Proxy type = HTTP  
+   3. Proxy IP adress or DNS name = `127.0.0.1`  
+   4. Port = `8080`  
+   5. Username and password is optional.  
+3. And hit save.  
+4. Finally, click on the FoxyProxy extension icon again and select 'Burp'.
+5. With Firefox, navigate to the following address: `http://localhost:8080`
+6. Click on 'CA Certificate' in the top right to download and save the CA Certificate.
+7. Now that we've downloaded the CA Certificate, move over to the settings menu in Firefox. Search for 'Certificates' in the search bar.
+8. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
+
+### Overview of Features
+* **Proxy** - What allows us to funnel traffic through Burp Suite for further analysis
+* **Target** - How we set the scope of our project. We can also use this to effectively create a site map of the application we are testing
+* **Intruder** - Incredibly powerful tool for everything from field fuzzing to credential stuffing and more
+* **Repeater** - Allows us to 'repeat' requests that have previously been made with or without modification. Often used in a precursor step to fuzzing with the aforementioned Intruder
+* **Sequencer** - Analyzes the 'randomness' present in parts of the web app which are intended to be unpredictable. This is commonly used for testing session cookies
+* **Decoder** - As the name suggests, Decoder is a tool that allows us to perform various transforms on pieces of data. These transforms vary from decoding/encoding to various bases or URL encoding.
+* **Comparer** - Comparer as you might have guessed is a tool we can use to compare different responses or other pieces of data such as site maps or proxy histories (awesome for access control issue testing). This is very similar to the Linux tool diff.
+* **Extender** - Similar to adding mods to a game like Minecraft, Extender allows us to add components such as tool integrations, additional scan definitions, and more!
+* **Scanner** - Automated web vulnerability scanner that can highlight areas of the application for further manual investigation or possible exploitation with another section of Burp. This feature, while not in the community edition of Burp Suite, is still a key facet of performing a web application test.
+
+### Benefits
+1. Requests will by default require our authorization to be sent.
+2. We can modify our requests in-line similar to what you might see in a man-in-the-middle attack and then send them on.
+3. We can also drop requests we don't want to be sent. This can be useful to see the request attempt after clicking a button or performing another action on the website. 
+4. And last but not least, we can send these requests to other tools such as Repeater and Intruder for modification and manipulation to induce vulnerabilities
+
+## Nessus
+[Nessus](https://www.tenable.com/products/nessus) is a GUI based vulnerability scanner
+
+### Download and installation
+1. Click [here](https://www.tenable.com/products/nessus/nessus-essentials) and register an account.
+2. Download the Nessus-#.##.#-debian6_amd64.deb file
+3. Navigate to the download and run the following command: `sudo dpkg -i package_file.deb`
+4. Start the nessus service wit the command: `sudo /bin/systemctl start nessusd.service` 
+5. Open up Firefox and goto the following URL: `https://localhost:8834/` (Accept risk in case you get prompted)
+6. Choose "Nessus Essentials" and click next. Skip when asked for a activation code
+7. Login with your account
+8. Wait for installation and then login again
+
+### Navigation and Scans
+Launch a scan = Hit the "New Scan"    
+Side menu option that allows us to create custom templates = Policies    
+Change plugin properties such as hiding them or changing their severity = Plugin rules  
+
+### Scans
+![Nessus Scans](Images/Nessus.png)
+
+## Wireshark
+[Wireshark](https://www.wireshark.org is a tool used for creating and analyzing PCAPs (network packet capture files)  
+
+Since this section is very large, I've created an individual page for this, which can be found inside this repository by clicking [here](More/Wireshark/README.md).
+
+
+# Text Editors
+## Nano
+[Nano](https://nano-editor.org) is an easy to use command line text editor  
+
+### Shortcuts
+`^G` Display help text.  
+`^O` Write the current file to disk  
+`^X` Exit nano.  
+`^T` Invoke spellc­heck, if installed.  
+`^Y` Next screen.  
+`^V` Previous screen.  
+`^L` Refresh (force redraw) current screen.  
+`^J` Justify current paragraph. (Join together broken lines of text until double newline is encoun­tered.)  
+`^W` Search for a string or regular expres­sion.  
+`^\` Search and replace a string or regular expres­sion  
+
+## Vim
+[Vim](https://www.vim.org) is a free and open-source, screen-based and highly customizable text editor program for Unix
+
+### Modes
+Generally speaking, there are three basic modes in Vim:
+
+`Command mode` – allows you to run commands (Default).  
+`Insert mode` – allows you to insert/write text.  
+`Visual mode` – visual text selector.  
+
+### Basic keybinds
+`h` – move the cursor left  
+`j` – cursor down  
+`k` – cursor up  
+`l` – move the cursor right  
+`i` – enter the insert mode  
+`esc` – enter the command mode  
+`$` – move to the end of the line  
+`yy` – copy a line  
+`p` – paste  
+`d` – delete a line  
+`x` – cut a character  
+
+### Basic commands:
+`:q` – quit  
+`:wq` – write & quit  
+`:q!` – quit without saving  
+`/word` – search for ‘word’ in the document  
+`:vimgrep` – grep integration in Vim (allows to search in multiple files)
+
+Find other very usefull commands [here](/More/VIM/README.md), or a full cheatsheet [here](https://vim.rtorr.com).
+
+# Cryptology
+Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
+
+## Generate keys
+To generate a private key we use the following command (8912 creates the key 8912 bits long):  
+`openssl genrsa -aes256 -out private.key 8912`
+
+To generate a public key we use our previously generated private key:  
+`openssl rsa -in private.key -pubout -out public.key`
+
+Lets now encrypt a file (plaintext.txt) using our public key:  
+`openssl rsautl -encrypt -pubin -inkey public.key -in plaintext.txt -out encrypted.txt`
+
+Now, if we use our private key, we can decrypt the file and get the original message:  
+`openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
+
+# Networking
+`TO BE ADDED`
+
+# Exploitation
+## Web Exploitation
+### Content Discovery
+#### Manual
 1. Check the robots file for disallowed/hiddenpages  
 2. Check favicon to find the website frameworks (only works if the website developer doesn't replace this with a custom one)  
 Run this to find its md5 hash:  
@@ -1149,7 +1164,7 @@ The -v switch enables verbose mode, which will output the headers
 
 When successfully finding a framework using on of the methods, Framework Stacking can be used afterwards where you check the framework documentation for potential admin portals etc.
 
-### Automated
+#### Automated
 **What is Automated Discovery?**  
 Automated discovery is the process of using tools to discover content rather than doing it manually. This process is automated as it usually contains hundreds, thousands or even millions of requests to a web server. These requests check whether a file or directory exists on a website, giving us access to resources we didn't previously know existed. This process is made possible by using a resource called wordlists.
 
@@ -1161,7 +1176,7 @@ Wordlists are just text files that contain a long list of commonly used words; t
 I personally use gobuster the most.
 
 
-### Osint
+#### Osint
 **Google Hacking / Dorking**   
 Google hacking / Dorking utilizes Google's advanced search engine features, which allow you to pick out custom content.  
 | Filter | Example | Description |
@@ -1177,7 +1192,7 @@ Wappalyzer is an online tool and browser extension that helps identify what tech
 **Wayback Machine**  
 The Wayback Machine is a historical archive of websites that dates back to the late 90s. You can search a domain name, and it will show you all the times the service scraped the web page and saved the contents. This service can help uncover old pages that may still be active on the current website. Find the website [here](https://archive.org/web/).
 
-### Subdomain enumeration
+#### Subdomain enumeration
 
 **SSL/TLS Certificates**  
 When an SSL/TLS (Secure Sockets Layer/Transport Layer Security) certificate is created for a domain by a CA (Certificate Authority), CA's take part in what's called "Certificate Transparency (CT) logs". These are publicly accessible logs of every SSL/TLS certificate created for a domain name.
@@ -1197,103 +1212,29 @@ Because web servers can host multiple websites from one server when a website is
 
 Bruteforce by using the following command:   
 `ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: {domain}" -u http://{IP} -fs {size}`
+### SQL Injection
+This occurs when user controlled input is passed to SQL queries. As a result, an attacker can pass in SQL queries to manipulate the outcome of such queries. 
 
-## Privilege Escalation 
-Check for root password
-Run: `id`  
-Run: `sudo -l`  
-Locate password folder and crack it using johntheripper  
-Or use [GTFOBins](https://gtfobins.github.io)
+If an attacker is able to successfully pass input that is interpreted correctly, they would be able to do the following:
 
-You can also run:  
-`wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh` on a target machine to see the files that stand out.
+* Access, Modify and Delete information in a database when this input is passed into database queries. This would mean that an attacker can steal sensitive information such as personal details and credentials.
+* Execute Arbitrary system commands on a server that would allow an attacker to gain access to users’ systems. This would enable them to steal sensitive data and carry out more attacks against infrastructure linked to the server on which the command is executed.
 
-Another option would be to run the following command to find all files with the SUID bit set:   
-`find / -perm -u=s -type f 2>/dev/null` fine  
-`find / -user root -perm 4000 -print 2>/dev/null` good  
-`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null` better  
-`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null | grep 'bin'` best  
 
-`2>/dev/null` will filter out the errors so that they will not be output to your console
+`TO BE ADDED`
+### Command Injection
+### Directory Traversal
+### Cross Site Request Forgery
+### Cross Site Scripting
+**DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
 
-### Find info about the users of the system
-Find users on a system  
-`cat /etc/passwd | grep “/bin/bash”`
+**Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
 
-Find passwords  
-`cat /etc/passwd`
+**Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
+### Server Side Request Forgery
 
-If you don't have privilege, try this  
-`find / -name shadow* 2>/dev/null | head`
 
-### Privilege Escalation using SUID Binaries
-`-rwsr-xr-x`  
-“s” = SUID. This means that any user can execute these commands and they will be ran as the original owner.
-
-**Example**  
-Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command to read a flag:  
-`find /home/berkan/flag1.txt -exec cat {} \;`
-
-## TTY Shell
-The tty command of terminal basically prints the file name of the terminal connected to standard input. tty is short of teletype, but popularly known as a terminal it allows you to interact with the system by passing on the data (you input) to the system, and displaying the output produced by the system
-
-**Shell Spawning**  
-`python -c 'import pty; pty.spawn("/bin/sh")'`  
-`echo os.system('/bin/bash')`  
-`/bin/sh -i`  
-`perl —e 'exec "/bin/sh";'`  
-`perl: exec "/bin/sh";`  
-`ruby: exec "/bin/sh"`  
-`lua: os.execute('/bin/sh')`  
-From within IRB  
-`exec "/bin/sh"`  
-From within vi  
-`:!bash`  
-From within vi  
-`:set shell=/bin/bash:shell`  
-From within nmap  
-`!sh`  
-
-Many of these will also allow you to escape jail shells. The top 3 would be my most successful in general for spawning from the command line.
-
-## Phishing
-
-### Phishing terms
-**A BEC (Business Email Compromise)** is when an adversary gains control of an internal employee's account and then uses the compromised email account to convince other internal employees to perform unauthorized or fraudulent actions. 
-
-**A typosquatting attack**, also known as a URL hijacking, a sting site, or a fake URL, is a type of social engineering where threat actors impersonate legitimate domains for malicious purposes such as fraud or malware spreading.
-
-### Types of Phishing attacks
-**Spam** - unsolicited junk emails sent out in bulk to a large number of recipients. The more malicious variant of Spam is known as MalSpam.
-
-**Phishing** -  emails sent to a target(s) purporting to be from a trusted entity to lure individuals into providing sensitive information. 
-
-**Spear phishing** - takes phishing a step further by targeting a specific individual(s) or organization seeking sensitive information.  
-
-**Whaling** - is similar to spear phishing, but it's targeted specifically to C-Level high-position individuals (CEO, CFO, etc.), and the objective is the same. 
-
-**Smishing** - takes phishing to mobile devices by targeting mobile users with specially crafted text messages. 
-
-**Vishing** - is similar to smishing, but instead of using text messages for the social engineering attack, the attacks are based on voice calls. 
-
-### Analyze/identify
-1. Open Email
-2. See its raw format
-3. Analyze the results:
-
-* **X-Originating-IP** - The IP address of the email was sent from (this is known as an X-header)
-* **Smtp.mailfrom/header.from** - The domain the email was sent from (these headers are within Authentication-Results)
-* **Reply-To** - This is the email address a reply email will be sent to instead of the From email address
-
-In case the mail is encoded using base64, the following command can be used to decrypt the message:  
-`base64 -d <filename> > decrypted.<filetype>` 
-
-### Phishing security
-Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rsoa-and-rp/32.0?topic=SSBRUQ_32.0.0/com.ibm.resilient.doc/install/resilient_install_defangURLs.htm).
-
-Expand shortened links with this [tool](https://www.expandurl.net).
-
-# Forensics
+## Forensics
 Is simply 'the art of uncovering'
 
 Digital forensics is a branch of forensic science that focuses on identifying, acquiring, processing, analysing, and reporting on data stored electronically.
@@ -1305,9 +1246,8 @@ Use case
 * Recognize file structures and identify file formats
 * Understand a course of events from network logs or memory dumps
 * Hash cracking 
-
-## File analysis
-### Encodings
+### File analysis
+#### Encodings
 * Decimal: 70 111 114 101 110 115 105 99 115 33
 * Hex: 46 6f 72 65 6e 73 69 63 73 21
 * Octal: 106 157 162 145 156 163 151 143 163 41
@@ -1315,7 +1255,7 @@ Use case
 * Base64: Rm9yZW5zaWNzIQ==
 * Base85: 7W3<YDKBN%F!1
 
-### File type
+#### File type
 The file type is often indicated by the file extension in the file name, e.g. .png, .mp4
 * Typically what the OS uses to assess how to open / interpret the file
 * Do not rely on extensions! Can be modified to trick the OS into misinterpreting data
@@ -1325,7 +1265,7 @@ The file type is indicated in the contents of the file with a file signature - a
 * Eg PNG files: 89 50 4e 47 (last three hex is PNG in ASCII)
 * Tool: `file`
 
-### Metadata
+#### Metadata
 The file extension is one form of metadata: (data about data)
 
 Additional information about a file in addition to the content itself
@@ -1335,9 +1275,9 @@ Additional information about a file in addition to the content itself
 Why analyze metadata?
 * Can store important info - maybe even info that should have been hidden
 * In some cases even more important than content - eg with encrypted HTTPS traffic
-* Tool: `exiftool` 
+* Tool: `exiftool`
 
-### File format
+#### File format
 A file type has a specific format - the structure of the file
 
 Typical structure
@@ -1352,7 +1292,9 @@ The format is precisely defined in a specification doc - often publicly availabl
 * Corrupted files: compare file with specification, correct differences with hex editor
 * Unknown file types: search for tracks from a file format 
 
-## Steganography
+### PCAP Analysis
+
+### Stegonography
 Steganography is the practice of hiding a secret message in something that is not secret
 
 **File Carving**  
@@ -1367,7 +1309,7 @@ File carving tools:
 * dd (manual extraction)
   * dd if = input.png or = output.txt bs = 1 skip = 1000 count = 32 
 
-### Steghide
+#### Steghide
 Steghide is a steganography program that hides data in various kinds of image and audio files ,
 only supports these file formats : JPEG, BMP, WAV and AU . but it’s also useful for extracting
 embedded and encrypted data from other files.
@@ -1376,13 +1318,13 @@ embedded and encrypted data from other files.
 `steghide info <filepath>`  displays info about whether a file has embedded data or not.  
 `steghide extract -sf <filepath>`  extracts embedded data from a file
 
-### Stegsolve
+#### Stegsolve
 Sometimes there is a message or a text hidden in the image itself and in order to view it you
 need to apply some color filters or play with the color levels. You can do it with GIMP or
 Photoshop or any other image editing software but stegsolve made it easier. it’s a small java tool
 that applies many color filters on images.
 
-### Strings
+#### Strings
 Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego challenges. Usually the embedded data is password protected or encrypted
 and sometimes the password is actaully in the file itself and can be easily viewed by using strings.
 It’s a default linux tool so you don’t need to install anything.
@@ -1390,20 +1332,20 @@ It’s a default linux tool so you don’t need to install anything.
 **Useful commands:**  
 `strings file`  displays printable strings in the given file
 
-### Exiftool
+#### Exiftool
 Sometimes important stuff is hidden in the metadata of the image or the file , exiftool can be
 very helpful to view the metadata of the files.
 
 **Useful commands:**  
 `exiftool file`  shows the metadata of the given file
 
-### Exiv2
+#### Exiv2
 A tool similar to exiftool.
 
 **Useful commands:**  
 `exiv2 file` shows the metadata of the given file  
 
-### Binwalk
+#### Binwalk
 Binwalk is a tool for searching binary files like images and audio files for embedded files and
 data.
 
@@ -1411,7 +1353,7 @@ data.
 `binwalk <filepath>` Displays the embedded data in the given file  
 `binwalk -e <filepath>` Displays and extracts the data from the given file
 
-### Zsteg
+#### Zsteg
 zsteg is a tool that can detect hidden data in png and bmp files.
 
 **Useful commands:**  
@@ -1419,7 +1361,7 @@ zsteg is a tool that can detect hidden data in png and bmp files.
 `zsteg -E file` Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy
 name.png)
 
-### Wavsteg
+#### Wavsteg
 WavSteg is a python3 tool that can hide data and files in wav files and can also extract data from
 wav files.
 
@@ -1427,7 +1369,7 @@ wav files.
 `python3 WavSteg.py -r -s soundfile -o outputfile` extracts data from a wav sound file and
 outputs the data into a new file
 
-### Outguess
+#### Outguess
 OutGuess is a universal tool for steganography that allows the insertion of hidden information into the redundant bits of data sources. The supported formats are JPEG, PPM and PNM.
 
 **Useful commands:**  
@@ -1443,11 +1385,11 @@ Retrieve the hidden message from the image:
 `-p <param>`   parameter passed to destination data handler  
 `-r`           retrieve message from data  
 
-### Sonic visualizer
+#### Sonic visualizer
 Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
 helpful when dealing with audio steganography. You can reveal hidden shapes in audio files.
 
-## Memory analysis
+### Memory analysis
 Traditionel computer forensics can be made out of volatile memory.
 
 What is volatile data?
@@ -1468,46 +1410,160 @@ Data that can be found in volatile memory
 
 A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
 
-# Cryptology
-Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
+### Disk imaging
 
-## Generate keys
-To generate a private key we use the following command (8912 creates the key 8912 bits long):  
-`openssl genrsa -aes256 -out private.key 8912`
+## Binary Exploitation
+### Registers
+### The Stack
+### Calling Conventions
+### Global Offset Table (GOT)
+### Buffers
+#### Buffer Overflow
+### Return Oriented Programming (ROP)
+### Binary Security
+#### No eXecute (NX)
+#### Address Space Layout Randomization (ASLR)
+#### Stack Canaries
+#### Relocation Read-Only (RELRO)
+### The Heap
+#### Heap Exploitation
+### Format String Vulnerability
 
-To generate a public key we use our previously generated private key:  
-`openssl rsa -in private.key -pubout -out public.key`
+## Reverse Engineering
+### Assembly
+### Disassemblers
 
-Lets now encrypt a file (plaintext.txt) using our public key:  
-`openssl rsautl -encrypt -pubin -inkey public.key -in plaintext.txt -out encrypted.txt`
+## Cryptography
+### Encoding
+Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
 
-Now, if we use our private key, we can decrypt the file and get the original message:  
-`openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
+A very popular encoding is Base64
+### Hashing
+Hashing is used for 2 main purposes in Cyber Security. To verify integrity of data, or for verifying passwords. 
 
+plaintext ➡️ hash  
+hash ⛔ plaintext
 
-# Networking
-`TO BE ADDED`
+Doing a lookup in a sorted list of hashes that are not salted is quite fast, much much faster than trying to crack the hash. But in case we have to crack, then its done by hashing a large number of different inputs (often rockyou.txt, these are the possible passwords), potentially adding the salt if there is one and comparing it to the target hash. 
 
-# Vulnerabilities
-## SQL Injection
-This occurs when user controlled input is passed to SQL queries. As a result, an attacker can pass in SQL queries to manipulate the outcome of such queries. 
+Tools like Hashcat and John the Ripper are normally used for this.
+### Ciphers
+### Encryption (RSA)
+#### Symetric encryption
+plaintext ➡️ 🔑 ➡️ ciphertext  
+plaintext ⬅️ 🔑 ⬅️ ciphertext  
+(🔑 shared key)
 
-If an attacker is able to successfully pass input that is interpreted correctly, they would be able to do the following:
+#### Asymetric encryption
+plaintext ➡️ 🔑 ➡️ ciphertext  
+plaintext ⬅️ 🗝 ⬅️ ciphertext  
+(🔑 public key, 🗝 private key
 
-* Access, Modify and Delete information in a database when this input is passed into database queries. This would mean that an attacker can steal sensitive information such as personal details and credentials.
-* Execute Arbitrary system commands on a server that would allow an attacker to gain access to users’ systems. This would enable them to steal sensitive data and carry out more attacks against infrastructure linked to the server on which the command is executed.
+Public key to encrypt, private key to decrypt.
 
+## Miscellaneous
 
-`TO BE ADDED`
+## Windows Exploitation
+### Active directory
 
-## XSS (Cross-Site Scripting)
-**DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
+## Shells and Priviege Escalation
+### TTY Shell
+The tty command of terminal basically prints the file name of the terminal connected to standard input. tty is short of teletype, but popularly known as a terminal it allows you to interact with the system by passing on the data (you input) to the system, and displaying the output produced by the system
 
-**Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
+**Shell Spawning**  
+`python -c 'import pty; pty.spawn("/bin/sh")'`  
+`echo os.system('/bin/bash')`  
+`/bin/sh -i`  
+`perl —e 'exec "/bin/sh";'`  
+`perl: exec "/bin/sh";`  
+`ruby: exec "/bin/sh"`  
+`lua: os.execute('/bin/sh')`  
+From within IRB  
+`exec "/bin/sh"`  
+From within vi  
+`:!bash`  
+From within vi  
+`:set shell=/bin/bash:shell`  
+From within nmap  
+`!sh`  
 
-**Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
+Many of these will also allow you to escape jail shells. The top 3 would be my most successful in general for spawning from the command line.
+### Privilege Escalation 
+Check for root password
+Run: `id`  
+Run: `sudo -l`  
+Locate password folder and crack it using johntheripper  
+Or use [GTFOBins](https://gtfobins.github.io)
 
-## Printer Hacking (IPP)
+You can also run:  
+`wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh` on a target machine to see the files that stand out.
+
+Another option would be to run the following command to find all files with the SUID bit set:   
+`find / -perm -u=s -type f 2>/dev/null` fine  
+`find / -user root -perm 4000 -print 2>/dev/null` good  
+`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null` better  
+`find / -user root -perm 4000 -exec ls -ldb {} \; 2>/dev/null | grep 'bin'` best  
+
+`2>/dev/null` will filter out the errors so that they will not be output to your console
+
+#### Find info about the users of the system
+Find users on a system  
+`cat /etc/passwd | grep “/bin/bash”`
+
+Find passwords  
+`cat /etc/passwd`
+
+If you don't have privilege, try this  
+`find / -name shadow* 2>/dev/null | head`
+
+#### Privilege Escalation using SUID Binaries
+`-rwsr-xr-x`  
+“s” = SUID. This means that any user can execute these commands and they will be ran as the original owner.
+
+**Example**  
+Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command to read a flag:  
+`find /home/berkan/flag1.txt -exec cat {} \;`
+
+## Vulnerabilities
+### Social Engineering
+#### Phishing
+
+##### Phishing terms
+**A BEC (Business Email Compromise)** is when an adversary gains control of an internal employee's account and then uses the compromised email account to convince other internal employees to perform unauthorized or fraudulent actions. 
+
+**A typosquatting attack**, also known as a URL hijacking, a sting site, or a fake URL, is a type of social engineering where threat actors impersonate legitimate domains for malicious purposes such as fraud or malware spreading.
+
+##### Types of Phishing attacks
+**Spam** - unsolicited junk emails sent out in bulk to a large number of recipients. The more malicious variant of Spam is known as MalSpam.
+
+**Phishing** -  emails sent to a target(s) purporting to be from a trusted entity to lure individuals into providing sensitive information. 
+
+**Spear phishing** - takes phishing a step further by targeting a specific individual(s) or organization seeking sensitive information.  
+
+**Whaling** - is similar to spear phishing, but it's targeted specifically to C-Level high-position individuals (CEO, CFO, etc.), and the objective is the same. 
+
+**Smishing** - takes phishing to mobile devices by targeting mobile users with specially crafted text messages. 
+
+**Vishing** - is similar to smishing, but instead of using text messages for the social engineering attack, the attacks are based on voice calls. 
+
+##### Analyze/identify
+1. Open Email
+2. See its raw format
+3. Analyze the results:
+
+* **X-Originating-IP** - The IP address of the email was sent from (this is known as an X-header)
+* **Smtp.mailfrom/header.from** - The domain the email was sent from (these headers are within Authentication-Results)
+* **Reply-To** - This is the email address a reply email will be sent to instead of the From email address
+
+In case the mail is encoded using base64, the following command can be used to decrypt the message:  
+`base64 -d <filename> > decrypted.<filetype>` 
+
+##### Phishing security
+Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rsoa-and-rp/32.0?topic=SSBRUQ_32.0.0/com.ibm.resilient.doc/install/resilient_install_defangURLs.htm).
+
+Expand shortened links with this [tool](https://www.expandurl.net).
+### Misconfigurations
+#### Printer Hacking (IPP)
 Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET)  
 Printer security cheat sheet can be found [here](http://hacking-printers.net/wiki/index.php/Printer_Security_Testing_Cheat_Sheet)
 
