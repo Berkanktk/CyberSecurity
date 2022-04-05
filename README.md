@@ -39,7 +39,7 @@
 12. [Cryptology](#cryptology)
     1. [Generate Keys](#generate-keys)
 13. [Networking](#networking) 
-14. [Exploitation]
+14. [Exploitation](#exploitation)
     1.  [Web Exploitation](#web-exploitation)
         1.  [Content Discovery](#content-discovery)
         2.  [SQL Injection](#sql-injection)
