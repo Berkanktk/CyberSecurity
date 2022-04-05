@@ -153,6 +153,19 @@
 [Root Me](https://www.root-me.org) - Root Me is a platform for everyone to test and improve knowledge in computer security and hacking.  
 
 # Books
+- Penetration Testing
+- Linux Basics for Hackers
+- The Linux Command Line and Shell Scripting Bible
+- Black Hat Python
+- The  Hacker PlayBook 2
+- The Hacker PlayBook 3
+- Hacker Methodology Handbook
+- Gray Hat Hacking
+- Red Team Field Manual
+- Metasploit
+- The Web Application Hacker’s Handbook
+- Real-World Bug Hunting
+- Attacking Network Protocols
 
 # Services
 ## Active directory (Windows)
