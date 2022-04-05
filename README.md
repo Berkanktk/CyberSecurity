@@ -1142,6 +1142,9 @@ Lets now encrypt a file (plaintext.txt) using our public key:
 Now, if we use our private key, we can decrypt the file and get the original message:  
 `openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
 
+# Networking
+`TO BE ADDED`
+
 # Steps
 ## Content Discovery
 ### Manual
@@ -1481,8 +1484,7 @@ A tool used for analyzing memory dumps is [volatility 3](https://github.com/vola
 
 
 
-# Networking
-`TO BE ADDED`
+
 
 # Vulnerabilities
 ## SQL Injection
