@@ -39,10 +39,13 @@
     1.  [Content Discovery](#content-discovery)
     2.  [SQL Injection](#sql-injection)
     3.  [Command Injection](#command-injection)
-    4.  [Directory Traversak](#directory-traversal)
-    5.  [Cross Site Request Forgery](#cross-site-request-forgery)
-    6.  [Cross Site Scripting](#cross-site-scripting)
-    7.  [Server Side Request Forgery](#server-side-request-forgery)
+    4.  [Directory Traversal](#directory-traversal)
+    5.  [Authentication Bypass](#authentication-bypass)
+    6.  [Insecure Direct Object Reference](#insecure-direct-object-reference)
+    7.  [File Inclusion](#file-inclusion)
+    8.  [Cross Site Request Forgery](#cross-site-request-forgery)
+    9.  [Cross Site Scripting](#cross-site-scripting)
+    10. [Server Side Request Forgery](#server-side-request-forgery)
 14. [Forensics](#forensics)
     1.  [File Analysis](#file-analysis)
     2.  [PCAP Analysis](#pcap-analysis)
@@ -1246,6 +1249,17 @@ If an attacker is able to successfully pass input that is interpreted correctly,
 `TO BE ADDED`
 ## Command Injection
 ## Directory Traversal
+## Authentication Bypass
+## Insecure Direct Object Reference
+Insecure Direct Object Reference(IDOR) is a type of access control vulnerability.
+
+This type of vulnerability can occur when a web server receives user-supplied input to retrieve objects (files, data, documents), too much trust has been placed on the input data, and it is not validated on the server-side to confirm the requested object belongs to the user requesting it.
+
+**An example of this:**  
+Imagine you've just signed up for an online service, and you want to change your profile information. The link you click on goes to `http://shop.berkankutuk.dk/profile?user_id=1337`, and you can see your information.
+
+Curiosity gets the better of you, and you try changing the user_id value to 420 instead (`http://shop.berkankutuk.dk/profile?user_id=420`), and to your surprise, you can now see another user's information. You've now discovered an IDOR vulnerability!
+## File Inclusion
 ## Cross Site Request Forgery
 ## Cross Site Scripting
 **DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
