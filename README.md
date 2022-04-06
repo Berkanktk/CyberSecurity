@@ -46,7 +46,7 @@
 14. [Forensics](#forensics)
     1.  [File Analysis](#file-analysis)
     2.  [PCAP Analysis](#pcap-analysis)
-    3.  [Stegonography](#stegonography)
+    3.  [Steganography](#steganography)
     4.  [Memory analysis](#memory-analysis)
     5.  [Disk imaging](#disk-imaging)
 15. [Binary Exploitation](#binary-exploitation)
@@ -128,6 +128,7 @@
 [RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.      
 [RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).      
 [Revshell](https://www.revshells.com) - reverse shell generator.  
+[RGBA Color Picker](https://rgbacolorpicker.com) - The RGBA color space includes an alpha channel for representing the transparency information of an image  
 [ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
 [Shodan](https://www.shodan.io) - learn various pieces of information about the client’s network, without actively connecting to it.  
 [sploitus](https://sploitus.com) - the exploit and tools database.      
@@ -1316,7 +1317,7 @@ The format is precisely defined in a specification doc - often publicly availabl
 ## PCAP Analysis
 
 ## Steganography
-Steganography is the practice of hiding a secret message in something that is not secret
+Steganography is the practice of hiding a secret message in something that is not secret, for example: A message inside a jpg file, or a binary inside a png.
 
 **File Carving**  
 File carving: extract files based on the file format
@@ -1330,20 +1331,38 @@ File carving tools:
 * dd (manual extraction)
   * dd if = input.png or = output.txt bs = 1 skip = 1000 count = 32 
 
+**Tools**  
+`Steghide` = JPEG(primarily), BMP, WAV and AU  
+`Zsteg` = PNG(primarily), BMP
+
 ### Steghide
-Steghide is a steganography program that hides data in various kinds of image and audio files ,
-only supports these file formats : JPEG, BMP, WAV and AU . but it’s also useful for extracting
-embedded and encrypted data from other files.
+Steghide is a steganography program that hides data in various kinds of image and audio files, only supports these file formats : JPEG, BMP, WAV and AU. But it’s also useful for extracting embedded and encrypted data from other files. One of the greatest benefits of stegohide, is that it can encrypt data with a passphrase 
 
 **Useful commands:**  
 `steghide info <filepath>`  displays info about whether a file has embedded data or not.  
-`steghide extract -sf <filepath>`  extracts embedded data from a file
+`steghide extract -sf <filepath>`  extracts embedded data from a stegofile  
+`steghide embed -cf <filepath> -ef <textfile>`  embed data from a coverfile to a embedfile
 
 ### Stegsolve
 Sometimes there is a message or a text hidden in the image itself and in order to view it you
 need to apply some color filters or play with the color levels. You can do it with GIMP or
 Photoshop or any other image editing software but stegsolve made it easier. it’s a small java tool
 that applies many color filters on images.
+
+### Stegoveritas
+Stegoveritas supports just about every image file, and is able to extract all types of data from it
+
+**Installation:**
+```console
+berkankutuk@kali:~$ sudo pip3 install stegoveritas 
+berkankutuk@kali:~$ stegoveritas_install_deps
+```
+
+**Useful commands:**   
+`stegoveritas filename` - Simple stego scan   
+`stegoveritas -meta filename` - Check file for metadata information  
+`stegoveritas -steghide filename` -  Check for StegHide hidden info.  
+`stegoveritas -extractLSB filename` -  Extract a specific LSB RGB from the image.
 
 ### Strings
 Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego challenges. Usually the embedded data is password protected or encrypted
@@ -1378,6 +1397,7 @@ data.
 zsteg is a tool that can detect hidden data in png and bmp files.
 
 **Useful commands:**  
+`zsteg file` Runs a simple scan on the given file  
 `zsteg -a file` Runs all the methods on the given file  
 `zsteg -E file` Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy
 name.png)
@@ -1408,7 +1428,9 @@ Retrieve the hidden message from the image:
 
 ### Sonic visualizer
 Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
-helpful when dealing with audio steganography. You can reveal hidden shapes in audio files.
+helpful when dealing with audio steganography. You can reveal hidden shapes in audio files or use it to se hidden images inside audio files.
+
+`Layer->Add Spectrogram` should work
 
 ## Memory analysis
 Traditionel computer forensics can be made out of volatile memory.
