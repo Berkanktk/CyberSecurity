@@ -173,11 +173,6 @@
 - Attacking Network Protocols
 
 # Services
-## Active directory (Windows)
-Active Directory is a collection of machines and servers connected inside of domains, that are a collective part of a bigger forest of domains, that make up the Active Directory network. 
-
-Other related terms include: Domain controllers, Trusts & Policies, Services, Authentication & Cloud security.
-
 ## Network security
 An Intrusion Detection System (IDS) is a system that detects network or system intrusions.  
 
@@ -1248,8 +1243,11 @@ If an attacker is able to successfully pass input that is interpreted correctly,
 
 `TO BE ADDED`
 ## Command Injection
+`TO BE ADDED`
 ## Directory Traversal
+`TO BE ADDED`
 ## Authentication Bypass
+`TO BE ADDED`
 ## Insecure Direct Object Reference
 Insecure Direct Object Reference(IDOR) is a type of access control vulnerability.
 
@@ -1260,7 +1258,9 @@ Imagine you've just signed up for an online service, and you want to change your
 
 Curiosity gets the better of you, and you try changing the user_id value to 420 instead (`http://shop.berkankutuk.dk/profile?user_id=420`), and to your surprise, you can now see another user's information. You've now discovered an IDOR vulnerability!
 ## File Inclusion
+`TO BE ADDED`
 ## Cross Site Request Forgery
+`TO BE ADDED`
 ## Cross Site Scripting
 **DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
 
@@ -1268,7 +1268,7 @@ Curiosity gets the better of you, and you try changing the user_id value to 420 
 
 **Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
 ## Server Side Request Forgery
-
+`TO BE ADDED`
 
 # Forensics
 Is simply 'the art of uncovering'
@@ -1329,6 +1329,7 @@ The format is precisely defined in a specification doc - often publicly availabl
 * Unknown file types: search for tracks from a file format 
 
 ## PCAP Analysis
+`TO BE ADDED`
 
 ## Steganography
 Steganography is the practice of hiding a secret message in something that is not secret, for example: A message inside a jpg file, or a binary inside a png.
@@ -1465,30 +1466,45 @@ Data that can be found in volatile memory
 * Stateless malware - malware that lives only in memory
 * Even things like a basic screenshot or the user's clipboard 
 
-A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
+A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3.
 
 ## Disk imaging
+`TO BE ADDED`
 
 # Binary Exploitation
 ## Registers
+`TO BE ADDED`
 ## The Stack
+`TO BE ADDED`
 ## Calling Conventions
+`TO BE ADDED`
 ## Global Offset Table (GOT)
+`TO BE ADDED`
 ## Buffers
 ### Buffer Overflow
+`TO BE ADDED`
 ## Return Oriented Programming (ROP)
+`TO BE ADDED`
 ## Binary Security
 ### No eXecute (NX)
+`TO BE ADDED`
 ### Address Space Layout Randomization (ASLR)
+`TO BE ADDED`
 ### Stack Canaries
+`TO BE ADDED`
 ### Relocation Read-Only (RELRO)
+`TO BE ADDED`
 ## The Heap
 ### Heap Exploitation
+`TO BE ADDED`
 ## Format String Vulnerability
+`TO BE ADDED`
 
 # Reverse Engineering
 ## Assembly
+`TO BE ADDED`
 ## Disassemblers
+`TO BE ADDED`
 
 # Cryptography
 ## Encoding
@@ -1505,6 +1521,7 @@ Doing a lookup in a sorted list of hashes that are not salted is quite fast, muc
 
 Tools like Hashcat and John the Ripper are normally used for this.
 ## Ciphers
+`TO BE ADDED`
 ## Encryption (RSA)
 ### Symetric encryption
 plaintext ➡️ 🔑 ➡️ ciphertext  
@@ -1519,9 +1536,13 @@ plaintext ⬅️ 🗝 ⬅️ ciphertext
 Public key to encrypt, private key to decrypt.
 
 # Miscellaneous
+`TO BE ADDED`
 
 # Windows Exploitation
 ## Active directory
+Active Directory is a collection of machines and servers connected inside of domains, that are a collective part of a bigger forest of domains, that make up the Active Directory network. 
+
+Other related terms include: Domain controllers, Trusts & Policies, Services, Authentication & Cloud security.
 
 # Shells and Privilege Escalation
 ## TTY Shell
