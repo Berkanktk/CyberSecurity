@@ -1419,17 +1419,60 @@ As a developer, it's important to be aware of web application vulnerabilities, h
 5. Carefully analyze the web application and allow only protocols and PHP wrappers that are in need.
 6. Never trust user input, and make sure to implement proper input validation against file inclusion.
 7. Implement whitelisting for file names and locations as well as blacklisting.
-
-## Cross Site Request Forgery
+## Cross Site Request Forgery (CSRF)
 `TO BE ADDED`
-## Cross Site Scripting
+## Cross Site Scripting (XSS)
 **DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
 
 **Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
 
 **Stored XSS**: This is when a malicious script is directly injected into the webpage or web application. This type originates from the website's database.
-## Server Side Request Forgery
-`TO BE ADDED`
+## Server Side Request Forgery (SSRF)
+SSRF stands for Server-Side Request Forgery. It's a vulnerability that allows a malicious user to cause the webserver to make an additional or edited HTTP request to the resource of the attacker's choosing.
+
+There are two types of SSRF vulnerability; the first is a regular SSRF where data is returned to the attacker's screen. The second is a Blind SSRF vulnerability where an SSRF occurs, but no information is returned to the attacker's screen.
+
+**What's the impact?**  
+A successful SSRF attack can result in any of the following: 
+
+* Access to unauthorised areas.
+* Access to customer/organisational data.
+* Ability to Scale to internal networks.
+* Reveal authentication tokens/credentials.
+
+### Finding an SSRF
+* When a full URL is used in a parameter in the address bar:
+  * `https://berkankutuk.dk/form?server=http://server.website.com/store`
+* A hidden field in a form:
+  ```html
+  <form ...>
+      <input type = "hidden" name="server" value="=http://server.website.com/store">
+      ...
+  ```
+* A partial URL such as just the hostname:
+  * `https://berkankutuk.dk/form?server=api`
+* Or perhaps only the path of the URL:
+  * `https://berkankutuk.dk/form?dst=/forms/contact`
+
+### Attack
+**Vulnerable site:**  
+`http://berkankutuk.dk/users?url=....`
+
+Directory traversal can also be used on some cases, and so can the `&x=` to stop the remaining path from being appended.
+
+### Defeating Common SSRF Defenses
+1. Deny list
+   1. A specific endpoint to restrict access is the localhost, which may contain server performance data or further sensitive information, so domain names such as localhost and 127.0.0.1 would appear on a deny list. 
+   2. Attackers can bypass a Deny List by using alternative localhost references such as 0, 0.0.0.0, 0000, 127.1, 127.*.*.*, 2130706433, 017700000001 or subdomains that have a DNS record which resolves to the IP Address 127.0.0.1 such as 127.0.0.1.nip.io.
+2. Allow list
+   1. An URL used in a parameter must begin with `https://website.com`.
+   2. An attacker could quickly circumvent this rule by creating a subdomain on an attacker's domain name, such as `https://website.com.attackers-domain.com`. The application logic would now allow this input and let an attacker control the internal HTTP request.
+3. Open Redirect
+   1. An open redirect is an endpoint on the server where the website visitor gets automatically redirected to another website address.
+   2. But imagine there was a potential SSRF vulnerability with stringent rules which only allowed URLs beginning with `https://website.com/`. An attacker could utilise the above feature to redirect the internal HTTP request to a domain of the attacker's choice.
+
+This IP address may contain sensitive data in a cloud environment:    
+`169.254.169.254`
 
 # Forensics
 Is simply 'the art of uncovering'
