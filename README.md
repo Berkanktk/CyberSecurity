@@ -1335,7 +1335,6 @@ Take the below data as an example which is set by the web server upon logging in
 `Set-Cookie: session=eyJpZCI6MSwiYWRtaW4iOmZhbHNlfQ==; Max-Age=3600; Path=/` 
 
 This string base64 decoded has the value of `{"id":1,"admin": false}` we can then encode this back to base64 encoded again but instead setting the admin value to true, which now gives us admin access.
-
 ## Insecure Direct Object Reference
 Insecure Direct Object Reference(IDOR) is a type of access control vulnerability.
 
@@ -1346,7 +1345,81 @@ Imagine you've just signed up for an online service, and you want to change your
 
 Curiosity gets the better of you, and you try changing the user_id value to 420 instead (`http://shop.berkankutuk.dk/profile?user_id=420`), and to your surprise, you can now see another user's information. You've now discovered an IDOR vulnerability!
 ## File Inclusion
-`TO BE ADDED`
+In some scenarios, web applications are written to request access to files on a given system, including images, static text, and so on via parameters. Parameters are query parameter strings attached to the URL that could be used to retrieve data or perform actions based on user input. The following graph explains and breaking down the essential parts of the URL.
+![LFI](Images/LFI.png)
+
+For example, if a user wants to access and display their CV within the web application, the request may look as follows, `http://webapp.thm/get.php?file=userCV.pdf`, where the `file` is the parameter and the `userCV.pdf`, is the required file to access.
+![LFI CV](Images/LFI-CV.png)
+
+File inclusion vulnerabilities are commonly found and exploited in various programming languages for web applications, such as PHP that are poorly written and implemented. The main issue of these vulnerabilities is the input validation, in which the user inputs are not sanitized or validated, and the user controls them. When the input is not validated, the user can pass any input to the function, causing the vulnerability.
+
+If the attacker somehow can write to the server such as `/tmp` directory, then it is possible to gain remote command execution RCE. However, it won't be effective if file inclusion vulnerability is found with no access to sensitive data and no writing ability to the server.
+
+Also known as Directory traversal, a web security vulnerability allows an attacker to read operating system resources, such as local files on the server running an application. The attacker exploits this vulnerability by manipulating and abusing the web application's URL to locate and access files or directories stored outside the application's root directory.
+
+An example of this can be seen by running this command on a website with this vulnerability:  
+`http://webapp.thm/get.php?file=../../../../etc/passwd`
+
+The result would look like this:  
+![LFI Path](Images/LFI-Path.png)
+
+Similarly, if the web application runs on a Windows server, the attacker needs to provide Windows paths
+
+You can find a list of common OS files [here](More/Vulnerabilities/OS-Files/Readme.md)
+
+Most of the time in CTF's the path you are looking for would be: `../../../../etc/passwd`
+
+### NULL BYTE trick
+If a path is placing `.php` at the end of your search, then this tells us that the developer specifies the file type to pass to the include function. To bypass this scenario, we can use the NULL BYTE, which is `%00`.
+
+Using null bytes is an injection technique where URL-encoded representation such as `%00` or `0x00` in hex with user-supplied data to terminate strings. You could think of it as trying to trick the web app into disregarding whatever comes after the Null Byte.:  
+`/etc/passwd%00`
+
+**NOTE**: the `%00` trick is fixed and not working with PHP 5.3.4 and above.
+
+### Current Directory trick
+Though this can be filtered by the developer. But we can also bypass that by trying the "current directory" trick which looks something like this:  
+`/etc/passwd/.`
+
+### Subset string trick
+If the developer uses input validation by filtering some keywords, ex. "../", we can bypass this by using:    
+`....//....//....//....//....//etc/passwd`  
+This works because the PHP filter only matches and replaces the first subset string `../` it finds and doesn't do another pass, leaving:  
+`../../../../etc/passwd`
+
+### Including the Direcotry trick
+If the developer forces you to include a directory, you can bypass this by writing the directory and then moving up from there. Ex. if the forced directory is 'language':  
+`languages/../../../../../etc/passwd` 
+
+### Remote File Inclusion - RFI
+Remote File Inclusion (RFI) is a technique to include remote files and into a vulnerable application. Like LFI, the RFI occurs when improperly sanitizing user input, allowing an attacker to inject an external URL into `include` function. One requirement for RFI is that `the allow_url_fopen` option needs to be `on`. 
+
+The risk of RFI is higher than LFI since RFI vulnerabilities allow an attacker to gain Remote Command Execution (RCE) on the server. Other consequences of a successful RFI attack include:
+
+* Sensitive Information Disclosure 
+* Cross-site Scripting (XSS)
+* Denial of Service (DoS)
+
+An external server must communicate with the application server for a successful RFI attack where the attacker hosts malicious files on their server. Then the malicious file is injected into the include function via HTTP requests, and the content of the malicious file executes on the vulnerable application server.
+![RFI](Images/RFI.png)
+
+**How to**  
+1. Create a file somewhere on your local computer. ex "cmd.txt"
+2. Open the file and write some code inside it
+3. Now create a webserver using python by running: `python3 http.server <port>` in the same path of the file.
+4. Now open the browser and enter the http address where you want the attack to direct. This could look like this: `http://10.10.135.181:9001/cmd.txt` 
+
+### Remediation
+As a developer, it's important to be aware of web application vulnerabilities, how to find them, and prevention methods. To prevent the file inclusion vulnerabilities, some common suggestions include:
+
+1. Keep system and services, including web application frameworks, updated with the latest version.
+2. Turn off PHP errors to avoid leaking the path of the application and other potentially revealing information.
+3. A Web Application Firewall (WAF) is a good option to help mitigate web application attacks.
+4. Disable some PHP features that cause file inclusion vulnerabilities if your web app doesn't need them, such as allow_url_fopen on and allow_url_include.
+5. Carefully analyze the web application and allow only protocols and PHP wrappers that are in need.
+6. Never trust user input, and make sure to implement proper input validation against file inclusion.
+7. Implement whitelisting for file names and locations as well as blacklisting.
+
 ## Cross Site Request Forgery
 `TO BE ADDED`
 ## Cross Site Scripting
