@@ -1422,6 +1422,10 @@ As a developer, it's important to be aware of web application vulnerabilities, h
 ## Cross Site Request Forgery (CSRF)
 `TO BE ADDED`
 ## Cross Site Scripting (XSS)
+Cross-Site Scripting, better known as XSS in the cybersecurity community, is classified as an injection attack where malicious JavaScript gets injected into a web application with the intention of being executed by other users
+
+Cross-site scripting vulnerabilities are extremely common
+
 **DOM-Based XSS**: This is when an attack payload is executed by manipulating the DOM (Document Object Model) in the target's browser. This type uses the client-side code instead of server-side code.
 
 **Reflected XSS**: This is when a malicious script bounces off another website onto the target's web application or website. Normally, these are passed in the URL as a query, and it's easy as making the target click a link. This type originates from the target's request.
@@ -1670,7 +1674,7 @@ Data that can be found in volatile memory
 * Stateless malware - malware that lives only in memory
 * Even things like a basic screenshot or the user's clipboard 
 
-A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3.
+A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
 
 ## Disk imaging
 `TO BE ADDED`
