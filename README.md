@@ -44,7 +44,7 @@
     6.  [Insecure Direct Object Reference](#insecure-direct-object-reference)
     7.  [File Inclusion](#file-inclusion)
     8.  [Cross Site Request Forgery](#cross-site-request-forgery)
-    9.  [Cross Site Scripting](#cross-site-scripting)
+    9.  [Cross Site Scripting](#cross-site-scripting-xss)
     10. [Server Side Request Forgery](#server-side-request-forgery)
 14. [Forensics](#forensics)
     1.  [File Analysis](#file-analysis)
@@ -1795,6 +1795,8 @@ A tool used for analyzing memory dumps is [volatility 3](https://github.com/vola
 
 # Reverse Engineering
 ## Assembly
+Find the in-depth content for the Assembly x86-64 language [here](/More/Assembly/Readme.md) inside this repository.
+
 `TO BE ADDED`
 ## Disassemblers
 `TO BE ADDED`
