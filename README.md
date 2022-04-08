@@ -98,7 +98,7 @@
 [CyberChef](https://gchq.github.io/CyberChef/) - a web app for encryption, encoding, compression and data analysis.     
 [Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.  
 [CTF 101](https://ctf101.org) - learn the different CTF topics in cybersecurity  
-[CTF Cryptography](https://charcharbinks.com/post/ctf_crypto_for_beginners/#cryptography-concepts-and-terms) - ctf cryptography for beginners  
+[CTF Cryptography](https://charcharbinks.com/post/ctf_crypto_for_beginners/) - ctf cryptography for beginners  
 [dCode](https://www.dcode.fr/en) - dcode.fr has many decoders for a lot of ciphers  
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.      
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
@@ -108,6 +108,7 @@
 [Google advanced search](https://www.google.dk/advanced_search) - google dorking made easy      
 [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking      
 [GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.    
+[HackerOne](https://www.hackerone.com) -  HackerOne is a vulnerability coordination and bug bounty platform.  
 [Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/) - tool to identify hash types      
 [have i been pwned?](https://haveibeenpwned.com) - check if you have an account that has been compromised in a data breach.        
 [HexEd](https://hexed.it) - HexEd is a powerful online hex editor running in your web browser  
@@ -131,6 +132,7 @@
 [RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.      
 [RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).      
 [Revshell](https://www.revshells.com) - reverse shell generator.  
+[RequestBin](https://requestbin.com) - RequestBin gives you a URL that collects requests you send it so you can inspect them in a human-friendly way  
 [RGBA Color Picker](https://rgbacolorpicker.com) - The RGBA color space includes an alpha channel for representing the transparency information of an image  
 [ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
 [Shodan](https://www.shodan.io) - learn various pieces of information about the client’s network, without actively connecting to it.  
@@ -1514,8 +1516,6 @@ This command will print "BERKAN_WAS_HERE" on the screen.
 ```
 jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('BERKAN_WAS_HERE') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('BERKAN_WAS_HERE')//>\x3e 
 ```
-
-
 ## Server Side Request Forgery (SSRF)
 SSRF stands for Server-Side Request Forgery. It's a vulnerability that allows a malicious user to cause the webserver to make an additional or edited HTTP request to the resource of the attacker's choosing.
 
