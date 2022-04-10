@@ -50,8 +50,8 @@
     1.  [File Analysis](#file-analysis)
     2.  [PCAP Analysis](#pcap-analysis)
     3.  [Steganography](#steganography)
-    4.  [Memory analysis](#memory-analysis)
-    5.  [Disk imaging](#disk-imaging)
+    4.  [Memory Analysis](#memory-analysis)
+    5.  [Disk Imaging](#disk-imaging)
 15. [Binary Exploitation](#binary-exploitation)
     1.  [Registers](#registers)
     2.  [The Stack](#the-stack)
@@ -73,7 +73,7 @@
 18. [Miscellaneous](#miscellaneous)
 19. [Windows Exploitation](#windows-exploitation)
     1.  [Active Directory](#active-directory)   
-20. [Shells and Privilege Escalation](#shells-and-priviege-escalation)
+20. [Shells and Privilege Escalation](#shells-and-privilege-escalation)
     1.  [TTY Shell](#tty-shell)
     2.  [Privilege Escalation](#privilege-escalation)
 21. [Vulnerabilities](#vulnerabilities)
@@ -132,8 +132,8 @@
 [RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.      
 [RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).      
 [Revshell](https://www.revshells.com) - reverse shell generator.  
-[RequestBin](https://requestbin.com) - RequestBin gives you a URL that collects requests you send it so you can inspect them in a human-friendly way  
-[RGBA Color Picker](https://rgbacolorpicker.com) - The RGBA color space includes an alpha channel for representing the transparency information of an image  
+[RequestBin](https://requestbin.com) - RequestBin gives you a URL that collects requests  so you can inspect them in a human-friendly way   
+[RGBA Color Picker](https://rgbacolorpicker.com) - an RGBA color picker    
 [ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
 [Shodan](https://www.shodan.io) - learn various pieces of information about the client’s network, without actively connecting to it.  
 [sploitus](https://sploitus.com) - the exploit and tools database.      
@@ -1096,7 +1096,7 @@ Change plugin properties such as hiding them or changing their severity = Plugin
 ![Nessus Scans](Images/Nessus.png)
 
 ## Wireshark
-[Wireshark](https://www.wireshark.org is a tool used for creating and analyzing PCAPs (network packet capture files)  
+[Wireshark](https://www.wireshark.org) is a tool used for creating and analyzing PCAPs (network packet capture files)  
 
 Since this section is very large, I've created an individual page for this, which can be found inside this repository by clicking [here](More/Wireshark/README.md).
 
@@ -1577,12 +1577,12 @@ Use case
 * Hash cracking 
 ## File analysis
 ### Encodings
-* Decimal: 70 111 114 101 110 115 105 99 115 33
-* Hex: 46 6f 72 65 6e 73 69 63 73 21
-* Octal: 106 157 162 145 156 163 151 143 163 41
-* ASCII: Forensics!
-* Base64: Rm9yZW5zaWNzIQ==
-* Base85: 7W3<YDKBN%F!1
+* **Decimal:** 70 111 114 101 110 115 105 99 115 33
+* **Hex:** 46 6f 72 65 6e 73 69 63 73 21
+* **Octal:** 106 157 162 145 156 163 151 143 163 41
+* **ASCII:** Forensics!
+* **Base64:** Rm9yZW5zaWNzIQ==
+* **Base85:** 7W3<YDKBN%F!1
 
 ### File type
 The file type is often indicated by the file extension in the file name, e.g. .png, .mp4
@@ -1711,11 +1711,10 @@ zsteg is a tool that can detect hidden data in png and bmp files.
 name.png)
 
 ### Wavsteg
-WavSteg is a python3 tool that can hide data and files in wav files and can also extract data from
-wav files.
+WavSteg is a python3 tool that comes with the package `stegolsb` which can hide data and files in wav files and can also extract data from wav files.
 
 **Useful commands:**  
-`python3 WavSteg.py -r -s soundfile -o outputfile` extracts data from a wav sound file and
+`python3 WavSteg.py -r -i soundfile -o outputfile` extracts data from a wav sound file and
 outputs the data into a new file
 
 ### Outguess
@@ -1948,8 +1947,8 @@ Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rso
 Expand shortened links with this [tool](https://www.expandurl.net).
 ## Misconfigurations
 ### Printer Hacking (IPP)
-Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET)  
-Printer security cheat sheet can be found [here](http://hacking-printers.net/wiki/index.php/Printer_Security_Testing_Cheat_Sheet)
+Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET).  
+Printer security cheat sheet can be found [here](http://hacking-printers.net/wiki/index.php/Printer_Security_Testing_Cheat_Sheet).
 
 It allows clients to submit one or more print jobs to the printer or print server, and perform tasks such as querying the status of a printer, obtaining the status of print jobs, or canceling individual print jobs."  
 Most of them appear to run the CUPS server (which is a simple UNIX printing system).  
