@@ -1174,7 +1174,7 @@ Example: 192.168.1.204
 **Reserved local IP addresses**  
 192.168.1.0 = The network address  
 192.168.1.1 = The default getaway (router)  
-192.168.1.255 = The broadcast adress  
+192.168.1.255 = The broadcast address  
 
 If you send something to the broadcast address, the message will be broadcasted to everybody else on the network.
 
