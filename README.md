@@ -1165,9 +1165,79 @@ Lets now encrypt a file (plaintext.txt) using our public key:
 Now, if we use our private key, we can decrypt the file and get the original message:  
 `openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
 
-# Networking
-`TO BE ADDED`
+# Networking  
+## IP
+An IP address is a unique address that identifies a device on the internet or a local network. IP stands for "Internet Protocol," which is the set of rules governing the format of data sent via the internet or local network.
 
+Example: 192.168.1.204
+
+**Reserved local IP addresses**  
+192.168.1.0 = The network address  
+192.168.1.1 = The default getaway (router)  
+192.168.1.255 = The broadcast adress  
+
+If you send something to the broadcast address, the message will be broadcasted to everybody else on the network.
+
+### IPv4
+IP addresses consists of 32 bits:   
+11000000.10101000.00000001.11001100 = 192.168.1.204
+
+Or in hex  
+c0.a8.01.cc = 192.168.1.204
+
+So a full IP address is made up by 8x4 bits(32-bits), where they are seperated by a dot after every 8 bits meaning there are 4 groups which is also called "octets". 
+
+Since an octet consists of 8 bits and there are 4 octets, a valid IP address can only be a number between 0 and 255, meaning it can be 256 different numbers:  
+(0-255).(0-255).(0-255).(0-255)
+
+This makes the IP pool to have 2^32 = 4,294,967,296 different IP addresses that can be assigned.
+
+## The router
+One of the primary jobs of a router is to assign IP addresses to the computers on a home network. The router has a “pool” of IP addresses that it keeps track of.   
+When a computer connects to it and asks for an IP address, the router picks an IP address from the pool and assigns it to the computer. The router makes sure that two computers are not assigned the same IP address. This process of computers asking for an IP address from the router is called “dynamic” IP address assignment. It uses a network protocol called DHCP (Dynamic Host Configuration Protocol).
+
+When a host wants to connect to another host on a completely different IP outside the network, the host calls the default getaway(the router) for help. 
+
+The default getaway: 192.168.1.1
+
+
+
+## IPv4 Classes
+| Class | Range | Subnet | Number of networks | Usage | For |
+|---|---|---|---|---|---|
+| A | 1.0.0.0 - 126.255.255.255 | 255.0.0.0 | 16,777,214 | Host Assigning | Big Companies and Government |
+| B | 128.0.0.0 - 191.255.20.0 | 255.255.0.0 | 65,534 | Host Assigning | Organizations |
+| C | 192.0.0.0 - 223.255.255.0 | 255.255.255.0 | 254 | Host Assigning | Networks with few hosts |
+| D | 224.0.0.0 - 239.255.255.255 |  |  | Special Purpose | Multicasting applications |
+| E | 240.0.0.0. - 255.255.255.255 |  |  | Special Purpose | Experimental(Illegal) |
+
+**Notes**  
+- 127.0.0.0 is missing from the IP classes (16 million addresses) because they are loopback addresses on your local device. Normally used for network testing
+- Class C gives us the the most networks and smaller hosts per network. Nowadays we mainly do classles networks to take advantage of the IP addresses we need to use.
+
+## Subnetting
+### Subnet mask
+A subnet mask can look like this:  
+255.255.255.0
+
+If there is a 255, then the corresponding octet in the IP address will stay the same, but if the number is 0, then that octet can anything in between 0-255. Example:  
+Subnet mask = **255.255.255**.0  
+IP address = **192.168.1**.204
+
+The first 3 octets of the IP address 192.168.1.* will stay the same where the last octet "*" in our case is 204, which in fact is valid since the number can be anything in between 0-255
+
+So the octets that never change is called the "Network portion" were the octet on a subnet mask zero is called the "Host".
+
+### IANA
+IANA assigns IP addresses to a company. For example, IBM have the network range 9.0.0.0 which is a class A IP address. This gives the company to slice up a network with another subnet mask, since the subnet mask for the Class A is only a default or a minimum they have to have. Example
+
+IP = 9.1.4.0  
+Subnet mask = 255.255.255.0  
+= 256 other networks
+
+The **Class A** network became a **Classless** network (when you cut up a network using a different subnet mask)
+
+So in other words, big and massive networks can become into a smaller network.
 
 # Web Exploitation
 ## Content Discovery
