@@ -1214,7 +1214,6 @@ The default getaway: 192.168.1.1
 **Notes**  
 - 127.0.0.0 is missing from the IP classes (16 million addresses) because they are loopback addresses on your local device. Normally used for network testing
 - Class C gives us the the most networks and smaller hosts per network. 
-- Nowadays we mainly do classles networks to take advantage of the IP addresses we need to use.
 
 ## Subnetting
 ### Subnet mask
@@ -1230,15 +1229,15 @@ The first 3 octets of the IP address 192.168.1.* will stay the same where the la
 So the octets that never change is called the "Network portion" where the octet on a subnet mask zero is called the "Host".
 
 ### IANA
-IANA assigns IP addresses to a company. For example, IBM have the network range 9.0.0.0 which is a class A IP address. This gives the company to slice up a network with another subnet mask, since the subnet mask for the Class A is only a default or a minimum they have to have. Example
+IANA assigns IP addresses to a company. For example, IBM have the network range 9.0.0.0 which is a class A IP address. This gives the company the ability to slice up a network with another subnet mask, since the subnet mask for the Class A is only a default or a minimum they have to have. Example
 
 IP = 9.1.4.0  
 Subnet mask = 255.255.255.0  
 = 256 other networks
 
-The **Class A** network became a **Classless** network (when you cut up a network using a different subnet mask)
+The **Class A** network became a **Classless** network (when you cut up a network using a different subnet mask). Nowadays, we mainly do classles networks to take advantage of the IP addresses we need to use.
 
-So in other words, big and massive networks can become into a smaller network.
+So in other words, big and massive networks can become into a smaller network. 
 
 # Web Exploitation
 ## Content Discovery
