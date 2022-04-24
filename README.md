@@ -1213,7 +1213,8 @@ The default getaway: 192.168.1.1
 
 **Notes**  
 - 127.0.0.0 is missing from the IP classes (16 million addresses) because they are loopback addresses on your local device. Normally used for network testing
-- Class C gives us the the most networks and smaller hosts per network. Nowadays we mainly do classles networks to take advantage of the IP addresses we need to use.
+- Class C gives us the the most networks and smaller hosts per network. 
+- Nowadays we mainly do classles networks to take advantage of the IP addresses we need to use.
 
 ## Subnetting
 ### Subnet mask
@@ -1226,7 +1227,7 @@ IP address = **192.168.1**.204
 
 The first 3 octets of the IP address 192.168.1.* will stay the same where the last octet "*" in our case is 204, which in fact is valid since the number can be anything in between 0-255
 
-So the octets that never change is called the "Network portion" were the octet on a subnet mask zero is called the "Host".
+So the octets that never change is called the "Network portion" where the octet on a subnet mask zero is called the "Host".
 
 ### IANA
 IANA assigns IP addresses to a company. For example, IBM have the network range 9.0.0.0 which is a class A IP address. This gives the company to slice up a network with another subnet mask, since the subnet mask for the Class A is only a default or a minimum they have to have. Example
