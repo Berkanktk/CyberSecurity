@@ -222,6 +222,19 @@ Some of these providers are:
 **VPS** - Virtual Private Server (is a IaaS)  
 **IaaS** - Infrastructure-as-a-Service  
 **RCE** - Remote Code Execution vulnerability allows commands to be executed on the target's system.  
+**Offensive security** - is the process of breaking into computer systems, exploiting software bugs, and finding loopholes in applications to gain unauthorized access to them.  
+**Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats  
+**Penetration Tester** - Responsible for testing technology products for finding exploitable security vulnerabilities.  
+**Red Teamer** - Plays the role of an adversary, attacking an organization and providing feedback from an enemy's perspective.  
+**Security Engineer** - Design, monitor, and maintain security controls, networks, and systems to help prevent cyberattacks.  
+**Broken Access Control** - Ex. we cannot let anyone view the webmail before logging in or modify someone else's account.  
+**Identification and Authentication Failure** - Allowing the attacker to use brute force, or storing the users’ passwords in plain text.   
+**Identification** - refers to the ability to identify a user uniquely.   
+**Authentication** - refers to the ability to prove that the user is whom they claims to be.  
+**Firewall appliance** - The firewall allows and blocks connections based on a predefined set of rules. It restricts what can enter and what can leave a network.  
+**Intrusion Detection System (IDS) appliance** - An IDS detects system and network intrusions and intrusion attempts. It tries to detect attackers’ attempts to break into your network.  
+**Intrusion Prevention System (IPS) appliance** - An IPS blocks detected intrusions and intrusion attempts. It aims to prevent attackers from breaking into your network.  
+**Virtual Private Network (VPN) concentrator appliance** -  A VPN ensures that the network traffic cannot be read nor altered by a third party. It protects the confidentiality (secrecy) and integrity of the sent data.  
 
 # Principles and Standards
 ## CIA Triad
@@ -896,8 +909,7 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 `-t <number> `specifies the number of threads to use  
 `-u` by default Hydra checks all passwords for one login and then tries the next login. This option loops around the passwords, so the first password is tried on all logins, then the next password.  
 ## John The Ripper
-[John The Ripper](https://www.openwall.com/john/) is a fast password cracker, currently available for many flavors of Unix, Windows, and other.
-https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/
+[John The Ripper](https://www.openwall.com/john/) is a fast password cracker, currently available for many flavors of Unix, Windows, and other. [Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/)
 
 ### SSH Private Key
 Crack hashed private key  
@@ -1037,8 +1049,8 @@ Subnet mask with 255.255.255.0 = `<ip>/24`
 [Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
 
 ### Setting up Burp Suite
-Download Burp Suite [here](https://portswigger.net/burp/communitydownload)  
-Burp Suite requires Java JRE in order to run. Download and install Java [here](https://www.java.com/en/download/)
+Download Burp Suite [here](https://portswigger.net/burp/communitydownload).  
+Burp Suite requires Java JRE in order to run. Download and install Java [here](https://www.java.com/en/download/).
 
 ### Gettin' CA Certified
 We need to install a CA certificate as BurpSuite acts as a proxy between your browser and sending it through the internet - It allows the BurpSuite Application to read and send on HTTPS data. 
