@@ -1688,6 +1688,22 @@ Why analyze metadata?
 * In some cases even more important than content - eg with encrypted HTTPS traffic
 * Tool: `exiftool`
 
+**PDF Analysis**  
+We can try to read the metadata using the program pdfinfo. Pdfinfo displays various metadata related to a PDF file, such as title, subject, author, creator, and creation date. If you don’t have pdfinfo installed, you can install it using: `sudo apt install poppler-utils`
+
+**Geographical Coordinates**  
+Longitude Latitude
+
+Can be written as:
+```
+51 deg 30' 51.90" N, 0 deg 5' 38.73" W
+
+replaced deg with °
+51° 30' 51.90" N, 0° 5' 38.73" W
+
+or simply 51.514417, -0.094092
+``` 
+
 ### File format
 A file type has a specific format - the structure of the file
 
