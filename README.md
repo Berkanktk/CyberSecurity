@@ -1251,6 +1251,39 @@ The **Class A** network became a **Classless** network (when you cut up a networ
 
 So in other words, big and massive networks can become into a smaller network. 
 
+## Address Resolution Protocol (ARP)
+Address Resolution Protocol (ARP) is a protocol or procedure that connects an ever-changing Internet Protocol (IP) address to a fixed physical machine address, also known as a media access control (MAC) address, in a local-area network (LAN)
+
+So if the IP is known but the MAC adress is not, a request is broadcasted to every device on the network in order to match an IP address to its corresponding MAC address. This record is then maintained and saved to a table called ARP cache.
+
+An ARP request contains the following information:
+1. The senders IP address.
+2. The senders MAC adress.
+3. The IP address we want to learn the MAC address for.
+
+### Dynamic and static records
+When a broadcast is made, a dynamic record is made. This can be made by typing the following command:   
+`arp-scan -l -I <interface>`
+
+If we have the IP and MAC address values, a manual thus static record can be made. This is done with the command:  
+`arp -s <IP_Address> <MAC_Address>`
+
+See all ARP entries with the command:  
+`arp -a`
+
+### ARP Poisoning
+Since it is possible to manually add entries to an ARP table, a few attack types can be made. These include:
+1. Inflating the ARP cache thus making it non-responsive 
+2. Change the traffic on a network in order to listen for a traffic coming from a target. (MitM)
+3. Changing the traffic and completely stopping the traffic for a target device.
+
+**Flushing an ARP cache**  
+This can be made with the following command:  
+`arp -s -s neigh flush all`
+
+This command will delete every dynamic entry there is. The static ones will not be deleted since we added them manually. To remove the static entries run:   
+`arp -d <IP_Address>`
+
 # Web Exploitation
 ## Content Discovery
 ### Manual
