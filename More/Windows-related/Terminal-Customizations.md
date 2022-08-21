@@ -1,4 +1,4 @@
-# Info
+# Terminal Customizations
 Windows Terminal is Microsoft's updated release for a GUI terminal emulator. It supports using many different command-line tools to include Command Prompt, PowerShell, and Windows Subsystem for Linux.'
 
 ## An amazing guide to customize the Windows Terminal:  
