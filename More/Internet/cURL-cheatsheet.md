@@ -1,4 +1,4 @@
-## cURL
+## cURL Cheatsheet
 cURL (client URL) is a command-line tool and library that primarily supports HTTP along with many other protocols. 
 This makes it a good candidate for scripts as well as automation, making it essential for sending various types of 
 web requests from the command line, which is necessary for many types of web penetration tests. 
