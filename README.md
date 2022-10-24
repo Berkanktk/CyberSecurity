@@ -203,8 +203,8 @@ Some of these providers are:
 **Active reconnaissance** - Directly interacting with the system.  
 **Passive reconnaissance** - We rely on publicly available information.   
 **IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.    
-**Proxy** -  `TO BE ADDED`   
-**SSL/TLS** - `TO BE ADDED`  
+**Proxy** -  A proxy server is kind of gateway betweenour application and the internet   
+**SSL/TLS** - Both are cryptographic protocols that securely authenticate and transport data on the Internet. SSL is old, TLS is the new one.  
 **XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine  
 **IPP** - Internet Printing Protocol  
 **Hash collision** -  When 2 different inputs give the same output  
@@ -939,7 +939,24 @@ ssh2john.py can sometimes also be located under `/opt/john/ssh2john.py`
 Crack the hash (or a shadow file)
 `john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
 ## Metasploit
-Metasploit is a collection of not only thoroughly tested exploits but also ready to use auxiliary and post-exploitation tools
+The Metasploit Framework is a set of tools that allow information gathering, scanning, exploitation, exploit development, post-exploitation, and more. While the primary usage of the Metasploit Framework focuses on the penetration testing domain, it is also useful for vulnerability research and exploit development.
+
+**Auxiliary:** Any supporting module, such as scanners, crawlers and fuzzers, can be found here.  
+**Encoders:** Encoders will allow you to encode the exploit and payload in the hope that a signature-based antivirus solution may miss them.
+
+### Payloads
+**Singles:** Self-contained payloads (add user, launch notepad.exe, etc.) that do not need to download an additional component to run.  
+**Stagers:** Responsible for setting up a connection channel between Metasploit and the target system. Useful when working with staged payloads. “Staged payloads” will first upload a stager on the target system then download the rest of the payload (stage). This provides some advantages as the initial size of the payload will be relatively small compared to the full payload sent at once.    
+**Stages:** Downloaded by the stager. This will allow you to use larger sized payloads.
+
+Metasploit has a subtle way to help you identify single (also called “inline”) payloads and staged payloads.
+
+* generic/shell_reverse_tcp
+* windows/x64/shell/reverse_tcp
+
+Both are reverse Windows shells. The former is an inline (or single) payload, as indicated by the “_” between “shell” and “reverse”. While the latter is a staged payload, as indicated by the “/” between “shell” and “reverse”.
+
+### How to use
 
 Initialize the database  
 `msfdb init`  
@@ -987,6 +1004,44 @@ See what a machine could be vulnerable to
 
 Spawn a normal system shell  
 `shell`
+
+### Meterpreter
+Meterpreter is a Metasploit payload that supports the penetration testing process with many valuable components. Meterpreter will run on the target system and act as an agent within a command and control architecture. You will interact with the target operating system and files and use Meterpreter's specialized commands.
+
+Meterpreter runs on the target system but is not installed on it. It runs in memory and does not write itself to the disk on the target. This feature aims to avoid being detected during antivirus scans.
+
+Meterpreter also aims to avoid being detected by network-based IPS (Intrusion Prevention System) and IDS (Intrusion Detection System) solutions by using encrypted communication with the server where Metasploit runs (typically your attacking machine).
+
+Even though Meterpreter is very stealthy, most antivirus software will detect it unfortunately.
+
+See some of the available commands [here](/More/Metasploitable/Meterpreter/Commands.md).
+
+### Post exploitation with Meterpreter
+The post-exploitation phase will have several goals; Meterpreter has functions that can assist all of them.
+
+* Gathering further information about the target system.
+* Looking for interesting files, user credentials, additional network interfaces, and generally interesting information on the target system.
+* Privilege escalation.
+* Lateral movement.
+
+**Migrate**  
+Migrating to another process will help Meterpreter interact with it. For example, if you see a word processor running on the target (e.g. word.exe, notepad.exe, etc.), you can migrate to it and start capturing keystrokes sent by the user to this process. Some Meterpreter versions will offer you the keyscan_start, keyscan_stop, and keyscan_dump command options to make Meterpreter act like a keylogger. Migrating to another process may also help you to have a more stable Meterpreter session.  
+To migrate to any process, you need to type the migrate command followed by the PID of the desired target process.
+
+Be careful; you may lose your user privileges if you migrate from a higher privileged (e.g. SYSTEM) user to a process started by a lower privileged user (e.g. webserver). You may not be able to gain them back.
+
+**Hashdump**  
+The hashdump command will list the content of the SAM database. The SAM (Security Account Manager) database stores user's passwords on Windows systems. These passwords are stored in the NTLM (New Technology LAN Manager) format.
+
+While it is not mathematically possible to "crack" these hashes, you may still discover the cleartext password using online NTLM databases or a rainbow table attack. These hashes can also be used in Pass-the-Hash attacks to authenticate to other systems that these users can access the same network.
+
+**Search**  
+The search command is useful to locate files with potentially juicy information `search -f flag.txt`.
+
+**Shell**  
+The shell command will launch a regular command-line shell on the target system. Pressing CTRL+Z will help you go back to the Meterpreter shell.
+
+
 ## Netcat
 [Netcat](http://netcat.sourceforge.net) aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
 
@@ -1230,8 +1285,6 @@ When a computer connects to it and asks for an IP address, the router picks an I
 When a host wants to connect to another host on a completely different IP outside the network, the host calls the default getaway(the router) for help. 
 
 The default getaway: 192.168.1.1
-
-
 
 ## IPv4 Classes
 | Class | Range | Subnet | Number of networks | Usage | For |
