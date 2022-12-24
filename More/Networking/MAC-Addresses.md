@@ -82,6 +82,8 @@ The second last bit in the first octet identifies whether it is a global OUI, de
 administrated MAC address.
 
 ## Global OUI
+An organizationally unique identifier (OUI) is a 24-bit number that uniquely identifies a vendor, manufacturer, or other organization.
+
 | Representation | 1st Octet     | 2nd Octet | 3rd Octet | 4th Octet | 5th Octet | 6th Octet |
 |----------------|---------------|-----------|-----------|-----------|-----------|-----------|
 | Binary         | 1101 11**0**0 | 1010 1101 | 1011 1110 | 1110 1111 | 0001 0011 | 0011 0111 |
@@ -92,3 +94,13 @@ administrated MAC address.
 |----------------|---------------|-----------|-----------|-----------|-----------|-----------|
 | Binary         | 1101 11**1**0 | 1010 1101 | 1011 1110 | 1110 1111 | 0001 0011 | 0011 0111 |
 | Hex            | D**E**        | AD        | BE        | EF        | 13        | 37        |
+
+# Find Your Mac address
+Run the following commands and look for "ether" on Linux and "Physical Address" on Windows
+``` bash
+# Linux
+$ > ifconfig
+
+# Winodows
+$ > ipconfig/all
+```
