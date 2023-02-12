@@ -12,9 +12,30 @@ It's rare when performing a real-world penetration test to be able to gain a foo
 * Execute any administrative command
 
 # Table of Contents
-* [Enumeration](#enumeration)
-* [Automated Enumeration Tools](#automated-enumeration-tools)
-* [Privilege Escalation Techniques](#privilege-escalation-techniques)
+1. [Enumeration](#enumeration)
+   1. [hostname](#hostname)
+   2. [uname -a](#uname--a)
+   3. [/proc/version](#procversion)
+   4. [/etc/issue](#etcissue)
+   5. [ps Command](#ps-command)
+   6. [env](#env)
+   7. [sudo -l](#sudo--l)
+   8. [ls -la](#ls--la)
+   9. [Id](#id)
+   10. [/etc/passwd](#etcpasswd)
+   11. [history](#history)
+   12. [ifconfig](#ifconfig)
+   13. [netstat](#netstat)
+   14. [find Command](#find-command)
+2. [Automated Enumeration Tools](#automated-enumeration-tools)
+3. [Privilege Escalation Techniques](#privilege-escalation-techniques)
+   1. [Kernel Exploits](#kernel-exploits)
+   2. [Sudo](#sudo)
+   3. [SUID](#suid)
+   4. [Capabilities](#capabilities)
+   5. [Cron-jobs](#cron-jobs)
+   6. [PATH Variable](#path-variable)
+   7. [NFS](#nfs)
 
 # Enumeration
 Enumeration is the process of gathering information about the target system. This information can be used to identify potential vulnerabilities and to determine the best way to exploit them. The following are some of the most common enumeration techniques used in Linux environments.
