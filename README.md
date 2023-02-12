@@ -81,10 +81,11 @@
     2.  [Misconfigurations](#misconfigurations)
 
 # Links
+[Abuse.ch](https://abuse.ch) - a collection of malware and threat intelligence feeds.  
 [AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
 [Archive.org](https://archive.org/web/) - internet Archieve    
-[Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator 
-[Bug Bounty](https://hackerone.com/bug-bounty-programs) - a list of bug bounty programs
+[Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator  
+[Bug Bounty](https://hackerone.com/bug-bounty-programs) - a list of bug bounty programs  
 [Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.      
 [Cheatography](https://www.cheatography.com/) - over 3,000 free cheat sheets, revision aids and quick references.    
 [CodeBeautify](https://codebeautify.org) - code Beautifier, Viewer and converter    
@@ -104,8 +105,10 @@
 [dCode](https://www.dcode.fr/en) - dcode.fr has many decoders for a lot of ciphers  
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.      
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
+[Explain Shell](https://explainshell.com) - a tool to help you understand shell commands.  
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
 [fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.     
+[Feodo Tracker](https://feodotracker.abuse.ch) - a project by abuse.ch tracking the C2 infrastructure of the Feodo Tracker Botnet.  
 [File Signature](https://www.garykessler.net/library/file_sigs.html) -  a table of file signatures (aka "magic numbers")   
 [Forensically](https://29a.ch/photo-forensics/#forensic-magnifier) - a tool to analyze images.  
 [Google advanced search](https://www.google.dk/advanced_search) - google dorking made easy      
@@ -122,15 +125,18 @@
 [Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel   
 [Intelix](https://intelx.io) - Search Tor, I2P, data leaks and the public web by email, domain, IP, CIDR, Bitcoin address and more.    
 [k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.      
-[Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.   
-[LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/) - learn about local file inclusion       
-[malc0de](http://malc0de.com/database) - malware search engine.   
+[Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.    
+[LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/) - learn about local file inclusion   
+[Linux Commands](https://www.mediacollege.com/linux/command/linux-command.html) - a list of linux commands       
+[malc0de](http://malc0de.com/database) - malware search engine.    
+[Malware Bazaar](https://bazaar.abuse.ch) - malware search engine.  
 [MD5 Online](https://www.md5online.org/md5-decrypt.html) - md5Online offers several tools related to the MD5 cryptographic algorithm.     
 [Morse Code Translator](https://morsecode.world/international/translator.html) a morse code translator     
 [NerdyData](https://www.nerdydata.com) - the search engine for source code  
 [Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.    
 [Office Recovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
-[PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools     
+[PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools    
+[Phishtool](https://www.phishtool.com) - PhishTool is a free phishing simulation tool.   
 [Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.      
 [pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.     
 [Regex101](https://regex101.com) - online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript.    
@@ -146,8 +152,12 @@
 [Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file     
 [Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator     
 [Subnet Cheatsheet](https://www.freecodecamp.org/news/subnet-cheat-sheet-24-subnet-mask-30-26-27-29-and-other-ip-address-cidr-network-references/) - subnet cheatsheet  
+[SSL Blacklist](https://sslbl.abuse.ch) - a free SSL blacklist that can be used to detect malicious SSL certificates.  
 [Tabulate](https://pypi.org/project/tabulate/) - create clean looking tables  
+[Talos Intelligence](https://talosintelligence.com) - threat intelligence from Cisco.  
+[Threat Fox](https://threatfox.abuse.ch) - a resource for sharing indicators of compromise (IOCs).  
 [TIO](https://tio.run/#) - TIO is a free online interpreter, compiler and REPL.  
+[URL Haus](https://urlhaus.abuse.ch) - a project by abuse.ch to collect and classify malicious URLs.  
 [urlscan.io](https://urlscan.io) - service to scan and analyse websites.      
 [urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.   
 [User-Agent Switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/) switch and manage user agents     
