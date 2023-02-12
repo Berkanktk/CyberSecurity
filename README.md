@@ -1290,6 +1290,8 @@ Now, if we use our private key, we can decrypt the file and get the original mes
 `openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
 
 # Networking  
+This section will cover the basics of networking, such as IP addresses, ports, protocols, etc.
+
 ## IP
 An IP address is a unique address that identifies a device on the internet or a local network. IP stands for "Internet Protocol," which is the set of rules governing the format of data sent via the internet or local network.
 
@@ -1395,7 +1397,11 @@ This command will delete every dynamic entry there is. The static ones will not 
 `arp -d <IP_Address>`
 
 # Web Exploitation
+This section will cover the basics of web exploitation. 
+
 ## Content Discovery
+Content discovery is divided into four parts, being manual, automated, OSINT and subdomain enumeration.
+
 ### Manual
 1. Check the robots.txt file for disallowed/hiddenpages  
 2. Check if there is /admin/ page
@@ -1426,7 +1432,7 @@ Wordlists are just text files that contain a long list of commonly used words; t
 I personally use gobuster the most.
 
 
-### Osint
+### OSINT
 **Google Hacking / Dorking**   
 Google hacking / Dorking utilizes Google's advanced search engine features, which allow you to pick out custom content.  
 | Filter | Example | Description |
