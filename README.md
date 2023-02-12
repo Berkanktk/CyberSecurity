@@ -504,8 +504,16 @@ When you want to specify that a file was modified within the last 24 hours, the 
 ## where
 This tool returns the path to the file or link that should be executed.
 
-Syntax
+Syntax  
 `where python3`
+## apropos
+This tool is used to search for a command by its description.
+
+Syntax  
+`apropos <something>`
+
+Example  
+`apropos hexeditor`
 ## stat
 Displays detailed information about given files or file systems. These informations can be: file name, file size, blocks, type, inode, UID, GID, access, modify, change and creation times.
 
@@ -574,7 +582,23 @@ Or, you might be interested in fetching the headers silently?
 ## wget
 The wget command downloads files from HTTP, HTTPS, or FTP connection a network.  
 
+Get ftp files recursively  
+`wget -r ftp://ftpuser:<USER>@<IP>`
+
 Adding a `-b` switch will allow us to run wget in the background and return the terminal to its initial state.
+## wash
+Wash is a tool that can be used to crack WPA/WPA2 handshakes. It is a part of the aircrack-ng suite.
+
+Example usage:
+`wash -i wlan0mon` - to scan for WPA/WPA2 networks
+
+## netdiscover
+Netdiscover is a tool that can be used to scan for live hosts on a network. It is a part of the aircrack-ng suite.
+
+Example usage:
+`netdiscover -i wlan0mon` - to scan for live hosts on a network  
+or 
+`netdiscover -r <ip>/24`
 ## apt
 apt is a command-line utility for installing, updating, removing, and otherwise managing deb packages
 `sudo apt update` This will pull the latest changes from the APT repositories:
@@ -619,6 +643,9 @@ Search for an ip using regular expressions
 
 Search for binaries (ex. "/usr/bin/sudo")  
 `grep '^/.../.../....$'` 
+
+Grep for CTF flag  
+`grep -oi '\S*flag\S*' <path>`
 
 **Options**  
 `-n` line numbers for every string found  
@@ -797,11 +824,30 @@ Install
 Usage  
 `fcrackzip -vbDp <wordlist path> <filepath>`
 
+Example  
+`fcrackzip -Dp /usr/share/wordlists/rockyou.txt secret.zip -v`
+
 **Options**  
 `-b` for using brute force algorithms.   
 `-D` for using a dictionary.  
 `-v` for verbose mode.  
 `-p` for using a string as a password.
+## crunch
+Crunch is a wordlist generator that can generate all possible combinations and permutations.
+
+Install  
+`sudo apt-get install crunch`
+
+Usage  
+`crunch <min> <max> <characters>`
+
+Example  
+`crunch 8 8 abcdefghijklmnopqrstuvwxyz -t @@dog@@@-o wordlist.txt`
+
+**Options**  
+`-t` for adding a pattern to the generated wordlist.  
+`-o` for saving the generated wordlist to a file.
+
 ## adduser & addgroup
 The syntax for both of these commands are `adduser username` and `addgroup groupname`.
 
