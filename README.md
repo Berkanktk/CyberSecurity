@@ -323,6 +323,14 @@ Threat Intel is geared towards understanding the relationship between your opera
 - Investigate phishing emails using PhishTool
 - Using Cisco's Talos Intelligence platform for intel gathering.
 
+## The pyramid of pain
+The Pyramid of Pain is a cybersecurity concept that refers to a hierarchy of assets within an organization that, if compromised, would cause the most significant harm. The pyramid's height represents the level of harm caused by a security breach, with the most critical assets at the top and less critical assets at the bottom. 
+
+The idea is that organizations should focus their cybersecurity efforts on the assets at the top of the pyramid to prevent the most significant damage from a security breach. The components of the Pyramid of Pain may vary depending on the organization and its specific needs, but typically include sensitive data, critical infrastructure, key personnel, and reputation.
+
+<img style="display:block; margin:0 auto;" 
+src="./Images/Pyramid-of-pain.png" alt="Pyramid of pain" width="480"/>
+
 ## Ethics
 ### Penetration tests
 Before a penetration test starts, a formal discussion occurs between the penetration tester and the system owner. Various tools, techniques, and systems to be tested are agreed on. This discussion forms the scope of the penetration testing agreement and will determine the course the penetration test takes.
