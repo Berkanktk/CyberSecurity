@@ -2130,6 +2130,22 @@ Public key to encrypt, private key to decrypt.
 # Miscellaneous
 `TO BE ADDED`
 
+## Shortened URLs
+You can see the actual website the shortened link is redirecting you to by appending "+" to it (see the examples below). Type the shortened URL in the address bar of the web browser and add the above characters to see the redirect URL.
+
+Example: 
+[tinyurl.com/cn6xznu+](http://tinyurl.com/cn6xznu+)
+
+Example providers:
+- bit.ly
+- goo.gl
+- ow.ly
+- s.id
+- smarturl.it
+- tiny.pl
+- tinyurl.com
+- x.co
+
 # Windows Exploitation
 ## Active directory
 Active Directory is a collection of machines and servers connected inside of domains, that are a collective part of a bigger forest of domains, that make up the Active Directory network. 
