@@ -83,7 +83,8 @@
 # Links
 [AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
 [Archive.org](https://archive.org/web/) - internet Archieve    
-[Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator     
+[Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator 
+[Bug Bounty](https://hackerone.com/bug-bounty-programs) - a list of bug bounty programs
 [Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.      
 [Cheatography](https://www.cheatography.com/) - over 3,000 free cheat sheets, revision aids and quick references.    
 [CodeBeautify](https://codebeautify.org) - code Beautifier, Viewer and converter    
@@ -94,7 +95,8 @@
 [Crackstation (Rainbow tables)](https://crackstation.net) - hash cracker      
 [CSS Reference](https://cssreference.io) - CSS reference    
 [CVE Details](https://www.cvedetails.com/) - CVE security vulnerability advanced database.      
-[CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.      
+[CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.  
+[CVS](https://www.first.org/cvss/calculator/3.1) - Scoring System Calculator     
 [CyberChef](https://gchq.github.io/CyberChef/) - a web app for encryption, encoding, compression and data analysis.     
 [Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.  
 [CTF 101](https://ctf101.org) - learn the different CTF topics in cybersecurity  
@@ -105,6 +107,7 @@
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
 [fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.     
 [File Signature](https://www.garykessler.net/library/file_sigs.html) -  a table of file signatures (aka "magic numbers")   
+[Forensically](https://29a.ch/photo-forensics/#forensic-magnifier) - a tool to analyze images.  
 [Google advanced search](https://www.google.dk/advanced_search) - google dorking made easy      
 [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking      
 [GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.    
@@ -125,7 +128,8 @@
 [MD5 Online](https://www.md5online.org/md5-decrypt.html) - md5Online offers several tools related to the MD5 cryptographic algorithm.     
 [Morse Code Translator](https://morsecode.world/international/translator.html) a morse code translator     
 [NerdyData](https://www.nerdydata.com) - the search engine for source code  
-[Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.      
+[Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.    
+[Office Recovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
 [PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools     
 [Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.      
 [pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.     
@@ -143,11 +147,13 @@
 [Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator     
 [Subnet Cheatsheet](https://www.freecodecamp.org/news/subnet-cheat-sheet-24-subnet-mask-30-26-27-29-and-other-ip-address-cidr-network-references/) - subnet cheatsheet  
 [Tabulate](https://pypi.org/project/tabulate/) - create clean looking tables  
+[TIO](https://tio.run/#) - TIO is a free online interpreter, compiler and REPL.  
 [urlscan.io](https://urlscan.io) - service to scan and analyse websites.      
 [urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.   
 [User-Agent Switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/) switch and manage user agents     
 [ViewDNS](http://viewdns.info) - one source for free DNS related tools and information.      
-[VirusTotal](https://www.virustotal.com/gui/home/upload) - analyze suspicious files and URLs to detect types of malware.      
+[VirusTotal](https://www.virustotal.com/gui/home/upload) - analyze suspicious files and URLs to detect types of malware.     
+[Visual Subnet Calculator](https://www.davidc.net/sites/default/subnets/subnets.html) - a visual subnet calculator  
 [WebToolHub-LE](https://www.webtoolhub.com/tn561364-link-extractor.aspx) - HTML hyperlink extractor      
 [WebToolHub](https://www.webtoolhub.com) - lots of different web tools  
 [WhatsMyName](https://whatsmyname.app) - social media username enumeration     
