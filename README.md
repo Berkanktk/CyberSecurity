@@ -474,6 +474,9 @@ Search for files from root
 Find any file with the extension of ".txt"  
 `find -name *.txt`
 
+Check the permissions for what the ‘users’ group can do  
+`find / -group users -type f 2>/dev/null`
+
 **Location specific options**   
 No specification = this folder  
 / = root folder  
