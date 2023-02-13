@@ -715,6 +715,23 @@ Find out what user we're currently logged in as
 Prints basic information about the operating system name and system hardware
 
 `uname -a` will print all available information
+## ftp
+FTP or File Transfer Protocol is a network communication protocol that enables two computers to communicate
+
+Standard use  
+`ftp <IP>` 
+
+Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username of "anonymous" and an email address as the password.
+
+Commands:
+`ls` - list files  
+`cd` - change directory  
+`get` - download file  
+`put` - upload file  
+`quit` - exit  
+
+See more commands [here](/More/FTP/Commands.md).
+
 ## ssh
 SSH or Secure Shell is a network communication protocol that enables two computers to communicate
 
