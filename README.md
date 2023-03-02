@@ -100,17 +100,21 @@
 [CVS](https://www.first.org/cvss/calculator/3.1) - Scoring System Calculator     
 [CyberChef](https://gchq.github.io/CyberChef/) - a web app for encryption, encoding, compression and data analysis.     
 [Cybercrime Tracker](https://cybercrime-tracker.net) - monitors and tracks various malware families that are used to perpetrate cyber crimes.  
+[crt.sh](https://crt.sh) - Certificate Transparency Log Search Engine for subdomain enumeration.  
 [CTF 101](https://ctf101.org) - learn the different CTF topics in cybersecurity  
 [CTF Cryptography](https://charcharbinks.com/post/ctf_crypto_for_beginners/) - ctf cryptography for beginners  
 [dCode](https://www.dcode.fr/en) - dcode.fr has many decoders for a lot of ciphers  
-[dehashed](https://www.dehashed.com/) - is a hacked database search engine.      
+[dehashed](https://www.dehashed.com/) - is a hacked database search engine.     
+[Diff Checker](https://www.diffchecker.com/image-compare/) - compare images  
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
 [Explain Shell](https://explainshell.com) - a tool to help you understand shell commands.  
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
 [fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.     
 [Feodo Tracker](https://feodotracker.abuse.ch) - a project by abuse.ch tracking the C2 infrastructure of the Feodo Tracker Botnet.  
-[File Signature](https://www.garykessler.net/library/file_sigs.html) -  a table of file signatures (aka "magic numbers")   
+[File Signature](https://www.garykessler.net/library/file_sigs.html) -  a table of file signatures (aka "magic numbers")  
+[File Signature Wiki](https://en.wikipedia.org/wiki/List_of_file_signatures) - another list of file signatures (aka "magic numbers")  
 [Forensically](https://29a.ch/photo-forensics/#forensic-magnifier) - a tool to analyze images.  
+[Godbolt](https://godbolt.org) - compiler explorer   
 [Google advanced search](https://www.google.dk/advanced_search) - google dorking made easy      
 [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking      
 [GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.    
@@ -131,14 +135,18 @@
 [malc0de](http://malc0de.com/database) - malware search engine.    
 [Malware Bazaar](https://bazaar.abuse.ch) - malware search engine.  
 [MD5 Online](https://www.md5online.org/md5-decrypt.html) - md5Online offers several tools related to the MD5 cryptographic algorithm.     
-[Morse Code Translator](https://morsecode.world/international/translator.html) a morse code translator     
+[Morse Code Translator](https://morsecode.world/international/translator.html) a morse code translator   
+[Morse Code Adaptive Audio Decoder](https://morsecode.world/international/decoder/audio-decoder-adaptive.html) - a morse code adaptive audio decoder  
+[Morse Code Audio Decoder](https://morsecode.world/international/decoder/audio-decoder-expert.html) - a morse code audio decoder    
+[Morse Code Sound & Vibration Listener](https://databorder.com/transfer/morse-sound-receiver/) - a morse code sound & vibration listener  
 [NerdyData](https://www.nerdydata.com) - the search engine for source code  
 [Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.    
 [Office Recovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
 [PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools    
 [Phishtool](https://www.phishtool.com) - PhishTool is a free phishing simulation tool.   
 [Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.      
-[pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.     
+[pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.  
+[Pixrecovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
 [Regex101](https://regex101.com) - online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript.    
 [RegEx Pal](https://www.regexpal.com/) - online regex testing tool + other tools.      
 [RegExr](https://regexr.com/) - online tool to learn, build, & test Regular Expressions (RegEx / RegExp).      
@@ -176,6 +184,8 @@
 [CTFLearn](https://ctflearn.com) - An online platform built to help ethical hackers learn, practice, and compete.   
 [Challenges](https://challenges.re) - Reverse engineering CTF training platform      
 [Root Me](https://www.root-me.org) - Root Me is a platform for everyone to test and improve knowledge in computer security and hacking.  
+[ROP Emperium](https://ropemporium.com) - ROP Emporium is a series of challenges based around Return Oriented Programming (ROP).  
+[pico CTF](https://picoctf.org/) - picoCTF is a free computer security game targeted at middle and high school students.  
 
 # Books
 - Penetration Testing
