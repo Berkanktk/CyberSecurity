@@ -190,18 +190,21 @@ If statements use 3 important instructions in assembly:
 * `testq source2, source1`: it is like computing a&b without setting destination
 
 Jump instructions are used to transfer control to different instructions, and there are different types of jumps:
-| Jump Type | Description |
-|:---:|:---:|
-| jmp | Unconditional |
-| je | Equal/Zero |
-| jne | Not Equal/Not Zero |
-| js | Negative |
-| jns | Nonnegative |
-| jg | Greater |
-| jge | Greater or Equal |
-| jl | Less |
-| jle | Less or Equal |
-| ja | Above(unsigned) |
-| jb | Below(unsigned) |
+| Instruction | Useful to... |
+|---|---|
+| jmp | Always jump |
+| ja | Unsigned > |
+| jae | Unsigned >= |
+| jb | Unsigned < |
+| jbe | Unsigned <= |
+| jc | Unsigned overflow, or multiprecision add |
+| jecxz | Compare ecx with 0      (Seriously!?) |
+| je | Equality |
+| jg | Signed > |
+| jge | Signed >= |
+| jl | Signed < |
+| jle | Signed <= |
+| jne | Inequality |
+| jo | Signed overflow |
 
-The last 2 values of the table refer to unsigned integers. Unsigned integers cannot be negative while signed integers represent both positive and negative values.
+Unsigned integers cannot be negative while signed integers represent both positive and negative values.
