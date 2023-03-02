@@ -1232,6 +1232,40 @@ Only open ports = `--open`
 Scan an IPv6 address = `-6` 
 
 Subnet mask with 255.255.255.0 = `<ip>/24`
+## rax2 
+rax2 comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
+
+
+### Syntax
+`rax2 <options> <value>`
+
+### Example
+`rax2 -s 0x424b`
+
+### A list of most useful flags: 
+```bash
+-a      show ascii table     ;  rax2 -a
+-b      bin -> str           ;  rax2 -b 01000010 01001011 # BK
+-B      str -> bin           ;  rax2 -B hello # 0110100001100101011011000110110001101111
+-d      force integer        ;  rax2 -d 3 -> 3 instead of 0x3
+-D      base64 decode        ;  rax2 -D SGVsbG8gd29ybGQ= # Hello world
+-E      base64 encode        ;  rax2 -E Hello world # SGVsbG8gd29ybGQ=
+-f      floating point       ;  rax2 -f 6.3+2.1
+-I      IP address <-> LONG  ;  rax2 -I 3530468537 # 185.172.110.210
+-k      keep base            ;  rax2 -k 33+3 -> 36
+-K      randomart            ;  rax2 -K 0x34 1020304050
+-L      bin -> hex(bignum)   ;  rax2 -L 111111111 # 0x1ff
+-n      binary number        ;  rax2 -n 0x1234 # 34120000
+-o      octalstr -> raw      ;  rax2 -o \162 \62 # r2
+-N      binary number        ;  rax2 -N 0x1234 # \x34\x12\x00\x00
+-r      multiple outputs     ;  rax2 -r 0x1234 
+-s      hexstr -> raw        ;  rax2 -s 42 4b # BK
+-S      raw -> hexstr        ;  rax2 -S < /bin/ls > ls.hex
+-t      tstamp -> str        ;  rax2 -t 1234567890 # Sat Feb 14 00:31:30 2009
+-x      hash string          ;  rax2 -x linux #0x5ca62a43
+-u      units                ;  rax2 -u 389289238 # 317.0M
+-w      signed word          ;  rax2 -w 16 0xffff
+```
 # Tools (GUI) 
 ## Burp 
 [Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
