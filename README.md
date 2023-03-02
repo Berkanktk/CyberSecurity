@@ -2158,7 +2158,11 @@ A tool used for analyzing memory dumps is [volatility 3](https://github.com/vola
 `TO BE ADDED`
 ## Buffers
 ### Buffer Overflow
-`TO BE ADDED`
+Buffer overflow is a type of security vulnerability that occurs when a program, while writing data to a buffer, overruns the buffer's boundary and overwrites adjacent memory locations. This can cause the program to crash or, in the case of a remote attacker, to execute arbitrary code on the system.
+
+### Buffer Overflow Exploitation example
+`python -c "print ('A' * 100)" | ./<executable>`
+
 ## Return Oriented Programming (ROP)
 `TO BE ADDED`
 ## Binary Security
@@ -2182,14 +2186,57 @@ Find the in-depth content for the Assembly x86-64 language [here](/More/Assembly
 
 `TO BE ADDED`
 ## Disassemblers
+Reverse-engineering is the creative process of analyzing software and understanding it without having access to the source code. It is the process by which software is deconstructed in a way that reveals its innermost details such as its structure, function and operation.
+
 ### gdb
-`TO BE ADDED`
+GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed.
+
+```bash
+berkankutuk@kali:~$ gdb <binary file>` # opens the binary file in gdb
+
+(gdb)> x /s <addr> # prints a string from memory address
+(gdb)> run # runs the program
+(gdb)> disassemble <function name> # disassembles the given function
+(gdb)> break <function name> # sets a breakpoint at the given function
+(gdb)> break *<addr> # sets a breakpoint at the given address
+(gdb)> continue # continues the execution of the program
+(gdb)> info registers # prints the values of the registers
+```
 
 ### radare2
-`TO BE ADDED`
+Radare2 is an open-source framework that can perform disassembly, debugging, analysis, comparing data and manipulation of binary files. 
+
+```bash
+berkankutuk@kali:~$ r2 <binary file>` # opens the binary file in radare2
+berkankutuk@kali:~$ r2 -d <binary file>` # opens the binary file in radare2 in debug mode 
+
+# General
+[0x00400510]> aaa # Analyze the binary
+[0x00400510]> afl # List functions
+[0x00400510]> s main # Go to main function
+[0x00400510]> pdf # Print disassembled function
+[0x00400510]> s/ password # Search for data within the code
+[0x00400510]> V # Hex view
+
+# Debug mode
+[0x00400510]> dc # Launch the executable
+[0x00400510]> dr # Check register state 
+```
 
 ### Ghidra
-`TO BE ADDED`
+Ghidra is a software reverse engineering (SRE) framework created and maintained by the National Security Agency (NSA). It is a free and open-source software reverse engineering tool released under the Apache License 2.0.
+
+```bash
+berkankutuk@kali:~$ ghidraRun <binary file>` # opens the binary file in ghidra
+```
+
+GUI of Ghidra
+```bash
+Right click -> Patch Instruction -> Values # Patch the instruction with the given values 
+File -> Export Program -> Export as ELF # Export the binary as an ELF file
+
+Symbol Tree -> Functions # List functions (ex. Main)
+```
 
 # Cryptography
 ## Decrypting Methods
@@ -2211,10 +2258,63 @@ Sometimes a "ciphertext" is just as easy as reversed text. Don't forgot to check
 ANY text could be XOR'd. Techniques for this are Trey's code, and XORing the data against the known flag format. Typically it is given in just hex, but once it is decoded into raw binary data, it gives it keeps it's hex form (as in \xde\xad\xbe\xef etc..) Note that you can do easy XOR locally with Python like so (you need pwntools installed):
 
 `python >>> import pwn; pwn.xor("KEY", "RAW_BINARY_CIPHER")`
+
+### Vigenère Cipher
+The Vigenère cipher is a method of encrypting alphabetic text by using a series of interwoven Caesar ciphers, based on the letters of a keyword. It employs a form of polyalphabetic substitution.
+
+The encryption of the original text is done using the Vigenère square or Vigenère table. It is a table of alphabets written out 26 times in different rows, each alphabet shifted cyclically to the left compared to the previous alphabet, corresponding to the 26 possible Caesar ciphers. At different points in the encryption process, the cipher uses a different alphabet from one of the rows. The alphabet used at each point depends on a repeating keyword.
+
+### Caesar Cipher
+The Caesar cipher is one of the earliest known and simplest ciphers. It is a type of substitution cipher in which each letter in the plaintext is replaced by a letter some fixed number of positions down the alphabet. For example, with a left shift of 3, D would be replaced by A, E would become B, and so on. The method is named after Julius Caesar, who used it in his private correspondence.
+
+### ROT13
+ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher which was developed in ancient Rome.
+
+### Substitution Cipher
+A substitution cipher is a method of encoding by which units of plaintext are replaced with ciphertext, according to a fixed system; the "units" may be single letters (the most common), pairs of letters, triplets of letters, mixtures of the above, and so forth. The receiver deciphers the text by performing the inverse substitution.
+
+Useful tools for substitution ciphers are [Cryptii](https://cryptii.com) and [Dcode](https://www.dcode.fr/substitution-cipher).
+
 ## Encoding
 Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
 
-A very popular encoding is Base64
+**A very popular encoding is Base64.**  
+The basic idea behind Base64 encoding is to represent binary data using only ASCII characters. To do this, Base64 converts each 3 bytes of binary data into 4 bytes of ASCII text. The 3 bytes of binary data are divided into 4 groups of 6 bits each, which are then represented by a character from a set of 64 characters. The 64 characters used in Base64 are:
+
+`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/`
+
+The equals sign (=) is also used as a padding character to ensure that the length of the output is a multiple of 4 characters.
+
+For example, let's say we want to encode the binary data "`011000010110001001100011`", which represents the ASCII characters "`abc`". To encode this data in Base64, we first divide it into 3-byte groups:
+
+`01100001 01100010 01100011`
+
+Then we divide each 3-byte group into 4 groups of 6 bits each:
+
+`011000 010110 001001 100011`
+
+Next, we convert each group of 6 bits to its corresponding Base64 character:
+
+`Y W J j`
+
+So the encoded Base64 string for "`abc`" is "`YWJj`".
+
+### Encoding a string in the terminal
+```bash
+echo -n "Hello World" | base64
+```
+
+### Decoding a string in the terminal
+```bash
+echo -n "SGVsbG8gV29ybGQ=" | base64 -d
+```
+
+### Encoding/Decoding files
+```bash
+base64 /path/to/file > output.txt # Encoding
+base64 -d /path/to/file > output.txt # Decoding
+```
+
 ## Hashing
 Hashing is used for 2 main purposes in Cyber Security. To verify integrity of data, or for verifying passwords. 
 
