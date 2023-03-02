@@ -1587,7 +1587,9 @@ If an attacker is able to successfully pass input that is interpreted correctly,
 * Execute Arbitrary system commands on a server that would allow an attacker to gain access to users’ systems. This would enable them to steal sensitive data and carry out more attacks against infrastructure linked to the server on which the command is executed.
 
 
-`TO BE ADDED`
+### Tool for SQL Injection
+[sqlmap](https://sqlmap.org/) is a tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.
+
 ## Command Injection
 `TO BE ADDED`
 ## Directory Traversal
