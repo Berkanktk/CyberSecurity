@@ -640,13 +640,25 @@ Options:
 Save to a file:  
 `dig -f domain_research.txt +short`  
 ## tar
-tar is a command that allows creating, maintain, modify, and extracts files that are archived in the tar format.
+tar is a command that allows creating, maintaining, modifying, and extracting files that are archived in the tar format (tar, gzip, zip).
 
 The most common example for tar extraction would be:
 `tar -xf archive.tar`
 
+### Compressing files with tar
+`tar -czvf stuff.tar.gz`
+
+### Uncompressing files with tar
+`tar -xvzf myfolder.tar.gz -C myfolder/` 
+
+**Options:**  
+`-c` tells tar to create an archive.  
+`-z` tells tar to compress the archive with gzip.  
+`-v` tells tar to be verbose.  
+`-f` tells tar that the next argument will be the name of the archive to operate on.  
+`-C` tells tar to change to the directory specified before performing any operations.	   
 `-x` tells tar to extract files from an archive.  
-`-f` tells tar that the next argument will be the name of the archive to operate on.
+
 ## grep
 Search the contents of files for specific values   
 `grep "hello world" file.txt`
