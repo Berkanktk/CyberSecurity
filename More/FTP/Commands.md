@@ -27,6 +27,7 @@
 | mkdir | Make directory. |
 | mls | Lists contents of multiple remote directories. |
 | mput | Send multiple files. |
+| more | Display contents of a file (read) |
 | open | Opens address. |
 | prompt | Enables or disables the prompt. |
 | put | Send one file. |
