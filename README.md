@@ -139,6 +139,7 @@
 [Morse Code Adaptive Audio Decoder](https://morsecode.world/international/decoder/audio-decoder-adaptive.html) - a morse code adaptive audio decoder  
 [Morse Code Audio Decoder](https://morsecode.world/international/decoder/audio-decoder-expert.html) - a morse code audio decoder    
 [Morse Code Sound & Vibration Listener](https://databorder.com/transfer/morse-sound-receiver/) - a morse code sound & vibration listener  
+[Namechk](https://namechk.com) - check if your desired username is available on over 500 social networks (username OSINT).  
 [NerdyData](https://www.nerdydata.com) - the search engine for source code  
 [Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.    
 [Office Recovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
@@ -2126,12 +2127,19 @@ A command-line tool to quickly scan multiple forms of barcodes (QR Codes)
 
 Install with `sudo apt install zbar-tools`
 
+**Useful commands:**  
+`zbarimg <filename>`
+
+Alternatively, you can use a online tool like [zxing](https://zxing.org/w/decode.jspx) to decode QR codes.
+
 ### Wavsteg
 WavSteg is a python3 tool that comes with the package `stegolsb` which can hide data and files in wav files and can also extract data from wav files.
 
 **Useful commands:**  
 `python3 WavSteg.py -r -i soundfile -o outputfile` extracts data from a wav sound file and
 outputs the data into a new file
+
+Use an online tool like [Databorder Morse](https://databorder.com/transfer/morse-sound-receiver/) or [Morse Code World](https://morsecode.world/international/decoder/audio-decoder-adaptive.html) if the wav file contains morse code.
 
 ### Outguess
 OutGuess is a universal tool for steganography that allows the insertion of hidden information into the redundant bits of data sources. The supported formats are JPEG, PPM and PNM.
@@ -2226,13 +2234,18 @@ GDB, the GNU Project debugger, allows you to see what is going on `inside' anoth
 ```bash
 berkankutuk@kali:~$ gdb <binary file>` # opens the binary file in gdb
 
-(gdb)> x /s <addr> # prints a string from memory address
-(gdb)> run # runs the program
-(gdb)> disassemble <function name> # disassembles the given function
 (gdb)> break <function name> # sets a breakpoint at the given function
 (gdb)> break *<addr> # sets a breakpoint at the given address
+(gdb)> run # runs the program until it reaches the first breakpoint
+(gdb)> disassemble <function name> # disassembles the given function
+(gdb)> x /s <addr> # prints a string from memory address
 (gdb)> continue # continues the execution of the program
 (gdb)> info registers # prints the values of the registers
+(gdb)> info variables # prints the values of the variables
+(gdb)> info functions # prints the functions
+(gdb)> exploit # runs the exploit
+(gdb)> x # inspect memory locations
+(gdb)> quit # quits gdb
 ```
 
 ### radare2
