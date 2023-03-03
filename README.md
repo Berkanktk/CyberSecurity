@@ -1278,6 +1278,19 @@ rax2 comes in handy when there is a need to make base conversions between hexade
 -u      units                ;  rax2 -u 389289238 # 317.0M
 -w      signed word          ;  rax2 -w 16 0xffff
 ```
+## jq
+jq is a lightweight and flexible command-line JSON processor. It is used to parse, filter, and transform JSON data. It is written in C and has no external dependencies.
+
+To install use `sudo apt install jq`
+
+### Syntax
+`jq <options> <filter> <input>`
+
+### Example
+`jq . sample.json` one way of prettifying json data  
+`cat sample.json | jq` another way of prettifying json data  
+`jq -c < pretty.json` minify json data
+
 # Tools (GUI) 
 ## Burp 
 [Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
