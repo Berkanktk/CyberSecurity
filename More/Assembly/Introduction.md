@@ -142,6 +142,9 @@ Since the architecture is x86-64, the registers are 64 bit and Intel has a list 
 | %r14 | %r14d |
 | %r15 | %r15d |
 
+`eax` = return value of a function  
+`rax` and `rdx` = general purpose registers
+
 16, 8 and 4 bits can also be referenced.
 
 **What they represent**
@@ -166,6 +169,14 @@ The last letter of the mov instruction represents the size of the data:
 | Quad Word | q | 8 |
 | Single Precision | s | 4 |
 | Double Precision | l | 8 |
+ 
+Data types are also represented by the following:
+| Data types | Bytes | Bits (x64 bit computers) |
+|:---:|:---:|:---:|
+BYTE 	|1 	|8   
+WORD 	|2 	|16 
+DWORD 	|4 	|32   
+QWORD 	|8 	|64 
 
 When dealing with memory manipulation using registers, there are other cases to be considered:
 * (Rb, Ri) = MemoryLocation[Rb + Ri]
