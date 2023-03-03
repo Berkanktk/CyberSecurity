@@ -2035,6 +2035,13 @@ File carving tools:
 `Steghide` = JPEG(primarily), BMP, WAV and AU  
 `Zsteg` = PNG(primarily), BMP
 
+### Stegsnow
+stegsnow is a program for concealing messages in text files by appending tabs and spaces (whitespace) on the end of lines, and for extracting messages from files containing hidden messages.
+
+**Useful commands:**  
+`stegsnow -C -m <message> -p <password> <inputfile> <outputfile>` compress a message in a text file and save it to a new file
+`stegsnow -C -p <password> <inputfile> <outputfile>` uncompress a message in a text file and save it to a new file 
+
 ### Steghide
 Steghide is a steganography program that hides data in various kinds of image and audio files, only supports these file formats : JPEG, BMP, WAV and AU. But it’s also useful for extracting embedded and encrypted data from other files. One of the greatest benefits of stegohide, is that it can encrypt data with a passphrase 
 
