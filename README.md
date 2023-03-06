@@ -461,6 +461,15 @@ Example:
 `mv file.txt /tmp`
 ## top
 top command is used to show the Linux processes. It provides a dynamic real-time view of the running system
+## lsof
+lsof stands for list open files. It is a command-line utility that lists all the open files and the processes that opened them.
+
+**Syntax**  
+`lsof <options> <file>`
+
+**Examples**  
+Only show openvpn processes  
+`lsof -i | grep openvpn` 
 ## kill
 Used to kill a process
 
@@ -582,19 +591,21 @@ Change the user and group for any file
 ## curl
 The curl command transfers data to or from a network server, using one of the supported protocols (HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE). 
 
-Example:
-`curl URL`
+**Syntax:**  
+`curl <URL>` simply fetches the URL and prints it to the terminal.  
+`curl -s <URL>"` to suppress the output (statistics)  
+`curl -H "DNT: 1" <URL>` to change the DNT(do not track) header   
+`curl -o page.html <URL>` to save the output to a file  
+`curl -A "something" <URL>` to change the user agent  
+`curl --referer <URL_REF> <URL>` to change the referer   
+`curl -H "X-Forwarded-For: <IP>" <URL>` to change the X-Forwarded-For header  
+`curl -H "Accept-Language: da-DK" <URL>` to change the Accept-Language header (ex. Danish)  
+`curl -H "Date: Mon, 23 11 2018 23:23:23 GMT" <URL>` to change the date  
 
-Another example is saving the output to a file using either:
+**Example:**  
+Real use case example  
+`curl -s -A "PicoBrowser" -H "Date: Mon, 23 11 2018 23:23:23 GMT" -H "DNT: 1" -H "X-Forwarded-For: 2.71.255.255" -H "Accept-Language: sv-SE" --referer http://mercury.picoctf.net:36622 http://mercury.picoctf.net:36622/ | grep -oI "picoCTF{.*}"`
 
--o to save the file under a different name  
-`curl -o loginpage.html https://tryhackme.com/login`
-
--O to save the file under the same name:  
-`curl -O https://tryhackme.com/login`
-
-Or, you might be interested in fetching the headers silently?  
-`curl -I -s https://tryhackme.com`
 ## wget
 The wget command downloads files from HTTP, HTTPS, or FTP connection a network.  
 
@@ -607,7 +618,6 @@ Wash is a tool that can be used to crack WPA/WPA2 handshakes. It is a part of th
 
 Example usage:
 `wash -i wlan0mon` - to scan for WPA/WPA2 networks
-
 ## netdiscover
 Netdiscover is a tool that can be used to scan for live hosts on a network. It is a part of the aircrack-ng suite.
 
@@ -661,7 +671,6 @@ The most common example for tar extraction would be:
 `-f` tells tar that the next argument will be the name of the archive to operate on.  
 `-C` tells tar to change to the directory specified before performing any operations.	   
 `-x` tells tar to extract files from an archive.  
-
 ## grep
 Search the contents of files for specific values   
 `grep "hello world" file.txt`
@@ -672,8 +681,11 @@ Search for an ip using regular expressions
 Search for binaries (ex. "/usr/bin/sudo")  
 `grep '^/.../.../....$'` 
 
-Grep for CTF flag  
+Grep for CTF flag 1/2  
 `grep -oi '\S*flag\S*' <path>`
+
+Grep for CTF flag 2/2  
+`grep "flag{.*}"`
 
 **Options**  
 `-n` line numbers for every string found  
@@ -756,7 +768,6 @@ Commands:
 `quit` - exit  
 
 See more commands [here](/More/FTP/Commands.md).
-
 ## ssh
 SSH or Secure Shell is a network communication protocol that enables two computers to communicate
 
@@ -810,6 +821,19 @@ Example:
 `gzip -d file.gz`
 ## binwalk
 Binwalk allows users to analyze and extract firmware images and helps in identifying code, files, and other information embedded in those, or inside another file
+
+**Usage:**  
+`binwalk [options] <file>`
+
+**Examples:**  
+`binwalk -e firmware.bin` - Extract files  
+`binwalk -Me firmware.bin` - Recursively scan extracted files (matryoshka) 
+
+`binwalk -e firmware.bin` - Extract files    
+`-e` - Extract files  
+`-M` - Recursively scan extracted files (matryoshka)  
+`-v` - Verbose output    
+`-q` - Quiet output  
 ## sudo
 Sudo is Linux's 'run as administrator' command
 
@@ -892,7 +916,60 @@ Example
 **Options**  
 `-t` for adding a pattern to the generated wordlist.  
 `-o` for saving the generated wordlist to a file.
+## rax2 
+rax2 comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
 
+### Syntax
+`rax2 <options> <value>`
+
+### Example
+`rax2 -s 0x424b`
+
+### A list of most useful flags: 
+```bash
+-a      show ascii table     ;  rax2 -a
+-b      bin -> str           ;  rax2 -b 01000010 01001011 # BK
+-B      str -> bin           ;  rax2 -B hello # 0110100001100101011011000110110001101111
+-d      force integer        ;  rax2 -d 3 -> 3 instead of 0x3
+-D      base64 decode        ;  rax2 -D SGVsbG8gd29ybGQ= # Hello world
+-E      base64 encode        ;  rax2 -E Hello world # SGVsbG8gd29ybGQ=
+-f      floating point       ;  rax2 -f 6.3+2.1
+-I      IP address <-> LONG  ;  rax2 -I 3530468537 # 185.172.110.210
+-k      keep base            ;  rax2 -k 33+3 -> 36
+-K      randomart            ;  rax2 -K 0x34 1020304050
+-L      bin -> hex(bignum)   ;  rax2 -L 111111111 # 0x1ff
+-n      binary number        ;  rax2 -n 0x1234 # 34120000
+-o      octalstr -> raw      ;  rax2 -o \162 \62 # r2
+-N      binary number        ;  rax2 -N 0x1234 # \x34\x12\x00\x00
+-r      multiple outputs     ;  rax2 -r 0x1234 
+-s      hexstr -> raw        ;  rax2 -s 42 4b # BK
+-S      raw -> hexstr        ;  rax2 -S < /bin/ls > ls.hex
+-t      tstamp -> str        ;  rax2 -t 1234567890 # Sat Feb 14 00:31:30 2009
+-x      hash string          ;  rax2 -x linux #0x5ca62a43
+-u      units                ;  rax2 -u 389289238 # 317.0M
+-w      signed word          ;  rax2 -w 16 0xffff
+```
+## jq
+jq is a lightweight and flexible command-line JSON processor. It is used to parse, filter, and transform JSON data. It is written in C and has no external dependencies.
+
+To install use `sudo apt install jq`
+
+**Syntax**  
+`jq <options> <filter> <input>`
+
+**Example**  
+`jq . sample.json` one way of prettifying json data  
+`cat sample.json | jq` another way of prettifying json data  
+`jq -c < pretty.json` minify json data
+## gcc
+gcc is a compiler that can be used to compile C programs. It is used to compile C programs into machine code.
+
+**Syntax:**  
+`gcc <options> <input>`
+
+**Example:**  
+`gcc -o hello.c hello` Compile the program  
+`./hello` Run the compiled program
 ## adduser & addgroup
 The syntax for both of these commands are `adduser username` and `addgroup groupname`.
 
@@ -1169,8 +1246,6 @@ The search command is useful to locate files with potentially juicy information 
 
 **Shell**  
 The shell command will launch a regular command-line shell on the target system. Pressing CTRL+Z will help you go back to the Meterpreter shell.
-
-
 ## Netcat
 [Netcat](http://netcat.sourceforge.net) aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
 
@@ -1247,52 +1322,6 @@ Only open ports = `--open`
 Scan an IPv6 address = `-6` 
 
 Subnet mask with 255.255.255.0 = `<ip>/24`
-## rax2 
-rax2 comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
-
-
-### Syntax
-`rax2 <options> <value>`
-
-### Example
-`rax2 -s 0x424b`
-
-### A list of most useful flags: 
-```bash
--a      show ascii table     ;  rax2 -a
--b      bin -> str           ;  rax2 -b 01000010 01001011 # BK
--B      str -> bin           ;  rax2 -B hello # 0110100001100101011011000110110001101111
--d      force integer        ;  rax2 -d 3 -> 3 instead of 0x3
--D      base64 decode        ;  rax2 -D SGVsbG8gd29ybGQ= # Hello world
--E      base64 encode        ;  rax2 -E Hello world # SGVsbG8gd29ybGQ=
--f      floating point       ;  rax2 -f 6.3+2.1
--I      IP address <-> LONG  ;  rax2 -I 3530468537 # 185.172.110.210
--k      keep base            ;  rax2 -k 33+3 -> 36
--K      randomart            ;  rax2 -K 0x34 1020304050
--L      bin -> hex(bignum)   ;  rax2 -L 111111111 # 0x1ff
--n      binary number        ;  rax2 -n 0x1234 # 34120000
--o      octalstr -> raw      ;  rax2 -o \162 \62 # r2
--N      binary number        ;  rax2 -N 0x1234 # \x34\x12\x00\x00
--r      multiple outputs     ;  rax2 -r 0x1234 
--s      hexstr -> raw        ;  rax2 -s 42 4b # BK
--S      raw -> hexstr        ;  rax2 -S < /bin/ls > ls.hex
--t      tstamp -> str        ;  rax2 -t 1234567890 # Sat Feb 14 00:31:30 2009
--x      hash string          ;  rax2 -x linux #0x5ca62a43
--u      units                ;  rax2 -u 389289238 # 317.0M
--w      signed word          ;  rax2 -w 16 0xffff
-```
-## jq
-jq is a lightweight and flexible command-line JSON processor. It is used to parse, filter, and transform JSON data. It is written in C and has no external dependencies.
-
-To install use `sudo apt install jq`
-
-### Syntax
-`jq <options> <filter> <input>`
-
-### Example
-`jq . sample.json` one way of prettifying json data  
-`cat sample.json | jq` another way of prettifying json data  
-`jq -c < pretty.json` minify json data
 
 # Tools (GUI) 
 ## Burp 
@@ -2056,8 +2085,21 @@ Steghide is a steganography program that hides data in various kinds of image an
 ### Stegsolve
 Sometimes there is a message or a text hidden in the image itself and in order to view it you
 need to apply some color filters or play with the color levels. You can do it with GIMP or
-Photoshop or any other image editing software but stegsolve made it easier. it’s a small java tool
-that applies many color filters on images.
+Photoshop or any other image editing software but stegsolve made it easier. It’s a small java tool that applies many color filters on images.
+
+**Installation**
+```bash
+wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar
+chmod +x stegsolve.jar
+mkdir bin
+mv stegsolve.jar bin/
+```
+
+And then run it with
+```bash
+java -jar bin/stegsolve.jar
+```
+
 
 ### Stegoveritas
 Stegoveritas supports just about every image file, and is able to extract all types of data from it
@@ -2110,7 +2152,11 @@ Binwalk is a tool for searching binary files like images and audio files for emb
 `foremost` is another file carving tool like binwalk, and can be installed with `sudo apt-get install foremost`.
 
 **Useful commands:**  
-`foremost -t doc,jpg,pdf,xls -i image.dd` Search for a selection of file types (`-t doc,jpg,pdf,xls`) in the given image file (`-i image.dd`):
+Search for all file types in the given image file   
+`foremost image.png`  
+
+ Search for a selection of file types in the given image file (`-i image.dd`)   
+`foremost -t doc,jpg,pdf,xls -i image.dd`
 
 ### Zsteg
 zsteg is a tool that can detect hidden data in png and bmp files.
@@ -2119,7 +2165,8 @@ zsteg is a tool that can detect hidden data in png and bmp files.
 `zsteg file` Runs a simple scan on the given file  
 `zsteg -a file` Runs all the methods on the given file  
 `zsteg -E file` Extracts data from the given payload (example : zsteg -E b4,bgr,msb,xy
-name.png)
+name.png)  
+`zsteg -l 0 file` Limits the bytes checked to 0  
 
 ### Jsteg
 Another command-line tool to use against JPEG Images
