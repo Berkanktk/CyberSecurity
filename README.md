@@ -2237,6 +2237,20 @@ Data that can be found in volatile memory
 
 A tool used for analyzing memory dumps is [volatility 3](https://github.com/volatilityfoundation/volatility3).
 
+### Volatility 3
+Volatility 3 is a memory forensics framework that allows you to analyze memory dumps.
+
+**Useful commands:**
+* `vol.py -f <memory dump> imageinfo` - Get information about the memory dump
+* `vol.py -f <file> windows.filescan.FileScan` - List all files in the memory dump
+* `vol.py -f <file> windows.pslist.PsList` - List all processes in the memory dump
+* `vol.py -f <file> windows.dumpfiles.DumpFiles --virtaddr <address>` - Dump a file from the memory dump
+  * `--pid PID` Process ID to include (all other processes are excluded)
+  * `--virtaddr VIRTADDR`  Dump a single _FILE_OBJECT at this virtual address
+  * `--physaddr PHYSADDR`  Dump a single _FILE_OBJECT at this physical address
+
+Remember to append the `--output-dir <directory>` flag to save the output to a directory. Or simply redirect the output to a file with `> <filename>`.
+
 ## Disk imaging
 `TO BE ADDED`
 
