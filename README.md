@@ -2021,6 +2021,9 @@ We can try to read the metadata using the program `pdfinfo`. Pdfinfo displays va
 
 If the PDF file is password protected, another tool named `pdfcrack` can be used with a wordlist in order to bruteforce the password.
 
+**Example:**  
+`pdfcrack -q -w /usr/share/wordlists/rockyou.txt encrypted.pdf`
+
 **Geographical Coordinates**  
 Longitude Latitude
 
@@ -2104,6 +2107,13 @@ And then run it with
 java -jar bin/stegsolve.jar
 ```
 
+### Stegseek
+[Stegseek](https://github.com/RickdeJager/stegseek) is a lightning fast steghide cracker
+
+After installing stegseek [here](https://github.com/RickdeJager/stegseek/blob/master/BUILD.md), you can use it to crack a password protected steghide file with the following command:
+```bash
+stegseek <file>
+```
 
 ### Stegoveritas
 Stegoveritas supports just about every image file, and is able to extract all types of data from it
