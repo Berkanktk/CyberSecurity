@@ -808,7 +808,21 @@ Options:
 `/cert:ignore` - Ignore certificate  
 `/ipv6`, `/6` - Prefer IPv6 AAA record over IPv4 A record
 ## hexeditor
-Read and modify hex of a file (This tool is also helpful when it comes to CTFs and text is hidden inside a file or when the magic number of a file was altered.)
+Read and modify hex of a file (This tool is also helpful when it comes to CTFs and text is hidden inside a file or when the magic number of a file was altered.) Alternatives are: xxd, hexedit, GHex (GNOME GUI) & HxD (Windows).
+
+**Example usage**  
+`hexeditor -n file.txt`
+
+**Options**  
+`-a` Print all text characters.  
+`-n` Force Gray scale, no colors.
+
+**Controls:**
+CTRL + F - Go to last line  
+CTRL + C - Exit without saving  
+CTRL + X - Exit and save  
+CTRL + U - Undo  
+CTRL + W - Search
 ## gzip
 gzip - a file format and a software application used for file compression and decompression. gzip-compressed files have .gz extension.
 
