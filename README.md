@@ -1651,6 +1651,12 @@ If an attacker is able to successfully pass input that is interpreted correctly,
 ### Tool for SQL Injection
 [sqlmap](https://sqlmap.org/) is a tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.
 
+### Examples of SQL Injection
+* `' OR 1=1 --`
+* `1' OR 1=1 --`
+* `1' OR 1=1#`
+* `1' OR 1=1--`
+* `1' OR 1=1;--`
 ## Command Injection
 `TO BE ADDED`
 ## Directory Traversal
