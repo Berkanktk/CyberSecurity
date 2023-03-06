@@ -758,7 +758,7 @@ FTP or File Transfer Protocol is a network communication protocol that enables t
 Standard use  
 `ftp <IP>` 
 
-Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username of "anonymous" and an email address as the password.
+Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username of "`anonymous`" and an email address as the password.
 
 Commands:
 `ls` - list files  
@@ -1026,6 +1026,11 @@ https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
 `-s` (status-codes) - Set status codes that should be interpreted as valid  
 `-k` (ssl) - Skip ssl certificate   
 `-H` (HTTP) - Specify HTTP header  
+`-t` (threads) - Number of concurrent threads (default: 10)  
+`-v` (verbose) - Verbose output  
+`-q` (quiet) - Quiet output  
+`-n` (no-redirect) - Do not follow redirects  
+`-r` (recursive) - Recursively brute force subdirectories  
 ## Feroxbuster
 feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories.
 
@@ -1317,7 +1322,8 @@ Port scan (all) = `-p-`
 Activate a script= `—-script=<script_name>`   
 Decoy an ip adress =  `-D`  
 Fast mode = `-F`
-Only open ports = `--open` 
+Only open ports = `--open`   
+List of hosts to scan = `-iL`
 
 Scan an IPv6 address = `-6` 
 
@@ -1627,7 +1633,7 @@ The following search would only contain results from subdomain names belonging t
 `-site:www.domain.com site:*.domain.com` 
 
 **DNS Bruteforce**  
-Bruteforce DNS (Domain Name System) enumeration is the method of trying tens, hundreds, thousands or even millions of different possible subdomains from a pre-defined list of commonly used subdomains. Fot this method, the tool [DNSrecon](https://www.kali.org/tools/dnsrecon/) & [Sublist3r](https://github.com/aboul3la/Sublist3r) can be used.
+Bruteforce DNS (Domain Name System) enumeration is the method of trying tens, hundreds, thousands or even millions of different possible subdomains from a pre-defined list of commonly used subdomains. Fot this method, the tool [DNSrecon](https://www.kali.org/tools/dnsrecon/), [Sublist3r](https://github.com/aboul3la/Sublist3r) or [Turbolist3r](https://github.com/fleetcaptain/Turbolist3r) can be used.
 
 **Virtual Hosts**  
 Some subdomains aren't always hosted in publically accessible DNS results, such as development versions of a web application or administration portals. Instead, the DNS record could be kept on a private DNS server or recorded on the developer's machines in their /etc/hosts file (or c:\windows\system32\drivers\etc\hosts file for Windows users) which maps domain names to IP addresses. 
@@ -1649,7 +1655,7 @@ If an attacker is able to successfully pass input that is interpreted correctly,
 * Execute Arbitrary system commands on a server that would allow an attacker to gain access to users’ systems. This would enable them to steal sensitive data and carry out more attacks against infrastructure linked to the server on which the command is executed.
 
 ### Tool for SQL Injection
-[sqlmap](https://sqlmap.org/) is a tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.
+[sqlmap](https://sqlmap.org/) is a tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers. See how to use it [here](#SQLMap).
 
 ### Examples of SQL Injection
 * `' OR 1=1 --`
@@ -1657,6 +1663,7 @@ If an attacker is able to successfully pass input that is interpreted correctly,
 * `1' OR 1=1#`
 * `1' OR 1=1--`
 * `1' OR 1=1;--`
+
 ## Command Injection
 `TO BE ADDED`
 ## Directory Traversal
@@ -2089,6 +2096,8 @@ stegsnow is a program for concealing messages in text files by appending tabs an
 
 ### Steghide
 Steghide is a steganography program that hides data in various kinds of image and audio files, only supports these file formats : JPEG, BMP, WAV and AU. But it’s also useful for extracting embedded and encrypted data from other files. One of the greatest benefits of stegohide, is that it can encrypt data with a passphrase 
+
+Install steghide with `sudo apt install steghide`
 
 **Useful commands:**  
 `steghide info <filepath>`  displays info about whether a file has embedded data or not.  
