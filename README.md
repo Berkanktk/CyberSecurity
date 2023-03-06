@@ -266,6 +266,7 @@ Some of these providers are:
 **Intrusion Detection System (IDS) appliance** - An IDS detects system and network intrusions and intrusion attempts. It tries to detect attackers’ attempts to break into your network.  
 **Intrusion Prevention System (IPS) appliance** - An IPS blocks detected intrusions and intrusion attempts. It aims to prevent attackers from breaking into your network.  
 **Virtual Private Network (VPN) concentrator appliance** -  A VPN ensures that the network traffic cannot be read nor altered by a third party. It protects the confidentiality (secrecy) and integrity of the sent data.  
+**Defacing** - The act of modifying a website to display a message or image.
 
 # Principles and Standards
 ## CIA Triad
@@ -605,7 +606,6 @@ The curl command transfers data to or from a network server, using one of the su
 **Example:**  
 Real use case example  
 `curl -s -A "PicoBrowser" -H "Date: Mon, 23 11 2018 23:23:23 GMT" -H "DNT: 1" -H "X-Forwarded-For: 2.71.255.255" -H "Accept-Language: sv-SE" --referer http://mercury.picoctf.net:36622 http://mercury.picoctf.net:36622/ | grep -oI "picoCTF{.*}"`
-
 ## wget
 The wget command downloads files from HTTP, HTTPS, or FTP connection a network.  
 
@@ -1375,6 +1375,9 @@ Subnet mask with 255.255.255.0 = `<ip>/24`
 `--dump-all` - Dump all databases
 
 # Tools (GUI) 
+## Autopsy
+`TO BE ADDED`
+
 ## Burp 
 [Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
 
