@@ -84,6 +84,7 @@
 [Abuse.ch](https://abuse.ch) - a collection of malware and threat intelligence feeds.  
 [AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
 [Archive.org](https://archive.org/web/) - internet Archieve    
+[Assembly Tutorials](https://www.tutorialspoint.com/assembly_programming/index.htm) - assembly tutorials  
 [Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator  
 [Bug Bounty](https://hackerone.com/bug-bounty-programs) - a list of bug bounty programs  
 [Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.      
@@ -129,6 +130,7 @@
 [Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel   
 [Intelix](https://intelx.io) - Search Tor, I2P, data leaks and the public web by email, domain, IP, CIDR, Bitcoin address and more.    
 [k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.      
+[Kali Linux Tutorials](https://www.tutorialspoint.com/kali_linux/index.htm) - Kali Linux Tutorials  
 [Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.    
 [LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/) - learn about local file inclusion   
 [Linux Commands](https://www.mediacollege.com/linux/command/linux-command.html) - a list of linux commands       
