@@ -2557,6 +2557,10 @@ If you don't have privilege, try this
 Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command to read a flag:  
 `find /home/berkan/flag1.txt -exec cat {} \;`
 
+### Keeping a backdoor
+#### Using SSH
+Create a `.ssh` folder in the home directory of the user you want to keep a backdoor. Keep in mind that the permissions of the `.ssh` folder should be `700` and the files withing should be `600`.
+
 # Vulnerabilities
 A vulnerability in cybersecurity is defined as a weakness or flaw in the design, implementation or behaviours of a system or application. An attacker can exploit these weaknesses to gain access to unauthorised information or perform unauthorised actions
 
