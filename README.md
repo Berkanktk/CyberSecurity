@@ -1584,6 +1584,7 @@ Check [this](https://wiki.owasp.org/index.php/OWASP_favicon_database) database t
 9. Test for Cross-site scripting
 10. Test with SQL injection methods
 11. Try Flask Template Injection with `{{config}}`
+12. Check `.htaccess` file for apache server configurations.
 
 When successfully finding a framework using on of the methods, Framework Stacking can be used afterwards where you check the framework documentation for potential admin portals etc.
 
@@ -1646,7 +1647,6 @@ If an attacker is able to successfully pass input that is interpreted correctly,
 
 * Access, Modify and Delete information in a database when this input is passed into database queries. This would mean that an attacker can steal sensitive information such as personal details and credentials.
 * Execute Arbitrary system commands on a server that would allow an attacker to gain access to users’ systems. This would enable them to steal sensitive data and carry out more attacks against infrastructure linked to the server on which the command is executed.
-
 
 ### Tool for SQL Injection
 [sqlmap](https://sqlmap.org/) is a tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers.
