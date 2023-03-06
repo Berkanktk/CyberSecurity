@@ -876,6 +876,19 @@ hd {options} {files}
 **Options**  
 `-c` One-byte character display.   
 `-C` Canonical hex + ASCII display.
+## xxd
+xxd is a hex editor that can be used to convert binary files to hex and vice versa.
+
+**Syntax**
+`xxd [options] [infile [outfile]]`
+
+**Options**    
+`-b` binary digit dump  
+`-e` little-endian dump  
+`-l len` stop after <len> octets.  
+`-r` reverse operation: convert (or patch) hexdump into binary.  
+`-d` show offset in decimal instead of hex.  
+`-u` use upper case hex letters.  
 ## exiftool
 Is a command-line application for reading, writing and editing meta information in a wide variety of files.
 
