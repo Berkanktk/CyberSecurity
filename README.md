@@ -2512,6 +2512,15 @@ From within nmap
 `!sh`  
 
 Many of these will also allow you to escape jail shells. The top 3 would be my most successful in general for spawning from the command line.
+
+### Reverse Shells 
+Reverse shells are used to connect back to a listening machine. This is useful when you have a shell on a machine, but you want to connect back to your own machine.
+
+A useful website to generate a reverse shell is [RevShells](https://www.revshells.com/).
+
+### Shell stabilization
+`TO BE ADDED`
+
 ## Privilege Escalation 
 Check for root password
 Run: `id`  
