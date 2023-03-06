@@ -1328,6 +1328,24 @@ List of hosts to scan = `-iL`
 Scan an IPv6 address = `-6` 
 
 Subnet mask with 255.255.255.0 = `<ip>/24`
+## SQLMap
+[SQLMap](http://sqlmap.org) is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers. 
+
+### Syntax
+`sqlmap <option> <url>`
+
+### Options
+`-u` - URL to test for SQL injection  
+`-g` - Google Dork to test for SQL injection  
+`-p` - Parameter to test for SQL injection  
+`-D` - Dump a specific database to enumerate    
+`-T` - Dump a specific table to enumerate   
+`-C` - Dump specific columns to enumerate   
+`--level` - Level of tests to perform (1-5)  
+`--dbms` - Force SQLMap to use a specific DBMS  
+`--dump` - Dump the contents of the database  
+`--os-shell` - Get an OS shell  
+`--dump-all` - Dump all databases
 
 # Tools (GUI) 
 ## Burp 
