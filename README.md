@@ -8,7 +8,7 @@
    1. [CIA Triad](#cia-triad)
    2. [Principle of privileges](#principles-of-privileges)
    3. [Security Models](#security-models)
-   4. [Threat modeling and incidence response](#threat-modeling-and-incidence-response)
+   4. [Threat modeling and incident response](#threat-modeling-and-incident-response)
    5. [Ethics](#ethics)
    6. [Methodologies](#methodologies)
    7. [Black, grey & white box](#black-grey--white-box)
@@ -305,7 +305,7 @@ The Biba model is arguably the equivalent of the Bell-La Padula model but for th
 
 This model applies the rule to objects (data) and subjects (users) that can be summarised as "no write up, no read down". This rule means that subjects can create or write content to objects at or below their level but can only read the contents of objects above the subject's level.
 
-## Threat modeling and incidence response
+## Threat modeling and incident response
 Threat modelling is the process of reviewing, improving, and testing the security protocols in place in an organisation's information technology infrastructure and services.
 
 The threat modelling process is very similar to a risk assessment made in workplaces for employees and customers. The principles all return to:
@@ -1857,7 +1857,7 @@ If the developer uses input validation by filtering some keywords, ex. "../", we
 This works because the PHP filter only matches and replaces the first subset string `../` it finds and doesn't do another pass, leaving:  
 `../../../../etc/passwd`
 
-### Including the Direcotry trick
+### Including the Directory trick
 If the developer forces you to include a directory, you can bypass this by writing the directory and then moving up from there. Ex. if the forced directory is 'language':  
 `languages/../../../../../etc/passwd` 
 
@@ -2161,8 +2161,6 @@ Photoshop or any other image editing software but stegsolve made it easier. Itâ€
 ```bash
 wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar
 chmod +x stegsolve.jar
-mkdir bin
-mv stegsolve.jar bin/
 ```
 
 And then run it with
