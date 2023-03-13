@@ -381,8 +381,8 @@ We will start by enumerating mountable shares from our attacking machine.
 We will mount one of the “no_root_squash” shares to our attacking machine and start building our executable.
 
 ```bash
-mkdir /tmp/bckp-attacker
-mount -t nfs <IP>:/tmp/bckp /tmp/bckp-attacker
+$ mkdir /tmp/bckp-attacker
+$ mount -t nfs <IP>:/tmp/bckp /tmp/bckp-attacker
 ```
 
 As we can set SUID bits, a simple executable that will run /bin/bash on the target system will do the job.
