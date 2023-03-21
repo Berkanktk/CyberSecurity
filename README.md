@@ -1643,8 +1643,8 @@ Run this to find its md5 hash:
 `curl https://static-labs.tryhackme.cloud/sites/favicon/images/favicon.ico | md5sum`  
 Check [this](https://wiki.owasp.org/index.php/OWASP_favicon_database) database to find the framework.
 6. Check the sitemap file for disallowed/hidden files
-7. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use. `curl http://10.10.134.48 -v` The -v switch enables verbose mode, which will output the headers
-8. Look out for cookie values and change them if possible.
+7. Curl HTTP Headers to find potential information about the webserver software and possibly the programming/scripting language in use. `curl http://10.10.134.48 -v` The `-v` switch enables verbose mode, which will output the headers
+8. Look out for cookie values and change them if possible. Look after Base64 encoded values, JWT tokens, or maybe case folded values that can be used to bypass authentication with simply using casefold(). (Example: 'ß' -> 'ss')
 9. Test for Cross-site scripting
 10. Test with SQL injection methods
 11. Try Flask Template Injection with `{{config}}`
