@@ -1403,11 +1403,11 @@ We need to install a CA certificate as BurpSuite acts as a proxy between your br
 8. Click on 'View Certificates'. Next, in the Authorities tab click on 'Import' and then OK.
 
 ### Overview of Features
-* **Proxy** - What allows us to funnel traffic through Burp Suite for further analysis
-* **Target** - How we set the scope of our project. We can also use this to effectively create a site map of the application we are testing
+* **Proxy** - Burp Proxy allows us to intercept and modify requests/responses when interacting with web applications.
+* **Target** - How we set the scope of our project. We can also use this to effectively create a site map of the application we are testing.
 * **Intruder** - Incredibly powerful tool for everything from field fuzzing to credential stuffing and more
-* **Repeater** - Allows us to 'repeat' requests that have previously been made with or without modification. Often used in a precursor step to fuzzing with the aforementioned Intruder
-* **Sequencer** - Analyzes the 'randomness' present in parts of the web app which are intended to be unpredictable. This is commonly used for testing session cookies
+* **Repeater** - Allows us to capture, modify, then resend the same request numerous times. This feature can be absolutely invaluable, especially when we need to craft a payload through trial and error (e.g. in an SQLi -- Structured Query Language Injection) or when testing the functionality of an endpoint for flaws.
+* **Sequencer** - Analyzes the 'randomness' present in parts of the web app which are intended to be unpredictable. This is commonly used for testing session cookies.
 * **Decoder** - As the name suggests, Decoder is a tool that allows us to perform various transforms on pieces of data. These transforms vary from decoding/encoding to various bases or URL encoding.
 * **Comparer** - Comparer as you might have guessed is a tool we can use to compare different responses or other pieces of data such as site maps or proxy histories (awesome for access control issue testing). This is very similar to the Linux tool diff.
 * **Extender** - Similar to adding mods to a game like Minecraft, Extender allows us to add components such as tool integrations, additional scan definitions, and more!
@@ -1418,6 +1418,16 @@ We need to install a CA certificate as BurpSuite acts as a proxy between your br
 2. We can modify our requests in-line similar to what you might see in a man-in-the-middle attack and then send them on.
 3. We can also drop requests we don't want to be sent. This can be useful to see the request attempt after clicking a button or performing another action on the website. 
 4. And last but not least, we can send these requests to other tools such as Repeater and Intruder for modification and manipulation to induce vulnerabilities
+
+### Notes
+* URL Encode with Burp Suite: `Ctrl + U` to make a payload safe to send.
+* Intruder attack types:
+  * **Sniper**: Sends a single request to each selected item, typically used for targeted attacks. (e.g. a password bruteforce if we know the username)
+  * **Battering ram**: Sends multiple identical requests to selected items, ideal for brute force attacks.
+  * **Pitchfork**: Sends a combination of two payloads, one to the first item and another to the second item, useful for testing parameter-level vulnerabilities. (e.g. we know the username and password for a user)
+  * **Cluster bomb**: Sends multiple payloads to each selected item, useful for discovering new vulnerabilities. (tries every combination of values)
+* Python modules can be installed from the BApp Store, by downloading [Jython Jar file](https://www.jython.org/download) and placing it in the extender -> options -> python environment.
+* Extensions can be created using the [Burp Extender API](https://portswigger.net/burp/extender/api) with either Java, Python or Ruby.
 
 ## Nessus
 [Nessus](https://www.tenable.com/products/nessus) is a GUI based vulnerability scanner
