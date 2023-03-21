@@ -2431,6 +2431,13 @@ File -> Export Program -> Export as ELF # Export the binary as an ELF file
 Symbol Tree -> Functions # List functions (ex. Main)
 ```
 
+## Call Graphs
+[Cytoscape](https://github.com/cytoscape/cytoscape) is a tool for network analysis and visualization that can be used to see call graphs.
+
+**Useful functions:**
+- Layout -> Grid View = Show a grid view of the nodes.
+- Pathlinker = Find paths between nodes. Needs a source and a target node. K = number of paths to find. Is mostly one in CTF situations.
+
 # Cryptography
 ## Decrypting Methods
 ### Cryptii
