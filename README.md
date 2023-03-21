@@ -1899,6 +1899,13 @@ As a developer, it's important to be aware of web application vulnerabilities, h
 5. Carefully analyze the web application and allow only protocols and PHP wrappers that are in need.
 6. Never trust user input, and make sure to implement proper input validation against file inclusion.
 7. Implement whitelisting for file names and locations as well as blacklisting.
+
+### PHP Filters
+PHP filters are used to validate and sanitize external input. The filter extension provides a way to validate and sanitize external inputs. The filter extension is not enabled by default, so you need to enable it in the php.ini file.
+
+Filters can be used by using `php://filter`. For example, to base64 encode a file, you can use:  
+`php://filter/convert.base64-encode/resource=index.php`
+
 ## Cross Site Request Forgery (CSRF)
 `TO BE ADDED`
 ## Cross Site Scripting (XSS)
