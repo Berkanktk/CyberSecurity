@@ -1,3 +1,5 @@
+> ### Remember to take a look at the `/More` folder! ;)
+
 # List of Contents
 1. [Links](#links)
 2. [CTF Sites](#ctf-sites)
