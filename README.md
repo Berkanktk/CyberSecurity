@@ -1036,8 +1036,12 @@ https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
 ### Syntax
 `gobuster -w wordlist.txt`
 
-### Example:  
+### Examples:  
+Standard scan  
 `gobuster dir -u http://172.162.39.86 -w /usr/share/wordlists/dirb/megalist.txt` 
+
+DNS subdomain enumeration  
+`gobuster dns -d http://172.162.39.86 -w /usr/share/SecLists/Discovery/DNS/namelist.txt`
 
 ### A list of options
 `dir` Directory/file brute forcing mode  
