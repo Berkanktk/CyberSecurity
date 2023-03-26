@@ -1065,6 +1065,8 @@ DNS subdomain enumeration
 `-q` (quiet) - Quiet output  
 `-n` (no-redirect) - Do not follow redirects  
 `-r` (recursive) - Recursively brute force subdirectories  
+
+Find a list of seclists [here.](https://github.com/danielmiessler/SecLists)
 ## Feroxbuster
 feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories.
 
@@ -1656,6 +1658,8 @@ Check [this](https://wiki.owasp.org/index.php/OWASP_favicon_database) database t
 10. Test with SQL injection methods
 11. Try Flask Template Injection with `{{config}}`
 12. Check `.htaccess` file for apache server configurations.
+13. Grab banners/headers for framework, authentication and misconfiguration discovery `curl -IL https://www.inlanefreight.com`
+14. Check the source code for any comments or hidden information in the inspector view.
 
 When successfully finding a framework using on of the methods, Framework Stacking can be used afterwards where you check the framework documentation for potential admin portals etc.
 
