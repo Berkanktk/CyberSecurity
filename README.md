@@ -2615,6 +2615,43 @@ You can use smbclient to look through files shared with SMB. To list available s
 For more, see this page: [Samba](More/Windows-related/Samba.md)
 
 # Shells and Privilege Escalation
+## Public Exploits
+**Google**   
+`openssh 7.2 exploit`
+
+**Exploit-DB**  
+```bash
+berkankutuk@kali:~$ sudo apt install exploitdb -y
+berkankutuk@kali:~$ searchsploit openssh 7.2
+```
+
+**MetaSploit** 
+* Running reconnaissance scripts to enumerate remote hosts and compromised targets
+* Verification scripts to test the existence of a vulnerability without actually compromising the target
+* Meterpreter, which is a great tool to connect to shells and run commands on the compromised targets
+
+Quick exploit search
+```bash	
+msf6 > search exploit eternalblue
+
+Matching Modules
+================
+
+   #  Name                                           Disclosure Date  Rank     Check  Description
+   -  ----                                           ---------------  ----     -----  -----------
+<SNIP>
+EternalBlue SMB Remote Windows Kernel Pool Corruption for Win8+
+   4  exploit/windows/smb/ms17_010_psexec            2017-03-14       normal   Yes    MS17-010 
+```
+Then to use it
+```bash	
+msf6 > use exploit/windows/smb/ms17_010_psexec
+```
+
+**Other**  
+We can also utilize online exploit databases to search for vulnerabilities, like [Exploit DB](https://www.exploit-db.com/), [Rapid7 DB](https://www.rapid7.com/db/), or [Vulnerability Lab](https://www.vulnerability-lab.com/).
+
+
 ## TTY Shell
 The tty command of terminal basically prints the file name of the terminal connected to standard input. tty is short of teletype, but popularly known as a terminal it allows you to interact with the system by passing on the data (you input) to the system, and displaying the output produced by the system
 
