@@ -1,6 +1,5 @@
 <h2 align="center">Remember to take a look at the <code>/More</code> folder! ;)</h2>
 
-
 # List of Contents
 1. [Links](#links)
 2. [CTF Sites](#ctf-sites)
@@ -628,6 +627,28 @@ Example usage:
 `netdiscover -i wlan0mon` - to scan for live hosts on a network  
 or 
 `netdiscover -r <ip>/24`
+## whatweb
+Whatweb is a handy tool and contains much functionality to automate web application enumeration across a network. We can extract the version of web servers, supporting frameworks, and applications using the command-line tool.
+
+Example usage:  
+`whatweb --no-errors 10.10.10.0/24`
+
+**Options:**  
+`-a=LEVEL` Aggresion level  
+`-U=AGENT` User agent  
+`--header` HTTP header  
+`--max-redirects=NUM` Maximum number of redirects   
+`-u=<user:password>` Basic authentication  
+`-c=COOKIES` Use cookies  
+`--cookie-jar=FILE` Read cookies from a file  
+`-g=STRING|REGEXP` Search for a string  
+`--no-errors` Suppress error messages  
+`-p=LIST` List all plugins  
+`-l` List all plugins  
+`-v` Verbose mode  
+`-q` Quiet output  
+`-h` to show help (highly recommended)  
+
 ## apt
 apt is a command-line utility for installing, updating, removing, and otherwise managing deb packages
 `sudo apt update` This will pull the latest changes from the APT repositories:
