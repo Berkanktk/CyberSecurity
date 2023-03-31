@@ -122,6 +122,7 @@
 [Google Hacking Database](https://www.exploit-db.com/google-hacking-database) - juicy information found by dorking      
 [GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.    
 [HackerOne](https://www.hackerone.com) -  HackerOne is a vulnerability coordination and bug bounty platform.  
+[Hacking Glossary](https://resources.hackthebox.com/hacking-glossary) - a glossary of hacking terms made by HackTheBox.  
 [Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/) - tool to identify hash types      
 [have i been pwned?](https://haveibeenpwned.com) - check if you have an account that has been compromised in a data breach.        
 [HexEd](https://hexed.it) - HexEd is a powerful online hex editor running in your web browser  
@@ -256,7 +257,7 @@ Some of these providers are:
 **IaaS** - Infrastructure-as-a-Service  
 **RCE** - Remote Code Execution vulnerability allows commands to be executed on the target's system.  
 **Offensive security** - is the process of breaking into computer systems, exploiting software bugs, and finding loopholes in applications to gain unauthorized access to them.  
-**Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats  
+**Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats.  
 **Penetration Tester** - Responsible for testing technology products for finding exploitable security vulnerabilities.  
 **Red Teamer** - Plays the role of an adversary, attacking an organization and providing feedback from an enemy's perspective.  
 **Security Engineer** - Design, monitor, and maintain security controls, networks, and systems to help prevent cyberattacks.  
@@ -1737,12 +1738,14 @@ Bruteforce by using the following command:
 2. Flask cookies can be unsigned by using the following tool [flask-unsign](https://pypi.org/project/flask-unsign/)
 3. Flask cookies can be decoded/encoded using the following tool: [Flask Session Cookie Decoder/Encoder](https://github.com/noraj/flask-session-cookie-manager). See example usage [here](https://github.com/Berkanktk/CTFWriteups/tree/master/PicoCTF/Web%20Exploitation/MostCookies)
 ## SQL Injection
-This occurs when user controlled input is passed to SQL queries. As a result, an attacker can pass in SQL queries to manipulate the outcome of such queries. 
+SQL (Structured Query Language) Injection occurs when user controlled input is passed to SQL queries without validation/sanitization. As a result, an attacker can pass in SQL queries to manipulate the outcome of such queries. 
 
 If an attacker is able to successfully pass input that is interpreted correctly, they would be able to do the following:
 
 * Access, Modify and Delete information in a database when this input is passed into database queries. This would mean that an attacker can steal sensitive information such as personal details and credentials.
 * Execute Arbitrary system commands on a server that would allow an attacker to gain access to users’ systems. This would enable them to steal sensitive data and carry out more attacks against infrastructure linked to the server on which the command is executed.
+
+See much more database and SQLi related information in [/More/Databases](/More/Databases/).
 
 ### Tool for SQL Injection
 [sqlmap](https://sqlmap.org/) is a tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers. See how to use it [here](#SQLMap).
