@@ -464,7 +464,6 @@ Shows the processes for the current shell
 **TIME** – amount of CPU in minutes and seconds that the process has been running   
 **CMD** – name of the command that launched the process.   
 
-
 `-a` flag stands for all processes  
 `-x` will display all processes even those not associated with the current tty  
 `-t` Processes associated with the terminal run
@@ -670,7 +669,6 @@ Example usage:
 `-v` Verbose mode  
 `-q` Quiet output  
 `-h` to show help (highly recommended)  
-
 ## apt
 apt is a command-line utility for installing, updating, removing, and otherwise managing deb packages
 `sudo apt update` This will pull the latest changes from the APT repositories:
@@ -1814,7 +1812,6 @@ See much more database and SQLi related information in [/More/Databases](/More/D
 * `1' OR 1=1#`
 * `1' OR 1=1--`
 * `1' OR 1=1;--`
-
 ## Command Injection
 `TO BE ADDED`
 ## Directory Traversal
@@ -1998,7 +1995,6 @@ PHP filters are used to validate and sanitize external input. The filter extensi
 
 Filters can be used by using `php://filter`. For example, to base64 encode a file, you can use:  
 `php://filter/convert.base64-encode/resource=index.php`
-
 ## Cross Site Request Forgery (CSRF)
 `TO BE ADDED`
 ## Cross Site Scripting (XSS)
@@ -2574,7 +2570,6 @@ ROT13 is a simple letter substitution cipher that replaces a letter with the let
 A substitution cipher is a method of encoding by which units of plaintext are replaced with ciphertext, according to a fixed system; the "units" may be single letters (the most common), pairs of letters, triplets of letters, mixtures of the above, and so forth. The receiver deciphers the text by performing the inverse substitution.
 
 Useful tools for substitution ciphers are [Cryptii](https://cryptii.com) and [Dcode](https://www.dcode.fr/substitution-cipher).
-
 ## Encoding
 Encoded data can be decoded immediately, without keys. It's NOT a form of encryption, it just a way of representing data.
 
@@ -2614,7 +2609,6 @@ echo -n "SGVsbG8gV29ybGQ=" | base64 -d
 base64 /path/to/file > output.txt # Encoding
 base64 -d /path/to/file > output.txt # Decoding
 ```
-
 ## Hashing
 Hashing is used for 2 main purposes in Cyber Security. To verify integrity of data, or for verifying passwords. 
 
