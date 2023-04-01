@@ -2639,6 +2639,21 @@ plaintext ⬅️ 🗝 ⬅️ ciphertext
 
 Public key to encrypt, private key to decrypt.
 
+### Cracking ecrypted files
+If you are using Kali linux or Parrot OS, you should have a binary add on called `gpg2john`. This binary program allows us to convert the gpg file into a hash string that john the ripper can understand when it comes to brute-forcing the password against a wordlist. 
+
+How to use it (GPG example):
+```bash
+gpg2john encrypted_file.txt.gpg > hash.txt
+```
+Then you can use john the ripper to crack the password.
+
+```bash
+john --wordlist=/usr/shared/wordlists/rockyou.txt --format=gpg hash.txt
+```
+
+The result should reveal the password if you have used a strong wordlist that contains it.
+
 # Miscellaneous
 `TO BE ADDED`
 
