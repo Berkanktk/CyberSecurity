@@ -420,6 +420,13 @@ ISO/IEC 27001 requires that management:
 An ISMS(Information Security Management System) may be certified compliant with ISO/IEC 27001 by a number of Accredited Registrars worldwide.
 
 # Linux Commands 
+## cat
+cat is a Linux shell command that concatenates files and prints on the standard output. It is often used to view the content of a file.
+
+Example: 
+`cat -n example.txt`	
+
+`-n`  number all output lines  
 ## ls
 ls is a Linux shell command that lists directory contents of files and directories.
 
@@ -439,6 +446,11 @@ Created directories
 
 The command mkdir has an option marked -p to add parent directories.  
 `mkdir -p Folder/i/am/in`
+## touch
+Creates a file
+
+Example: 
+`touch file.txt`
 ## tree
 We can look at the whole structure after creating the parent directories with the tool tree.
 
