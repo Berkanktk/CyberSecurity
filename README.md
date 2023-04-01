@@ -469,12 +469,21 @@ Shows the processes for the current shell
 `-x` will display all processes even those not associated with the current tty  
 `-t` Processes associated with the terminal run
 ## rm
+Deletes files
+
+Example:  
+`rm -rf /tmp/*`
+
 `-r` Deletes every file in the directory  
 `-f` Suppresses all warning prompts 
 ## mv
-Moves files  
-Example:
+Moves/renames files  
+
+Example (relocate):  
 `mv file.txt /tmp`
+
+Example (rename):  
+`mv file.txt file2.txt`
 ## top
 top command is used to show the Linux processes. It provides a dynamic real-time view of the running system
 ## lsof
