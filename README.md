@@ -1250,6 +1250,13 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 ## John The Ripper
 [John The Ripper](https://www.openwall.com/john/) is a fast password cracker, currently available for many flavors of Unix, Windows, and other. [Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/john_cheatsheet/)
 
+### Syntax
+`john <hash_file> --wordlist=<wordlist>`
+
+### Examples
+Cracking MD5 hashes  
+`john --format=raw_md5 --wordlist=/usr/share/wordlists/rockyou.txt hash.txt`
+
 ### SSH Private Key
 Crack hashed private key  
 `python /usr/share/john/ssh2john.py id_rsa > hash.txt`
