@@ -825,6 +825,17 @@ Login with a key
 
 Specify other ports than 22  
 `ssh user@ip -p <port>`
+## scp
+SCP or Secure Copy Protocol is a network communication protocol that enables two computers to communicate and transfer files between them using the SSH protocol.
+
+Copy a file to a remote server  
+`scp /path/to/file user@ip:/path/to/remote/file`
+
+Copy a file from a remote server to a local server  
+`scp user@ip:/path/to/remote/file /path/to/file`
+
+Example (file to a remote server ):  
+`scp example.txt berkan@192.168.100.123:/home/berkan/`
 ## searchsploit
 Searchsploit is a command line search tool for Exploit-DB 
 
