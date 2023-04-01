@@ -1813,7 +1813,135 @@ See much more database and SQLi related information in [/More/Databases](/More/D
 * `1' OR 1=1--`
 * `1' OR 1=1;--`
 ## Command Injection
-`TO BE ADDED`
+Command injection is the abuse of an application's behaviour to execute commands on the operating system, using the same privileges that the application on a device is running with.
+
+A command injection vulnerability is also known as a "Remote Code Execution" (RCE) because an attacker can trick the application into executing a series of payloads that they provide, without direct access to the machine itself (i.e. an interactive shell). The webserver will process this code and execute it under the privileges and access controls of the user who is running that application.  
+
+### Discovering Command Injection
+This vulnerability exists because applications often use functions in programming languages such as PHP, Python and NodeJS to pass data to and to make system calls on the machine’s operating system. For example, taking input from a field and searching for an entry into a file.
+
+Example of a vulnerable code in PHP:  
+```php
+<?php
+    $file = $_GET['file'];
+    $command = "cat $file";
+    system($command);
+?>
+```
+
+Example of a vulnerable code in Python (Flask):  
+```python
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    command = "grep -r " + query + " /var/www/html"
+    output = subprocess.check_output(command, shell=True)
+    return output
+```
+
+Command Injection can be detected in mostly one of two ways:
+| Method | Description |
+|:---:|---|
+| Blind | This type of injection is where there is no direct output from the application when testing payloads. You will have to investigate the behaviours of the application to determine whether or not your payload was successful. |
+| Verbose | This type of injection is where there is direct feedback from the application once you have tested a payload. For example, running the `whoami` command to see what user the application is running under. The web application will output the username on the page directly. |
+
+#### Detecting Blind Command Injection
+For this type of command injection, we will need to use payloads that will cause some time delay. For example, the `ping` and `sleep` commands are significant payloads to test with. Using `ping` as an example, the application will hang for x seconds in relation to how many pings you have specified.
+
+Another method of detecting blind command injection is by forcing some output. This can be done by using redirection operators such as `>`. For example, we can tell the web application to execute commands such as whoami and redirect that to a file. We can then use a command such as cat to read this newly created file’s contents.
+
+The curl command is a great way to test for command injection. This is because you are able to use curl to deliver data to and from an application in your payload. Take this code snippet below as an example, a simple curl payload to an application is possible for command injection.
+
+`curl http://vulnerable.app/process.php%3Fsearch%3DThe%20Beatles%3B%20whoami`
+
+#### Detecting Verbose Command Injection
+Detecting command injection this way is arguably the easiest method of the two. Verbose command injection is when the application gives you feedback or output as to what is happening or being executed.
+
+For example, the output of commands such as `ping` or `whoami` is directly displayed on the web application.
+
+### Exploiting Command Injection
+Applications that use user input to populate system commands with data can often be combined in unintended behaviour. For example, the shell operators `;`, `&` and `&&` will combine two (or more) system commands and execute them bot
+
+Useful payloads for command injection (linux):
+| Payload | Description |
+|:---:|:---:|
+| whoami | See what user the application is running under. |
+| ls | List the contents of the current directory. You may be able to find files such as configuration files, environment files (tokens and application keys), and many more valuable things. |
+| ping | This command will invoke the application to hang. This will be useful in testing an application for blind command injection. |
+| sleep | This is another useful payload in testing an application for blind command injection, where the machine does not have ping installed. |
+| nc | Netcat can be used to spawn a reverse shell onto the vulnerable application. You can use this foothold to navigate around the target machine for other services, files, or potential means of escalating privileges. |
+
+Useful payloads for command injection (windows):
+| Payload | Description |
+|:---:|:---:|
+| whoami | See what user the application is running under. |
+| dir | List the contents of the current directory. You may be able to find files such as configuration files, environment files (tokens and application keys), and many more valuable things. |
+| ping | This command will invoke the application to hang. This will be useful in testing an application for blind command injection. |
+| timeout | This command will also invoke the application to hang. It is also useful for testing an application for blind command injection if the ping command is not installed. |
+
+Commands that quickly can be tested:
+```bash
+whoami
+| whoami
+; whoami
+' whoami
+' || whoami
+' & whoami
+' && whoami
+'; whoami
+" whoami
+" || whoami
+" | whoami
+" & whoami
+" && whoami
+"; whoami
+$(`whoami`)
+& whoami
+&& whoami
+```	
+
+See [this](https://github.com/payloadbox/command-injection-payload-list) cheatsheet for more.
+
+### Remediating Command Injection
+Command injection can be prevented in a variety of ways. Everything from minimal use of potentially dangerous functions or libraries in a programming language to filtering input without relying on a user’s input.
+
+#### Vulnerable functions
+In PHP, many functions interact with the operating system to execute commands via shell; these include:
+
+* Exec
+* Passthru
+* System
+
+Snippet for a code that only accept and process numbers between 0-9 as input:
+```php
+<input type="text" id="ping" name="ping" pattern="[0-9]+"</input>
+<?php
+echo passthru("/bin/ping -c 4 "$_GET["ping"]"); 
+?>
+```
+
+#### Input sanitisation
+Sanitising any input from a user that an application uses is a great way to prevent command injection. This is a process of specifying the formats or types of data that a user can submit. For example, an input field that only accepts numerical data or removes any special characters such as `>`, `&` and `/`.
+
+```php
+<?php
+if (!filter_input (INPUT_GET, "number", FILTER_VALIDATE_NUMBER)) {
+  ...
+}
+...
+```
+
+Read more about the function filter_input() [here](https://www.php.net/manual/en/function.filter-input.php).
+
+#### Bypassing filters
+Applications will employ numerous techniques in filtering and sanitising data that is taken from a  user's input. These filters will restrict you to specific payloads; however, we can abuse the logic behind an application to bypass these filters. For example, an application may strip out quotation marks; we can instead use the hexadecimal value of this to achieve the same result.
+
+When executed, although the data given will be in a different format than what is expected, it can still be interpreted and will have the same result.
+
+```php
+$payload = "\x2f|\x65 \x74 \x63\x2f\x70\x61 \x73 \x73 \x77\x64"
+```
+
 ## Directory Traversal
 `TO BE ADDED`
 ## Authentication Bypass
