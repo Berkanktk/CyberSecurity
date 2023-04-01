@@ -913,7 +913,7 @@ Sudo is Linux's 'run as administrator' command
 `su` change to root  
 `-l` list current sudo priviliges   
 ## hashid
-Hashid will analyze and output the potential algorithm that is used to hash your input.  
+Hashid will analyze and output the potential algorithm that is used to hash your input.  Supports over 250 hash types.  
 `hashid option hash`
 
 `-e` - list all possible hash algorithms including salted passwords  
@@ -921,6 +921,25 @@ Hashid will analyze and output the potential algorithm that is used to hash your
 `-j` - include corresponding JohnTheRipper format in output  
 `-o FILE` - write output to file (default: STDOUT)  
 `-h` - show help message and exit  
+## hashidentifier
+Hashidentifier will analyze and output the potential algorithm that is used to hash your input. I would say that it is a better alternative to hashid. Supports over 100 hash types.
+
+Usage:  
+`hashidentifier hash`
+
+Example:  
+`hashidentifier 5d7845ac6ee7cfffafc5fe5f35cf666d`
+## haiti
+Haiti is another great tool to identify a hash type. It also returns the format that can be used with john the ripper and hashcat to crack the hash. Supports over 500 hash types.
+
+Installation:  
+`gem install haiti-hash`
+
+Usage:  
+`haiti hash`
+
+Example:  
+`haiti 5d7845ac6ee7cfffafc5fe5f35cf666d`
 ## shasums
 **Find SHA1 hash for a file**  
 `sha1sum file.txt`
