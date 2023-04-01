@@ -2673,6 +2673,43 @@ Example providers:
 - tinyurl.com
 - x.co
 
+## Reading SQL databases
+Ensure you have the knowlege of SQL DBs first. See [here](/More/Databases).
+
+Start by starting the mysql service:
+```bash
+service mysql start
+```
+
+### Remote Connection
+Then connect to the database:
+```bash
+mysql -u root -p -h <ip_address>
+```
+
+Now you can use the following commands to read the database:
+```sql
+show databases;
+use <database_name>;
+show tables;
+select * from <table_name>;
+describe <table_name>;
+```
+
+### Local Connection
+If you have access to the database file, you can use the following command to read it:
+```bash
+mysql -u <username> -p
+```
+
+Type "source" followed by the filename of the mysql database to specify that you wish to view its database.
+
+```sql
+source /home/berkan/serverLx/employees.sql -- example
+```
+
+You can now view the database using the commands from the previous section.
+
 # Windows Exploitation
 ## Active directory
 Active Directory is a collection of machines and servers connected inside of domains, that are a collective part of a bigger forest of domains, that make up the Active Directory network. 
