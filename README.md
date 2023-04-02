@@ -1734,7 +1734,7 @@ Check [this](https://wiki.owasp.org/index.php/OWASP_favicon_database) database t
 8. Look out for cookie values and change them if possible. Look after Base64 encoded values, JWT tokens, or maybe case folded values that can be used to bypass authentication with simply using casefold(). (Example: 'ß' -> 'ss')
 9. Test for Cross-site scripting
 10. Test with SQL injection methods
-11. Try Flask Template Injection with `{{config}}`
+11. Try Flask Template Injection (SSTI) with `{{config}}` in the url. If it works, try `{{ get_user_file("/etc/passwd") }}`
 12. Check `.htaccess` file for apache server configurations.
 13. Grab banners/headers for framework, authentication and misconfiguration discovery `curl -IL https://www.inlanefreight.com`
 14. Check the source code for any comments or hidden information in the inspector view.
@@ -1941,7 +1941,6 @@ When executed, although the data given will be in a different format than what i
 ```php
 $payload = "\x2f|\x65 \x74 \x63\x2f\x70\x61 \x73 \x73 \x77\x64"
 ```
-
 ## Directory Traversal
 `TO BE ADDED`
 ## Authentication Bypass
