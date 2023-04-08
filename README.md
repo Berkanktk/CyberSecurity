@@ -836,7 +836,7 @@ Copy a file from a remote server to a local server
 Example (file to a remote server ):  
 `scp example.txt berkan@192.168.100.123:/home/berkan/`
 ## searchsploit
-Searchsploit is a command line search tool for Exploit-DB 
+Searchsploit is a command line search tool for the offline version of Exploit-DB  
 
 Usage:  
 `searchsploit [options] term1 term2 term3 ...`
@@ -2564,6 +2564,14 @@ Remember to append the `--output-dir <directory>` flag to save the output to a d
 `TO BE ADDED`
 ## The Stack
 `TO BE ADDED`
+
+### Stack Overflow
+To see if a stack overflow is possible, run the following command:
+```bash
+checksec --file=<executable>
+```
+If the output contains `Canary found` and `NX enabled`, then a stack overflow is possible. See more about this command [here](/More/Binary%20Exploitation/Checksec.md).
+
 ## Calling Conventions
 `TO BE ADDED`
 ## Global Offset Table (GOT)
@@ -2571,6 +2579,11 @@ Remember to append the `--output-dir <directory>` flag to save the output to a d
 ## Buffers
 ### Buffer Overflow
 Buffer overflow is a type of security vulnerability that occurs when a program, while writing data to a buffer, overruns the buffer's boundary and overwrites adjacent memory locations. This can cause the program to crash or, in the case of a remote attacker, to execute arbitrary code on the system.
+
+**Quick note:**
+* If some C code contains the function `gets()` or `strcpy()`, it is vulnerable to a buffer overflow attack.
+* An important part of the memory we can overwrite is the instruction pointer (IP), which is called the eip on 32-bit machines, and rip on 64-bit machines. The IP points to the next instruction to be executed, so if we redirect the eip in a binary to point to a different location, we can execute arbitrary code.
+* The top of the stack is pointed to by the SP (or stack pointer) which is called esp in 32-bit machines.
 
 ### Buffer Overflow Exploitation example
 `python -c "print ('A' * 100)" | ./<executable>`
@@ -2609,6 +2622,7 @@ berkankutuk@kali:~$ gdb <binary file>` # opens the binary file in gdb
 (gdb)> break <function name> # sets a breakpoint at the given function
 (gdb)> break *<addr> # sets a breakpoint at the given address
 (gdb)> run # runs the program until it reaches the first breakpoint
+(gdb)> run < <input file> # runs the program with the given input file
 (gdb)> disassemble <function name> # disassembles the given function
 (gdb)> x /s <addr> # prints a string from memory address
 (gdb)> continue # continues the execution of the program
