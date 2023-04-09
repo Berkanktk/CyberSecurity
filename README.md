@@ -2882,7 +2882,7 @@ Another enumeration tool is enum4linux which can be used like this:
 You can use smbclient to look through files shared with SMB. To list available shares:  
 `smbclient -m SMB2 -N -L //10.10.10.125/`
 
-For more, see this page: [Samba](More/Windows-related/Samba.md)
+For more, see this page: [Samba](More/Windows/Samba.md)
 
 # Shells and Privilege Escalation
 ## Public Exploits
