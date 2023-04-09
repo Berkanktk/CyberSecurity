@@ -109,7 +109,7 @@
 [dCode](https://www.dcode.fr/en) - dcode.fr has many decoders for a lot of ciphers  
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.     
 [Diff Checker](https://www.diffchecker.com/image-compare/) - compare images  
-[DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
+[DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain   
 [EmailHippo](https://emailhippo.com) - a free email verification tool.     
 [Explain Shell](https://explainshell.com) - a tool to help you understand shell commands.  
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
@@ -571,6 +571,25 @@ Displays detailed information about given files or file systems. These informati
 
 Example usage:  
 `stat file.txt`
+## du
+du is a command that can be used to estimate file space usage. It is a part of the GNU coreutils suite.
+
+**Example usage:**  
+`du -shL BreachCompilation`
+
+**Options:**  
+`-h` - to get a human-readable output  
+`-s` - to get the total size of the directory  
+`-L` - dereference all symbolic links
+## ncdu
+ncdu is a disk usage analyzer with an ncurses interface. It is a part of the ncdu suite.
+
+**Example usage:**   
+`ncdu -x --si BreachCompilation`
+
+**Options:**    
+`-x` - This option prevents ncdu from following symbolic links.  
+`--si` -  This option tells ncdu to use SI units (powers of 10) to display the file sizes, which makes them easier to read than the default binary units (powers of 2).
 ## diff
 diff is a command-line utility that allows you to compare two files line by line
 
