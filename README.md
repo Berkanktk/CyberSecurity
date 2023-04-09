@@ -110,6 +110,7 @@
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.     
 [Diff Checker](https://www.diffchecker.com/image-compare/) - compare images  
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain    
+[EmailHippo](https://emailhippo.com) - a free email verification tool.     
 [Explain Shell](https://explainshell.com) - a tool to help you understand shell commands.  
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
 [fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.     
@@ -130,6 +131,7 @@
 [HSV to RGB](https://www.rapidtables.com/convert/color/hsv-to-rgb.html) - HSV to RGB color converter     
 [HTML Reference](https://htmlreference.io) - HTML reference    
 [HTTrack](https://www.httrack.com) - website copier      
+[Hunter.io](https://hunter.io) - find email addresses in seconds.  
 [Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel   
 [Intelix](https://intelx.io) - Search Tor, I2P, data leaks and the public web by email, domain, IP, CIDR, Bitcoin address and more.    
 [k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.      
@@ -1764,11 +1766,16 @@ Google hacking / Dorking utilizes Google's advanced search engine features, whic
 | filetype | filetype:pdf | returns results which are a particular file extension |
 | intitle | intitle:admin | returns results that contain the specified word in the title |  
 
+Find many more operators [here](https://ahrefs.com/blog/google-advanced-search-operators/).
+
 **Wappalyzer**  
 Wappalyzer is an online tool and browser extension that helps identify what technologies a website uses, such as frameworks, Content Management Systems (CMS), payment processors and much more, and it can even find version numbers as well. Read more [here](https://www.wappalyzer.com/).  
 
 **Wayback Machine**  
 The Wayback Machine is a historical archive of websites that dates back to the late 90s. You can search a domain name, and it will show you all the times the service scraped the web page and saved the contents. This service can help uncover old pages that may still be active on the current website. Find the website [here](https://archive.org/web/).
+
+**Email Harvesting**  
+Email harvesting is the process of gathering email addresses from a website. This can be done manually by searching for email addresses in the source code of a website, or by using a tools such as [Hunter.io](https://hunter.io/) and [Phonebook](https://phonebook.cz/). In order to verify the email addresses, you can use [EmailHippo](https://tools.emailhippo.com/). 
 
 ### Subdomain enumeration
 
@@ -1781,7 +1788,9 @@ The following search would only contain results from subdomain names belonging t
 `-site:www.domain.com site:*.domain.com` 
 
 **DNS Bruteforce**  
-Bruteforce DNS (Domain Name System) enumeration is the method of trying tens, hundreds, thousands or even millions of different possible subdomains from a pre-defined list of commonly used subdomains. Fot this method, the tool [DNSrecon](https://www.kali.org/tools/dnsrecon/), [Sublist3r](https://github.com/aboul3la/Sublist3r) or [Turbolist3r](https://github.com/fleetcaptain/Turbolist3r) can be used.
+Bruteforce DNS (Domain Name System) enumeration is the method of trying tens, hundreds, thousands or even millions of different possible subdomains from a pre-defined list of commonly used subdomains. For this method, the tool [DNSrecon](https://www.kali.org/tools/dnsrecon/), [Sublist3r](https://github.com/aboul3la/Sublist3r) or [Turbolist3r](https://github.com/fleetcaptain/Turbolist3r) can be used. A more modern but slower alternative is [Amass](https://github.com/owasp-amass/amass).
+
+It is usually also a good idea to probe for HTTP and HTTPS services on the discovered subdomains to filter out any false positives. This can be done with the tool [httprobe](https://github.com/tomnomnom/httprobe).
 
 **Virtual Hosts**  
 Some subdomains aren't always hosted in publically accessible DNS results, such as development versions of a web application or administration portals. Instead, the DNS record could be kept on a private DNS server or recorded on the developer's machines in their /etc/hosts file (or c:\windows\system32\drivers\etc\hosts file for Windows users) which maps domain names to IP addresses. 
