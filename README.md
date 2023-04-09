@@ -1408,10 +1408,10 @@ Computer A (acts as the sending client):
 ## Nmap
 [Nmap](https://nmap.org) is a utility for network discovery and security auditing.
 ### Syntax
-`nmap -switch1 -switch2 ipaddress`  
+`nmap [options] [ip]`  
 
 Example:  
-`nmap -sT -A -p- 172.162.39.86`  
+`nmap -sT -T4 -A -p- 172.162.39.86`  
 
 ### A list of most useful switches:
 TCP scan (Most likely to be filtered)= `-sT`  
