@@ -2621,14 +2621,19 @@ Buffer overflow is a type of security vulnerability that occurs when a program, 
 ## Return Oriented Programming (ROP)
 `TO BE ADDED`
 ## Binary Security
+A tool that can detect binary security security mechanisms is `checksec`. I've written about the tool [here](/More/Binary%20Exploitation/Checksec/Readme.md).
+
 ### No eXecute (NX)
-`TO BE ADDED`
+NX is a hardware security feature that prevents execution of code from non-executable memory regions. This helps to prevent certain types of attacks, such as buffer overflow exploits, which attempt to execute malicious code by overwriting the memory.
+
 ### Address Space Layout Randomization (ASLR)
-`TO BE ADDED`
+ASLR  is a security technique that randomizes the memory layout of a process at runtime. This makes it more difficult for an attacker to predict the memory address of a vulnerable function or piece of data, and thus makes it harder to exploit certain types of vulnerabilities.
+
 ### Stack Canaries
-`TO BE ADDED`
+Stack Canaries is a security mechanism that detects buffer overflow attacks. It works by placing a small value, known as a "canary," on the stack before the return address. If a buffer overflow occurs, the canary value will be overwritten, and the program will detect the modification and terminate the execution.
+
 ### Relocation Read-Only (RELRO)
-`TO BE ADDED`
+RELRO is a security feature that makes certain sections of the program read-only after the dynamic linker has resolved all symbols. This prevents an attacker from overwriting important data or functions in memory, and can help to prevent certain types of attacks, such as the Global Offset Table (GOT) overwrite.
 ## The Heap
 ### Heap Exploitation
 `TO BE ADDED`
