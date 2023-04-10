@@ -236,43 +236,43 @@ Some of these providers are:
 
 # Terms
 **Active reconnaissance** - Directly interacting with the system.  
-**Passive reconnaissance** - We rely on publicly available information.   
-**IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.    
-**Proxy** -  A proxy server is kind of gateway betweenour application and the internet   
-**SSL/TLS** - Both are cryptographic protocols that securely authenticate and transport data on the Internet. SSL is old, TLS is the new one.  
-**XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine  
-**IPP** - Internet Printing Protocol  
-**Hash collision** -  When 2 different inputs give the same output  
-**Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts  
-**SAM** -  Security Account Manager is a database that is present on computers running Windows that stores user accounts and security descriptors for users on the local computer  
-**Ciphertext** - The result of encrypting a plaintext, encrypted data  
-**Cipher** - A method of encrypting or decrypting data. Modern ciphers are cryptographic, but there are many non cryptographic ciphers like Caesar.  
-**Plaintext** - Data before encryption, often text but not always. Could be a photograph or other file  
-**Encryption** - Transforming data into ciphertext, using a cipher.  
-**Encoding** - NOT a form of encryption, just a form of data representation like base64. Immediately reversible.  
-**Key** - Some information that is needed to correctly decrypt the ciphertext and obtain the plaintext.  
-**Passphrase** - Separate to the key, a passphrase is similar to a password and used to protect a key.  
 **Asymmetric** encryption - Uses different keys to encrypt and decrypt.  
-**Symmetric encryption** - Uses the same key to encrypt and decrypt  
-**Brute force** - Attacking cryptography by trying every different password or every different key  
-**Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths  
-**VPS** - Virtual Private Server (is a IaaS)  
-**IaaS** - Infrastructure-as-a-Service  
-**RCE** - Remote Code Execution vulnerability allows commands to be executed on the target's system.  
-**Offensive security** - is the process of breaking into computer systems, exploiting software bugs, and finding loopholes in applications to gain unauthorized access to them.  
-**Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats.  
-**Penetration Tester** - Responsible for testing technology products for finding exploitable security vulnerabilities.  
-**Red Teamer** - Plays the role of an adversary, attacking an organization and providing feedback from an enemy's perspective.  
-**Security Engineer** - Design, monitor, and maintain security controls, networks, and systems to help prevent cyberattacks.  
+**Authentication** - refers to the ability to prove that the user is whom they claims to be.  
 **Broken Access Control** - Ex. we cannot let anyone view the webmail before logging in or modify someone else's account.  
+**Brute force** - Attacking cryptography by trying every different password or every different key  
+**Cipher** - A method of encrypting or decrypting data. Modern ciphers are cryptographic, but there are many non cryptographic ciphers like Caesar.  
+**Ciphertext** - The result of encrypting a plaintext, encrypted data  
+**Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths  
+**Defacing** - The act of modifying a website to display a message or image.
+**Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats.  
+**Encoding** - NOT a form of encryption, just a form of data representation like base64. Immediately reversible.  
+**Encryption** - Transforming data into ciphertext, using a cipher.  
+**Firewall appliance** - The firewall allows and blocks connections based on a predefined set of rules. It restricts what can enter and what can leave a network.  
+**Hash collision** -  When 2 different inputs give the same output  
+**IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.    
+**IPP** - Internet Printing Protocol  
+**IaaS** - Infrastructure-as-a-Service  
 **Identification and Authentication Failure** - Allowing the attacker to use brute force, or storing the users’ passwords in plain text.   
 **Identification** - refers to the ability to identify a user uniquely.   
-**Authentication** - refers to the ability to prove that the user is whom they claims to be.  
-**Firewall appliance** - The firewall allows and blocks connections based on a predefined set of rules. It restricts what can enter and what can leave a network.  
 **Intrusion Detection System (IDS) appliance** - An IDS detects system and network intrusions and intrusion attempts. It tries to detect attackers’ attempts to break into your network.  
 **Intrusion Prevention System (IPS) appliance** - An IPS blocks detected intrusions and intrusion attempts. It aims to prevent attackers from breaking into your network.  
+**Key** - Some information that is needed to correctly decrypt the ciphertext and obtain the plaintext.  
+**Offensive security** - is the process of breaking into computer systems, exploiting software bugs, and finding loopholes in applications to gain unauthorized access to them.  
+**Passive reconnaissance** - We rely on publicly available information.   
+**Passphrase** - Separate to the key, a passphrase is similar to a password and used to protect a key.  
+**Penetration Tester** - Responsible for testing technology products for finding exploitable security vulnerabilities.  
+**Plaintext** - Data before encryption, often text but not always. Could be a photograph or other file  
+**Proxy** -  A proxy server is kind of gateway betweenour application and the internet   
+**RCE** - Remote Code Execution vulnerability allows commands to be executed on the target's system.  
+**Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts  
+**Red Teamer** - Plays the role of an adversary, attacking an organization and providing feedback from an enemy's perspective.  
+**SAM** -  Security Account Manager is a database that is present on computers running Windows that stores user accounts and security descriptors for users on the local computer  
+**SSL/TLS** - Both are cryptographic protocols that securely authenticate and transport data on the Internet. SSL is old, TLS is the new one.  
+**Security Engineer** - Design, monitor, and maintain security controls, networks, and systems to help prevent cyberattacks.  
+**Symmetric encryption** - Uses the same key to encrypt and decrypt  
+**VPS** - Virtual Private Server (is a IaaS)  
 **Virtual Private Network (VPN) concentrator appliance** -  A VPN ensures that the network traffic cannot be read nor altered by a third party. It protects the confidentiality (secrecy) and integrity of the sent data.  
-**Defacing** - The act of modifying a website to display a message or image.
+**XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine  
 
 # Principles and Standards
 ## CIA Triad
