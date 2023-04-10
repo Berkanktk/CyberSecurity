@@ -2619,7 +2619,10 @@ Buffer overflow is a type of security vulnerability that occurs when a program, 
 `python -c "print ('A' * 100)" | ./<executable>`
 
 ## Return Oriented Programming (ROP)
-`TO BE ADDED`
+Return Oriented Programming (ROP) works by chaining together small pieces of code, called "gadgets," that are already present in the target program's memory space to perform a series of operations that the attacker desires. Each gadget typically ends with a "return" instruction that tells the program where to continue executing code after the gadget has finished. 
+
+By carefully selecting and chaining together gadgets that end with a return instruction, attackers can construct a "ROP chain" that allows them to execute their own code on the target system. This technique can be used to bypass security measures such as Data Execution Prevention (DEP) and Address Space Layout Randomization (ASLR).
+
 ## Binary Security
 A tool that can detect binary security security mechanisms is `checksec`. I've written about the tool [here](/More/Binary%20Exploitation/Checksec/Readme.md).
 
