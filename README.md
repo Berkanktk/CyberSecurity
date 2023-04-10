@@ -3008,6 +3008,8 @@ Find passwords
 If you don't have privilege, try this  
 `find / -name shadow* 2>/dev/null | head`
 
+I've explained the /etc/passwd format [here](/More/Linux%20Reinforced%20(CLI)/Passwd-file.md), in case you want to know more.
+
 ### Privilege Escalation using SUID Binaries
 `-rwsr-xr-x`  
 “s” = SUID. This means that any user can execute these commands and they will be ran as the original owner.
