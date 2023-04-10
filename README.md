@@ -242,6 +242,7 @@ Some of these providers are:
 **Brute force** - Attacking cryptography by trying every different password or every different key  
 **Cipher** - A method of encrypting or decrypting data. Modern ciphers are cryptographic, but there are many non cryptographic ciphers like Caesar.  
 **Ciphertext** - The result of encrypting a plaintext, encrypted data  
+**Credential Stuffing** - Credential stuffing is a type of attack where an attacker attempts to gain unauthorized access to an account by using compromised credentials.  
 **Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths  
 **Defacing** - The act of modifying a website to display a message or image.
 **Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats.  
@@ -260,6 +261,7 @@ Some of these providers are:
 **Offensive security** - is the process of breaking into computer systems, exploiting software bugs, and finding loopholes in applications to gain unauthorized access to them.  
 **Passive reconnaissance** - We rely on publicly available information.   
 **Passphrase** - Separate to the key, a passphrase is similar to a password and used to protect a key.  
+**Password Spraying** - Password spraying is a brute force attack that uses a list of usernames and a single password to try to gain access to a system.  
 **Penetration Tester** - Responsible for testing technology products for finding exploitable security vulnerabilities.  
 **Plaintext** - Data before encryption, often text but not always. Could be a photograph or other file  
 **Proxy** -  A proxy server is kind of gateway betweenour application and the internet   
