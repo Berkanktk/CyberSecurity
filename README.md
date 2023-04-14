@@ -86,6 +86,7 @@
 [Abuse.ch](https://abuse.ch) - a collection of malware and threat intelligence feeds.  
 [AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
 [Archive.org](https://archive.org/web/) - internet Archieve    
+[ASCII Converter](https://www.branah.com/ascii-converter) - Hex, decimal, binary, base64, and ASCII converter  
 [Assembly Tutorials](https://www.tutorialspoint.com/assembly_programming/index.htm) - assembly tutorials  
 [Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator  
 [Bug Bounty](https://hackerone.com/bug-bounty-programs) - a list of bug bounty programs  
