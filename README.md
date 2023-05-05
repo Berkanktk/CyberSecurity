@@ -278,6 +278,19 @@ Some of these providers are:
 **Virtual Private Network (VPN) concentrator appliance** -  A VPN ensures that the network traffic cannot be read nor altered by a third party. It protects the confidentiality (secrecy) and integrity of the sent data.  
 **XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine  
 
+## Forms of Malware/Attacks
+**Virus**: Malware that infects a computer by inserting itself into programs and can cause damage or corruption to data and programs. Needs user interaction to spread.  
+**Worm**: Malware that replicates itself to spread to other computers. Does not need user interaction to spread. It can spread through networks, email, or other means.  
+**Trojan horse**: Malware disguised as a legitimate program that performs harmful activities once inside a computer system.  
+**Spyware**: Malware that collects information about a user's activities and reports it back to the attacker, often used for unethical purposes.  
+**Phishing**: A technique used to obtain information by posing as a legitimate organization or individual and requesting sensitive information.  
+**DoS attack**: Overloading a computer with messages to disrupt its services.  
+**DDoS attack and botnets**: A distributed denial-of-service attack that utilizes a network of compromised computers to overload a target with messages.  
+**Spam**: Unwanted junk email that overwhelms the recipient and can be used to spread malware or phishing attempts.  
+**Ransomware**: Malware that encrypts a user's data and demands a ransom to decrypt it.  
+**Rootkit**: Malware that gives an attacker root access to a computer and hides its presence from the user.  
+**Adware**: Malware that displays unwanted advertisements on a user's computer.  
+
 # Principles and Standards
 ## CIA Triad
 Consisting of three sections: Confidentiality, Integrity and Availability (CIA), this model has quickly become an industry standard today. This model should help determine the value of data that it applies to, and in turn, the attention it needs from the business.  
