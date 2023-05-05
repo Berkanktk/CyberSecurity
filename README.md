@@ -153,6 +153,7 @@
 [Office Recovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
 [PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools    
 [Phishtool](https://www.phishtool.com) - PhishTool is a free phishing simulation tool.   
+[NPiet](https://www.bertnase.de/npiet/npiet-execute.php) - Piet is an esoteric programming language based of using colored pixels to represent commands.  
 [Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.      
 [pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.  
 [Pixrecovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
