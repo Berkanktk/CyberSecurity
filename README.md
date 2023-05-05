@@ -1108,7 +1108,7 @@ gcc is a compiler that can be used to compile C programs. It is used to compile 
 `gcc <options> <input>`
 
 **Example:**  
-`gcc -o hello.c hello` Compile the program  
+`gcc hello.c -o hello` Compile the program  
 `./hello` Run the compiled program
 ## adduser & addgroup
 The syntax for both of these commands are `adduser username` and `addgroup groupname`.
