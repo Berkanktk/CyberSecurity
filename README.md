@@ -437,12 +437,12 @@ There are three primary scopes when testing an application or service.
 ## ISO27001
 ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies), where ISO27001 is an international standard on how to manage information security.
 
-ISO/IEC 27001 requires that management:
-* Systematically examine the organization's information security risks, taking account of the threats, vulnerabilities, and impacts
-* Design and implement a coherent and comprehensive suite of information security controls and/or other forms of risk treatment (such as risk avoidance or risk transfer) to address those risks that are deemed unacceptable; and
-* Adopt an overarching management process to ensure that the information security controls continue to meet the organization's information security needs on an ongoing basis.
 
 An ISMS(Information Security Management System) may be certified compliant with ISO/IEC 27001 by a number of Accredited Registrars worldwide.
+
+An ISMS (Information Security Management System) consists of the policies, procedures, guidelines, and associated resources and activities, collectively managed by an organization, in the pursuit of protecting its information assets. 
+
+An ISMS is a systematic approach for establishing, implementing, operating, monitoring, reviewing, maintaining and improving an organization’s information security to achieve business objectives. It is based on a risk assessment and the organization’s risk acceptance levels designed to effectively treat and manage risks.
 
 # Linux Commands 
 ## cat
