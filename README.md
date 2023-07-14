@@ -84,6 +84,7 @@
 
 # Links
 [Abuse.ch](https://abuse.ch) - a collection of malware and threat intelligence feeds.  
+[Ahmia](https://ahmia.fi/) - search engine for hidden services on the Tor network   
 [AI Generated Photos](https://generated.photos) - 100.000 AI generated faces.    
 [Archive.org](https://archive.org/web/) - internet Archieve    
 [ASCII Converter](https://www.branah.com/ascii-converter) - Hex, decimal, binary, base64, and ASCII converter  
@@ -91,6 +92,7 @@
 [Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator  
 [Bug Bounty](https://hackerone.com/bug-bounty-programs) - a list of bug bounty programs  
 [Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.      
+[Censys](https://search.censys.io/) - search engine for internet connected devices  
 [Cheatography](https://www.cheatography.com/) - over 3,000 free cheat sheets, revision aids and quick references.    
 [CodeBeautify](https://codebeautify.org) - code Beautifier, Viewer and converter    
 [Common ports](https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-ports.html) - a lists of the most common ports   
@@ -135,6 +137,7 @@
 [Hunter.io](https://hunter.io) - find email addresses in seconds.  
 [Image Color Picker](https://imagecolorpicker.com) - select a color and get the HTML Color Code of this pixel   
 [Intelix](https://intelx.io) - Search Tor, I2P, data leaks and the public web by email, domain, IP, CIDR, Bitcoin address and more.    
+[JoomScan](https://github.com/OWASP/joomscan) -  Joomla Vulnerability Scanner  
 [k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.      
 [Kali Linux Tutorials](https://www.tutorialspoint.com/kali_linux/index.htm) - Kali Linux Tutorials  
 [Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.    
@@ -180,6 +183,7 @@
 [urlscan.io](https://urlscan.io) - service to scan and analyse websites.      
 [urlvoid ](https://www.urlvoid.com) - this service helps you detect potentially malicious websites.   
 [User-Agent Switcher](https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/) switch and manage user agents     
+[Vega](https://subgraph.com/vega/) - web security scanner and web security testing platform  
 [ViewDNS](http://viewdns.info) - one source for free DNS related tools and information.      
 [VirusTotal](https://www.virustotal.com/gui/home/upload) - analyze suspicious files and URLs to detect types of malware.     
 [Visual Subnet Calculator](https://www.davidc.net/sites/default/subnets/subnets.html) - a visual subnet calculator  
@@ -188,6 +192,7 @@
 [WhatsMyName](https://whatsmyname.app) - social media username enumeration     
 [WHOIS lookup](https://whois.domaintools.com) - best whois lookup    
 [Wigle](https://wigle.net) - is a website for collecting information about the different wireless hotspots around the world      
+[WPScan](https://wpscan.com/) - WordPress security scanner  
 
 # CTF Sites
 [TryHackMe](https://tryhackme.com) - TryHackMe is a free online platform for learning cyber security, using hands-on exercises and labs.  
