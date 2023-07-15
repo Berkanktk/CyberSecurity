@@ -55,3 +55,9 @@ There are three possibilities to run several commands, one after the other. Thes
 Semicolon (`;`)  
 Double ampersand characters (`&&`)  
 Pipes (`|`)  
+
+The semicolon (`;`) is a command separator and executes the commands by ignoring previous commands' results and errors.
+
+However, it looks different if we use the double AND characters (`&&`) to run the commands one after the other. If there is an error in one of the commands, the following ones will not be executed anymore, and the whole process will be stopped.
+
+Pipes (`|`) depend not only on the correct and error-free operation of the previous processes but also on the previous processes' results.
