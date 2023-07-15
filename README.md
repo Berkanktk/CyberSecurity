@@ -1460,12 +1460,13 @@ TCP scan (Most likely to be filtered)= `-sT`
 TCP Syn Scan (No logging)= `-sS`  
 UDP scan (Slow)= `-sU`  
 
-ICMP Scanning (ping sweep) = `-sn`  
-Default ping scanning) = `-sP` 
+ICMP Scanning (host discovery, no port scans) = `-sn`  
+Default ping scanning) = `-sP`  
 Detect OS = `-O`  
 Detect version of services = `-sV`  
 Scan with the default nmap scripts = `-sC`  
 Disable host discovery and just scan for open ports = `-Pn`  
+ARP Scan (only on same subnet as target) = `-PR`  
 Change verbosity = `-v`  
 Change verbosity level two = `-vv` (It's good practice to *always* increase the verbosity in your scans.)  
 
@@ -1482,7 +1483,9 @@ Activate a script= `—-script=<script_name>`
 Decoy an ip adress =  `-D`  
 Fast mode = `-F`
 Only open ports = `--open`   
-List of hosts to scan = `-iL`
+List of hosts to scan = `-iL`  
+No DNS lookup = `-n`  
+Reverse DNS lookup = `-R`
 
 Scan an IPv6 address = `-6` 
 
@@ -1761,6 +1764,10 @@ An ARP request contains the following information:
 ### Dynamic and static records
 When a broadcast is made, a dynamic record is made. This can be made by typing the following command:   
 `arp-scan -l -I <interface>`
+
+> `arp-scan` is a tool that can be used to scan for IP and MAC addresses on a local network. It can be installed with the command: `sudo apt install arp-scan`
+
+> `sudo arp-scan -I eth0 -l` will send ARP queries for all valid IP addresses on the eth0 interface.
 
 If we have the IP and MAC address values, a manual thus static record can be made. This is done with the command:  
 `arp -s <IP_Address> <MAC_Address>`
