@@ -254,11 +254,13 @@ Some of these providers are:
 **Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths  
 **Defacing** - The act of modifying a website to display a message or image.
 **Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats.  
+**Dynamic SSH Tunneling** - Dynamic port forwarding turns your SSH client into a SOCKS proxy server.  
 **Encoding** - NOT a form of encryption, just a form of data representation like base64. Immediately reversible.  
 **Encryption** - Transforming data into ciphertext, using a cipher.  
 **Firewall appliance** - The firewall allows and blocks connections based on a predefined set of rules. It restricts what can enter and what can leave a network.  
 **Hash collision** -  When 2 different inputs give the same output  
 **IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.    
+**IP Spoofing** - IP spoofing is the creation of Internet Protocol (IP) packets which have a modified source address in order to either hide the identity of the sender, to impersonate another computer system, or both.   
 **IPP** - Internet Printing Protocol  
 **IaaS** - Infrastructure-as-a-Service  
 **Identification and Authentication Failure** - Allowing the attacker to use brute force, or storing the users’ passwords in plain text.   
@@ -267,16 +269,20 @@ Some of these providers are:
 **Intrusion Prevention System (IPS) appliance** - An IPS blocks detected intrusions and intrusion attempts. It aims to prevent attackers from breaking into your network.  
 **Key** - Some information that is needed to correctly decrypt the ciphertext and obtain the plaintext.  
 **Offensive security** - is the process of breaking into computer systems, exploiting software bugs, and finding loopholes in applications to gain unauthorized access to them.  
+**Packet sniffing** - Packet sniffing is the act of capturing packets of data flowing across a computer network.  
 **Passive reconnaissance** - We rely on publicly available information.   
 **Passphrase** - Separate to the key, a passphrase is similar to a password and used to protect a key.  
 **Password Spraying** - Password spraying is a brute force attack that uses a list of usernames and a single password to try to gain access to a system.  
 **Penetration Tester** - Responsible for testing technology products for finding exploitable security vulnerabilities.  
 **Plaintext** - Data before encryption, often text but not always. Could be a photograph or other file  
 **Proxy** -  A proxy server is kind of gateway betweenour application and the internet   
+**Port Forwarding** - Port forwarding is a technique that is used to allow external devices access to computers services on private networks.  
 **RCE** - Remote Code Execution vulnerability allows commands to be executed on the target's system.  
 **Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts  
 **Red Teamer** - Plays the role of an adversary, attacking an organization and providing feedback from an enemy's perspective.  
+**Reverse SSH Connection** - The remote system connects with your local system  
 **SAM** -  Security Account Manager is a database that is present on computers running Windows that stores user accounts and security descriptors for users on the local computer  
+**SSH Tunnelling** - SSH tunneling is a method of transporting arbitrary networking data over an encrypted SSH connection.  
 **SSL/TLS** - Both are cryptographic protocols that securely authenticate and transport data on the Internet. SSL is old, TLS is the new one.  
 **Security Engineer** - Design, monitor, and maintain security controls, networks, and systems to help prevent cyberattacks.  
 **Symmetric encryption** - Uses the same key to encrypt and decrypt  
