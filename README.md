@@ -1506,6 +1506,28 @@ Subnet mask with 255.255.255.0 = `<ip>/24`
 `--os-shell` - Get an OS shell  
 `--dump-all` - Dump all databases
 
+### Example use case
+Dumping some data inside columns from a table in a database.
+List tables in a database.
+```bash
+sqlmap.py -u <website>? -D <database_name> --tables
+```
+
+List columns in a table in a database.
+```bash
+sqlmap.py -u <website>? -D <database_name> -T <table_name> --columns
+```
+
+Dump data from columns in a table in a database.
+```bash
+sqlmap.py -u <website>? -D <database_name> -T <table_name> -C <column_name1>,<column_name2> -dump
+```
+
+Test for SQL injection.
+```bash
+sqlmap.py -u <website>? --dbs
+```
+
 # Tools (GUI) 
 ## Autopsy
 `TO BE ADDED`
