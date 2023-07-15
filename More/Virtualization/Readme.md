@@ -41,3 +41,10 @@ $ sudo apt install virtualbox virtualbox-ext-pack -y
 ```
 
 > Remember to download the Extension pack 
+
+# In Short: VM setup using VirtualBox
+
+1. Enable Virtualization technology in bios
+2. Download VirtualBox  https://www.virtualbox.org/wiki/Downloads
+3. Download VirtualBox Extension Pack https://www.virtualbox.org/wiki/Downloads
+4. Download kali linux https://www.kali.org/downloads/
