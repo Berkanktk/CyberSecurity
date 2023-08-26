@@ -3127,6 +3127,10 @@ Reverse shells are used to connect back to a listening machine. This is useful w
 
 A useful website to generate a reverse shell is [RevShells](https://www.revshells.com/).
 
+Other useful reverse shells can be found in this repo: [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md).
+
+For PHP, you can take a look at this RS from PentestMonkey: [PHP Reverse Shell](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)
+
 ### Shell stabilization
 `TO BE ADDED`
 
