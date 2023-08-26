@@ -587,6 +587,11 @@ This tool returns the path to the file or link that should be executed.
 
 Syntax  
 `where python3`
+## locate
+This tool is used to find files by their name.
+
+Syntax  
+`locate <file_name>`
 ## apropos
 This tool is used to search for a command by its description.
 
@@ -853,7 +858,7 @@ FTP or File Transfer Protocol is a network communication protocol that enables t
 Standard use  
 `ftp <IP>` 
 
-Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username of "`anonymous`" and an email address as the password.
+Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username and password of "`anonymous`".
 
 Commands:
 `ls` - list files  
@@ -970,14 +975,14 @@ Hashid will analyze and output the potential algorithm that is used to hash your
 `-j` - include corresponding JohnTheRipper format in output  
 `-o FILE` - write output to file (default: STDOUT)  
 `-h` - show help message and exit  
-## hashidentifier
-Hashidentifier will analyze and output the potential algorithm that is used to hash your input. I would say that it is a better alternative to hashid. Supports over 100 hash types.
+## hash-identifier
+Hash-identifier will analyze and output the potential algorithm that is used to hash your input. I would say that it is a better alternative to hashid. Supports over 100 hash types.
 
 Usage:  
-`hashidentifier hash`
+`hash-identifier hash`
 
 Example:  
-`hashidentifier 5d7845ac6ee7cfffafc5fe5f35cf666d`
+`hash-identifier 5d7845ac6ee7cfffafc5fe5f35cf666d`
 ## haiti
 Haiti is another great tool to identify a hash type. It also returns the format that can be used with john the ripper and hashcat to crack the hash. Supports over 500 hash types.
 
@@ -1052,7 +1057,8 @@ Example
 `-b` for using brute force algorithms.   
 `-D` for using a dictionary.  
 `-v` for verbose mode.  
-`-p` for using a string as a password.
+`-p` for using a string as a password.  
+`-u` for unzipping.
 ## crunch
 Crunch is a wordlist generator that can generate all possible combinations and permutations.
 
@@ -1832,6 +1838,12 @@ Wordlists are just text files that contain a long list of commonly used words; t
 `ffuf`, `dirb` and `gobuster`.   
 I personally use gobuster the most.
 
+Example use for all three tools:
+```bash
+$ ffuf -w <wordlist>:FUZZ -u <IP>/FUZZ
+$ dirb http://<IP>
+$ gobuster dir -u http://<IP> -w <wordlist>
+```
 
 ### OSINT
 **Google Hacking / Dorking**   
