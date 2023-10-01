@@ -1318,8 +1318,11 @@ Crack hashed private key
 
 ssh2john.py can sometimes also be located under `/opt/john/ssh2john.py`
 
-Crack the hash (or a shadow file)
+Crack the hash (or a shadow file)  
 `john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
+
+See more about [JTR](/More/Password%20Cracking/John.md).
+
 ## Metasploit
 The Metasploit Framework is a set of tools that allow information gathering, scanning, exploitation, exploit development, post-exploitation, and more. While the primary usage of the Metasploit Framework focuses on the penetration testing domain, it is also useful for vulnerability research and exploit development.
 
