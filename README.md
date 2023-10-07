@@ -1293,6 +1293,8 @@ Guess POP3 credentials on a list of hosts using usernames and passwords lists, e
 
 ### A list of most useful options:
 `-S` connect via SSL  
+`-f` specify host  
+`-s` specify a port  
 `-l` single username  
 `-L` wordlist username(s)   
 `-p` single password   
