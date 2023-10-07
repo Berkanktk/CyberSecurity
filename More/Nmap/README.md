@@ -1,3 +1,28 @@
+# Nmap
+> Note, there is now a better and much faster alternative to nmap called [rustscan](https://github.com/RustScan/RustScan). 
+
+## RustScan
+For Kali, first install Rust and Cargo
+```bash	
+curl https://sh.rustup.rs -sSf | sh
+```
+
+Then install RustScan
+
+```bash
+wget https://github.com/RustScan/RustScan/releases/download/2.0.1/rustscan_2.0.1_amd64.deb
+```
+
+Then run 
+```bash
+sudo dpkg -i rustscan_2.0.1_amd64.deb
+```
+
+Usage
+```bash
+rustscan -a <ip> 
+```
+
 # Nmap states
 1. **Open**: indicates that a service is listening on the specified port.
 2. **Closed**: indicates that no service is listening on the specified port, although the port is accessible. By accessible, we mean that it is reachable and is not blocked by a firewall or other security appliances/programs.

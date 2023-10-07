@@ -1463,7 +1463,10 @@ Computer A (acts as the sending client):
 `--list-plugins`  List all possible plugins to use   
 `-output` Output fingerprinted information to a file
 ## Nmap
+
 [Nmap](https://nmap.org) is a utility for network discovery and security auditing.
+> Note, there is now a better and much faster alternative to nmap called [rustscan](https://github.com/RustScan/RustScan). See more about it [here](/More/Nmap/README.md#rustscan).
+
 ### Syntax
 `nmap [options] [ip]`  
 
