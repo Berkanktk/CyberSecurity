@@ -322,6 +322,20 @@ Some of these providers are:
 **Rootkit**: Malware that gives an attacker root access to a computer and hides its presence from the user.  
 **Adware**: Malware that displays unwanted advertisements on a user's computer.  
 
+<!-- | Type          | Description                                                                                          |
+|---------------|------------------------------------------------------------------------------------------------------|
+| Virus         | Malware that infects a computer by inserting itself into programs, causing damage or corruption and needing user interaction to spread. |
+| Worm          | Malware that replicates itself to spread to other computers without user interaction, using networks, email, or other transport methods. |
+| Trojan horse  | Malware disguised as a legitimate program that performs harmful activities once inside a system.     |
+| Spyware       | Malware that collects information about a user's activities and reports it back to the attacker.     |
+| Phishing      | A technique to obtain sensitive information by posing as a legitimate entity.                        |
+| DoS attack    | An attack that overloads a computer with messages to disrupt its services.                           |
+| DDoS attack and botnets | A distributed denial-of-service attack using a network of compromised computers to overload a target. |
+| Spam          | Unwanted junk email that can spread malware or phishing attempts.                                    |
+| Ransomware    | Malware that encrypts data and demands a ransom for decryption.                                      |
+| Rootkit       | Malware granting root access to a computer and hiding its presence from users.                       |
+| Adware        | Malware that displays unwanted ads on a user's computer.                                             | -->
+
 # Principles and Standards
 
 ## Security Models
@@ -440,6 +454,47 @@ The idea is that organizations should focus their cybersecurity efforts on the a
 
 
 ## Ethical and Legal Aspects
+### Governance & Regulation
+- **Governance**: Managing and directing an organisation or system to achieve its objectives and ensure compliance with laws, regulations, and standards.
+- **Regulation**: A rule or law enforced by a governing body to ensure compliance and protect against harm.
+- **Compliance**: The state of adhering to laws, regulations, and standards that apply to an organisation or system.
+
+Benefits include better security posture, stakeholder confidence, regulatory compliance, alignment with business objectives, informed decision-making, and competitive advantage.
+
+#### **Developing Governance Documents**
+
+1. **Identify Scope and Purpose**: Define what the document will cover and its necessity.
+2. **Research and Review**: Investigate laws, regulations, and best practices to make the document comprehensive.
+3. **Draft the Document**: Create an actionable, specific draft aligned with organizational goals.
+4. **Review and Approval**: Involve stakeholders for feedback and final approval.
+5. **Implementation and Communication**: Distribute the document and educate employees.
+6. **Review and Update**: Regularly update the document for relevance and compliance.
+
+### Information Security Frameworks
+
+- **Policies**: Formal statements that set organizational goals and how to achieve them.
+- **Standards**: Specific requirements for processes, products, or services.
+- **Guidelines**: Non-mandatory recommendations for achieving objectives.
+- **Procedures**: Step-by-step instructions for specific tasks.
+- **Baselines**: Minimum security standards that must be met.
+
+#### Preparing a Password Policy - Real-world Scenario
+
+- **Define Requirements**: Set rules for password length, complexity, and expiration.
+- **Usage Guidelines**: Specify unique passwords for each account and prohibit sharing.
+- **Storage and Transmission**: Use encryption and secure connections.
+- **Change and Reset Guidelines**: Define how often to change passwords.
+- **Communication and Monitoring**: Educate employees and monitor compliance.
+
+#### Making an Incident Response Procedure - Real-world Scenario
+
+- **Define Incident Types**: Categorize incidents like unauthorized access or data breaches.
+- **Roles and Responsibilities**: Identify key stakeholders.
+- **Detailed Steps**: Create a step-by-step guide for each incident type.
+- **Reporting and Documentation**: Keep records for future reference.
+- **Communication and Review**: Make sure procedures are understood and periodically updated.
+
+
 ### Penetration Tests
 Before a penetration test starts, a formal discussion occurs between the penetration tester and the system owner. Various tools, techniques, and systems to be tested are agreed on. This discussion forms the scope of the penetration testing agreement and will determine the course the penetration test takes.
 
