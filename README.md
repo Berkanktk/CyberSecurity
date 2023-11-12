@@ -462,6 +462,7 @@ The idea is that organizations should focus their cybersecurity efforts on the a
 Benefits include better security posture, stakeholder confidence, regulatory compliance, alignment with business objectives, informed decision-making, and competitive advantage.
 
 #### **Developing Governance Documents**
+Developing governance documents can involve the following steps:
 
 1. **Identify Scope and Purpose**: Define what the document will cover and its necessity.
 2. **Research and Review**: Investigate laws, regulations, and best practices to make the document comprehensive.
@@ -470,15 +471,16 @@ Benefits include better security posture, stakeholder confidence, regulatory com
 5. **Implementation and Communication**: Distribute the document and educate employees.
 6. **Review and Update**: Regularly update the document for relevance and compliance.
 
-### Information Security Frameworks
 
-- **Policies**: Formal statements that set organizational goals and how to achieve them.
-- **Standards**: Specific requirements for processes, products, or services.
-- **Guidelines**: Non-mandatory recommendations for achieving objectives.
-- **Procedures**: Step-by-step instructions for specific tasks.
-- **Baselines**: Minimum security standards that must be met.
+### Information Security Frameworks
+**Policies**: Formal statements that set organizational goals and how to achieve them.  
+**Standards**: Specific requirements for processes, products, or services.  
+**Guidelines**: Non-mandatory recommendations for achieving objectives.  
+**Procedures**: Step-by-step instructions for specific tasks.  
+**Baselines**: Minimum security standards that must be met.
 
 #### Preparing a Password Policy - Real-world Scenario
+Let's take a real-world scenario of preparing a password policy.
 
 - **Define Requirements**: Set rules for password length, complexity, and expiration.
 - **Usage Guidelines**: Specify unique passwords for each account and prohibit sharing.
@@ -487,6 +489,7 @@ Benefits include better security posture, stakeholder confidence, regulatory com
 - **Communication and Monitoring**: Educate employees and monitor compliance.
 
 #### Making an Incident Response Procedure - Real-world Scenario
+Now, let's take a real-world scenario of making an incident response procedure.
 
 - **Define Incident Types**: Categorize incidents like unauthorized access or data breaches.
 - **Roles and Responsibilities**: Identify key stakeholders.
