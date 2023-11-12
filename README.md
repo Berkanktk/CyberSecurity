@@ -7,14 +7,32 @@
 4. [Services](#services)
 5. [Terms](#terms)
 6. [Principles and Standards](#principles-and-standards)
-   1. [CIA Triad](#cia-triad)
-   2. [Principle of privileges](#principles-of-privileges)
-   3. [Security Models](#security-models)
-   4. [Threat modeling and incident response](#threat-modeling-and-incident-response)
-   5. [Ethics](#ethics)
-   6. [Methodologies](#methodologies)
-   7. [Black, grey & white box](#black-grey--white-box)
-   8. [ISO27001](#iso27001)
+   1. [Security Models](#security-models)
+      1. [CIA Triad](#cia-triad)
+      2. [DAD Triad](#dad-triad)
+      3. [The Bell-La Padula Model](#the-bell-la-padula-model)
+      4. [Biba Model](#biba-model)
+      5. [Clark-Wilson Model](#clark-wilson-model)
+   2. [Trust and Access Control](#trust-and-access-control)
+      1. [Principles of Privileges](#principles-of-privileges)
+      2. [Zero Trust versus Trust but Verify](#zero-trust-versus-trust-but-verify)
+   3. [Threat Identification and Management](#threat-identification-and-management)
+      1. [Threat Modeling and Incident Response](#threat-modeling-and-incident-response)
+      2. [Vulnerability vs Threat vs Risk](#vulnerability-vs-threat-vs-risk)
+      3. [Threat intelligence Classifications](#threat-intelligence-classifications)
+      4. [Threat Intelligence Tools](#threat-intelligence-tools)
+      5. [The Pyramid of Pain](#the-pyramid-of-pain)
+   4. [Ethical and Legal Aspects](#ethical-and-legal-aspects)
+   5. [Security Assessment Frameworks and Methodologies](#security-assessment-frameworks-and-methodologies)
+      1. [Black, Grey, & White Box Testing](#black-grey--white-box-testing)
+      2. [OSSTMM](#osstmm)
+      3. [OWASP](#owasp)
+      4. [NIST](#nist-cybersecurity-framework-11)
+      5. [NCSC CAF](#ncsc-caf)
+   6. [Global Security Standards](#global-security-standards)
+      1. [ISO/IEC 19249](#isoiec-19249)
+      2. [ISO27001](#iso27001)
+   7. [Operational Roles and Career Development](#operational-roles-and-career-development)
 7.  [Linux Commands](#linux-commands)
 8. [Tools (CLI)](#tools-cli)
    1. [Aircrack-ng](#aircrack-ng)
@@ -254,6 +272,7 @@ Some of these providers are:
 **Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths  
 **Defacing** - The act of modifying a website to display a message or image.
 **Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats.  
+**Defence-in-Depth** refers to creating a security system of multiple levels; hence it is also called Multi-Level Security.  
 **Dynamic SSH Tunneling** - Dynamic port forwarding turns your SSH client into a SOCKS proxy server.  
 **Encoding** - NOT a form of encryption, just a form of data representation like base64. Immediately reversible.  
 **Encryption** - Transforming data into ciphertext, using a cipher.  
@@ -304,43 +323,77 @@ Some of these providers are:
 **Adware**: Malware that displays unwanted advertisements on a user's computer.  
 
 # Principles and Standards
-## CIA Triad
-Consisting of three sections: Confidentiality, Integrity and Availability (CIA), this model has quickly become an industry standard today. This model should help determine the value of data that it applies to, and in turn, the attention it needs from the business.  
 
-**Confidentiality**: This element is the protection of data from unauthorized access and misuse
-Integrity
+## Security Models
+### CIA Triad
+CIA Triad is a model designed to guide policies for information security within an organisation. It consists of three core principles being: Confidentiality, Integrity, and Availability.
 
-**Integrity**: This element is the condition where information is kept accurate and consistent unless authorized changes are made.
+- **Confidentiality** ensures that only the intended persons or recipients can access the data.
+- **Integrity** aims to ensure that the data cannot be altered; moreover, we can detect any alteration if it occurs.
+- **Availability** aims to ensure that the system or service is available when needed.
 
-**Availability**:  In order for data to be useful, it must be available and accessible by the user.
+### DAD Triad
+The security of a system is attacked through one of several means. It can be via the disclosure of secret data, alteration of data, or destruction of data. It is the opposite of the CIA triad.
 
-## Principles of privileges
-It is vital to administrate and correctly define the various levels of access to an information technology system individuals require. 
+- **Disclosure**: Unauthorized access to information. Is the opposite of confidentiality.
+- **Alteration**: Unauthorized changes to information. Is the opposite of Integrity
+- **Destruction**: Unauthorized or intentional destruction of information. Is the opposite of Availability
 
-The levels of access given to individuals are determined on two primary factors:
+Protecting against disclosure, alteration, and destruction/denial is very important, as this protection is equivalent to working to maintain confidentiality, integrity and availability.
+
+### The Bell-La Padula Model
+The Bell-LaPadula Model aims to achieve **confidentiality** by specifying three rules:
+
+1. **Simple Security Property**: This property is referred to as “no read up”; it states that a subject at a lower security level cannot read an object at a higher security level. This rule prevents access to sensitive information above the authorized level.
+2. **Star Security Property**: This property is referred to as “no write down”; it states that a subject at a higher security level cannot write to an object at a lower security level. This rule prevents the disclosure of sensitive information to a subject of lower security level.
+3. **Discretionary-Security Property**: This property uses an access matrix to allow read and write operations. An example access matrix is shown in the table below and used in conjunction with the first two properties.
+
+The first two properties can be summarized as “write up, read down.” You can share confidential information with people of higher security clearance (write up), and you can receive confidential information from people with lower security clearance (read down).
+
+| Subjects | Object A | Object B |
+| --- | --- | --- |
+| Subject 1 | Write | No access |
+| Subject 2 | Read/Write | Read |
+
+**Limitation**: It was not designed to handle file-sharing.
+
+### Biba Model
+The Biba Model aims to **achieve integrity by** specifying two main rules
+
+1. **Simple Integrity Property**: This property is referred to as “no read down”; a higher integrity subject should not read from a lower integrity object.
+2. **Start Integrity Property**: This property is referred to as “no write up”; a lower integrity subject should not write to a higher integrity object.
+
+**Limitation**: Does not handle internal threats (insider threat).
+
+### Clark-Wilson Model
+The Clark-Wilson Model also aims to achieve integrity by using the following concepts:
+
+- **Constrained Data Item (CDI)**: This refers to the data type whose integrity we want to preserve.
+- **Unconstrained Data Item (UDI)**: This refers to all data types beyond CDI, such as user and system input.
+- **Transformation Procedures (TPs)**: These procedures are programmed operations, such as read and write, and should maintain the integrity of CDIs.
+- **Integrity Verification Procedures (IVPs)**: These procedures check and ensure the validity of CDIs.
+
+## Trust and Access Control
+### Principles of Privileges
+It is vital to administrate and correctly define the various levels of access to an individuals require. These levels are determined on two primary factors:
 1. The individual's role/function within the organisation
 2. The sensitivity of the information being stored on the system
 
-Two key concepts are used to assign and manage the access rights of individuals, two key concepts are used: Privileged Identity Management (PIM) and Privileged Access Management (or PAM for short).
+When managing access rights, two crucial concepts are used: Privileged Identity Management (PIM) and Privileged Access Management (PAM).
 
-**PIM** is used to translate a user's role within an organisation into an access role on a system. Whereas **PAM** is the management of the privileges a system's access role has, amongst other things.
+- **PIM** is used to translate a user's role within an organisation into an access role on a system. 
+- **PAM** is the management of the privileges a system's access role has, amongst other things.
 
-What is essential when discussing privilege and access controls is the principle of least privilege. Simply, users should be given the minimum amount of privileges, and only those that are absolutely necessary for them to perform their duties. Other people should be able to trust what people write to.
+What is essential when discussing privilege and access controls is the principle of least privilege. Simply, users should be given the minimum amount of privileges, and only those that are absolutely necessary for them to perform their duties. 
 
-## Security models
-### The Bell-La Padula Model
-The Bell-La Padula Model is used to achieve confidentiality. This model has a few assumptions, such as an organisation's hierarchical structure it is used in, where everyone's responsibilities/roles are well-defined.
+### Zero Trust versus Trust but Verify
+Trust in cybersecurity is addressed through two key principles:
 
-The model works by granting access to pieces of data (called objects) on a strictly need to know basis. This model uses the rule "no write down, no read up".
+1. **Trust but Verify**: Verify the actions of trusted entities through automated security mechanisms like logs and intrusion detection.
+2. **Zero Trust**: Assume no  trust and require authentication and authorization for all access, reducing the potential impact of breaches. Implementations like microsegmentation enhance security.
 
-The Bell LaPadula Model is popular within organisations such as governmental and military.
-
-### Biba Model
-The Biba model is arguably the equivalent of the Bell-La Padula model but for the integrity of the CIA triad.
-
-This model applies the rule to objects (data) and subjects (users) that can be summarised as "no write up, no read down". This rule means that subjects can create or write content to objects at or below their level but can only read the contents of objects above the subject's level.
-
-## Threat modeling and incident response
+## Threat Identification and Management
+### Threat Modeling and Incident Response
 Threat modelling is the process of reviewing, improving, and testing the security protocols in place in an organisation's information technology infrastructure and services.
 
 The threat modelling process is very similar to a risk assessment made in workplaces for employees and customers. The principles all return to:
@@ -358,6 +411,11 @@ It is, however, a complex process that needs constant review and discussion with
 
 To help with this, there are frameworks such as **STRIDE** (Spoofing identity, Tampering with data, Repudiation threats, Information disclosure, Denial of Service and Elevation of privileges) and **PASTA** (Process for Attack Simulation and Threat Analysis)
 
+### Vulnerability vs Threat vs Risk
+1. **Vulnerability**: Vulnerabilities are weaknesses that can be exploited.
+2. **Threat**: A threat represents the possibility of harm resulting from the exploitation of a vulnerability.
+3. **Risk**: Concerned with the likelihood of a threat actor exploiting a vulnerability and the potential impact on the business. Risk assessment involves evaluating the probability and consequences of security incidents.
+
 ### Threat intelligence Classifications
 Threat Intel is geared towards understanding the relationship between your operational environment and your adversary. With this in mind, we can break down threat intel into the following classifications:
 
@@ -366,22 +424,23 @@ Threat Intel is geared towards understanding the relationship between your opera
 - **Tactical Intel:** Assesses adversaries' tactics, techniques, and procedures (TTPs). This intel can strengthen security controls and address vulnerabilities through real-time investigations.
 - **Operational Intel:** Looks into an adversary's specific motives and intent to perform an attack. Security teams may use this intel to understand the critical assets available in the organisation (people, processes, and technologies) that may be targeted.
 
-#### Threat intelligence Tools
-- Using UrlScan.io to scan for malicious URLs.
-- Using Abuse.ch to track malware and botnet indicators.
-- Investigate phishing emails using PhishTool
-- Using Cisco's Talos Intelligence platform for intel gathering.
+### Threat intelligence Tools
+- Using [UrlScan.io](https://urlscan.io/) to scan for malicious URLs.
+- Using [Abuse.ch](https://abuse.ch/) to track malware and botnet indicators.
+- Investigate phishing emails using [PhishTool](https://www.phishtool.com/).
+- Using [Cisco's Talos Intelligence platform](https://www.talosintelligence.com/) for intel gathering.
 
-## The pyramid of pain
+### The Pyramid of Pain
 The Pyramid of Pain is a cybersecurity concept that refers to a hierarchy of assets within an organization that, if compromised, would cause the most significant harm. The pyramid's height represents the level of harm caused by a security breach, with the most critical assets at the top and less critical assets at the bottom. 
-
-The idea is that organizations should focus their cybersecurity efforts on the assets at the top of the pyramid to prevent the most significant damage from a security breach. The components of the Pyramid of Pain may vary depending on the organization and its specific needs, but typically include sensitive data, critical infrastructure, key personnel, and reputation.
 
 <img style="display:block; margin:0 auto;" 
 src="./Images/Pyramid-of-pain.png" alt="Pyramid of pain" width="480"/>
 
-## Ethics
-### Penetration tests
+The idea is that organizations should focus their cybersecurity efforts on the assets at the top of the pyramid to prevent the most significant damage from a security breach. The components of the Pyramid of Pain may vary depending on the organization and its specific needs, but typically include sensitive data, critical infrastructure, key personnel, and reputation.
+
+
+## Ethical and Legal Aspects
+### Penetration Tests
 Before a penetration test starts, a formal discussion occurs between the penetration tester and the system owner. Various tools, techniques, and systems to be tested are agreed on. This discussion forms the scope of the penetration testing agreement and will determine the course the penetration test takes.
 
 ### Rules of Engagement (ROE)
@@ -390,38 +449,19 @@ The ROE is a document that is created at the initial stages of a penetration tes
 * Test scope
 * Rules
 
-### Hat categories
-Hackers are sorted into three hats, where their ethics and motivations behind their actions determine what hat category they are placed into.
-| Hat | Description |
-|---|---|
-| Black hat | These people are criminals and often seek to damage organisations or gain some form of financial benefit at the cost of others. |
-| Grey hat | These people use their skills to benefit others often; however, they do not respect/follow the law or ethical standards at all times. |
-| White hat | These hackers are considered the "good people". They remain within the law and use their skills to benefit others. |
+## Security Assessment Frameworks and Methodologies
+### Penetration Testing Methodologies
+The steps a penetration tester takes during an engagement is known as the methodology. All of them have a general theme of the following stages:
 
-## Methodologies
-The steps a penetration tester takes during an engagement is known as the methodology. A practical methodology is a smart one, where the steps taken are relevant to the situation at hand.  
-All of them have a general theme of the following stages:
 | Stage | Description |
 |---|---|
-| Information Gathering | This stage involves collecting as much publically accessible information about a target/organisation as possible, for example, OSINT and research.  Note: This does not involve scanning any systems. |
+| Information Gathering | This stage involves collecting as much publically accessible information about a target/organisation as possible, for example, OSINT and research.  **Note**: This does not involve scanning any systems. |
 | Enumeration/Scanning | This stage involves discovering applications and services running on the systems. For example, finding a web server that may be potentially vulnerable. |
 | Exploitation | This stage involves leveraging vulnerabilities discovered on a system or application. This stage can involve the use of public exploits or exploiting application logic. |
 | Privilege Escalation | Once you have successfully exploited a system or application (known as a foothold), this stage is the attempt to expand your access to a system. You can escalate horizontally and vertically, where horizontally is accessing another account of the same permission group (i.e. another user), whereas vertically is that of another permission group (i.e. an administrator). |
-| Post-exploitation | This stage involves a few sub-stages: 1. What other hosts can be targeted (pivoting) 2. What additional information can we gather from the host now that we are a privileged user 3. Covering your tracks 4. Reporting |
+| Post-exploitation | This stage involves a few sub-stages: <ol><li>What other hosts can be targeted (pivoting)</li><li>What additional information can we gather from the host now that we are a privileged user</li><li>Covering your tracks</li><li>Reporting</li></ol> |
 
-### OSSTMM
-The Open Source Security Testing Methodology Manual provides a detailed framework of testing strategies for systems, software, applications, communications and the human aspect of cybersecurity.
-
-### OWASP
-The "Open Web Application Security Project" framework is a community-driven and frequently updated framework used solely to test the security of web applications and services.
-
-### NIST Cybersecurity Framework 1.1
-The NIST Cybersecurity Framework is a popular framework used to improve an organisations cybersecurity standards and manage the risk of cyber threats.
-
-### NCSC CAF
-The Cyber Assessment Framework (CAF) is an extensive framework of fourteen principles used to assess the risk of various cyber threats and an organisation's defences against these
-
-## Black, grey & white box
+### Black, Grey & White Box Testing
 There are three primary scopes when testing an application or service. 
 
 | Box | Description |
@@ -430,7 +470,56 @@ There are three primary scopes when testing an application or service.
 | Grey | The tester will have some limited knowledge of the internal components of the application or piece of software. |
 | White | The tester will have full knowledge of the application and its expected behaviour. |
 
-## Career paths
+### OSSTMM
+The [Open Source Security Testing Methodology Manual](https://www.isecom.org/OSSTMM.3.pdf) provides a detailed framework of testing strategies for systems, software, applications, communications and the human aspect of cybersecurity.
+
+### OWASP
+OWASP, the [Open Web Application Security Project](https://owasp.org/), is a nonprofit foundation that works to improve software security. It provides free, openly available articles, methodologies, documentation, tools, and technologies in the field of web application security. 
+
+OWASP is known for its widely-referenced [OWASP Top 10](https://owasp.org/www-project-top-ten/), a standard awareness document for developers and web application security that lists the most critical security risks to web applications.
+
+### NIST Cybersecurity Framework 1.1
+The [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) is a popular framework used to improve an organisations cybersecurity standards and manage the risk of cyber threats.
+
+### NCSC CAF
+The NCSC [Cyber Assessment Framework (CAF)](https://www.ncsc.gov.uk/collection/caf) is a structured guide designed to ensure the security of organizations, particularly those part of the Critical National Infrastructure. 
+
+The CAF aligns with NIS regulations and is structured around 14 objectives, categorized into four main goals: managing security risk, protecting against cyber attacks, detecting cybersecurity events, and minimizing the impact of incidents. It provides comprehensive indicators of good practice for organizations to assess and improve their security posture
+
+## Global Security Standards
+### ISO/IEC 19249
+ISO/IEC 19249 outlines architectural and design principles for creating secure IT products and systems
+1. **Least Privilege**: This principle emphasizes providing the minimum permissions necessary for individuals or entities to perform their tasks. (Design Principle: 1)
+2. **Attack Surface Minimization**: It focuses on reducing the potential points of attack by eliminating unnecessary services and reducing vulnerabilities. (Design Principle: 2)
+3. **Centralized Parameter Validation**: This principle suggests centralizing the validation of input parameters to prevent threats that may exploit vulnerabilities. (Design Principle: 3)
+4. **Centralized General Security Services**: It advocates for centralizing security services such as authentication to enhance control and reduce potential points of failure. (Design Principle: 4)
+5. **Preparing for Error and Exception Handling**: This principle emphasizes designing systems to handle errors and exceptions gracefully and securely, ensuring they do not leak sensitive information. (Design Principle: 5)
+
+The five architectural principles outlined in ISO/IEC 19249:
+
+1. **Domain Separation**: Components are grouped into distinct entities, each with its own domain and set of security attributes. This separation helps control access and privileges. (Architectural Principle: 1)
+2. **Layering**: The system is structured into abstract levels or layers, enabling the imposition of security policies at different levels and facilitating validation of system operations. (Architectural Principle: 2)
+3. **Encapsulation**: Involves hiding low-level implementations and preventing direct manipulation of data by providing specific methods, similar to object-oriented programming, to ensure data integrity. (Architectural Principle: 3)
+4. **Redundancy**: Ensures availability and integrity by implementing redundancy measures. Examples include redundant power supplies or RAID configurations in data storage. (Architectural Principle: 4)
+5. **Virtualization**: Sharing a single set of hardware among multiple operating systems, which enhances security boundaries and containment of malicious programs, particularly relevant in the context of cloud services. (Architectural Principle: 5)
+
+### ISO27001
+ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies), where ISO27001 is an international standard on how to manage information security.
+
+An ISMS consists of the policies, procedures, guidelines, and associated resources and activities, collectively managed by an organization, in the pursuit of protecting its information assets. 
+
+It is a systematic approach for establishing, implementing, operating, monitoring, reviewing, maintaining and improving an organization’s information security to achieve business objectives. It is based on a risk assessment and the organization’s risk acceptance levels designed to effectively treat and manage risks.
+
+## Operational Roles and Career Development
+### Hat Categories
+Hackers are sorted into three hats, where their ethics and motivations behind their actions determine what hat category they are placed into.
+| Hat | Description |
+|---|---|
+| Black hat | These people are criminals and often seek to damage organisations or gain some form of financial benefit at the cost of others. |
+| Grey hat | These people use their skills to benefit others often; however, they do not respect/follow the law or ethical standards at all times. |
+| White hat | These hackers are considered the "good people". They remain within the law and use their skills to benefit others. |
+
+### Career paths
 | Career | Description |
 |---|---|
 | Security Analyst | Responsible for maintaining the security of an organisation's data |
@@ -440,16 +529,6 @@ There are three primary scopes when testing an application or service.
 | Malware Analyst | Analyses all types of malware to learn more about how they work and what they do |
 | Penetration Tester | Responsible for testing technology products for security loopholes |
 | Red Teamer | Plays the role of an adversary, attacking an organisation and providing feedback from an enemies perspective |
-
-## ISO27001
-ISO (the International Organization for Standardization) is a worldwide federation of national standards bodies (ISO member bodies), where ISO27001 is an international standard on how to manage information security.
-
-
-An ISMS(Information Security Management System) may be certified compliant with ISO/IEC 27001 by a number of Accredited Registrars worldwide.
-
-An ISMS (Information Security Management System) consists of the policies, procedures, guidelines, and associated resources and activities, collectively managed by an organization, in the pursuit of protecting its information assets. 
-
-An ISMS is a systematic approach for establishing, implementing, operating, monitoring, reviewing, maintaining and improving an organization’s information security to achieve business objectives. It is based on a risk assessment and the organization’s risk acceptance levels designed to effectively treat and manage risks.
 
 # Linux Commands 
 ## cat
@@ -3246,3 +3325,7 @@ It allows clients to submit one or more print jobs to the printer or print serve
 Most of them appear to run the CUPS server (which is a simple UNIX printing system).  
 
 Running `python pret.py` will start an automatic printer discovery in your local network. 
+
+---
+
+<h3 align="center"><strong>Did you make this far without considering a star? :p</strong></h3>
