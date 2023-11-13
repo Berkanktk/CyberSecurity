@@ -63,9 +63,11 @@
     5.  [Authentication Bypass](#authentication-bypass)
     6.  [Insecure Direct Object Reference](#insecure-direct-object-reference)
     7.  [File Inclusion](#file-inclusion)
-    8.  [Cross Site Request Forgery](#cross-site-request-forgery)
+    8.  [Cross Site Request Forgery](#cross-site-request-forgery-csrf)
     9.  [Cross Site Scripting](#cross-site-scripting-xss)
-    10. [Server Side Request Forgery](#server-side-request-forgery)
+    10. [Server Side Request Forgery](#server-side-request-forgery-ssrf)
+    11. [Server Side Template Injection](#server-side-template-injection-ssti)
+    12. [Server Side Includes](#server-side-includes-ssi)
 14. [Forensics](#forensics)
     1.  [File Analysis](#file-analysis)
     2.  [PCAP Analysis](#pcap-analysis)
@@ -146,7 +148,8 @@
 [GTFOBins](https://gtfobins.github.io) - list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems.    
 [HackerOne](https://www.hackerone.com) -  HackerOne is a vulnerability coordination and bug bounty platform.  
 [Hacking Glossary](https://resources.hackthebox.com/hacking-glossary) - a glossary of hacking terms made by HackTheBox.  
-[Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/) - tool to identify hash types      
+[Hash Analyzer](https://www.tunnelsup.com/hash-analyzer/) - tool to identify hash types  
+[Hash Identifier](https://gchq.github.io/CyberChef/#recipe=Analyse_hash()https://hashes.com/en/tools/hash_identifiers) - hash identifier using CyberChef    
 [have i been pwned?](https://haveibeenpwned.com) - check if you have an account that has been compromised in a data breach.        
 [HexEd](https://hexed.it) - HexEd is a powerful online hex editor running in your web browser  
 [hilite.me](http://hilite.me) - converts your code snippets into pretty-printed HTML formats    
@@ -191,6 +194,7 @@
 [sploitus](https://sploitus.com) - the exploit and tools database.      
 [SSL Scanner](http://www.ssltools.com) - analyze website security.      
 [Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file     
+[Stego Tricks](https://book.hacktricks.xyz/crypto-and-stego/stego-tricks) - learn stego tricks  
 [Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator     
 [Subnet Cheatsheet](https://www.freecodecamp.org/news/subnet-cheat-sheet-24-subnet-mask-30-26-27-29-and-other-ip-address-cidr-network-references/) - subnet cheatsheet  
 [SSL Blacklist](https://sslbl.abuse.ch) - a free SSL blacklist that can be used to detect malicious SSL certificates.  
@@ -294,7 +298,8 @@ Some of these providers are:
 **Password Spraying** - Password spraying is a brute force attack that uses a list of usernames and a single password to try to gain access to a system.  
 **Penetration Tester** - Responsible for testing technology products for finding exploitable security vulnerabilities.  
 **Plaintext** - Data before encryption, often text but not always. Could be a photograph or other file  
-**Proxy** -  A proxy server is kind of gateway betweenour application and the internet   
+**Proxy** -  A proxy server is kind of gateway betweenour application and the internet  
+**Private Blog Network (PBN)** - PBN is a network of websites used to build links to a website for the purpose of ranking it higher in the Google search engine.   
 **Port Forwarding** - Port forwarding is a technique that is used to allow external devices access to computers services on private networks.  
 **RCE** - Remote Code Execution vulnerability allows commands to be executed on the target's system.  
 **Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts  
@@ -633,9 +638,22 @@ Shows the processes for the current shell
 **TIME** – amount of CPU in minutes and seconds that the process has been running   
 **CMD** – name of the command that launched the process.   
 
-`-a` flag stands for all processes  
+`-a` all processes from all users   
+`-u` user-oriented format, details  
 `-x` will display all processes even those not associated with the current tty  
 `-t` Processes associated with the terminal run
+## htop
+[htop](https://htop.dev/) is an interactive process viewer for Unix systems
+
+`sudo apt install htop`
+
+**Options**  
+`-d` Delay between updates, in tenths of seconds  
+`-u` Show only processes owned by a specified user  
+`-p` Show only processes with specified process IDs  
+`-s` Sort by specified column (use --sort-key help for a list)  
+`-t` Tree view  
+`-U` Do not use unicode but plain ASCII
 ## rm
 Deletes files
 
@@ -724,6 +742,11 @@ This tool returns the path to the file or link that should be executed.
 
 Syntax  
 `where python3`
+## whatis
+This tool is used to get a short description of a command.
+
+Syntax  
+`whatis <command>`
 ## locate
 This tool is used to find files by their name.
 
@@ -742,6 +765,19 @@ Displays detailed information about given files or file systems. These informati
 
 Example usage:  
 `stat file.txt`
+## df
+df is a command-line utility for reporting file system disk space usage
+
+Example usage:  
+get the size of the file system in gigabytes  
+`df -BG` 
+
+**Options:**  
+`--block-size=SIZE` scale sizes by SIZE. E.g., `-BM` prints sizes in units of 1,048,576 bytes.  
+`--exclude-type=TYPE` exclude file systems of type TYPE  
+`-h` print sizes in human readable format (e.g., 1K 234M 2G)    
+`-T` print file system type  
+`-t` limit listing to file systems of type TYPE  
 ## du
 du is a command that can be used to estimate file space usage. It is a part of the GNU coreutils suite.
 
@@ -761,6 +797,35 @@ ncdu is a disk usage analyzer with an ncurses interface. It is a part of the ncd
 **Options:**    
 `-x` - This option prevents ncdu from following symbolic links.  
 `--si` -  This option tells ncdu to use SI units (powers of 10) to display the file sizes, which makes them easier to read than the default binary units (powers of 2).
+## free
+free is a command-line utility that displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel.
+
+Example usage:
+`free -h`
+
+**Options:**  
+`-b` - to display the amount of memory in bytes  
+`-k` - to display the amount of memory in kilobytes  
+`-m` - to display the amount of memory in megabytes  
+`-g` - to display the amount of memory in gigabytes  
+`-h` - to display the amount of memory in a human-readable format  
+`-s N` - to update the output every N seconds
+## sort
+sort is a command-line utility that sorts lines of text files.
+
+Syntax:  
+`sort [OPTION] [FILE] `
+
+**Options:**  
+`-b` - ignore leading blanks  
+`-d` - consider only blank and alphanumeric chars  
+`-f` - ignore case  
+`-g` - to sort general-numeric  
+`-n` - to sort numerically  
+`-h` - to sort human readable numbers  
+`-r` - to sort in reverse order  
+`-o` - to write output to a file  
+`-u` - to remove duplicates  
 ## diff
 diff is a command-line utility that allows you to compare two files line by line
 
@@ -837,10 +902,23 @@ Example usage:
 ## netdiscover
 Netdiscover is a tool that can be used to scan for live hosts on a network. It is a part of the aircrack-ng suite.
 
-Example usage:
-`netdiscover -i wlan0mon` - to scan for live hosts on a network  
-or 
-`netdiscover -r <ip>/24`
+Example usage:  
+`netdiscover -i wlan0mon` or `netdiscover -r <ip>/24` - to scan for live hosts on a network  
+## netstat
+Netstat is a command-line utility that displays network connections for TCP (both incoming and outgoing)
+ 
+Example usage:  
+`netstat -tulpn` - to display all active listening ports
+## ss
+ss is a command-line utility that displays network connections for TCP, UDP, Unix sockets, and more. (modern)
+
+Example usage:  
+`ss -tulpn` - to display all active listening ports
+## tcpdump
+tcpdump is a command-line utility that allows you to capture and analyze network traffic going through your system
+
+Example usage:  
+`tcpdump -i wlan0mon` - to capture all network traffic on the wlan0mon interface
 ## whatweb
 Whatweb is a handy tool and contains much functionality to automate web application enumeration across a network. We can extract the version of web servers, supporting frameworks, and applications using the command-line tool.
 
@@ -908,6 +986,16 @@ The most common example for tar extraction would be:
 `-f` tells tar that the next argument will be the name of the archive to operate on.  
 `-C` tells tar to change to the directory specified before performing any operations.	   
 `-x` tells tar to extract files from an archive.  
+## gzip
+gzip - a file format and a software application used for file compression and decompression. gzip-compressed files have .gz extension.
+
+`gzip filename.txt` compression
+
+Switches:  
+`-d` decompression
+
+Example:  
+`gzip -d file.gz`
 ## grep
 Search the contents of files for specific values   
 `grep "hello world" file.txt`
@@ -1071,16 +1159,6 @@ CTRL + C - Exit without saving
 CTRL + X - Exit and save  
 CTRL + U - Undo  
 CTRL + W - Search
-## gzip
-gzip - a file format and a software application used for file compression and decompression. gzip-compressed files have .gz extension.
-
-`gzip filename.txt` compression
-
-Switches:  
-`-d` decompression
-
-Example:  
-`gzip -d file.gz`
 ## binwalk
 Binwalk allows users to analyze and extract firmware images and helps in identifying code, files, and other information embedded in those, or inside another file
 
@@ -1196,6 +1274,14 @@ Example
 `-v` for verbose mode.  
 `-p` for using a string as a password.  
 `-u` for unzipping.
+## neofetch
+[Neofetch](https://github.com/dylanaraps/neofetch) displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.
+
+Install    
+`sudo apt install neofetch` or see [here](https://github.com/dylanaraps/neofetch/wiki/Installation).
+
+Usage  
+`neofetch`
 ## crunch
 Crunch is a wordlist generator that can generate all possible combinations and permutations.
 
@@ -1362,8 +1448,9 @@ feroxbuster uses brute force combined with a wordlist to search for unlinked con
 `-o, --output <FILE>` - Output file to write results  
 `-v, --verbosity` - Increase verbosity level (use -vv or more for greater effect. '4' -v's is probably too much)
 ## Hashcat
-[Hashcat](https://hashcat.net/hashcat/) is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying.
-[Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/)
+[Hashcat](https://hashcat.net/hashcat/) is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying. See [Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/).  
+
+Learn [How to brute-force passwords using GPU and CPU in Linux](https://miloserdov.org/?p=4726).
 
 ### Syntax
 `hashcat -m <number> <hash_file> <dict_file>`
@@ -1461,6 +1548,15 @@ Crack the hash (or a shadow file)
 `john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt`
 
 See more about [JTR](/More/Password%20Cracking/John.md).
+
+### Zip Files
+Crack a zip file using zip2john
+
+First, convert the zip file to a hash  
+`zip2john file.zip > zip.hash`
+
+Then crack the hash  
+`john zip.hash`
 
 ## Metasploit
 The Metasploit Framework is a set of tools that allow information gathering, scanning, exploitation, exploit development, post-exploitation, and more. While the primary usage of the Metasploit Framework focuses on the penetration testing domain, it is also useful for vulnerability research and exploit development.
@@ -1637,7 +1733,7 @@ Port scan (specific)= `-p <port>`
 Port scan (range) = `-p <from>-<to>`  
 Port scan (all) = `-p-`  
 Activate a script= `—-script=<script_name>`   
-Decoy an ip adress =  `-D`  
+Decoy an ip adress, [learn more](/More/Nmap/README.md#decoys) =  `-D`  
 Fast mode = `-F`
 Only open ports = `--open`   
 List of hosts to scan = `-iL`  
@@ -1663,29 +1759,41 @@ Subnet mask with 255.255.255.0 = `<ip>/24`
 `--level` - Level of tests to perform (1-5)  
 `--dbms` - Force SQLMap to use a specific DBMS  
 `--dump` - Dump the contents of the database  
+`--dump-all` - Dump all databases  
 `--os-shell` - Get an OS shell  
-`--dump-all` - Dump all databases
+`--batch` - Automatic run, won't ask for user input  
+`--tables` - Dump all tables  
+`--columns` - Dump all columns  
+`--threads` - Number of threads to use  
+`--level` - Level of tests to perform (1-5 def: 1)  
+`--risk` - Risk of tests to perform (1-3 def: 1)  
+`--dbs` - List databases  
+`--technique` - Specify a technique to use 
+
+(B: Boolean-based blind, E: Error-based, U: Union-based, S: Stacked queries, T: Time-based blind)  
+
+SQLMap to try and bypass the WAF by using `--tamper=space2comment`
 
 ### Example use case
+Test for SQL injection.
+```bash
+sqlmap.py -u <website> --dbs
+```
+
 Dumping some data inside columns from a table in a database.
 List tables in a database.
 ```bash
-sqlmap.py -u <website>? -D <database_name> --tables
+sqlmap.py -u <website> -D <database_name> --tables
 ```
 
 List columns in a table in a database.
 ```bash
-sqlmap.py -u <website>? -D <database_name> -T <table_name> --columns
+sqlmap.py -u <website> -D <database_name> -T <table_name> --columns
 ```
 
 Dump data from columns in a table in a database.
 ```bash
-sqlmap.py -u <website>? -D <database_name> -T <table_name> -C <column_name1>,<column_name2> -dump
-```
-
-Test for SQL injection.
-```bash
-sqlmap.py -u <website>? --dbs
+sqlmap.py -u <website> -D <database_name> -T <table_name> -C <column_name1>,<column_name2> -dump
 ```
 
 # Tools (GUI) 
@@ -2068,6 +2176,7 @@ See much more database and SQLi related information [here](/More/Databases/).
 * `1' OR 1=1#`
 * `1' OR 1=1--`
 * `1' OR 1=1;--`
+* `1" or "1"="1"-- -`
 ## Command Injection
 Command injection is the abuse of an application's behaviour to execute commands on the operating system, using the same privileges that the application on a device is running with.
 
@@ -2535,13 +2644,16 @@ Directory traversal can also be used on some cases, and so can the `&x=` to stop
 
 This IP address may contain sensitive data in a cloud environment:    
 `169.254.169.254`
-## Server Side Includes
+## Server Side Template Injection (SSTI)
+`TO BE ADDED`
+## Server Side Includes (SSI)
 Server Side Includes (SSI) is a simple interpreted server-side scripting language used almost exclusively for the Web. It is most useful for including the contents of one or more files into a web page on a web server, using its #include directive.
 
 ### Finding an SSI
 * `<!--#exec cmd="ls" -->`
 * `<!--#echo var="DATE_LOCAL" -->`
 * `<!--#exec cmd="cat /etc/passwd" -->`
+
 # Forensics
 Is simply 'the art of uncovering'
 
@@ -2929,12 +3041,14 @@ for i in range(1, 50):
 
 
 # Reverse Engineering
+Reverse-engineering is the creative process of analyzing software and understanding it without having access to the source code. It is the process by which software is deconstructed in a way that reveals its innermost details such as its structure, function and operation.
+
 ## Assembly
 Find the in-depth content for the Assembly x86-64 language [here](/More/Assembly/Readme.md) inside this repository.
 
 `TO BE ADDED`
 ## Disassemblers
-Reverse-engineering is the creative process of analyzing software and understanding it without having access to the source code. It is the process by which software is deconstructed in a way that reveals its innermost details such as its structure, function and operation.
+A disassembler is a computer program that translates machine language into assembly language—the inverse operation to that of an assembler.  
 
 ### gdb
 GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed.
@@ -2998,6 +3112,19 @@ Symbol Tree -> Functions # List functions (ex. Main)
 **Useful functions:**
 - Layout -> Grid View = Show a grid view of the nodes.
 - Pathlinker = Find paths between nodes. Needs a source and a target node. K = number of paths to find. Is mostly one in CTF situations.
+
+## Decompilers
+A decompiler is a computer program that takes an executable file as input, and attempts to create a high level code (like C/C++, Java). 
+
+### Jar files
+A jar file is a Java archive file that can contain multiple files and folders. Jar files are mainly used for archiving, compression and decompression. Jar files are similar to zip files, but jar files can have additional attributes that are required for a Java application to run.
+
+To decompile a jar file, [procyon](https://manpages.ubuntu.com/manpages/jammy/man1/procyon.1.html) can be used.
+
+```bash
+berkankutuk@kali:~$ sudo apt-get install -y procyon-decompiler
+berkankutuk@kali:~$ procyon -jar <jar file> -o <output directory>
+```
 
 # Cryptography
 ## Decrypting Methods
@@ -3194,7 +3321,7 @@ rlwrap nc -lnvp 9001
 smbmap tells you permissions and access, which smbclient does not do!
 
 **smbmap**  
-To try and list shares as the anonymous user DO THIS (this doesn't always work for some weird reason)  
+To try and list shares as the anonymous user (this doesn't always work for some weird reason)  
 `smbmap -H <IP> -u anonymous`
 
 **enum4linux**    
@@ -3204,6 +3331,8 @@ Another enumeration tool is enum4linux which can be used like this:
 **smbclient**  
 You can use smbclient to look through files shared with SMB. To list available shares:  
 `smbclient -m SMB2 -N -L //10.10.10.125/`
+
+> The -L flag specifies that we want to retrieve a list of available shares on the remote host, while -N suppresses the password prompt.
 
 For more, see this page: [Samba](More/Windows/Samba.md)
 
@@ -3283,6 +3412,7 @@ For PHP, you can take a look at this RS from PentestMonkey: [PHP Reverse Shell](
 Check for root password
 * Run: `id`  
 * Run: `sudo -l` to list commands that can be run as root  
+* Check `cat /etc/*release` for OS version
 * Locate password folder and crack it using johntheripper
 * Remember to look for cron jobs or other running tasks. If they require root, use [pspy](https://github.com/DominicBreuker/pspy).
 * Or use [GTFOBins](https://gtfobins.github.io) 
