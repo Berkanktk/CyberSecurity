@@ -36,38 +36,45 @@
 7.  [Linux Commands](#linux-commands)
 8. [Tools (CLI)](#tools-cli)
    1. [Aircrack-ng](#aircrack-ng)
-   2. [Feroxbuster](#feroxbuster)
-   3. [Hashcat](#hashcat)
-   4. [Hydra](#hydra)
-   5. [Gobuster](#gobuster)
+   2. [Gobuster](#gobuster)
+   3. [Feroxbuster](#feroxbuster)
+   4. [Hashcat](#hashcat)
+   5. [Hydra](#hydra)
    6. [John The Ripper](#john-the-ripper)
    7. [Metasploit](#metasploit)
    8. [Netcat](#netcat)
    9.  [Nikto](#nikto-2)
    10. [Nmap](#nmap)
+   11. [SQLMap](#sqlmap)
 9.  [Tools (GUI)](#tools-gui)
-    1.  [Burp Suite](#burp)
-    2.  [Nessus](#nessus)
-    3.  [Wireshark](#wireshark)
+    1.  [Autopsy](#autopsy)
+    2.  [Burp Suite](#burp)
+    3.  [Nessus](#nessus)
+    4.  [Wireshark](#wireshark)
 10. [Text Editors](#text-editors)
     1.  [Nano](#nano)
     2.  [VIM](#vim)
 11. [Cryptology](#cryptology)
     1. [Generate Keys](#generate-keys)
 12. [Networking](#networking) 
+    1.  [Internet Protocol (IP)](#internet-protocol-ip)
+    2.  [The Router](#the-router)
+    3.  [IPv4 Classes](#ipv4-classes)
+    4.  [Subnetting](#subnetting)
+    5.  [Address Resolution Protocol (ARP)](#address-resolution-protocol-arp)
 13. [Web Exploitation](#web-exploitation)
     1.  [Content Discovery](#content-discovery)
     2.  [SQL Injection](#sql-injection)
     3.  [Command Injection](#command-injection)
     4.  [Directory Traversal](#directory-traversal)
     5.  [Authentication Bypass](#authentication-bypass)
-    6.  [Insecure Direct Object Reference](#insecure-direct-object-reference)
-    7.  [File Inclusion](#file-inclusion)
-    8.  [Cross Site Request Forgery](#cross-site-request-forgery-csrf)
-    9.  [Cross Site Scripting](#cross-site-scripting-xss)
-    10. [Server Side Request Forgery](#server-side-request-forgery-ssrf)
-    11. [Server Side Template Injection](#server-side-template-injection-ssti)
-    12. [Server Side Includes](#server-side-includes-ssi)
+    6.  [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference)
+    7.  [File Inclusion (LFI/RFI)](#file-inclusion)
+    8.  [Cross Site Request Forgery (CSRF)](#cross-site-request-forgery-csrf)
+    9.  [Cross Site Scripting (XSS)](#cross-site-scripting-xss)
+    10. [Server Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
+    11. [Server Side Template Injection (SSTI)](#server-side-template-injection-ssti)
+    12. [Server Side Includes (SSI)](#server-side-includes-ssi)
 14. [Forensics](#forensics)
     1.  [File Analysis](#file-analysis)
     2.  [PCAP Analysis](#pcap-analysis)
@@ -87,14 +94,18 @@
 16. [Reverse Engineering](#reverse-engineering)
     1.  [Assembly](#assembly)
     2.  [Disassemblers](#disassemblers)
+    3.  [Decompilers](#decompilers)
 17. [Cryptography](#cryptography)
-    1.  [Encoding](#encoding)
-    2.  [Hashing](#hashing)
-    3.  [Ciphers](#ciphers)
-    4.  [Encryption (RSA)](#encryption-rsa)
+    1.  [Cryptographic Methods](#cryptographic-methods)
+    2.  [Encoding](#encoding)
+    3.  [Hashing](#hashing)
+    4.  [Ciphers](#ciphers)
+    5.  [Encryption (RSA)](#encryption-rsa)
 18. [Miscellaneous](#miscellaneous)
 19. [Windows Exploitation](#windows-exploitation)
-    1.  [Active Directory](#active-directory)   
+    1.  [Active Directory](#active-directory) 
+    2.  [Windows Reverse Shells](#windows-reverse-shells)
+    3.  [Samba (SMB)](#samba-smb)
 20. [Shells and Privilege Escalation](#shells-and-privilege-escalation)
     1.  [TTY Shell](#tty-shell)
     2.  [Privilege Escalation](#privilege-escalation)
@@ -973,10 +984,10 @@ tar is a command that allows creating, maintaining, modifying, and extracting fi
 The most common example for tar extraction would be:
 `tar -xf archive.tar`
 
-### Compressing files with tar
+**Compressing files with tar**  
 `tar -czvf stuff.tar.gz`
 
-### Uncompressing files with tar
+**Uncompressing files with tar**  
 `tar -xvzf myfolder.tar.gz -C myfolder/` 
 
 **Options:**  
@@ -1300,13 +1311,13 @@ Example
 ## rax2 
 rax2 comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
 
-### Syntax
+**Syntax**  
 `rax2 <options> <value>`
 
-### Example
+**Example**  
 `rax2 -s 0x424b`
 
-### A list of most useful flags: 
+**A list of most useful flags:**   
 ```bash
 -a      show ascii table     ;  rax2 -a
 -b      bin -> str           ;  rax2 -b 01000010 01001011 # BK
@@ -3127,7 +3138,7 @@ berkankutuk@kali:~$ procyon -jar <jar file> -o <output directory>
 ```
 
 # Cryptography
-## Decrypting Methods
+## Cryptographic Methods
 ### Cryptii
 [Cryptii](https://cryptii.com) has multiple decoding tools like base64, Ceaser Cipher, ROT13, Vigenère Cipher and more.
 
