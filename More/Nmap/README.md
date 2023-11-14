@@ -118,7 +118,17 @@ You can launch a decoy scan by specifying a specific or random IP address after 
 
 Another example command would be `nmap -D 10.10.0.1,10.10.0.2,RND,RND,ME MACHINE_IP`, where the third and fourth source IP addresses are assigned randomly, while the fifth source is going to be the attacker’s IP address. In other words, each time you execute the latter command, you would expect two new random IP addresses to be the third and fourth decoy sources.
 
-So in short, `-S` for make a scan appea as if coming from the source IP address instead of your IP adres, and `-D` for making a scan appear as if coming from the decoy IP addresses (in addition to your IP address).
+So in short, `-S` for make a scan appear as if coming from the source IP address instead of your IP adres, and `-D` for making a scan appear as if coming from the decoy IP addresses (in addition to your IP address).
+
+```bash	
+nmap -n -D decoy-ip1,decoy-ip2,your-own-ip,decoy-ip3,decoy-ip4 remote-host-ip
+nmap -n -D 192.168.1.5,10.5.1.2,172.1.2.4,3.4.2.1 192.168.1.5
+
+# Or even a better way to hide your IP
+nmap -P0 -sI 1.1.1.1:1234 192.1.2.3
+```
+> Following example, uses an an idle scan technique. It uses port 1234 on 1.1.1.1 IP as as a zombie to scan host – 192.1.2.3:
+
 
 # Fragmented Packets
 You can use the `-f` option to fragment the packets. This option is useful when you want to bypass a firewall that is configured to block fragmented packets. You can also use the `-f` option to bypass IDS/IPS systems that are configured to block fragmented packets.
