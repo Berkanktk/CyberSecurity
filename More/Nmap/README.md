@@ -23,6 +23,26 @@ Usage
 rustscan -a <ip> 
 ```
 
+# List of Contents
+* [Nmap States](#nmap-states)
+* [TCP Header Flags](#tcp-header-flags)
+* [Scanning types](#scanning-types)
+* [Fine-Tuning Scope and Performance](#fine-tuning-scope-and-performance)
+  * [Scope](#scope)
+  * [Time](#time)
+  * [Packet scope](#packet-scope)
+* [Spoofing and Decoys](#spoofing-and-decoys)
+  * [Decoys](#decoys)
+* [Fragmented Packets](#fragmented-packets)
+* [Idle/Zombie Scan](#idlezombie-scan)
+* [Getting More Details](#getting-more-details)
+* [Service Detection](#service-detection)
+* [OS Detection](#os-detection)
+* [Trace Route](#trace-route)
+* [Nmap Scripting Engine](#nmap-scripting-engine)
+* [Saving the Output](#saving-the-output)
+* [Summary](#summary)
+
 # Nmap states
 1. **Open**: indicates that a service is listening on the specified port.
 2. **Closed**: indicates that no service is listening on the specified port, although the port is accessible. By accessible, we mean that it is reachable and is not blocked by a firewall or other security appliances/programs.
