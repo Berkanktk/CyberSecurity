@@ -19,3 +19,13 @@ Virtual Private Network (VPN) is a technology that allows you to create a secure
 - [SaferVPN](https://www.safervpn.com/)
 - [Mulvad](https://mullvad.net/en/)
 - [IVPN](https://www.ivpn.net/) - My personal go-to VPN!
+
+# OpenVPN
+OpenVPN is an open source connection protocol used to facilitate a secure tunnel between two points in a network.
+
+## Installation
+**For Windows:**  
+`choco install openvpn` 
+
+**For Linux and MacOS:**  
+`sudo apt-get install openvpn` 
