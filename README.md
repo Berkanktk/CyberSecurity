@@ -54,15 +54,13 @@
 10. [Text Editors](#text-editors)
     1.  [Nano](#nano)
     2.  [VIM](#vim)
-11. [Cryptology](#cryptology)
-    1. [Generate Keys](#generate-keys)
-12. [Networking](#networking) 
+11. [Networking](#networking) 
     1.  [Internet Protocol (IP)](#internet-protocol-ip)
     2.  [The Router](#the-router)
     3.  [IPv4 Classes](#ipv4-classes)
     4.  [Subnetting](#subnetting)
     5.  [Address Resolution Protocol (ARP)](#address-resolution-protocol-arp)
-13. [Web Exploitation](#web-exploitation)
+12. [Web Exploitation](#web-exploitation)
     1.  [Content Discovery](#content-discovery)
     2.  [SQL Injection](#sql-injection)
     3.  [Command Injection](#command-injection)
@@ -75,13 +73,13 @@
     10. [Server Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
     11. [Server Side Template Injection (SSTI)](#server-side-template-injection-ssti)
     12. [Server Side Includes (SSI)](#server-side-includes-ssi)
-14. [Forensics](#forensics)
+13. [Forensics](#forensics)
     1.  [File Analysis](#file-analysis)
     2.  [PCAP Analysis](#pcap-analysis)
     3.  [Steganography](#steganography)
     4.  [Memory Analysis](#memory-analysis)
     5.  [Disk Imaging](#disk-imaging)
-15. [Binary Exploitation](#binary-exploitation)
+14. [Binary Exploitation](#binary-exploitation)
     1.  [Registers](#registers)
     2.  [The Stack](#the-stack)
     3.  [Calling Conventions](#calling-conventions)
@@ -91,25 +89,26 @@
     7.  [Binary Security](#binary-security)
     8.  [The Heap and Exploitation](#the-heap)
     9.  [Format String Vulnerability](#format-string-vulnerability)
-16. [Reverse Engineering](#reverse-engineering)
+15. [Reverse Engineering](#reverse-engineering)
     1.  [Assembly](#assembly)
     2.  [Disassemblers](#disassemblers)
     3.  [Decompilers](#decompilers)
-17. [Cryptography](#cryptography)
-    1.  [Cryptographic Methods](#cryptographic-methods)
-    2.  [Encoding](#encoding)
-    3.  [Hashing](#hashing)
-    4.  [Ciphers](#ciphers)
-    5.  [Encryption (RSA)](#encryption-rsa)
-18. [Miscellaneous](#miscellaneous)
-19. [Windows Exploitation](#windows-exploitation)
+16. [Cryptography](#cryptography)
+    1.  [Generate Keys](#generate-keys)
+    2.  [Cryptographic Methods](#cryptographic-methods)
+    3.  [Encoding](#encoding)
+    4.  [Hashing](#hashing)
+    5.  [Ciphers](#ciphers)
+    6.  [Encryption (RSA)](#encryption-rsa)
+17. [Miscellaneous](#miscellaneous)
+18. [Windows Exploitation](#windows-exploitation)
     1.  [Active Directory](#active-directory) 
     2.  [Windows Reverse Shells](#windows-reverse-shells)
     3.  [Samba (SMB)](#samba-smb)
-20. [Shells and Privilege Escalation](#shells-and-privilege-escalation)
+19. [Shells and Privilege Escalation](#shells-and-privilege-escalation)
     1.  [TTY Shell](#tty-shell)
     2.  [Privilege Escalation](#privilege-escalation)
-21. [Vulnerabilities](#vulnerabilities)
+20. [Vulnerabilities](#vulnerabilities)
     1.  [Social Engineering](#social-engineering)
     2.  [Misconfigurations](#misconfigurations)
 
@@ -1937,22 +1936,6 @@ Generally speaking, there are three basic modes in Vim:
 
 Find other very usefull commands [here](/More/VIM/README.md), or a full cheatsheet [here](https://vim.rtorr.com).
 
-# Cryptology
-Cryptography in Cryptology is used to protect confidentiality, ensure integrity, ensure authenticity.
-
-## Generate keys
-To generate a private key we use the following command (8912 creates the key 8912 bits long):  
-`openssl genrsa -aes256 -out private.key 8912`
-
-To generate a public key we use our previously generated private key:  
-`openssl rsa -in private.key -pubout -out public.key`
-
-Lets now encrypt a file (plaintext.txt) using our public key:  
-`openssl rsautl -encrypt -pubin -inkey public.key -in plaintext.txt -out encrypted.txt`
-
-Now, if we use our private key, we can decrypt the file and get the original message:  
-`openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
-
 # Networking  
 This section will cover the basics of networking, such as IP addresses, ports, protocols, etc.
 
@@ -3138,6 +3121,19 @@ berkankutuk@kali:~$ procyon -jar <jar file> -o <output directory>
 ```
 
 # Cryptography
+## Generate keys
+To generate a private key we use the following command (8912 creates the key 8912 bits long):  
+`openssl genrsa -aes256 -out private.key 8912`
+
+To generate a public key we use our previously generated private key:  
+`openssl rsa -in private.key -pubout -out public.key`
+
+Lets now encrypt a file (plaintext.txt) using our public key:  
+`openssl rsautl -encrypt -pubin -inkey public.key -in plaintext.txt -out encrypted.txt`
+
+Now, if we use our private key, we can decrypt the file and get the original message:  
+`openssl rsautl -decrypt -inkey private.key -in encrypted.txt -out plaintext.txt`
+
 ## Cryptographic Methods
 ### Cryptii
 [Cryptii](https://cryptii.com) has multiple decoding tools like base64, Ceaser Cipher, ROT13, Vigenère Cipher and more.
