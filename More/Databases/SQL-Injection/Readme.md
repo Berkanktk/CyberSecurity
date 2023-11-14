@@ -3,7 +3,32 @@ SQL (Structured Query Language) Injection, mostly referred to as SQLi, is an att
 
 When a web application communicates with a database using input from a user that hasn't been properly validated, there runs the potential of an attacker being able to steal, delete or alter private and customer data and also attack the web applications authentication methods to private or customer areas.
 
-## What is SQLi?
+# List of Contents
+- [SQL Injection](#sql-injection)
+- [What is SQLi?](#what-is-sqli)
+- [In-Band SQL Injection](#in-band-sql-injection)
+  - [In-Band SQL](#in-band-sql)
+  - [In-Band SQL Injection - Error Based](#in-band-sql-injection---error-based)
+  - [In-Band SQL Injection - Union Based](#in-band-sql-injection---union-based)
+  - [Practical](#practical)
+- [Blind SQL Injection - Authentication Bypass](#blind-sql-injection---authentication-bypass)
+  - [Blind SQLi](#blind-sqli)
+  - [Authentication Bypass](#authentication-bypass)
+  - [Practical](#practical-1)
+- [Blind SQL Injection - Boolean Based](#blind-sql-injection---boolean-based)
+  - [Boolean Based](#boolean-based)
+  - [Practical](#practical-2)
+- [Blind SQL Injection - Time Based](#blind-sql-injection---time-based)
+  - [Time-Based](#time-based)
+  - [Practical](#practical-3)
+- [Out Of Band SQL Injection](#out-of-band-sql-injection)
+- [Remediation](#remediation)
+  - [Remediation](#remediation-1)
+  - [Prepared Statements (With Parameterized Queries):](#prepared-statements-with-parameterized-queries)
+  - [Input Validation:](#input-validation)
+  - [Escaping User Input:](#escaping-user-input)
+
+# What is SQLi?
 The point wherein a web application using SQL can turn into SQL Injection is when user-provided data gets included in the SQL query.
 
 Take the following scenario where you've come across an online blog, and each blog entry has a unique id number. The blog entries may be either set to public or private depending on whether they're ready for public release. The URL for each blog entry may look something like this:
@@ -35,18 +60,48 @@ The semicolon in the URL signifies the end of the SQL statement, and the two das
 
 This was just one example of an SQL Injection vulnerability of a type called `In-Band SQL Injection`; there are 3 types in total `In-Band`, `Blind` and `Out Of Band`.
 
-## In-Band SQL Injection
-### In-Band SQL
+# In-Band SQL Injection
+## In-Band SQL
 In-Band SQL Injection is the easiest type to detect and exploit; In-Band just refers to the same method of communication being used to exploit the vulnerability and also receive the results, for example, discovering an SQL Injection vulnerability on a website page and then being able to extract data from the database to the same page.
 
-### In-Band SQL Injection - Error Based
+## In-Band SQL Injection - Error Based
 This type of SQL Injection is the most useful for easily obtaining information about the database structure as error messages from the database are printed directly to the browser screen. This can often be used to enumerate a whole database. 
 
+```sql
+' ORDER BY 1-- ' ORDER BY 2-- ' ORDER BY 3-- # and so on until an error occurs
+```
+> The last value before the error would indicate the number of columns.
 
-### In-Band SQL Injection - Union Based
+## In-Band SQL Injection - Union Based
 This type of Injection utilises the SQL UNION operator alongside a SELECT statement to return additional results to the page. This method is the most common way of extracting large amounts of data via an SQL Injection vulnerability.
 
-### Practical
+```sql
+' UNION SELECT NULL-- ' UNION SELECT NULL,NULL-- ' UNION SELECT NULL,NULL,NULL-- # until the error occurs   
+```
+> No error = number of NULL matches the number of columns.
+
+Suppose that:
+
+- The first two steps showed exactly two existing columns with useful datatype.
+- The database contains a table called users with the columns username and password.
+
+In this situation, you can retrieve the contents of the user's table by submitting the input:
+    
+```sql
+' UNION SELECT username, password FROM users --
+```
+
+Here's a small list of thing you'd want to retrieve:
+
+1. database()
+2. user()
+3. @@version
+4. username
+5. password
+6. table_name
+7. column_name
+
+## Practical
 The key to discovering error-based SQL Injection is to break the code's SQL query by trying certain characters until an error message is produced; these are most commonly single apostrophes ( ' ) or a quotation mark ( " ).
 
 Examples of error-based SQL Injection:
@@ -74,11 +129,11 @@ https://website.com/article?id=0 UNION SELECT 1,2,group_concat(column_name) FROM
 https://website.com/article?id=0 UNION SELECT 1,2,group_concat(username,':',password SEPARATOR '<br>') FROM staff_users
 ```
 
-## Blind SQL Injection - Authentication Bypass
-### Blind SQLi
+# Blind SQL Injection - Authentication Bypass
+## Blind SQLi
 Unlike In-Band SQL injection, where we can see the results of our attack directly on the screen, blind SQLi is when we get little to no feedback to confirm whether our injected queries were, in fact, successful or not, this is because the error messages have been disabled, but the injection still works regardless. It might surprise you that all we need is that little bit of feedback to successful enumerate a whole database.
 
-### Authentication Bypass
+## Authentication Bypass
 One of the most straightforward Blind SQL Injection techniques is when bypassing authentication methods such as login forms. In this instance, we aren't that interested in retrieving data from the database; We just want to get past the login. 
 
 Login forms that are connected to a database of users are often developed in such a way that the web application isn't interested in the content of the username and password but more whether the two make a matching pair in the users table. 
@@ -87,7 +142,7 @@ In basic terms, the web application is asking the database "do you have a user w
 
 Taking the above information into account, it's unnecessary to enumerate a valid username/password pair. We just need to create a database query that replies with a yes/true.
 
-### Practical
+## Practical
 Level Two of the SQL Injection examples shows this exact example. We can see in the box labelled "SQL Query" that the query to the database is the following:
 
 ```sql	
@@ -108,11 +163,11 @@ select * from users where username='' and password='' OR 1=1;
 
 Because 1=1 is a true statement and we've used an OR operator, this will always cause the query to return as true, which satisfies the web applications logic that the database found a valid username/password combination and that access should be allowed.
 
-## Blind SQL Injection - Boolean Based
-### Boolean Based
+# Blind SQL Injection - Boolean Based
+## Boolean Based
 Boolean based SQL Injection refers to the response we receive back from our injection attempts which could be a true/false, yes/no, on/off, 1/0 or any response which can only ever have two outcomes. That outcome confirms to us that our SQL Injection payload was either successful or not. On the first inspection, you may feel like this limited response can't provide much information. Still, in fact, with just these two responses, it's possible to enumerate a whole database structure and contents.
 
-### Practical
+## Practical
 Example mock browser:
 
 ```bash
@@ -217,8 +272,8 @@ We can say the password was `3845`.
 
 All in all, this process took a lot of time and effort. Luckily, there are tools that can automate this process for us. One of the most popular tools for this is `sqlmap`.
 
-## Blind SQL Injection - Time Based
-### Time-Based
+# Blind SQL Injection - Time Based
+## Time-Based
 A time-based blind SQL Injection is very similar to the above Boolean based, in that the same requests are sent, but there is no visual indicator of your queries being wrong or right this time. Instead, your indicator of a correct query is based on the time the query takes to complete. This time delay is introduced by using built-in methods such as SLEEP(x) alongside the UNION statement. The SLEEP() method will only ever get executed upon a successful UNION SELECT statement. 
 
 
@@ -238,7 +293,7 @@ This payload should have produced a 5-second time delay, which confirms the succ
 
 You can now repeat the enumeration process from the Boolean based SQL Injection, adding the SLEEP() method into the UNION SELECT statement.
 
-## Out Of Band SQL Injection
+# Out Of Band SQL Injection
 Out-of-Band SQL Injection isn't as common as it either depends on specific features being enabled on the database server or the web application's business logic, which makes some kind of external network call based on the results from an SQL query.
 
 An Out-Of-Band attack is classified by having two different communication channels, one to launch the attack and the other to gather the results. For example, the attack channel could be a web request, and the data gathering channel could be monitoring HTTP/DNS requests made to a service you control.
