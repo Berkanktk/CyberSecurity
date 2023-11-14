@@ -1,4 +1,4 @@
-# Info
+# OpenSSH
 OpenSSH is the premier connectivity tool for remote login with the SSH protocol.
 
 # Installation
