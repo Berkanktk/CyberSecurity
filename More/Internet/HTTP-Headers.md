@@ -47,6 +47,18 @@ Response Headers can be used in an HTTP response and do not relate to the conten
 | Set-Cookie | Set-Cookie: PHPSESSID=b4e4fbd93540 | Contains the cookies needed for client identification. Browsers parse the cookies and store them for future requests. This header follows the same format as the `Cookie` request header. |
 | WWW-Authenticate | WWW-Authenticate: BASIC realm="localhost" | Notifies the client about the type of authentication required to access the requested resource. |
 
+### Cookies
+
+Cookies are saved when you receive a "Set-Cookie" header from a web server. Then every further request you make, you'll send the cookie data back to the web server. Because HTTP is stateless (doesn't keep track of your previous requests), cookies can be used to remind the web server who you are, some personal settings for the website or whether you've been to the website before.
+
+Cookies can be used for many purposes but are most commonly used for website authentication. The cookie value won't usually be a clear-text string where you can see the password, but a token (unique secret code that isn't easily humanly guessable).
+
+#### Viewing Your Cookies
+
+You can easily view what cookies your browser is sending to a website by using the developer tools, in your browser.
+
+Once you have developer tools open, click on the "Network" tab. This tab will show you a list of all the resources your browser has requested. You can click on each one to receive a detailed breakdown of the request and response. If your browser sent a cookie, you will see these on the "Cookies" tab of the request.
+
 ## Security Headers
 Finally, we have Security Headers. With the increase in the variety of browsers and web-based attacks, defining certain headers that enhanced security was necessary. HTTP Security headers are a class of response headers used to specify certain rules and policies to be followed by the browser while accessing the website.
 
