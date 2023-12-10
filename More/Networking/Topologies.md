@@ -44,9 +44,9 @@ The star topology is a network component that maintains a connection to all host
 ### Ring
 The physical ring topology is such that each host or node is connected to the ring with two cables:
 
-* One for the incoming signals and
-* the another for the outgoing ones.
-* 
+* One for the incoming signals
+* Another for the outgoing ones
+ 
 This means that one cable arrives at each host and one cable leaves. The ring topology typically does not require an active network component. The control and access to the transmission medium are regulated by a protocol to which all stations adhere.
 
 A logical ring topology is based on a physical star topology, where a distributor at the node simulates the ring by forwarding from one port to the next.
