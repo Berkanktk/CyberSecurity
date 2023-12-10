@@ -1307,6 +1307,21 @@ Example
 **Options**  
 `-t` for adding a pattern to the generated wordlist.  
 `-o` for saving the generated wordlist to a file.
+## cewl 
+Cewl is a tool that spiders a given url to a specified depth, optionally following external links, and returns a list of words which can then be used for password crackers such as John the Ripper. See more [here](/More/Password%20Cracking/Wordlist-generation.md/cewl/Readme.md).
+
+Install  
+`sudo apt-get install cewl`
+
+Usage  
+`cewl <url> -w <output file>`
+
+**Options**  
+- `-w` for saving the generated wordlist to a file.
+- `-d` for setting the depth of the spider.
+- `-m` for setting the minimum word length.
+- `-x` for setting the maximum number of words to return.
+
 ## rax2 
 rax2 comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
 
