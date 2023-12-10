@@ -18,4 +18,5 @@ In order to map these two identifiers together (IP address and MAC address), the
 When an **ARP request** is sent, a message is broadcasted to every other device found on a network by the device, asking whether or not the device's MAC address matches the requested IP address. If the device does have the requested IP address, an **ARP reply** is returned to the initial device to acknowledge this. The initial device will now remember this and store it within its cache (an ARP entry).
 
 This process is illustrated in the diagram below:
+
 ![ARP](../../Images/ARP.png)
