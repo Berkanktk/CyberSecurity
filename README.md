@@ -2609,9 +2609,12 @@ This command will print "BERKAN_WAS_HERE" on the screen.
 jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('BERKAN_WAS_HERE') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('BERKAN_WAS_HERE')//>\x3e 
 ```
 ## Server Side Request Forgery (SSRF)
-SSRF stands for Server-Side Request Forgery. It's a vulnerability that allows a malicious user to cause the webserver to make an additional or edited HTTP request to the resource of the attacker's choosing.
+SSRF, or server-side request forgery, is a security vulnerability that occurs when an attacker tricks a web application into making unauthorised requests to internal or external resources on the server's behalf.
 
-There are two types of SSRF vulnerability; the first is a regular SSRF where data is returned to the attacker's screen. The second is a Blind SSRF vulnerability where an SSRF occurs, but no information is returned to the attacker's screen.
+### Types of Attacks
+- **Basic SSRF:** The attacker sends crafted requests from the vulnerable server to internal or external resources, such as accessing files or databases not intended for public access.
+- **Blind SSRF:** Attackers don't directly see responses but infer information from response times or error message changes.
+- **Semi-blind SSRF:** Attackers don't receive direct responses but use clues like changes in application behavior or response times to gauge success.
 
 **What's the impact?**  
 A successful SSRF attack can result in any of the following: 
@@ -2622,38 +2625,28 @@ A successful SSRF attack can result in any of the following:
 * Reveal authentication tokens/credentials.
 
 ### Finding an SSRF
-* When a full URL is used in a parameter in the address bar:
-  * `https://berkankutuk.dk/form?server=http://server.website.com/store`
-* A hidden field in a form:
-  ```html
-  <form ...>
-      <input type = "hidden" name="server" value="=http://server.website.com/store">
-      ...
+- **Identifying Vulnerable Input:** Attackers find input fields within the application, like URL parameters in web forms or API endpoints, which can be manipulated to trigger server-side requests.
+  ```txt
+  Example: https://berkankutuk.dk/form?server=api
   ```
-* A partial URL such as just the hostname:
-  * `https://berkankutuk.dk/form?server=api`
-* Or perhaps only the path of the URL:
-  * `https://berkankutuk.dk/form?dst=/forms/contact`
-
-### Attack
-**Vulnerable site:**  
-`http://berkankutuk.dk/users?url=....`
-
-Directory traversal can also be used on some cases, and so can the `&x=` to stop the remaining path from being appended.
+- **Manipulating the Input:** Attackers input malicious URLs or payloads to cause the application to make unintended requests, such as pointing to internal servers or external ones controlled by the attacker.
+  ```html
+  Example: <input type="hidden" name="server" value="=http://server.website.com/store">
+  ```
+- **Requesting Unauthorized Resources:** The application server, unaware of the malicious input, makes requests to the specified URLs or resources, potentially targeting internal or sensitive services.
+  ```txt
+  Example: https://berkankutuk.dk/form?server=http://server.website.com/store
+  ```
+- **Exploiting the Response:** Attackers exploit the responses from malicious requests to gather valuable information like internal server data, credentials, or pathways for further exploitation. Directory traversal and `&x=` can also be used in some cases to manipulate paths.
 
 ### Defeating Common SSRF Defenses
-1. Deny list
-   1. A specific endpoint to restrict access is the localhost, which may contain server performance data or further sensitive information, so domain names such as localhost and 127.0.0.1 would appear on a deny list. 
-   2. Attackers can bypass a Deny List by using alternative localhost references such as 0, 0.0.0.0, 0000, 127.1, 127.*.*.*, 2130706433, 017700000001 or subdomains that have a DNS record which resolves to the IP Address 127.0.0.1 such as 127.0.0.1.nip.io.
-2. Allow list
-   1. An URL used in a parameter must begin with `https://website.com`.
-   2. An attacker could quickly circumvent this rule by creating a subdomain on an attacker's domain name, such as `https://website.com.attackers-domain.com`. The application logic would now allow this input and let an attacker control the internal HTTP request.
-3. Open Redirect
-   1. An open redirect is an endpoint on the server where the website visitor gets automatically redirected to another website address.
-   2. But imagine there was a potential SSRF vulnerability with stringent rules which only allowed URLs beginning with `https://website.com/`. An attacker could utilise the above feature to redirect the internal HTTP request to a domain of the attacker's choice.
+1. **Deny List Bypass:**
+   - Deny lists typically block access to localhost or specific IP addresses like 127.0.0.1. However, attackers can bypass these restrictions by using alternative references such as 0, 0.0.0.0, 127.1, or subdomains that resolve to localhost like 127.0.0.1.nip.io.
+2. **Allow List Circumvention:**
+   - Allow lists may restrict URLs to start with `https://website.com`, but attackers can evade this control by creating subdomains on their own domain, like `https://website.com.attackers-domain.com`, thus gaining control over internal HTTP requests.
+3. **Exploiting Open Redirects:**
+   - Open redirects, which automatically redirect users to another website, can be leveraged by attackers to redirect internal HTTP requests to a domain of their choice, especially if SSRF vulnerabilities have stringent rules allowing only specific URLs like `https://website.com/`.
 
-This IP address may contain sensitive data in a cloud environment:    
-`169.254.169.254`
 ## Server Side Template Injection (SSTI)
 `TO BE ADDED`
 ## Server Side Includes (SSI)
