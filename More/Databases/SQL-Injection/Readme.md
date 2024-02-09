@@ -22,11 +22,14 @@ When a web application communicates with a database using input from a user that
   - [Time-Based](#time-based)
   - [Practical](#practical-3)
 - [Out Of Band SQL Injection](#out-of-band-sql-injection)
+- [Advanced SQL Injection](#advanced-sql-injection)
+  - [Stacked Queries](#stacked-queries)
+  - [xp_cmdshell](#xp_cmdshell)
 - [Remediation](#remediation)
   - [Remediation](#remediation-1)
   - [Prepared Statements (With Parameterized Queries):](#prepared-statements-with-parameterized-queries)
-  - [Input Validation:](#input-validation)
-  - [Escaping User Input:](#escaping-user-input)
+  - [Input Validation](#input-validation)
+  - [Escaping User Input](#escaping-user-input)
 
 # What is SQLi?
 The point wherein a web application using SQL can turn into SQL Injection is when user-provided data gets included in the SQL query.
@@ -301,6 +304,15 @@ An Out-Of-Band attack is classified by having two different communication channe
 1) An attacker makes a request to a website vulnerable to SQL Injection with an injection payload.
 2) The Website makes an SQL query to the database which also passes the hacker's payload.
 3) The payload contains a request which forces an HTTP request back to the hacker's machine containing data from the database.
+
+# Advanced SQL Injection
+## Stacked Queries
+
+SQL injection attacks can come in various forms. A technique that often gives an attacker a lot of control is known as a "**stacked query**". Stacked queries enable attackers to terminate the original (intended) query and execute additional SQL statements in a single injection, potentially leading to more severe consequences such as data modification and calls to stored procedures or functions.
+
+## xp_cmdshell
+
+**xp_cmdshell** is a system-extended stored procedure in Microsoft SQL Server that enables the execution of operating system commands and programs from within SQL Server. It provides a mechanism for SQL Server to interact directly with the host operating system's command shell. While it can be a powerful administrative tool, it can also be a security risk if not used cautiously when enabled.
 
 # Remediation
 ## Remediation
