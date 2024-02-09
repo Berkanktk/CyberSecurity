@@ -67,7 +67,7 @@
     4.  [Directory Traversal](#directory-traversal)
     5.  [Authentication Bypass](#authentication-bypass)
     6.  [Insecure Direct Object Reference (IDOR)](#insecure-direct-object-reference)
-    7.  [File Inclusion (LFI/RFI)](#file-inclusion)
+    7.  [File Inclusion (LFI/RFI)](#file-inclusion-lfirfi)
     8.  [Cross Site Request Forgery (CSRF)](#cross-site-request-forgery-csrf)
     9.  [Cross Site Scripting (XSS)](#cross-site-scripting-xss)
     10. [Server Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
@@ -2416,7 +2416,7 @@ This type of vulnerability can occur when a web server receives user-supplied in
 Imagine you've just signed up for an online service, and you want to change your profile information. The link you click on goes to `http://shop.berkankutuk.dk/profile?user_id=1337`, and you can see your information.
 
 Curiosity gets the better of you, and you try changing the user_id value to 420 instead (`http://shop.berkankutuk.dk/profile?user_id=420`), and to your surprise, you can now see another user's information. You've now discovered an IDOR vulnerability!
-## File Inclusion
+## File Inclusion (LFI/RFI)
 In some scenarios, web applications are written to request access to files on a given system, including images, static text, and so on via parameters. Parameters are query parameter strings attached to the URL that could be used to retrieve data or perform actions based on user input. The following graph explains and breaking down the essential parts of the URL.
 ![LFI](Images/LFI.png)
 
@@ -2434,6 +2434,13 @@ An example of this can be seen by running this command on a website with this vu
 
 The result would look like this:  
 ![LFI Path](Images/LFI-Path.png)
+
+Another vulnerable code example in PHP:  
+```php
+<?PHP 
+	include($_GET["file"]);
+?>
+```
 
 Similarly, if the web application runs on a Windows server, the attacker needs to provide Windows paths
 
