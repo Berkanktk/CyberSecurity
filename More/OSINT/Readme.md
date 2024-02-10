@@ -1,4 +1,6 @@
 # Open Source Intelligence (OSINT)
+See a list of [top 15  open-source intelligence tools](https://medium.com/@rabbi_security/15-top-open-source-intelligence-tools-adcd3f23c376).
+
 ## What is OSINT?
 Open Source Intelligence (OSINT) is the collection and analysis of information that is gathered from public, or open, sources.
 
