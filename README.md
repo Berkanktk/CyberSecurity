@@ -2710,6 +2710,11 @@ Why analyze metadata?
 * In some cases even more important than content - eg with encrypted HTTPS traffic
 * Tool: `exiftool`
 
+**Log Analysis**  
+Log files are a record of events that happen on a system. They are used to record everything from user activity to system events. Log files are used to track and record the activities of users, processes, and applications on a system.
+
+In order to effectively analyze log files and identify any suspicious activity, it is important to understand the structure of the log files and the type of information they contain. See [Log Analysis](more/Log%20Analysis/Readme.md) for more.
+
 **PDF Analysis**  
 We can try to read the metadata using the program `pdfinfo`. Pdfinfo displays various metadata related to a PDF file, such as title, subject, author, creator, and creation date. If you don’t have `pdfinfo` installed, you can install it using: `sudo apt install poppler-utils`
 
