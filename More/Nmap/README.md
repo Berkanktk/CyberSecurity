@@ -2,6 +2,8 @@
 > Note, there is now a better and much faster alternative to nmap called [rustscan](https://github.com/RustScan/RustScan). 
 
 ## RustScan
+RustScan is the modern day port scanner. It is capable of scanning targets in less than a second, extensible scripting language allowing you to write scripts in Python, and more.
+
 For Kali, first install Rust and Cargo
 ```bash	
 curl https://sh.rustup.rs -sSf | sh
@@ -22,6 +24,42 @@ Usage
 ```bash
 rustscan -a <ip> 
 ```
+
+**Options**  
+`-a` A list of comma separated CIDRs, IPs, or hosts to be scanned  
+`-b <size>` Batch size for parallel scanning (default 4500)  
+`-p <port1>,<port2>` A list of commaseperated ports.  
+`-r <range>` Specify range of ports (ex. 1-1000)  
+`--scripts <script>` Run scripts  
+`-t <timeout>` Timeout in milliseconds to consider port closed (default 1500)    
+`--tries <tries>` Number of tries to consider port closed (default 1)  
+`-q` Quiet mode. 
+
+> Note: RustScan, at the moment, runs Nmap by default. So you can also specify commsnds like `-sC` and `-A`.
+
+### Extensibility
+RustScan's scripting engine can be altered using the "`--scripts`" argument.
+
+To execute a custom script, we need a `rustscan_scripts.toml` file located at `$HOME/.rustscan_scripts.toml`.
+
+The script file should look like:
+
+```toml
+# Test/Example ScriptConfig file
+
+# Tags to filter on scripts. Only scripts containing all these tags will run.
+tags = ["core_approved", "example"]
+
+# If it's present then only those scripts will run which has a tag ports = "80". Not yet implemented.
+#
+# ex.:
+# ports = ["80"]
+# ports = ["80","81","8080"]
+ports = ["80"]
+
+# Only this developer(s) scripts to run. Not yet implemented.
+developer = ["example"]
+```	
 
 # List of Contents
 * [Nmap States](#nmap-states)

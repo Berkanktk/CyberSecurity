@@ -1769,6 +1769,23 @@ Reverse DNS lookup = `-R`
 Scan an IPv6 address = `-6` 
 
 Subnet mask with 255.255.255.0 = `<ip>/24`
+## RustScan
+[RustScan](https://github.com/RustScan/RustScan) is a fast and extensible port scanner written in Rust. See [more](/More/Nmap/README.md#rustscan).
+
+### Syntax
+`rustscan -a 127.0.0.1 -p 53,80,121,65535`
+
+**Options**  
+`-a` A list of comma separated CIDRs, IPs, or hosts to be scanned  
+`-b <size>` Batch size for parallel scanning (default 4500)  
+`-p <port1>,<port2>` A list of commaseperated ports.  
+`-r <range>` Specify range of ports (ex. 1-1000)  
+`--scripts <script>` Run scripts  
+`-t <timeout>` Timeout in milliseconds to consider port closed (default 1500)    
+`--tries <tries>` Number of tries to consider port closed (default 1)  
+`-q` Quiet mode. 
+
+> Note: RustScan, at the moment, runs Nmap by default. So you can also specify commsnds like `-sC` and `-A`.
 ## SQLMap
 [SQLMap](http://sqlmap.org) is an open source penetration testing tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers. 
 
