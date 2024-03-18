@@ -795,9 +795,14 @@ du is a command that can be used to estimate file space usage. It is a part of t
 `du -shL BreachCompilation`
 
 **Options:**  
-`-h` - to get a human-readable output  
-`-s` - to get the total size of the directory  
-`-L` - dereference all symbolic links
+`-a` to display an entry for each file in a file hierarchy  
+`-c` displays total size at the end  
+`-d <number>` to specify the depth of the directory tree to be displayed  
+`-h` to get a human-readable output  
+`-L` dereference all symbolic links  
+`-s` to get the total size of the directory  
+`--time` get the results with timestamps of last modification
+
 ## ncdu
 ncdu is a disk usage analyzer with an ncurses interface. It is a part of the ncdu suite.
 
@@ -2693,7 +2698,7 @@ Use case
 * Recognize file structures and identify file formats
 * Understand a course of events from network logs or memory dumps
 * Hash cracking 
-## File analysis
+## File Analysis
 ### Encodings
 * **Decimal:** 70 111 114 101 110 115 105 99 115 33
 * **Hex:** 46 6f 72 65 6e 73 69 63 73 21
