@@ -132,6 +132,7 @@
 [Convertcsv](https://www.convertcsv.com/sql-to-csv.htm) - convert SQL to CSV     
 [Crackstation (Rainbow tables)](https://crackstation.net) - hash cracker      
 [CSS Reference](https://cssreference.io) - CSS reference    
+[CVECrowd](https://cvecrowd.com) - a platform for sharing and discussing cybersecurity vulnerabilities.  
 [CVE Details](https://www.cvedetails.com/) - CVE security vulnerability advanced database.      
 [CVE Mitre](https://cve.mitre.org) - list of publicly known cybersecurity vulnerabilities.  
 [CVS](https://www.first.org/cvss/calculator/3.1) - Scoring System Calculator     
@@ -184,6 +185,7 @@
 [Morse Code Sound & Vibration Listener](https://databorder.com/transfer/morse-sound-receiver/) - a morse code sound & vibration listener  
 [Namechk](https://namechk.com) - check if your desired username is available on over 500 social networks (username OSINT).  
 [NerdyData](https://www.nerdydata.com) - the search engine for source code  
+[ntlm.pw](https://ntlm.pw) - NTLM password cracker  
 [Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.    
 [Office Recovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
 [PDF24](https://tools.pdf24.org/) - free and easy to use online PDF tools    
@@ -202,7 +204,8 @@
 [ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
 [Shodan](https://www.shodan.io) - learn various pieces of information about the client’s network, without actively connecting to it.  
 [sploitus](https://sploitus.com) - the exploit and tools database.      
-[SSL Scanner](http://www.ssltools.com) - analyze website security.      
+[SSL Scanner](http://www.ssltools.com) - analyze website security.    
+[SSL Scan](https://github.com/rbsec/sslscan) - sslscan tests SSL/TLS enabled services to discover supported cipher suites  
 [Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file     
 [Stego Tricks](https://book.hacktricks.xyz/crypto-and-stego/stego-tricks) - learn stego tricks  
 [Subnet Calculator](https://www.calculator.net/ip-subnet-calculator.html) - IPv4 to IPv6 subnet calculator     
@@ -1029,7 +1032,9 @@ Grep for CTF flag 2/2
 
 **Options**  
 `-n` line numbers for every string found  
-`-E` regular expressions
+`-E` regular expressions  
+`-R` recursive grep  
+`-i` case insensitive
 ## wc
 Word count  
 `wc -l file.txt` get numbers of entries  
@@ -1055,12 +1060,16 @@ Cut parts of lines from specified files or piped data and print the result to st
 ## tr
 Another possibility to replace certain characters from a line with characters defined by us is the tool tr
 
-**Example usage**
-Change delimeter from ":" to " " (space).
+**Example usage**  
+Change delimeter from ":" to " " (space).  
 `tr ":" " "`
 
-Change from lowercase to uppercase
+Change from lowercase to uppercase  
 `tr 'a-z' 'A-Z`
+
+**Options**  
+`-d` delete characters  
+`-s` squeeze characters
 ## column
 Since such results can often have an unclear representation, the tool column is well suited to display such results in tabular form using the "`-t`"
 
@@ -1481,7 +1490,8 @@ feroxbuster uses brute force combined with a wordlist to search for unlinked con
 ## Hashcat
 [Hashcat](https://hashcat.net/hashcat/) is a particularly fast, efficient, and versatile hacking tool that assists brute-force attacks by conducting them with hash values of passwords that the tool is guessing or applying. See [Cheatsheet](https://cheatsheet.haax.fr/passcracking-hashfiles/hashcat_cheatsheet/).  
 
-Learn [How to brute-force passwords using GPU and CPU in Linux](https://miloserdov.org/?p=4726).
+Learn [How to brute-force passwords using GPU and CPU in Linux](https://miloserdov.org/?p=4726).  
+Convert [WPA/WPA2 handshake from a pcap file to a modern hashcat compatible hash file](https://hashcat.net/cap2hashcat/).
 
 ### Syntax
 `hashcat -m <number> <hash_file> <dict_file>`
@@ -1684,7 +1694,7 @@ Be careful; you may lose your user privileges if you migrate from a higher privi
 **Hashdump**  
 The hashdump command will list the content of the SAM database. The SAM (Security Account Manager) database stores user's passwords on Windows systems. These passwords are stored in the NTLM (New Technology LAN Manager) format.
 
-While it is not mathematically possible to "crack" these hashes, you may still discover the cleartext password using online NTLM databases or a rainbow table attack. These hashes can also be used in Pass-the-Hash attacks to authenticate to other systems that these users can access the same network.
+While it is not mathematically possible to "crack" these hashes, you may still discover the cleartext password using online NTLM databases or a rainbow table attack. These hashes can also be used in Pass-the-Hash attacks to authenticate to other systems that these users can access the same network. One example of this is [ntlm.pw](https://ntlm.pw/).
 
 **Search**  
 The search command is useful to locate files with potentially juicy information `search -f flag.txt`.
@@ -2296,6 +2306,7 @@ $(`whoami`)
 & whoami
 && whoami
 ```	
+
 
 See [this](https://github.com/payloadbox/command-injection-payload-list) cheatsheet for more.
 
