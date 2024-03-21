@@ -718,7 +718,7 @@ Search for files from root
 `find / -type f -name passwords.txt`
 
 Find any file with the extension of ".txt"  
-`find -name *.txt`
+`find / -name *.txt`
 
 Check the permissions for what the ‘users’ group can do  
 `find / -group users -type f 2>/dev/null`
