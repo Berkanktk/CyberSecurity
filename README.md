@@ -2213,6 +2213,7 @@ See much more database and SQLi related information [here](/More/Databases/).
 [sqlmap](https://sqlmap.org/) is a tool that automates the process of detecting and exploiting SQL injection flaws and taking over of database servers. See how to use it [here](#SQLMap).
 
 ### Examples of SQL Injection
+* `'' OR 1=1 --'`
 * `' OR 1=1 --`
 * `1' OR 1=1 --`
 * `1' OR 1=1#`
