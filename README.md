@@ -120,6 +120,7 @@
 [Archive.org](https://archive.org/web/) - internet Archieve    
 [ASCII Converter](https://www.branah.com/ascii-converter) - Hex, decimal, binary, base64, and ASCII converter  
 [Assembly Tutorials](https://www.tutorialspoint.com/assembly_programming/index.htm) - assembly tutorials  
+[Base64 Decodr/Encoder](https://appdevtools.com/base64-encoder-decoder) - base64 decoder/encoder  
 [Bcrypt Generator](https://bcrypt-generator.com) - a simple bcrypt generator  
 [Bug Bounty](https://hackerone.com/bug-bounty-programs) - a list of bug bounty programs  
 [Can I use](https://caniuse.com) - provides up-to-date browser support tables for support of front-end web technologies.      
@@ -145,6 +146,7 @@
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.     
 [Diff Checker](https://www.diffchecker.com/image-compare/) - compare images  
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain   
+[DogBolt](https://godbolt.org) - decompiler explorer  
 [EmailHippo](https://emailhippo.com) - a free email verification tool.     
 [Explain Shell](https://explainshell.com) - a tool to help you understand shell commands.  
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
@@ -204,6 +206,7 @@
 [ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
 [Shodan](https://www.shodan.io) - learn various pieces of information about the client’s network, without actively connecting to it.  
 [sploitus](https://sploitus.com) - the exploit and tools database.      
+[SRI Hash Generator](https://www.srihash.org) - Subresource Integrity (SRI) Hash Generator  
 [SSL Scanner](http://www.ssltools.com) - analyze website security.    
 [SSL Scan](https://github.com/rbsec/sslscan) - sslscan tests SSL/TLS enabled services to discover supported cipher suites  
 [Steganographic Decoder](https://futureboy.us/stegano/decinput.html) - decodes the payload that was hidden in a JPEG image or a WAV or AU audio file     
