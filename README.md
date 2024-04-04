@@ -108,9 +108,10 @@
 19. [Shells and Privilege Escalation](#shells-and-privilege-escalation)
     1.  [TTY Shell](#tty-shell)
     2.  [Privilege Escalation](#privilege-escalation)
-20. [Vulnerabilities](#vulnerabilities)
+20. [Vulnerabilities & Threats](#vulnerabilities--threats)
     1.  [Social Engineering](#social-engineering)
-    2.  [Misconfigurations](#misconfigurations)
+    2.  [Denial of Service (DoS)](#denial-of-service-dos--ddos)
+    3.  [Misconfigurations](#misconfigurations)
 
 # Links
 [Abuse.ch](https://abuse.ch) - a collection of malware and threat intelligence feeds.  
@@ -205,7 +206,7 @@
 [RGBA Color Picker](https://rgbacolorpicker.com) - an RGBA color picker    
 [ShellCheck](https://www.shellcheck.net) - finds bugs in your shell scripts.     
 [Shodan](https://www.shodan.io) - learn various pieces of information about the client’s network, without actively connecting to it.  
-[sploitus](https://sploitus.com) - the exploit and tools database.      
+[sploitus](https://sploitus.com) - the exploit and tools database.  
 [SRI Hash Generator](https://www.srihash.org) - Subresource Integrity (SRI) Hash Generator  
 [SSL Scanner](http://www.ssltools.com) - analyze website security.    
 [SSL Scan](https://github.com/rbsec/sslscan) - sslscan tests SSL/TLS enabled services to discover supported cipher suites  
@@ -257,11 +258,10 @@
 - Real-World Bug Hunting
 - Attacking Network Protocols
 
+
 # Services
 ## Network security
-An Intrusion Detection System (IDS) is a system that detects network or system intrusions.  
-
-An Intrusion Detection and Prevention System (IDPS) or simply Intrusion Prevention System (IPS) is a system that can detect and prevent intrusions.
+An Intrusion Detection and Prevention System (IDPS) or simply Intrusion Prevention System (IPS) is a system that can detect and prevent network intrusions.
 
 IDS setups can be divided based on their location in the network into:
 * Host-based IDS (HIDS)
@@ -613,9 +613,10 @@ Hackers are sorted into three hats, where their ethics and motivations behind th
 ## cat
 cat is a Linux shell command that concatenates files and prints on the standard output. It is often used to view the content of a file. For Windows, the equivalent command is `type`.
 
-Example: 
+**Example**  
 `cat -n example.txt`	
 
+**Options**  
 `-n`  number all output lines  
 ## ls
 ls is a Linux shell command that lists directory contents of files and directories.
@@ -831,22 +832,33 @@ Example usage:
 `-g` - to display the amount of memory in gigabytes  
 `-h` - to display the amount of memory in a human-readable format  
 `-s N` - to update the output every N seconds
+## uniq
+uniq is a command-line utility that removes duplicate lines from a sorted file.
+
+**Example**   
+`uniq file.txt` 
+
+**Options**  
+`-c` count the number of occurrences of each line  
+`-d` only print duplicate lines  
+`-u` only print unique lines  
+`-i` to ignore case  
 ## sort
 sort is a command-line utility that sorts lines of text files.
 
 Syntax:  
 `sort [OPTION] [FILE] `
 
-**Options:**  
+**Options:**   
 `-b` - ignore leading blanks  
-`-d` - consider only blank and alphanumeric chars  
-`-f` - ignore case  
-`-g` - to sort general-numeric  
-`-n` - to sort numerically  
-`-h` - to sort human readable numbers  
+`-c` - check if the file is sorted   
 `-r` - to sort in reverse order  
 `-o` - to write output to a file  
-`-u` - to remove duplicates  
+`-u` - sort and remove duplicate lines  
+`-n` - to sort numerically   
+`-g` - to sort general-numeric  
+`-h` - to sort human readable numbers  
+`-f` - ignore case  
 ## diff
 diff is a command-line utility that allows you to compare two files line by line
 
@@ -885,6 +897,7 @@ To make a binary file just executable for the owner of the file, you can use:
 ## chown
 Change the user and group for any file
 
+**Syntax:**  
 `chown user:group file` change user/group  
 
 **Example (change the owner):**  
@@ -896,25 +909,48 @@ The curl command transfers data to or from a network server, using one of the su
 
 **Syntax:**  
 `curl <URL>` simply fetches the URL and prints it to the terminal.  
-`curl -s <URL>"` to suppress the output (statistics)  
-`curl -H "DNT: 1" <URL>` to change the DNT(do not track) header   
-`curl -o page.html <URL>` to save the output to a file  
-`curl -A "something" <URL>` to change the user agent  
-`curl --referer <URL_REF> <URL>` to change the referer   
-`curl -H "X-Forwarded-For: <IP>" <URL>` to change the X-Forwarded-For header  
-`curl -H "Accept-Language: da-DK" <URL>` to change the Accept-Language header (ex. Danish)  
-`curl -H "Date: Mon, 23 11 2018 23:23:23 GMT" <URL>` to change the date  
+
+**Options:**  
+`-s` to suppress the output (statistics)  
+`-#` show progress bar   
+`-o page.html <URL>` to save the output to a file  
+`-O <URL>` to save the output to a file with the same name as the file in the URL  
+`-I <URL>` to get the headers only  
+`-L <URL>` to follow redirects  
+`-b <NAME1=VALUE1;NAME2=VALUE2>` specify cookies  
+`-d <data> <URL>` to send data  
+`-X <METHOD> <URL>` to change the request method  
+`-T <FILE> <URL>` to upload a file  
+`-u <USER>:<PASSWORD>` to authenticate  
+`-A <AGENT> <URL>` to change the user agent  
+`--referer <URL_REF> <URL>` to change the referer   
+`-H <HEADER> <URL>` to add headers  
+`-H "DNT: 1" <URL>` to change the DNT(do not track) header   
+`-H "X-Forwarded-For: <IP>" <URL>` to change the X-Forwarded-For header  
+`-H "Accept-Language: da-DK" <URL>` to change the Accept-Language header (ex. Danish)  
+`-H "Date: Mon, 23 11 2018 23:23:23 GMT" <URL>` to change the date  
 
 **Example:**  
 Real use case example  
-`curl -s -A "PicoBrowser" -H "Date: Mon, 23 11 2018 23:23:23 GMT" -H "DNT: 1" -H "X-Forwarded-For: 2.71.255.255" -H "Accept-Language: sv-SE" --referer http://mercury.picoctf.net:36622 http://mercury.picoctf.net:36622/ | grep -oI "picoCTF{.*}"`
+```bash
+# Download a file
+curl -O http://example.com/file.txt
+
+# Advanced curl command to get the flag
+curl -s -A "PicoBrowser" -H "Date: Mon, 23 11 2018 23:23:23 GMT" -H "DNT: 1" -H "X-Forwarded-For: 2.71.255.255" -H "Accept-Language: sv-SE" --referer http://mercury.picoctf.net:36622 http://mercury.picoctf.net:36622/ | grep -oI "picoCTF{.*}"`
+```
 ## wget
 The wget command downloads files from HTTP, HTTPS, or FTP connection a network.  
 
 Get ftp files recursively  
 `wget -r ftp://ftpuser:<USER>@<IP>`
 
-Adding a `-b` switch will allow us to run wget in the background and return the terminal to its initial state.
+
+**Options:**  
+`-O` to specify the output file  
+`-b` to run in the background  
+`-r` to download recursively  
+`-q` to download in quiet mode  
 ## wash
 Wash is a tool that can be used to crack WPA/WPA2 handshakes. It is a part of the aircrack-ng suite.
 
@@ -1081,15 +1117,62 @@ Since such results can often have an unclear representation, the tool column is 
 ## awk
 Awk is a utility that enables a programmer to write tiny but effective programs in the form of statement
 
-**Example usage**  
-`awk '{print $1, $2}`  
+**Syntax**  
+`awk [flags] [select pattern/find(sort)/commands] [input file]`
 
+**Example usage**  
+Print the first and second field of a file    
+`awk '{print $1, $2}` 
+
+Print number of lines  
+`awk '{print NR, $0}` 
+
+**Options**  
+`-F` field separator (without 'Begin')  
+`-v` variable assignment  
+`-o` output file  
 `$0`: Represents the entire line of text.  
 `$1`: Represents the first field.  
 `$2`: Represents the second field.  
 `$7`: Represents the seventh field.  
 `$45`: Represents the 45th field.  
 `$NF`: Stands for “number of fields,” and represents the last field.  
+`$NR`: Number the lines  
+`$FS`: Field separator  
+`$RS`: Record separator  
+`$OFS`: Output field separator  
+`$ORS`: Output record separator  
+`/<pattern>/`: Represents a pattern to match.   
+
+<details>
+<summary>Advanced examples</summary> <br>
+
+```bash	 
+# Split on space
+awk -F: '{RS=" "} {print $1}'
+
+# Print the first and third field of the /etc/passwd file
+awk -F: '{print $1, $3}' /etc/passwd
+
+# Print the first and third field of a file, split on "o" and print the total number of rows
+awk 'BEGIN {FS="o"} {print $1,$3} END{print "Total Rows=",NR}' 
+
+# Print the first and fourth field of file and print as "Name:ID"
+awk 'BEGIN {FS=" "; OFS=":"} {print $1,$4}' file.txt
+ippsec:34024
+john:50024
+thecybermentor:25923
+liveoverflow:45345
+nahamsec:12365
+stok:1234
+
+# Print the first field of a file and separate with a comma
+awk 'BEGIN {ORS=","} {print $1}' file.txt
+ippsec,john,thecybermentor,liveoverflow,nahamsec,stok
+```
+
+</details>
+
 ## sed
 sed looks for patterns we have defined in the form of regular expressions (regex) and replaces them with another pattern that we have also defined
 
@@ -1112,7 +1195,7 @@ Standard use
 
 Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username and password of "`anonymous`".
 
-Commands:
+Commands:  
 `ls` - list files  
 `cd` - change directory  
 `get` - download file  
@@ -1266,16 +1349,23 @@ hd {options} {files}
 ## xxd
 xxd is a hex editor that can be used to convert binary files to hex and vice versa.
 
-**Syntax**
+**Syntax**  
 `xxd [options] [infile [outfile]]`
+
+**Example**  
+Hexdump to binary and then to plain text  
+`xxd -r -p file.txt` 
 
 **Options**    
 `-b` binary digit dump  
+`-p` plain hex dump (continuous string)  
 `-e` little-endian dump  
-`-l len` stop after <len> octets.  
-`-r` reverse operation: convert (or patch) hexdump into binary.  
+`-l <LEN>` stop after <len> octets.  
+`-r` hex dump to binary (plain text)  
 `-d` show offset in decimal instead of hex.  
 `-u` use upper case hex letters.  
+`-i` output in C include file style.  
+`-s` start at offset.  
 ## exiftool
 Is a command-line application for reading, writing and editing meta information in a wide variety of files.
 
@@ -2293,6 +2383,7 @@ Useful payloads for command injection (windows):
 Commands that quickly can be tested:
 ```bash
 whoami
+$(whoami)
 | whoami
 ; whoami
 ' whoami
@@ -2310,6 +2401,8 @@ $(`whoami`)
 & whoami
 && whoami
 ```	
+
+When found `cat /etc/os-release` can be used to find the OS version and other useful information.
 
 A useful tool in Windows we can use to gain RCE is `certutil.exe` (`certutil.exe -urlcache -f <url> <filename>`). This command is a native Windows CLI program installed as part of Certificate Services. It's handy in engagements because it is a binary signed by Microsoft and allows us to make HTTP/s connections. In our scenario, we can use it to make an HTTP request to download a file from a web server that we control to confirm that the command was executed.
 
@@ -2878,12 +2971,11 @@ Collection of steganography tools - helps with CTF challenges
 
 
 ### Strings
-Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego challenges. Usually the embedded data is password protected or encrypted
-and sometimes the password is actaully in the file itself and can be easily viewed by using strings.
-It’s a default linux tool so you don’t need to install anything.
+Strings is a linux tool that displays printable strings in a file. That simple tool can be very helpful when solving stego & binary challenges. Usually the embedded data is password protected or encrypted and sometimes the password is actaully in the file itself and can be easily viewed by using strings. It’s a default linux tool so you don’t need to install anything.
 
 **Useful commands:**  
-`strings file`  displays printable strings in the given file
+`strings file`  displays printable strings in the given file  
+`strings -el file` displays printable strings in the given file in little-endian format
 
 ### Exiftool
 Sometimes important stuff is hidden in the metadata of the image or the file , exiftool can be
@@ -3178,7 +3270,7 @@ A decompiler is a computer program that takes an executable file as input, and a
 ### Jar files
 A jar file is a Java archive file that can contain multiple files and folders. Jar files are mainly used for archiving, compression and decompression. Jar files are similar to zip files, but jar files can have additional attributes that are required for a Java application to run.
 
-To decompile a jar file, [procyon](https://manpages.ubuntu.com/manpages/jammy/man1/procyon.1.html) can be used.
+To decompile a jar file, [procyon](https://manpages.ubuntu.com/manpages/jammy/man1/procyon.1.html) can be used. For online [DogBolt](https://www.dogbolt.com/) is a good option.
 
 ```bash
 berkankutuk@kali:~$ sudo apt-get install -y procyon-decompiler
@@ -3213,6 +3305,8 @@ Now, if we use our private key, we can decrypt the file and get the original mes
 
 ### Bit Shift
 Sometimes the letters may be shifted by a stated hint, like a binary bit shift ( x >> 1 ) or ( x << 1 ).
+
+[Bit Calculator](https://bit-calculator.com/bit-shift-calculator) is a good tool to calculate bit shifts. For other bit operations, use the [RapidTables](https://www.rapidtables.com/calc/math/binary-calculator.html) tool.
 
 ### Reversed Text
 Sometimes a "ciphertext" is just as easy as reversed text. Don't forgot to check under this rock! You can reverse a string in Python like so:
@@ -3532,7 +3626,7 @@ Lets say the `cat` command had the 's' in its SUID. Then you would be able to us
 #### Using SSH
 Create a `.ssh` folder in the home directory of the user you want to keep a backdoor. Keep in mind that the permissions of the `.ssh` folder should be `700` and the files withing should be `600`.
 
-# Vulnerabilities
+# Vulnerabilities & Threats
 A vulnerability in cybersecurity is defined as a weakness or flaw in the design, implementation or behaviours of a system or application. An attacker can exploit these weaknesses to gain access to unauthorised information or perform unauthorised actions
 
 There are arguably five main categories of vulnerabilities:
@@ -3581,6 +3675,9 @@ In case the mail is encoded using base64, the following command can be used to d
 Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rsoa-and-rp/32.0?topic=SSBRUQ_32.0.0/com.ibm.resilient.doc/install/resilient_install_defangURLs.htm).
 
 Expand shortened links with this [tool](https://www.expandurl.net).
+## Denial of Service (DoS & DDoS)
+`to be added`
+
 ## Misconfigurations
 ### Printer Hacking (IPP)
 Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET).  
@@ -3593,4 +3690,4 @@ Running `python pret.py` will start an automatic printer discovery in your local
 
 ---
 
-<h3 align="center"><strong>Did you make this far without considering a star? :p</strong></h3>
+<h3 align="center"><strong>Did you make it this far without considering a star? :p</strong></h3>
