@@ -1,5 +1,7 @@
 # Wireshark
 
+![Wireshark](../../Images/Wireshark/Overview.png)
+
 ## Introduction
 Wireshark, a tool used for creating and analyzing PCAPs (network packet capture files), is commonly used as one of the best packet analysis tools. In this room, we will look at the basics of installing Wireshark and using it to perform basic packet analysis and take a deep look at each common networking protocol.
 
@@ -40,15 +42,52 @@ Also works for udp
 
 
 ## Packet Dissection
-- You can double click on a packet in capture to open its details. Packets consist of 5 to 7 layers based on the OSI model.
-- Frame (Layer 1) -- This will show you what frame / packet you are looking at as well as details specific to the Physical layer of the OSI model.
-- Source [MAC] (Layer 2) -- This will show you the source and destination MAC Addresses; from the Data Link layer of the OSI model.
-- Source [IP] (Layer 3) -- This will show you the source and destination IPv4 Addresses; from the Network layer of the OSI model.
-- Protocol (Layer 4) -- This will show you details of the protocol used (UDP/TCP) along with source and destination ports; from the Transport layer of the OSI model.
-- Application Protocol (Layer 5) -- This will show details specific to the protocol being used such HTTP, FTP, SMB, etc. From the Application layer of the OSI model.
-- Application Data -- This is an extension of layer 5 that can show the application-specific data.
+Packet dissection is also known as protocol dissection, which investigates packet details by decoding available protocols and fields.
+
+You can double click on a packet in capture to open its details. Packets consist of 5 to 7 layers based on the OSI model.
+- Frame (Layer 1) - This will show you what frame / packet you are looking at as well as details specific to the Physical layer of the OSI model.
+- Source [MAC] (Layer 2) - This will show you the source and destination MAC Addresses; from the Data Link layer of the OSI model.
+- Source [IP] (Layer 3) - This will show you the source and destination IPv4 Addresses; from the Network layer of the OSI model.
+- Protocol (Layer 4) - This will show you details of the protocol used (UDP/TCP) along with source and destination ports; from the Transport layer of the OSI model.
+- Application Protocol (Layer 5) - This will show details specific to the protocol being used such HTTP, FTP, SMB, etc. From the Application layer of the OSI model.
+- Application Data - This is an extension of layer 5 that can show the application-specific data.
 
 # Usage and filtering
+## Comparison Operators
+| English | C-Like | Description | Example |
+|:---:|:---:|:---:|:---:|
+| eq | == | Equal | ip.src == 10.10.10.100 |
+| ne | != | Not equal | ip.src != 10.10.10.100 |
+| gt | > | Greater than | ip.ttl > 250 |
+| lt | < | Less Than | ip.ttl < 10 |
+| ge | >= | Greater than or equal to | ip.ttl >= 0xFA |
+| le | <= | Less than or equal to | ip.ttl <= 0xA |
+
+## Logical Operators
+| English   | C-Like | Description   | Example |
+|:---:|:---:|:---:|:---:|
+| and | && | Logical AND | (ip.src == 10.10.10.100) AND (ip.src == 10.10.10.111) |
+| or | \|\| | Logical OR | (ip.src == 10.10.10.100) OR (ip.src == 10.10.10.111) |
+| not | ! | Logical NOT | !(ip.src == 10.10.10.222) Note: Usage of !=value is deprecated; using it could provide inconsistent results. Using the !(value) style is suggested for more consistent results. |
+
+## Packet Filter Toolbar
+| Color | Description |
+|:---:|---|
+| Green | Valid filter |
+| Red | Invalid filter |
+| Yellow | Warning filter. This filter works, but it is unreliable, and it is suggested to change it with a valid filter. |
+
+## IP Filters
+IP filters help analysts filter the traffic according to the IP level information from the packets (Network layer of the OSI model).
+
+| Filter | Description |
+|:---:|:---:|
+| ip | Show all IP packets. |
+| ip.addr == 10.10.10.111 | Show all packets containing IP address 10.10.10.111. |
+| ip.addr == 10.10.10.0/24 | Show all packets containing IP addresses from 10.10.10.0/24 subnet. |
+| ip.src == 10.10.10.111 | Show all packets originated from 10.10.10.111 |
+| ip.dst == 10.10.10.111 | Show all packets sent to 10.10.10.111 |
+| ip.addr vs ip.src/ip.dst | Note: The ip.addr filters the traffic without considering the packet direction. The ip.src/ip.dst filters the packet depending on the packet direction. |
 
 ## ARP Traffic
 Sort after opcode  
@@ -65,10 +104,16 @@ There are a few important things within the packet details that we can take note
 There are two other details within the packet that are useful to analyze: timestamp and data. The timestamp can be useful for identifying the time the ping was requested it can also be useful to identify suspicious activity in some cases. We can also look at the data string which will typically just be a random data string.
 
 
-## TCP Traffic
-TCP or Transmission Control Protocol handles the delivery of packets including sequencing and errors.
+## TCP/UDP Traffic
+TCP or Transmission Control Protocol handles the delivery of packets including sequencing and errors. UDP or User Datagram Protocol is a connectionless protocol that does not guarantee delivery.
 
 Red packet = port is closed
+
+| Filter | Description | Filter | Expression |
+|:---:|:---:|:---:|:---:|
+| tcp.port == 80 | Show all TCP packets with port 80  | udp.port == 53 | Show all UDP packets with port 53 |
+| tcp.srcport == 1234 | Show all TCP packets originating from port 1234 | udp.srcport == 1234 | Show all UDP packets originating from port 1234 |
+| tcp.dstport == 80 | Show all TCP packets sent to port 80 | udp.dstport == 5353 | Show all UDP packets sent to port 5353 |
 
 ### TCP Packet Analysis
 The main thing that we want to look for when looking at a TCP packet is the sequence number and acknowledgment number.
@@ -76,7 +121,14 @@ The main thing that we want to look for when looking at a TCP packet is the sequ
 ## HTTP Traffic
 HTTP is one of the most straight forward protocols for packet analysis, the protocol is straight to the point and does not include any handshakes or prerequisites before communication.
 
-Above we can see a sample HTTP packet, looking at an HTTP packet we can easily gather information since the data stream is not encrypted like the HTTP counterpart HTTPS. Some of the important information we can gather from the packet is the Request URI, File Data, Server.
+Looking at an HTTP packet we can easily gather information since the data stream is not encrypted like the HTTP counterpart HTTPS. Some of the important information we can gather from the packet is the Request URI, File Data, Server.
+
+| Filter | Description |
+|:---:|:---:|
+| http | Show all HTTP packets |
+| http.response.code == 200 | Show all packets with HTTP response code "200" |
+| http.request.method == "GET" | Show all HTTP GET requests |
+| http.request.method == "POST" | Show all HTTP POST requests |
 
 ### Practical HTTP Packet Analysis
 Export HTTP Object. This feature will allow us to organize all requested URIs in the capture. To use Export HTTP Object navigate to file > Export Objects > HTTP.
@@ -96,6 +148,13 @@ DNS-Servers Only
 UDP
 
 If anyone of these is out of place then the packets should be looked at further and should be considered suspicious.
+
+| Filter | Description |
+|:---:|:---:|
+| dns | Show all DNS packets |
+| dns.flags.response == 0 | Show all DNS requests |
+| dns.flags.response == 1 | Show all DNS responses |
+| dns.qry.type == 1 | Show all DNS "A" records |
 
 
 ### DNS Traffic Overview
@@ -123,3 +182,96 @@ You can use an RSA key in Wireshark in order to view the data unencrypted. In or
 **Protocol**: http  
 **Keyfile**: RSA key location  
 
+## Other Useful Filters
+| Filter | Description |
+|---|---|
+| frame.number == 100 | Show the 100th packet |
+| ip.ttl < 10 | Show all packets with a TTL less than 10 |
+| tcp.port == 4444 | Show all packets with port 4444 |
+| tcp.port == 80 && http.request.method == “GET” | Show all packets with port 80 and HTTP GET requests |
+| dns.qry.type == 1 && dns.flags.response == 1 | Show all packets with DNS A records and responses |
+
+## Advanced Filters
+### The `contains` Operator
+The contains operator is used to filter packets that contain a specific string. This can be useful when looking for packets that contain a specific piece of information.
+
+| Filter | contains |
+|:---:|:---|
+| Type | Comparison Operator |
+| Description | Search a value inside packets. It is case-sensitive and provides similar functionality to the "Find" option by focusing on a specific field. |
+| Example | Find all "Apache" servers. |
+| Workflow | List all HTTP packets where packets' "server" field contains the "Apache" keyword. |
+| Usage | http.server contains "Apache" |
+
+### The `matches` Operator
+The matches operator is used to filter packets that match a specific regular expression. This can be useful when looking for packets that match a specific pattern.
+
+| Filter | matches |
+|:---:|:---|
+| Type | Comparison Operator |
+| Description | Search a pattern of a regular expression. It is case insensitive, and complex queries have a margin of error. |
+| Example | Find all .php and .html pages. |
+| Workflow | List all HTTP packets where packets' "host" fields match keywords ".php" or ".html". |
+| Usage | http.host matches "\.(php\|html)" |
+
+### The `in` Operator
+The in operator is used to filter packets that contain a specific value in a list. This can be useful when looking for packets that contain a specific value in a list.
+
+| Filter | in |
+|:---:|:---|
+| Type |  Set Membership |
+| Description | Search a value or field inside of a specific scope/range. |
+| Example | Find all packets that use ports 80, 443 or 8080. |
+| Workflow | List all TCP packets where packets' "port" fields have values 80, 443 or 8080. |
+| Usage | tcp.port in {80 443 8080} |
+
+### The `upper` and `lower` Operators
+The upper and lower operators are used to filter packets that contain a specific value in uppercase or lowercase. This can be useful when looking for packets that contain a specific value in uppercase or lowercase.
+
+| Filter | lower |
+|:---:|:---|
+| Type | Function |
+| Description | Convert a string value to lowercase. |
+| Example | Find all "apache" servers. |
+| Workflow | Convert all HTTP packets' "server" fields info to lowercase and list packets that contain the "apache" keyword. |
+| Usage | lower(http.server) contains "apache" |
+
+| Filter | upper |
+|:---:|:---|
+| Type | Function |
+| Description | Convert a string value to uppercase. |
+| Example | Find all "APACHE" servers. |
+| Workflow | Convert all HTTP packets' "server" fields to uppercase and list packets that contain the "APACHE" keyword. |
+| Usage | upper(http.server) contains "APACHE" |
+
+### The `string` Operator
+The string operator is used to filter packets that contain a specific string. This can be useful when looking for packets that contain a specific piece of information.
+
+| Filter | string |
+|:---:|:---|
+| Type | Function |
+| Description | Convert a non-string value to a string. |
+| Example | Find all frames with odd numbers. |
+| Workflow | Convert all "frame number" fields to string values, and list frames end with odd values. |
+| Usage | string(frame.number) matches "[13579]$" |
+
+# Packet Operations
+## Statistics
+### Protocol Hierarchy
+![Wireshark Protocol Hierarchy](../../Images/Wireshark/Hierarchy.png)
+This feature will allow you to see the protocol hierarchy in the capture. This can be useful to identify where a discrepancy is originating from. To use the Protocol Hierarchy feature navigate to Statistics > Protocol Hierarchy.
+
+### Resolved Addresses
+![Wireshark Resolved Addresses](../../Images/Wireshark/Resolved.png)
+This feature will allow you to see all the resolved addresses in the capture. This can be useful to identify where a discrepancy is originating from. To use the Resolved Addresses feature navigate to Statistics > Resolved Addresses.
+
+### Conversations
+![Wireshark Conversations](../../Images/Wireshark/Conversations.png)
+This feature will allow you to see all the conversations in the capture. This can be useful to identify where a discrepancy is originating from. To use the Conversations feature navigate to Statistics > Conversations.
+
+### Endpoints
+![Wireshark Endpoints](../../Images/Wireshark/Endpoints.png)
+This feature will allow you to see all the endpoints in the capture. This can be useful to identify where a discrepancy is originating from. To use the Endpoints feature navigate to Statistics > Endpoints.
+
+### IPv4 Statistics
+Navigating to Statistics>IPv4 Statistics>Destinations and Ports brings up a list of every destination address along with a count
