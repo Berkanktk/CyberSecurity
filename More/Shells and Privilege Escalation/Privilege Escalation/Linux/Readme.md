@@ -12,21 +12,33 @@ It's rare when performing a real-world penetration test to be able to gain a foo
 * Execute any administrative command
 
 # Table of Contents
-1. [Enumeration](#enumeration)
+1. [Enumeration & Linux Forensics](#enumeration--linux-forensics)
    1. [hostname](#hostname)
    2. [uname -a](#uname--a)
    3. [/proc/version](#procversion)
-   4. [/etc/issue](#etcissue)
-   5. [ps Command](#ps-command)
-   6. [env](#env)
-   7. [sudo -l](#sudo--l)
-   8. [ls -la](#ls--la)
-   9. [Id](#id)
-   10. [/etc/passwd](#etcpasswd)
-   11. [history](#history)
-   12. [ifconfig](#ifconfig)
-   13. [netstat](#netstat)
-   14. [find Command](#find-command)
+   4. [/etc/os-release](#etcos-release)
+   5. [/etc/issue](#etcissue)
+   6. [/etc/group](#etcgroup)
+   7. [/etc/sudoers](#etcsudoers)
+   8. [ps Command](#ps-command)
+   9. [env](#env)
+   10. [sudo -l](#sudo--l)
+   11. [ls -la](#ls--la)
+   12. [Id](#id)
+   13. [/etc/passwd](#etcpasswd)
+   14. [history](#history)
+   15. [Sudo execution history](#sudo-execution-history)
+   16. [Bash history](#bash-history)
+   17. [Vim history](#vim-history)
+   18. [Login Information](#login-information)
+   19. [Authentication logs](#authentication-logs)
+   20. [Syslog](#syslog)
+   21. [Third-party logs](#third-party-logs)
+   22. [Service Startup](#service-startup)
+   23. [.Bashrc](#bashrc)
+   24. [ifconfig](#ifconfig)
+   25. [netstat](#netstat)
+   26. [find Command](#find-command)
 2. [Automated Enumeration Tools](#automated-enumeration-tools)
 3. [Privilege Escalation Techniques](#privilege-escalation-techniques)
    1. [Kernel Exploits](#kernel-exploits)
@@ -37,9 +49,8 @@ It's rare when performing a real-world penetration test to be able to gain a foo
    6. [PATH Variable](#path-variable)
    7. [NFS](#nfs)
 
-# Enumeration
+# Enumeration & Linux Forensics
 Enumeration is the process of gathering information about the target system. This information can be used to identify potential vulnerabilities and to determine the best way to exploit them. The following are some of the most common enumeration techniques used in Linux environments.
-
 
 ## hostname
 The `hostname` command will return the hostname of the target machine. Although this value can easily be changed or have a relatively meaningless string (e.g. Ubuntu-3487340239), in some cases, it can provide information about the target system’s role within the corporate network (e.g. SQL-PROD-01 for a production SQL server).
@@ -52,8 +63,17 @@ The proc filesystem (procfs) provides information about the target system proces
 
 Looking at /proc/version may give you information on the kernel version and additional data such as whether a compiler (e.g. GCC) is installed.
 
+## /etc/os-release
+The /etc/os-release file contains information about the operating system. This file is present on most modern Linux distributions and can provide information about the system, including the operating system name, version, and ID.
+
 ## /etc/issue
 Systems can also be identified by looking at the /etc/issue file. This file usually contains some information about the operating system but can easily be customized or changes. While on the subject, any file containing system information can be customized or changed. For a clearer understanding of the system, it is always good to look at all of these.
+
+## /etc/group
+The /etc/group file contains information about the groups on the system. This file can be useful when looking for potential privilege escalation vectors. For example, if a group has write permissions to a critical file, we can use this information to escalate our privileges.
+
+## /etc/sudoers
+The /etc/sudoers file contains information about which users can run which commands as root. This file can be useful when looking for potential privilege escalation vectors. For example, if a user can run a specific command as root, we can use this information to escalate our privileges.
 
 ## ps Command
 The `ps` command is an effective way to see the running processes on a Linux system. Typing ps on your terminal will show processes for the current shell.
@@ -69,13 +89,13 @@ The “ps” command provides a few useful options.
 * `ps axjf`: View process tree 
 * `ps aux`: The `aux` option will show processes for all users (a), display the user that launched the process (u), and show processes that are not attached to a terminal (x). Looking at the ps aux command output, we can have a better understanding of the system and potential vulnerabilities.
 
-![PS](../../../../../../Images/Privilege-escalation/ps.png)
+![PS](../../../../Images/Privilege-escalation/ps.png)
 
 ## env
 The `env` command will show environmental variables.
 The PATH variable may have a compiler or a scripting language (e.g. Python) that could be used to run code on the target system or leveraged for privilege escalation.
 
-![ENV](../../../../../../Images/Privilege-escalation/env.png)
+![ENV](../../../../Images/Privilege-escalation/env.png)
 
 ## sudo -l
 The target system may be configured to allow users to run some (or all) commands with root privileges. The `sudo -l` command can be used to list all commands your user can run using `sudo`.
@@ -85,41 +105,112 @@ One of the common commands used in Linux is probably `ls`.
 
 While looking for potential privilege escalation vectors, please remember to always use the `ls` command with the `-la` parameter. A “secret.txt” file can easily be missed using the `ls` or` ls -l` commands.
 
-![ls](../../../../../../Images/Privilege-escalation/ls.png)
-
+![ls](../../../../Images/Privilege-escalation/ls.png)
 
 ## Id
 The `id` command will provide a general overview of the user’s privilege level and group memberships.
 
 It is worth remembering that the `id` command can also be used to obtain the same information for another user as seen below.
 
-![ID](../../../../../../Images/Privilege-escalation/id.png)
-
+![ID](../../../../Images/Privilege-escalation/id.png)
 
 ## /etc/passwd
 Reading the `/etc/passwd` file can be an easy way to discover users on the system.
 
-![Passwd1](../../../../../../Images/Privilege-escalation/passwd1.png)
+![Passwd1](../../../../Images/Privilege-escalation/passwd1.png)
 
 While the output can be long and a bit intimidating, it can easily be cut and converted to a useful list for brute-force attacks.
 
-![Passwd2](../../../../../../Images/Privilege-escalation/passwd2.png)
+![Passwd2](../../../../Images/Privilege-escalation/passwd2.png)
 
 Remember that this will return all users, some of which are system or service users that would not be very useful. Another approach could be to grep for “home” as real users will most likely have their folders under the “home” directory.
 
-![Passwd3](../../../../../../Images/Privilege-escalation/passwd3.png)
+![Passwd3](../../../../Images/Privilege-escalation/passwd3.png)
+
+A third an alternative way of formatting this text is by using columns. This will give you a better overview of the users and their respective groups.
+
+```bash
+cat /etc/passwd| column -t -s :
+```
 
 ## history
 Looking at earlier commands with the `history` command can give us some idea about the target system and, albeit rarely, have stored information such as passwords or usernames.
 
+## Sudo execution history
+All the commands that are run on a Linux host using sudo are stored in the auth log. We can use the grep utility to filter out only the required information from the auth log.
+
+```bash
+cat /var/log/auth.log* | grep -i COMMAND| tail
+```
+
+## Bash history
+Any commands other than the ones run using sudo are stored in the bash history. Every user's bash history is stored separately in that user's home folder. Therefore, when examining bash history, we need to get the bash_history file from each user's home directory. It is important to examine the bash history from the root user as well, to make note of all the commands run using the root user as well.
+
+```bash
+cat ~/.bash_history
+```
+
+## Vim history
+The Vim text editor stores logs for opened files in Vim in the file named .viminfo in the home directory. This file contains command line history, search string history, etc. for the opened files. We can use the `cat` utility to open `.viminfo`.
+
+```bash
+cat ~/.viminfo
+```
+
+## Login Information
+In the /var/log directory, we can find log files of all kinds including `wtmp` and `btmp`. The `btmp` file saves information about failed logins, while the `wtmp` keeps historical data of logins. These files are not regular text files that can be read using `cat`, `less` or `vim`; instead, they are binary files, which have to be read using the last utility.
+
+```bash
+last -f /var/log/wtmp
+```
+
+## Authentication logs
+Every user that authenticates on a Linux host is logged in the auth log. The auth log is a file placed in the location `/var/log/auth.log`. It can be read using the `cat` utility, however, given the size of the file, we can use `tail`, `head`, `more` or `less` utilities to make it easier to read.
+
+```bash
+cat /var/log/auth.log | tail
+```
+
+## Syslog
+The Syslog contains messages that are recorded by the host about system activity. The detail which is recorded in these messages is configurable through the logging level. We can use the cat utility to view the Syslog, which can be found in the file /var/log/syslog. Since the Syslog is a huge file, it is easier to use tail, head, more or less utilities to help make it more readable.
+
+```bash
+cat /var/log/syslog* | head
+```
+
+## Third-party logs
+Similar to the syslog and authentication logs, the /var/log/ directory contains logs for third-party applications such as webserver, database, or file share server logs. 
+
+```bash
+ls /var/log
+```
+
+## Service Startup
+Like Windows, services can be set up in Linux that will start and run in the background after every system boot. A list of services can be found in the /etc/init.d directory.  We can check the contents of the directory by using the ls utility.
+
+```bash
+ls /etc/init.d/
+```
+
+## .Bashrc
+The `.bashrc` file is a script that is executed whenever a user opens a new terminal window. This file can be used to set environment variables, aliases, and functions. It can also be used to run commands when a new terminal window is opened. The `.bashrc` file is located in the user’s home directory.
+
+```bash
+cat ~/.bashrc
+```
+
+System-wide settings are stored in `/etc/bash.bashrc` and `/etc/profile` files, so it is often a good idea to take a look at these files as well.
+
+
+
 ## ifconfig
 The target system may be a pivoting point to another network. The `ifconfig` command will give us information about the network interfaces of the system. The example below shows the target system has three interfaces (eth0, tun0, and tun1). Our attacking machine can reach the eth0 interface but can not directly access the two other networks.
 
-![ifconfig](../../../../../../Images/Privilege-escalation/ifconfig.png)
+![ifconfig](../../../../Images/Privilege-escalation/ifconfig.png)
 
 This can be confirmed using the ip route command to see which network routes exist.
 
-![ip route](../../../../../../Images/Privilege-escalation/route.png)
+![ip route](../../../../Images/Privilege-escalation/route.png)
 
 ## netstat
 Following an initial check for existing interfaces and network routes, it is worth looking into existing communications. The `netstat` command can be used with several different options to gather information on existing connections.
@@ -328,6 +419,17 @@ Cron jobs are used to run scripts or binaries at specific times. By default, the
 The idea is quite simple; if there is a scheduled task that runs with root privileges and we can change the script that will be run, then our script will run with root privileges.
 
 Cron job configurations are stored as crontabs (cron tables) to see the next time and date the task will run.
+
+```bash
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+```
 
 Each user on the system have their crontab file and can run specific tasks whether they are logged in or not. As you can expect, our goal will be to find a cron job set by root and have it run our script, ideally a shell.
 
