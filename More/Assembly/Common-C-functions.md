@@ -104,3 +104,9 @@ int strncmp(const char *s1, const char *s2, size_t n);
 ```
 
 The strncmp function takes three arguments. The first argument is the first string, the second argument is the second string, and the third argument is the number of characters to be compared. The strncmp function compares the two strings and returns an integer less than, equal to, or greater than zero if the first string is found, respectively, to be less than, to match, or be greater than the second string.
+
+# puts
+The puts function is used to print a string to the standard output followed by a newline character. It is defined in the stdio.h header file. The puts function is defined as follows:
+```c
+int puts(const char *s);
+```

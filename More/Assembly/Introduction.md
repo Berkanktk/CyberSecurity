@@ -9,14 +9,14 @@ Machine code is usually represented by a more readable form of the code called a
 So before an executable file is produced, the source code is first compiled into assembly(.s files), after which the assembler converts it into an object program(.o files), and operations with a linker finally make it an executable. 
 ## Syntax
 x86 (both 32- and 64-bit) has two alternative syntaxes available for it. Some assemblers can only work with one or the other, while a few can work with both. These alternatives are Intel and AT&T. I've tried to show the differences below
-|  | Intel | AT&T |
-|---|---|---|
-| Comments | ; | // |
-| Instructions | Untagged add | Tagged with operand sizes: addq |
-| Registers | eax, ebx, etc. | %eax,%ebx, etc. |
-| Immediates | 0x100 | $0x100 |
-| Indirect | [eax] | (%eax) |
-| General indirect | [base + reg + reg * scale + displacement] | displacement(reg, reg, scale) |
+|                  | Intel                                     | AT&T                            |
+| ---------------- | ----------------------------------------- | ------------------------------- |
+| Comments         | ;                                         | //                              |
+| Instructions     | Untagged add                              | Tagged with operand sizes: addq |
+| Registers        | eax, ebx, etc.                            | %eax,%ebx, etc.                 |
+| Immediates       | 0x100                                     | $0x100                          |
+| Indirect         | [eax]                                     | (%eax)                          |
+| General indirect | [base + reg + reg * scale + displacement] | displacement(reg, reg, scale)   |
 
 To use AT&T in radare2 = `e asm.syntax=att`  
 To use Intel in radare2 = `e asm.syntax=intel`
@@ -124,23 +124,23 @@ The core of assembly language involves using registers to do the following:
 
 Since the architecture is x86-64, the registers are 64 bit and Intel has a list of 16 registers:
 | 64 bit | 32 bit |
-|:---:|:---:|
-| %rax | %eax |
-| %rbx | %ebx |
-| %rcx | %ecx |
-| %rdx | %edx |
-| %rsi | %esi |
-| %rdi | %edi |
-| %rsp | %esp |
-| %rbp | %ebp |
-| %r8 | %r8d |
-| %r9 | %r9d |
-| %r10 | %r10d |
-| %r11 | %r11d |
-| %r12 | %r12d |
-| %r13 | %r13d |
-| %r14 | %r14d |
-| %r15 | %r15d |
+| :----: | :----: |
+|  %rax  |  %eax  |
+|  %rbx  |  %ebx  |
+|  %rcx  |  %ecx  |
+|  %rdx  |  %edx  |
+|  %rsi  |  %esi  |
+|  %rdi  |  %edi  |
+|  %rsp  |  %esp  |
+|  %rbp  |  %ebp  |
+|  %r8   |  %r8d  |
+|  %r9   |  %r9d  |
+|  %r10  | %r10d  |
+|  %r11  | %r11d  |
+|  %r12  | %r12d  |
+|  %r13  | %r13d  |
+|  %r14  | %r14d  |
+|  %r15  | %r15d  |
 
 `eax` = return value of a function  
 `rax` and `rdx` = general purpose registers
@@ -161,22 +161,22 @@ To move data using registers, the following instruction is used:
 * Transferring values from memory which is shown by putting registers inside brackets e.g. `movq %rax (%rbx)` which means move value stored in %rax to memory location represented by %rbx.
 
 The last letter of the mov instruction represents the size of the data:
-| Intel Data Type | Suffix | Size(bytes) |
-|:---:|:---:|:---:|
-| Byte | b | 1 |
-| Word | w | 2 |
-| Double Word | l | 4 |
-| Quad Word | q | 8 |
-| Single Precision | s | 4 |
-| Double Precision | l | 8 |
+| Intel Data Type  | Suffix | Size(bytes) |
+| :--------------: | :----: | :---------: |
+|       Byte       |   b    |      1      |
+|       Word       |   w    |      2      |
+|   Double Word    |   l    |      4      |
+|    Quad Word     |   q    |      8      |
+| Single Precision |   s    |      4      |
+| Double Precision |   l    |      8      |
  
 Data types are also represented by the following:
-| Data types | Bytes | Bits (x64 bit computers) |
-|:---:|:---:|:---:|
-BYTE 	|1 	|8   
-WORD 	|2 	|16 
-DWORD 	|4 	|32   
-QWORD 	|8 	|64 
+| Data types | Bytes | Bits (x64 bit computers) |                      Number range                       |
+| :--------: | :---: | :----------------------: | :-----------------------------------------------------: |
+|    BYTE    |   1   |            8             |                       -128 to 127                       |
+|    WORD    |   2   |            16            |                    -32,768 to 32,767                    |
+|   DWORD    |   4   |            32            |             -2,147,483,648 to 2,147,483,647             |
+|   QWORD    |   8   |            64            | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 |
 
 When dealing with memory manipulation using registers, there are other cases to be considered:
 * (Rb, Ri) = MemoryLocation[Rb + Ri]
@@ -201,21 +201,21 @@ If statements use 3 important instructions in assembly:
 * `testq source2, source1`: it is like computing a&b without setting destination
 
 Jump instructions are used to transfer control to different instructions, and there are different types of jumps:
-| Instruction | Useful to... |
-|---|---|
-| jmp | Always jump |
-| ja | Unsigned > |
-| jae | Unsigned >= |
-| jb | Unsigned < |
-| jbe | Unsigned <= |
-| jc | Unsigned overflow, or multiprecision add |
-| jecxz | Compare ecx with 0      (Seriously!?) |
-| je | Equality |
-| jg | Signed > |
-| jge | Signed >= |
-| jl | Signed < |
-| jle | Signed <= |
-| jne | Inequality |
-| jo | Signed overflow |
+| Instruction | Useful to...                             |
+| ----------- | ---------------------------------------- |
+| jmp         | Always jump                              |
+| ja          | Unsigned >                               |
+| jae         | Unsigned >=                              |
+| jb          | Unsigned <                               |
+| jbe         | Unsigned <=                              |
+| jc          | Unsigned overflow, or multiprecision add |
+| jecxz       | Compare ecx with 0      (Seriously!?)    |
+| je          | Equality                                 |
+| jg          | Signed >                                 |
+| jge         | Signed >=                                |
+| jl          | Signed <                                 |
+| jle         | Signed <=                                |
+| jne         | Inequality                               |
+| jo          | Signed overflow                          |
 
 Unsigned integers cannot be negative while signed integers represent both positive and negative values.
