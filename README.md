@@ -3290,7 +3290,7 @@ Volatility 3 is a memory forensics framework that allows you to analyze memory d
   * `--virtaddr VIRTADDR`  Dump a single _FILE_OBJECT at this virtual address
   * `--physaddr PHYSADDR`  Dump a single _FILE_OBJECT at this physical address
 
-Remember to append the `--output-dir <directory>` flag to save the output to a directory. Or simply redirect the output to a file with `> <filename>`.
+Remember to append the `--output-dir <directory>` flag to save the output to a directory. Or simply redirect the output to a file with `> <filename>`. I've written more about Volatility 3 [here](/More/Memory%20Forensics/Readme.md).
 
 ## Disk imaging
 `TO BE ADDED`
