@@ -3425,17 +3425,15 @@ berkankutuk@kali:~$ r2 -d <binary file>` # opens the binary file in radare2 in d
 [0x00400510]> afl # List functions
 [0x00400510]> s main # Go to main function
 [0x00400510]> pdf # Print disassembled function
-[0x00400510]> db <addr> # Set breakpoint at address
-[0x00400510]> dc # Continue execution
-[0x00400510]> dr # Show registers
-[0x00400510]> s # step instruction
 [0x00400510]> s/ password # Search for data within the code
 [0x00400510]> V # Hex view
 [0x00400510]> VV # Visual mode
 
 # Debug mode
-[0x00400510]> dc # Launch the executable
-[0x00400510]> dr # Check register state 
+[0x00400510]> db <addr> # Set breakpoint at address
+[0x00400510]> dc # Continue execution
+[0x00400510]> dr # Show registers
+[0x00400510]> s # step instruction
 ```
 
 ### Ghidra
