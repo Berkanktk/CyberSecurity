@@ -18,6 +18,13 @@ A single log entry may seem insignificant on its own. But when log data is aggre
 * Were their actions successful?
 * What was the result of their action?
 
+# Security Purposes
+Logging and configuration for security purposes are typically planned to detect and respond to anomalies and security issues. For example, configuration to verify the authenticity of user activity to ensure authorisation control and timely detection of unauthorised access. The main focus areas of this approach are:
+
+* Anomaly and threat detection
+* Logging user authentication data
+* Ensuring the system's integrity and data confidentiality
+
 # Log Types
 Specific log types can offer a unique perspective on a system's operation, performance, and security. While there are various log types, we will focus on the most common ones that cover approximately 80% of the typical use cases.
 
