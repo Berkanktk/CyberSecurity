@@ -29,6 +29,8 @@
       3. [OWASP](#owasp)
       4. [NIST](#nist-cybersecurity-framework-11)
       5. [NCSC CAF](#ncsc-caf)
+      6. [MITRE ATT&CK](#mitre-attck)
+      7. [Unified Kill chain](#unified-kill-chain)
    6. [Global Security Standards](#global-security-standards)
       1. [ISO/IEC 19249](#isoiec-19249)
       2. [ISO27001](#iso27001)
@@ -284,6 +286,7 @@ Some of these providers are:
 # Terms
 **Active reconnaissance** - Directly interacting with the system.  
 **Asymmetric** encryption - Uses different keys to encrypt and decrypt.  
+**APT** - Advanced Persistent Threat (team/grpup or even nation-state)  
 **Authentication** - refers to the ability to prove that the user is whom they claims to be.  
 **Broken Access Control** - Ex. we cannot let anyone view the webmail before logging in or modify someone else's account.  
 **Brute force** - Attacking cryptography by trying every different password or every different key  
@@ -558,13 +561,38 @@ OWASP, the [Open Web Application Security Project](https://owasp.org/), is a non
 
 OWASP is known for its widely-referenced [OWASP Top 10](https://owasp.org/www-project-top-ten/), a standard awareness document for developers and web application security that lists the most critical security risks to web applications.
 
-### NIST Cybersecurity Framework 1.1
+### NIST Cybersecurity Framework 2.0
 The [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) is a popular framework used to improve an organisations cybersecurity standards and manage the risk of cyber threats.
+
+The framework is divided into six core functions: 
+* **Govern**: Establish oversight to manage and reduce cybersecurity risks across the organization.
+* **Identify**: Understand your systems, assets, and risks.
+* **Protect**: Implement safeguards to ensure services' security.
+* **Detect**: Identify cybersecurity threats and breaches in real-time.
+* **Respond**: Take action when cybersecurity events are detected.
+* **Recover**: Restore operations and improve resilience post-incident.
 
 ### NCSC CAF
 The NCSC [Cyber Assessment Framework (CAF)](https://www.ncsc.gov.uk/collection/caf) is a structured guide designed to ensure the security of organizations, particularly those part of the Critical National Infrastructure. 
 
 The CAF aligns with NIS regulations and is structured around 14 objectives, categorized into four main goals: managing security risk, protecting against cyber attacks, detecting cybersecurity events, and minimizing the impact of incidents. It provides comprehensive indicators of good practice for organizations to assess and improve their security posture
+
+### Mitre ATT&CK
+The [MITRE ATT&CK](https://attack.mitre.org/) framework is a knowledge base of adversary tactics and techniques based on real-world observations. It is used as a foundation for the development of specific threat models and methodologies in the private sector, government, and the cybersecurity product and service community.
+
+### Unified Kill Chain
+The Unified Kill Chain is a framework that combines the Lockheed Martin Cyber Kill Chain and the MITRE ATT&CK framework to provide a comprehensive view of the cyber kill chain. It is designed to help organizations understand and respond to cyber threats more effectively.
+
+The Unified Kill Chain consists of the following stages:
+1. **Reconnaissance**: Gathering information about the target.
+2. **Weaponization**: Developing or obtaining the tools needed to exploit vulnerabilities.
+3. **Delivery**: Delivering the weaponized payload to the target.
+4. **Exploitation**: Exploiting vulnerabilities to gain access to the target.
+5. **Installation**: Installing malware or other tools to maintain access to the target.
+6. **Command and Control**: Establishing communication channels to control the compromised system.
+7. **Actions on Objectives**: Achieving the attacker's goals, such as stealing data or disrupting operations.
+
+See the 18 phases of attack [here](https://www.unifiedkillchain.com/assets/The-Unified-Kill-Chain.pdf).
 
 ## Global Security Standards
 ### ISO/IEC 19249
