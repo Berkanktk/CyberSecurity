@@ -153,6 +153,7 @@
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain   
 [DogBolt](https://dogbolt.org/) - decompiler explorer  
 [EmailHippo](https://emailhippo.com) - a free email verification tool.     
+[Emkei] (https://emkei.cz) - fake mail generator  
 [Explain Shell](https://explainshell.com) - a tool to help you understand shell commands.  
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
 [fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.     
@@ -242,7 +243,8 @@
 [TryHackMe](https://tryhackme.com) - TryHackMe is a free online platform for learning cyber security, using hands-on exercises and labs.  
 [HackTheBox](https://www.hackthebox.com/) - HackTheBox is a massive, online cybersecurity practical training platform.  
 [CTFLearn](https://ctflearn.com) - An online platform built to help ethical hackers learn, practice, and compete.   
-[Challenges](https://challenges.re) - Reverse engineering CTF training platform      
+[Challenges](https://challenges.re) - Reverse engineering CTF training platform     
+[Cryptohack](https://cryptohack.org) - Cryptography learning platform.  
 [Root Me](https://www.root-me.org) - Root Me is a platform for everyone to test and improve knowledge in computer security and hacking.  
 [ROP Emperium](https://ropemporium.com) - ROP Emporium is a series of challenges based around Return Oriented Programming (ROP).  
 [pico CTF](https://picoctf.org/) - picoCTF is a free computer security game targeted at middle and high school students.  
@@ -264,15 +266,19 @@
 
 # Services
 ## Network security
-An Intrusion Detection and Prevention System (IDPS) or simply Intrusion Prevention System (IPS) is a system that can detect and prevent network intrusions.
+An Intrusion Detection and Prevention System (IDPS) or simply Intrusion Prevention System (IPS) is a system that can detect and prevent network intrusions. IDS setups can be divided based on their location in the network into:
 
-IDS setups can be divided based on their location in the network into:
-* Host-based IDS (HIDS)
-* Network-based IDS (NIDS)
+**Host-based IDS (HIDS)**: Installed on an OS to monitor inbound/outbound host traffic and running processes.
 
-The host-based IDS (HIDS) is installed on an OS along with the other running applications. This setup will give the HIDS the ability to monitor the traffic going in and out of the host; moreover, it can monitor the processes running on the host.
+**Network-based IDS (NIDS)**: A dedicated device or server monitoring network traffic via a switch’s monitor port to detect malicious activity across the network or VLANs.
 
-The network-based IDS (NIDS) is a dedicated appliance or server to monitor the network traffic. The NIDS should be connected so that it can monitor all the network traffic of the network or VLANs we want to protect. This can be achieved by connecting the NIDS to a monitor port on the switch. The NIDS will process the network traffic to detect malicious traffic.
+## VPN Providers
+A Virtual Private Network (VPN) encrypts your internet connection to protect your privacy and security.
+
+Some of these providers are:
+* [IVPN](https://www.ivpn.net/)
+* [Mullvad](https://mullvad.net/en/)
+* [ProtonVPN](https://protonvpn.com/)
 
 ## VPS Providers
 A Virtual Private Server (VPS) is an isolated environment created on a physical server using virtualization technology.
@@ -284,82 +290,75 @@ Some of these providers are:
 * [OneHostCloud](https://onehostcloud.hosting)
 
 # Terms
-**Active reconnaissance** - Directly interacting with the system.  
-**Asymmetric** encryption - Uses different keys to encrypt and decrypt.  
-**APT** - Advanced Persistent Threat (team/grpup or even nation-state)  
-**Authentication** - refers to the ability to prove that the user is whom they claims to be.  
-**Broken Access Control** - Ex. we cannot let anyone view the webmail before logging in or modify someone else's account.  
-**Brute force** - Attacking cryptography by trying every different password or every different key  
-**Cipher** - A method of encrypting or decrypting data. Modern ciphers are cryptographic, but there are many non cryptographic ciphers like Caesar.  
-**Ciphertext** - The result of encrypting a plaintext, encrypted data  
-**Credential Stuffing** - Credential stuffing is a type of attack where an attacker attempts to gain unauthorized access to an account by using compromised credentials.  
-**Cryptanalysis** - Attacking cryptography by finding a weakness in the underlying maths  
-**Defacing** - The act of modifying a website to display a message or image.
-**Defensive security** - is the process of protecting an organization's network and computer systems by analyzing and securing any potential digital threats.  
-**Defence-in-Depth** refers to creating a security system of multiple levels; hence it is also called Multi-Level Security.  
-**Dynamic SSH Tunneling** - Dynamic port forwarding turns your SSH client into a SOCKS proxy server.  
-**Encoding** - NOT a form of encryption, just a form of data representation like base64. Immediately reversible.  
-**Encryption** - Transforming data into ciphertext, using a cipher.  
-**Firewall appliance** - The firewall allows and blocks connections based on a predefined set of rules. It restricts what can enter and what can leave a network.  
-**Hash collision** -  When 2 different inputs give the same output  
-**IDOR** - IDOR stands for Insecure Direct Object Reference and is a type of access control vulnerability.    
-**IP Spoofing** - IP spoofing is the creation of Internet Protocol (IP) packets which have a modified source address in order to either hide the identity of the sender, to impersonate another computer system, or both.   
-**IPP** - Internet Printing Protocol  
-**IaaS** - Infrastructure-as-a-Service  
-**Identification and Authentication Failure** - Allowing the attacker to use brute force, or storing the users’ passwords in plain text.   
-**Identification** - refers to the ability to identify a user uniquely.   
-**Intrusion Detection System (IDS) appliance** - An IDS detects system and network intrusions and intrusion attempts. It tries to detect attackers’ attempts to break into your network.  
-**Intrusion Prevention System (IPS) appliance** - An IPS blocks detected intrusions and intrusion attempts. It aims to prevent attackers from breaking into your network.  
-**Key** - Some information that is needed to correctly decrypt the ciphertext and obtain the plaintext.  
-**Offensive security** - is the process of breaking into computer systems, exploiting software bugs, and finding loopholes in applications to gain unauthorized access to them.  
-**Packet sniffing** - Packet sniffing is the act of capturing packets of data flowing across a computer network.  
-**Passive reconnaissance** - We rely on publicly available information.   
-**Passphrase** - Separate to the key, a passphrase is similar to a password and used to protect a key.  
-**Password Spraying** - Password spraying is a brute force attack that uses a list of usernames and a single password to try to gain access to a system.  
-**Penetration Tester** - Responsible for testing technology products for finding exploitable security vulnerabilities.  
-**Plaintext** - Data before encryption, often text but not always. Could be a photograph or other file  
-**Proxy** -  A proxy server is kind of gateway betweenour application and the internet  
-**Private Blog Network (PBN)** - PBN is a network of websites used to build links to a website for the purpose of ranking it higher in the Google search engine.   
-**Port Forwarding** - Port forwarding is a technique that is used to allow external devices access to computers services on private networks.  
-**RCE** - Remote Code Execution vulnerability allows commands to be executed on the target's system.  
-**Rainbow tables** - A rainbow table is a lookup table of hashes to plaintexts  
-**Red Teamer** - Plays the role of an adversary, attacking an organization and providing feedback from an enemy's perspective.  
-**Reverse SSH Connection** - The remote system connects with your local system  
-**SAM** -  Security Account Manager is a database that is present on computers running Windows that stores user accounts and security descriptors for users on the local computer  
-**SSH Tunnelling** - SSH tunneling is a method of transporting arbitrary networking data over an encrypted SSH connection.  
-**SSL/TLS** - Both are cryptographic protocols that securely authenticate and transport data on the Internet. SSL is old, TLS is the new one.  
-**Security Engineer** - Design, monitor, and maintain security controls, networks, and systems to help prevent cyberattacks.  
-**Symmetric encryption** - Uses the same key to encrypt and decrypt  
-**VPS** - Virtual Private Server (is a IaaS)  
-**Virtual Private Network (VPN) concentrator appliance** -  A VPN ensures that the network traffic cannot be read nor altered by a third party. It protects the confidentiality (secrecy) and integrity of the sent data.  
-**XSS** - Cross-Site Scripting is a security vulnerability that's typically found in web applications which can be used to execute a malicious script on the target's machine  
+| Term                                 | Description                                                                                                                                 |
+|--------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| Active reconnaissance                | Directly interacting with the system.                                                                                                        |
+| Asymmetric encryption                | Uses different keys to encrypt and decrypt.                                                                                                 |
+| APT                                  | Advanced Persistent Threat (team/group or even nation-state).                                                                                |
+| Authentication                       | Proving that the user is whom they claim to be.                                                                                              |
+| Broken Access Control                | Example: We cannot let anyone view the webmail before logging in or modify someone else's account.                                            |
+| Brute force                          | Attacking cryptography by trying every possible password or key.                                                                             |
+| Cipher                               | A method of encrypting or decrypting data. Modern ciphers are cryptographic, but there are non-cryptographic ones like Caesar cipher.         |
+| Ciphertext                           | The result of encrypting plaintext; encrypted data.                                                                                          |
+| Credential Stuffing                  | Attack where compromised credentials are used to gain unauthorized access to an account.                                                      |
+| Cryptanalysis                        | Attacking cryptography by finding a weakness in the underlying mathematics.                                                                  |
+| Defacing                             | Modifying a website to display a message or image.                                                                                           |
+| Defensive security                   | Protecting a network and systems by analyzing and securing against digital threats.                                                           |
+| Defence-in-Depth                     | A security strategy involving multiple levels, also known as Multi-Level Security.                                                            |
+| Dynamic SSH Tunneling                | Dynamic port forwarding turns your SSH client into a SOCKS proxy server.                                                                     |
+| Encoding                             | A form of data representation (e.g., base64), not encryption, and immediately reversible.                                                     |
+| Encryption                           | Transforming data into ciphertext using a cipher.                                                                                            |
+| Firewall appliance                   | A firewall restricts connections based on predefined rules, controlling what can enter or leave a network.                                    |
+| Hash collision                       | When two different inputs generate the same hash output.                                                                                      |
+| IDOR                                 | Insecure Direct Object Reference, a type of access control vulnerability.                                                                    |
+| IP Spoofing                          | Creating IP packets with a modified source address to hide the sender's identity or impersonate another system.                               |
+| IPP                                  | Internet Printing Protocol.                                                                                                                  |
+| IaaS                                 | Infrastructure-as-a-Service.                                                                                                                 |
+| Identification and Authentication Failure | Allowing brute force attacks or storing passwords in plain text.                                                                             |
+| Identification                       | The ability to uniquely identify a user.                                                                                                     |
+| Intrusion Detection System (IDS)     | Detects system and network intrusions and attempts.                                                                                           |
+| Intrusion Prevention System (IPS)    | Blocks detected intrusions and attempts to prevent network breaches.                                                                          |
+| Key                                  | Information needed to decrypt ciphertext and retrieve plaintext.                                                                             |
+| Offensive security                   | Breaking into systems, exploiting software bugs, and finding loopholes to gain unauthorized access.                                            |
+| Packet sniffing                      | Capturing data packets on a network.                                                                                                         |
+| Passive reconnaissance               | Relying on publicly available information for gathering intelligence.                                                                         |
+| Passphrase                           | A password-like string used to protect a key.                                                                                                |
+| Password Spraying                    | Brute force attack using a list of usernames and a single password to gain system access.                                                     |
+| Penetration Tester                   | A professional who tests systems to find exploitable vulnerabilities.                                                                         |
+| Plaintext                            | Unencrypted data, often text but could be any file like a photograph.                                                                         |
+| Proxy                                | A server acting as a gateway between an application and the internet.                                                                         |
+| Private Blog Network (PBN)           | A network of websites used to build links to improve search engine rankings.                                                                  |
+| Port Forwarding                      | Technique allowing external devices to access services on private networks.                                                                   |
+| RCE                                  | Remote Code Execution vulnerability allowing commands to be executed on a target system.                                                      |
+| Rainbow tables                       | Lookup tables of hashes to corresponding plaintexts used in password cracking.                                                                |
+| Red Teamer                           | Plays the role of an adversary, simulating attacks on an organization.                                                                        |
+| Reverse SSH Connection               | A remote system initiates a connection to your local system.                                                                                  |
+| SAM                                  | Security Account Manager, a Windows database storing user accounts and security descriptors.                                                  |
+| SSH Tunneling                        | Transporting arbitrary data over an encrypted SSH connection.                                                                                 |
+| SSL/TLS                              | Cryptographic protocols for secure data transmission; SSL is outdated, TLS is the modern version.                                              |
+| Security Engineer                    | Designs, monitors, and maintains security controls to prevent cyberattacks.                                                                   |
+| Symmetric encryption                 | Uses the same key to encrypt and decrypt.                                                                                                     |
+| VPS                                  | Virtual Private Server, a type of IaaS.                                                                                                       |
+| VPN concentrator appliance           | A VPN ensures network traffic confidentiality and integrity by preventing third-party access and modification.                                |
+| XSS                                  | Cross-Site Scripting, a vulnerability in web applications that can be used to execute malicious scripts.                                       |
+
 
 ## Forms of Malware/Attacks
-**Virus**: Malware that infects a computer by inserting itself into programs and can cause damage or corruption to data and programs. Needs user interaction to spread.  
-**Worm**: Malware that replicates itself to spread to other computers. Does not need user interaction to spread. It can spread through networks, email, or other means.  
-**Trojan horse**: Malware disguised as a legitimate program that performs harmful activities once inside a computer system.  
-**Spyware**: Malware that collects information about a user's activities and reports it back to the attacker, often used for unethical purposes.  
-**Phishing**: A technique used to obtain information by posing as a legitimate organization or individual and requesting sensitive information.  
-**DoS attack**: Overloading a computer with messages to disrupt its services.  
-**DDoS attack and botnets**: A distributed denial-of-service attack that utilizes a network of compromised computers to overload a target with messages.  
-**Spam**: Unwanted junk email that overwhelms the recipient and can be used to spread malware or phishing attempts.  
-**Ransomware**: Malware that encrypts a user's data and demands a ransom to decrypt it.  
-**Rootkit**: Malware that gives an attacker root access to a computer and hides its presence from the user.  
-**Adware**: Malware that displays unwanted advertisements on a user's computer.  
+There are several types of malware and attacks that can compromise systems and data. Here are some common ones.
 
-<!-- | Type          | Description                                                                                          |
-|---------------|------------------------------------------------------------------------------------------------------|
-| Virus         | Malware that infects a computer by inserting itself into programs, causing damage or corruption and needing user interaction to spread. |
-| Worm          | Malware that replicates itself to spread to other computers without user interaction, using networks, email, or other transport methods. |
-| Trojan horse  | Malware disguised as a legitimate program that performs harmful activities once inside a system.     |
-| Spyware       | Malware that collects information about a user's activities and reports it back to the attacker.     |
-| Phishing      | A technique to obtain sensitive information by posing as a legitimate entity.                        |
-| DoS attack    | An attack that overloads a computer with messages to disrupt its services.                           |
-| DDoS attack and botnets | A distributed denial-of-service attack using a network of compromised computers to overload a target. |
-| Spam          | Unwanted junk email that can spread malware or phishing attempts.                                    |
-| Ransomware    | Malware that encrypts data and demands a ransom for decryption.                                      |
-| Rootkit       | Malware granting root access to a computer and hiding its presence from users.                       |
-| Adware        | Malware that displays unwanted ads on a user's computer.                                             | -->
+| Term                | Description                                                                                                                                 |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| Virus               | Malware that infects a computer by inserting itself into programs, potentially causing data and program damage. Needs user interaction to spread. |
+| Worm                | Malware that replicates itself and spreads without user interaction, often through networks, email, or other means.                           |
+| Trojan horse        | Malware disguised as a legitimate program that performs harmful actions once inside a system.                                                |
+| Spyware             | Malware that secretly collects information about a user's activities and reports it back to the attacker.                                    |
+| Phishing            | A technique to steal sensitive information by posing as a legitimate organization or individual.                                             |
+| DoS attack          | Overloading a system with traffic to disrupt its services.                                                                                   |
+| DDoS attack & botnets| A distributed denial-of-service attack using a network of compromised devices to overload a target with traffic.                             |
+| Spam                | Unwanted email that can overwhelm recipients and may spread malware or phishing attempts.                                                    |
+| Ransomware          | Malware that encrypts data and demands payment for decryption.                                                                               |
+| Rootkit             | Malware that grants an attacker root access and conceals its presence from the user.                                                         |
+| Adware              | Malware that displays unwanted advertisements on a computer.                                                                                 |
 
 # Principles and Standards
 
@@ -435,12 +434,11 @@ Trust in cybersecurity is addressed through two key principles:
 ### Threat Modeling and Incident Response
 Threat modelling is the process of reviewing, improving, and testing the security protocols in place in an organisation's information technology infrastructure and services.
 
-The threat modelling process is very similar to a risk assessment made in workplaces for employees and customers. The principles all return to:
-* Preparation
-* Identification
-* Mitigations
-* Review
-  
+This process is very similar to a risk assessment made in workplaces for employees and customers. The principles all return to:  
+```plaintext
+Preparation -> Identification -> Mitigations -> Review
+```
+
 It is, however, a complex process that needs constant review and discussion with a dedicated team. An effective threat model includes:
 
 * Threat intelligence
@@ -640,6 +638,91 @@ Hackers are sorted into three hats, where their ethics and motivations behind th
 
 # Linux Commands 
 Also includes other useful CLI tools and commands for Linux and Windows.
+
+<details>
+<summary>List of contents</summary>
+
+1. [cat](#cat)
+2. [ls](#ls)
+3. [mkdir](#mkdir)
+4. [touch](#touch)
+5. [tree](#tree)
+6. [ps](#ps)
+7. [htop](#htop)
+8. [rm](#rm)
+9. [mv](#mv)
+10. [top](#top)
+11. [lsof](#lsof)
+12. [kill](#kill)
+13. [find](#find)
+14. [where](#where)
+15. [whatis](#whatis)
+16. [locate](#locate)
+17. [apropos](#apropos)
+18. [stat](#stat)
+19. [df](#df)
+20. [du](#du)
+21. [ncdu](#ncdu)
+22. [free](#free)
+23. [uniq](#uniq)
+24. [sort](#sort)
+25. [diff](#diff)
+26. [tail-head](#tailhead)
+27. [history](#history)
+28. [pwd](#pwd)
+29. [chmod](#chmod)
+30. [chown](#chown)
+31. [curl](#curl)
+32. [wget](#wget)
+33. [wash](#wash)
+34. [netdiscover](#netdiscover)
+35. [netstat](#netstat)
+36. [ss](#ss)
+37. [tcpdump](#tcpdump)
+38. [whatweb](#whatweb)
+39. [apt](#apt)
+40. [dig](#dig)
+41. [tar](#tar)
+42. [gzip](#gzip)
+43. [grep](#grep)
+44. [wc](#wc)
+45. [cut](#cut)
+46. [tr](#tr)
+47. [column](#column)
+48. [awk](#awk)
+49. [sed](#sed)
+50. [whoami](#whoami)
+51. [uname](#uname)
+52. [ftp](#ftp)
+53. [ssh](#ssh)
+54. [scp](#scp)
+55. [searchsploit](#searchsploit)
+56. [xfreerdp](#xfreerdp)
+57. [hexeditor](#hexeditor)
+58. [binwalk](#binwalk)
+59. [sudo](#sudo)
+60. [hashid](#hashid)
+61. [hash-identifier](#hash-identifier)
+62. [haiti](#haiti)
+63. [shasums](#shasums)
+64. [base64](#base64)
+65. [gpg](#gpg)
+66. [hexdump](#hexdump)
+67. [xxd](#xxd)
+68. [objdump](#objdump)
+69. [exiftool](#exiftool)
+70. [fcrackzip](#fcrackzip)
+71. [neofetch](#neofetch)
+72. [crunch](#crunch)
+73. [cewl](#cewl)
+74. [rax2](#rax2)
+75. [jq](#jq)
+76. [gcc](#gcc)
+77. [adduser](#adduser)
+78. [addgroup](#addgroup)
+
+</details>
+
 ## cat
 cat is a Linux shell command that concatenates files and prints on the standard output. It is often used to view the content of a file. For Windows, the equivalent command is `type`.
 
@@ -1744,22 +1827,16 @@ Then crack the hash
 `john zip.hash`
 
 ## Metasploit
-The Metasploit Framework is a set of tools that allow information gathering, scanning, exploitation, exploit development, post-exploitation, and more. While the primary usage of the Metasploit Framework focuses on the penetration testing domain, it is also useful for vulnerability research and exploit development.
+The Metasploit Framework is a powerful tool for penetration testing, exploit development, and vulnerability research, offering modules for information gathering, scanning, exploitation, and post-exploitation.
 
-**Auxiliary:** Any supporting module, such as scanners, crawlers and fuzzers, can be found here.  
-**Encoders:** Encoders will allow you to encode the exploit and payload in the hope that a signature-based antivirus solution may miss them.
+- **Auxiliary:** Supports modules like scanners, crawlers, and fuzzers.
+- **Encoders:** Encode exploits and payloads to evade signature-based antivirus detection.
+- **Payloads:**
+  - **Singles:** Self-contained payloads (e.g., add user, open app) that run without additional downloads.
+  - **Stagers:** Establish connection channels between Metasploit and the target, facilitating the download of staged payloads.
+  - **Stages:** Larger payloads downloaded by stagers to expand functionality.
 
-### Payloads
-**Singles:** Self-contained payloads (add user, launch notepad.exe, etc.) that do not need to download an additional component to run.  
-**Stagers:** Responsible for setting up a connection channel between Metasploit and the target system. Useful when working with staged payloads. “Staged payloads” will first upload a stager on the target system then download the rest of the payload (stage). This provides some advantages as the initial size of the payload will be relatively small compared to the full payload sent at once.    
-**Stages:** Downloaded by the stager. This will allow you to use larger sized payloads.
-
-Metasploit has a subtle way to help you identify single (also called “inline”) payloads and staged payloads.
-
-* generic/shell_reverse_tcp
-* windows/x64/shell/reverse_tcp
-
-Both are reverse Windows shells. The former is an inline (or single) payload, as indicated by the “_” between “shell” and “reverse”. While the latter is a staged payload, as indicated by the “/” between “shell” and “reverse”.
+**Single payloads** use an underscore (e.g., `generic/shell_reverse_tcp`), while **staged payloads** use a slash (e.g., `windows/x64/shell/reverse_tcp`).
 
 ### How to use
 
@@ -1811,40 +1888,20 @@ Spawn a normal system shell
 `shell`
 
 ### Meterpreter
-Meterpreter is a Metasploit payload that supports the penetration testing process with many valuable components. Meterpreter will run on the target system and act as an agent within a command and control architecture. You will interact with the target operating system and files and use Meterpreter's specialized commands.
+**Meterpreter** is a Metasploit payload that runs in memory on the target system without installation, avoiding detection by antivirus, IDS, and IPS. It communicates with Metasploit via encrypted channels but can still be detected by some antivirus programs.
 
-Meterpreter runs on the target system but is not installed on it. It runs in memory and does not write itself to the disk on the target. This feature aims to avoid being detected during antivirus scans.
+### Key Features:
+- **Post-exploitation:** Allows further data gathering, privilege escalation, and lateral movement.
+- **Migrate:** Move to another process (e.g., `word.exe`) to interact with it or capture keystrokes. Use `migrate <PID>`.
+  - > You may lose your user privileges if you migrate from a higher privileged (e.g. SYSTEM) user to a process started by a lower privileged user (e.g. webserver).
+- **Hashdump:** Dumps the SAM database of Windows to retrieve NTLM password hashes for cracking or Pass-the-Hash attacks. One example of this is [ntlm.pw](https://ntlm.pw/).
+- **Search:** Use `search -f <filename>` to locate files with sensitive data.
+- **Shell:** Launches a standard command-line shell on the target. Use `CTRL+Z` to return to Meterpreter.
 
-Meterpreter also aims to avoid being detected by network-based IPS (Intrusion Prevention System) and IDS (Intrusion Detection System) solutions by using encrypted communication with the server where Metasploit runs (typically your attacking machine).
+These features make Meterpreter a powerful tool for post-exploitation activities.
 
-Even though Meterpreter is very stealthy, most antivirus software will detect it unfortunately.
+See some of the available commands [here](/More/Metasploitable/Meterpreter/Readme.md).
 
-See some of the available commands [here](/More/Metasploitable/Meterpreter/Commands.md).
-
-### Post exploitation with Meterpreter
-The post-exploitation phase will have several goals; Meterpreter has functions that can assist all of them.
-
-* Gathering further information about the target system.
-* Looking for interesting files, user credentials, additional network interfaces, and generally interesting information on the target system.
-* Privilege escalation.
-* Lateral movement.
-
-**Migrate**  
-Migrating to another process will help Meterpreter interact with it. For example, if you see a word processor running on the target (e.g. word.exe, notepad.exe, etc.), you can migrate to it and start capturing keystrokes sent by the user to this process. Some Meterpreter versions will offer you the keyscan_start, keyscan_stop, and keyscan_dump command options to make Meterpreter act like a keylogger. Migrating to another process may also help you to have a more stable Meterpreter session.  
-To migrate to any process, you need to type the migrate command followed by the PID of the desired target process.
-
-Be careful; you may lose your user privileges if you migrate from a higher privileged (e.g. SYSTEM) user to a process started by a lower privileged user (e.g. webserver). You may not be able to gain them back.
-
-**Hashdump**  
-The hashdump command will list the content of the SAM database. The SAM (Security Account Manager) database stores user's passwords on Windows systems. These passwords are stored in the NTLM (New Technology LAN Manager) format.
-
-While it is not mathematically possible to "crack" these hashes, you may still discover the cleartext password using online NTLM databases or a rainbow table attack. These hashes can also be used in Pass-the-Hash attacks to authenticate to other systems that these users can access the same network. One example of this is [ntlm.pw](https://ntlm.pw/).
-
-**Search**  
-The search command is useful to locate files with potentially juicy information `search -f flag.txt`.
-
-**Shell**  
-The shell command will launch a regular command-line shell on the target system. Pressing CTRL+Z will help you go back to the Meterpreter shell.
 ## Netcat
 [Netcat](http://netcat.sourceforge.net) aka nc is an extremely versatile tool. It allows users to connect to specific ports and send and receive data. It also allows machines to receive data and connections on specific ports, which makes nc a very popular tool to gain a Reverse Shell.
 
@@ -2171,12 +2228,9 @@ Since an octet consists of 8 bits and there are 4 octets, a valid IP address can
 This makes the IP pool to have 2^32 = 4,294,967,296 different IP addresses that can be assigned.
 
 ## The router
-One of the primary jobs of a router is to assign IP addresses to the computers on a home network. The router has a “pool” of IP addresses that it keeps track of.   
-When a computer connects to it and asks for an IP address, the router picks an IP address from the pool and assigns it to the computer. The router makes sure that two computers are not assigned the same IP address. This process of computers asking for an IP address from the router is called “dynamic” IP address assignment. It uses a network protocol called DHCP (Dynamic Host Configuration Protocol).
+A router assigns IP addresses to devices on a home network using a "pool" of addresses, ensuring no duplicates. This process, called **dynamic IP assignment**, uses the **DHCP** protocol. 
 
-When a host wants to connect to another host on a completely different IP outside the network, the host calls the default getaway(the router) for help. 
-
-The default getaway: 192.168.1.1
+When a device wants to connect outside the network, it communicates through the **default gateway** (the router), typically **192.168.1.1**.
 
 ## IPv4 Classes
 | Class | Range | Subnet | Number of networks | Usage | For |
@@ -2322,7 +2376,6 @@ Wordlists are just text files that contain a long list of commonly used words; t
 
 **Most common Automation tools**   
 `ffuf`, `dirb` and `gobuster`.   
-I personally use gobuster the most.
 
 Example use for all three tools:
 ```bash
@@ -2355,11 +2408,10 @@ Email harvesting is the process of gathering email addresses from a website. Thi
 ### Subdomain enumeration
 
 **SSL/TLS Certificates**  
-When an SSL/TLS (Secure Sockets Layer/Transport Layer Security) certificate is created for a domain by a CA (Certificate Authority), CA's take part in what's called "Certificate Transparency (CT) logs". These are publicly accessible logs of every SSL/TLS certificate created for a domain name.
-The following site consists of a searchable database of certificates that shows current and historical results. [Link](crt.sh) 
+When a Certificate Authority (CA) issues an SSL/TLS certificate, it logs it in public Certificate Transparency (CT) logs. These logs can be searched for current and historical certificates on sites like [crt.sh](crt.sh) .
 
-**Search Engines**
-The following search would only contain results from subdomain names belonging to domain.com:  
+**Search Engines**  
+To search for subdomains of a domain:  
 `-site:www.domain.com site:*.domain.com` 
 
 **DNS Bruteforce**  
@@ -2368,7 +2420,7 @@ Bruteforce DNS (Domain Name System) enumeration is the method of trying tens, hu
 It is usually also a good idea to probe for HTTP and HTTPS services on the discovered subdomains to filter out any false positives. This can be done with the tool [httprobe](https://github.com/tomnomnom/httprobe).
 
 **Virtual Hosts**  
-Some subdomains aren't always hosted in publically accessible DNS results, such as development versions of a web application or administration portals. Instead, the DNS record could be kept on a private DNS server or recorded on the developer's machines in their /etc/hosts file (or c:\windows\system32\drivers\etc\hosts file for Windows users) which maps domain names to IP addresses. 
+Some subdomains aren't always hosted in publically accessible DNS results, such as development versions of a web application or administration portals. Instead, the DNS record could be kept on a private DNS server or recorded on the developer's machines in their `/etc/hosts` file (or `c:\windows\system32\drivers\etc\hosts` file for Windows users) which maps domain names to IP addresses. 
 
 Because web servers can host multiple websites from one server when a website is requested from a client, the server knows which website the client wants from the Host header. We can utilise this host header by making changes to it and monitoring the response to see if we've discovered a new website.
 
@@ -2444,19 +2496,17 @@ Command Injection can be detected in mostly one of two ways:
 | Blind | This type of injection is where there is no direct output from the application when testing payloads. You will have to investigate the behaviours of the application to determine whether or not your payload was successful. |
 | Verbose | This type of injection is where there is direct feedback from the application once you have tested a payload. For example, running the `whoami` command to see what user the application is running under. The web application will output the username on the page directly. |
 
-#### Detecting Blind Command Injection
-For this type of command injection, we will need to use payloads that will cause some time delay. For example, the `ping` and `sleep` commands are significant payloads to test with. Using `ping` as an example, the application will hang for x seconds in relation to how many pings you have specified.
+**Detecting Blind Command Injection:**  
+Use time-delay payloads like `ping` or `sleep` to test for injection by observing response delays. Another method is redirecting output using `>` (e.g., `whoami > file`) and then reading the file with `cat`.
 
-Another method of detecting blind command injection is by forcing some output. This can be done by using redirection operators such as `>`. For example, we can tell the web application to execute commands such as whoami and redirect that to a file. We can then use a command such as cat to read this newly created file’s contents.
+The `curl` command is a great way to test for command injection. This is because you are able to use curl to deliver data to and from an application in your payload.  
+```bash
+curl http://vulnerable.app/process.php?search=The%20Beatles;whoami
+```
 
-The curl command is a great way to test for command injection. This is because you are able to use curl to deliver data to and from an application in your payload. Take this code snippet below as an example, a simple curl payload to an application is possible for command injection.
+**Detecting Verbose Command Injection:**  
+This is easier to detect since the output of commands like `ping` or `whoami` is displayed directly on the web application.
 
-`curl http://vulnerable.app/process.php%3Fsearch%3DThe%20Beatles%3B%20whoami`
-
-#### Detecting Verbose Command Injection
-Detecting command injection this way is arguably the easiest method of the two. Verbose command injection is when the application gives you feedback or output as to what is happening or being executed.
-
-For example, the output of commands such as `ping` or `whoami` is directly displayed on the web application.
 
 ### Exploiting Command Injection
 Applications that use user input to populate system commands with data can often be combined in unintended behaviour. For example, the shell operators `;`, `&` and `&&` will combine two (or more) system commands and execute them bot
@@ -2551,37 +2601,36 @@ $payload = "\x2f|\x65 \x74 \x63\x2f\x70\x61 \x73 \x73 \x77\x64"
 These vulnerabilities can be some of the most critical as it often ends in leaks of customers personal data.
 
 ### Username Enumeration
-A helpful exercise to complete when trying to find authentication vulnerabilities is creating a list of valid usernames.
+To find valid usernames, you can leverage error messages that reveal whether a username already exists. For example, using **ffuf**, you can automate testing with a wordlist of common usernames.
 
-Website error messages are great resources for collating this information to build our list of valid usernames. 
+Example command:
+```bash
+ffuf -w /usr/share/wordlists/SecLists/Usernames/Names/names.txt -X POST -d "username=FUZZ&email=x&password=x&cpassword=x" -H "Content-Type: application/x-www-form-urlencoded" -u <website_url> -mr "username already exists"
+```
 
-If you try entering the username admin and fill in the other form fields with fake information, you'll see we get the error An account with this username already exists. We can use the existence of this error message to produce a list of valid usernames already signed up on the system by using the ffuf tool below. The ffuf tool uses a list of commonly used usernames to check against for any matches.
-
-`berkankutuk@kali:~$ ffuf -w /usr/share/wordlists/SecLists/Usernames/Names/names.txt -X POST -d "username=FUZZ&email=x&password=x&cpassword=x" -H "Content-Type: application/x-www-form-urlencoded" -u <website_url> -mr "username already exists"`
-
-In the above example, the `-w` argument selects the file's location on the computer that contains the list of usernames that we're going to check exists. 
-
-The `-X` argument specifies the request method, this will be a GET request by default, but it is a POST request in our example. 
-
-The `-d` argument specifies the data that we are going to send. In our example, we have the fields username, email, password and cpassword. We've set the value of the username to FUZZ. In the ffuf tool, the FUZZ keyword signifies where the contents from our wordlist will be inserted in the request. 
-
-The `-H` argument is used for adding additional headers to the request. In this instance, we're setting the Content-Type to the webserver knows we are sending form data. 
-
-The `-u` argument specifies the URL we are making the request to, and finally, the -mr argument is the text on the page we are looking for to validate we've found a valid username.
+Options:
+- `-w`: Specifies the wordlist path.
+- `-X`: Sets the request method (`POST` in this case).
+- `-d`: Defines form data with `FUZZ` placeholder for testing usernames.
+- `-H`: Adds headers (e.g., `Content-Type`).
+- `-u`: URL to send the request.
+- `-mr`: Looks for specific response text to confirm a valid username.
 
 ### Brute Force
-A brute force attack is an automated process that tries a list of commonly used passwords against either a single username or, like in our case, a list of usernames.
 
-After a successful username enumeration, the usernames can now be used to bruteforce.
+Brute force attacks try common passwords against usernames. After successful username enumeration, you can use the valid usernames for brute-forcing passwords.
 
-When running this command, make sure the terminal is in the same directory as the valid_usernames.txt file. 
-`berkankutuk@kali:~$  ffuf -w valid_usernames.txt:W1,/usr/share/wordlists/SecLists/Passwords/Common-Credentials/10-million-password-list-top-100.txt:W2 -X POST -d "username=W1&password=W2" -H "Content-Type: application/x-www-form-urlencoded" -u <website_url> -fc 200`
+Example command:
+```bash
+ffuf -w valid_usernames.txt:W1,/usr/share/wordlists/SecLists/Passwords/Common-Credentials/10-million-password-list-top-100.txt:W2 -X POST -d "username=W1&password=W2" -H "Content-Type: application/x-www-form-urlencoded" -u <website_url> -fc 200
+```
 
-Previously we used the FUZZ keyword to select where in the request the data from the wordlists would be inserted, but because we're using multiple wordlists, we have to specify our own FUZZ keyword. In this instance, we've chosen `W1` for our list of valid usernames and `W2` for the list of passwords we will try. 
-
-The multiple wordlists are again specified with the `-w` argument but separated with a comma.  
-
-For a positive match, we're using the `-fc` argument to check for an HTTP status code other than 200.
+Options:
+- `-w`: Specifies multiple wordlists (e.g., `W1` for usernames, `W2` for passwords).
+- `-X`: Sets the request method (`POST` here).
+- `-d`: Defines form data with `W1` for username and `W2` for password.
+- `-H`: Adds headers (e.g., `Content-Type`).
+- `-fc`: Filters responses by excluding status code `200`, indicating a failed login attempt.
 
 ### Logic Flaw
 Sometimes authentication processes contain logic flaws. A logic flaw is when the typical logical path of an application is either bypassed, circumvented or manipulated by a hacker.
@@ -2621,7 +2670,7 @@ For this, curl can be used by using:
 Sometimes cookie values can look like a long string of random characters; these are called hashes which are an irreversible representation of the original text. Here are some examples that you may come across:
 
 | Original String | Hash Method | Output |
-|:---:|:---:|:---:|
+|:---:|:---:|---|
 | 1 | md5 | c4ca4238a0b923820dcc509a6f75849b |
 | 1 | sha-256 | 6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b |
 | 1 | sha-512 | 4dff4ea340f0a823f15d3f4f01ab62eae0e5da579ccb851f8db9dfe84c58b2b37b89903a740e1ee172da793a6e79d560e5f7f9bd058a12a280433ed6fa46510a |
@@ -3023,17 +3072,15 @@ Server Side Includes (SSI) is a simple interpreted server-side scripting languag
 * `<!--#exec cmd="cat /etc/passwd" -->`
 
 # Forensics
-Is simply 'the art of uncovering'
+Digital forensics is the art of uncovering and investigating electronically stored data. It involves identifying, acquiring, analyzing, and reporting digital evidence.
 
-Digital forensics is a branch of forensic science that focuses on identifying, acquiring, processing, analysing, and reporting on data stored electronically.
-
-Use case  
-* Find hidden information in files or meta data
-* Recover lost or deleted data
-* Reconstruct corrupted files
-* Recognize file structures and identify file formats
-* Understand a course of events from network logs or memory dumps
-* Hash cracking 
+**Use Cases:**
+- Uncover hidden data in files or metadata.
+- Recover lost or deleted data.
+- Reconstruct corrupted files.
+- Identify file formats and structures.
+- Analyze network logs or memory dumps to trace events.
+- Crack password hashes for further investigation.
 ## File Analysis
 ### Encodings
 * **Decimal:** 70 111 114 101 110 115 105 99 115 33
@@ -3055,6 +3102,38 @@ The file type is indicated in the contents of the file with a file signature - a
 
 **pngcheck**  
 A command-line tool for "checking" a PNG image file. Especially good for verifying checksums.
+
+<details>
+<summary>Combining two images</summary>
+
+```python
+from PIL import Image
+import numpy as np
+
+# Load the images based on the provided file names
+img1 = Image.open('/mnt/data/scrambled1.png')
+img2 = Image.open('/mnt/data/scrambled2.png')
+
+# Convert the images to numpy arrays
+img_data1 = np.asarray(img1)
+img_data2 = np.asarray(img2)
+
+# Perform the element-wise addition of the two images' data
+# Since the data type of PIL images is unsigned integer 8 bits,
+# the result must be clipped to be in the range [0, 255]
+data = np.add(img_data1, img_data2, dtype=np.uint8)
+
+# Create a new image from the combined data
+new_image = Image.fromarray(data)
+
+# Save the result image
+result_path = "/mnt/data/out.png"
+new_image.save(result_path, "PNG")
+
+# Provide the path for downloading the result
+result_path
+```
+</details>
 
 ### Metadata
 The file extension is one form of metadata: (data about data)
@@ -3671,7 +3750,7 @@ The result should reveal the password if you have used a strong wordlist that co
 You can see the actual website the shortened link is redirecting you to by appending "+" to it (see the examples below). Type the shortened URL in the address bar of the web browser and add the above characters to see the redirect URL.
 
 Example: 
-[tinyurl.com/cn6xznu+](http://tinyurl.com/cn6xznu+)
+[tinyurl.com/mv2h897s+](https://tinyurl.com/mv2h897s+)
 
 Example providers:
 - bit.ly
