@@ -14,8 +14,11 @@
 
 </div>
 
-<p align="center">Thank you for exploring this project! I hope you found it valuable and perhaps even worth sharing with others. This project represents years of work and dedication, fueled by countless hours and cups of coffee ☕. If you’d like to support its continued growth and reach, your contribution would be genuinely appreciated.</p>
+<p align="center">
+Thank you for exploring this project! I hope you will find the content valuable and perhaps even worth sharing with others. This project represents years of dedication, learning, and refinement, fueled by countless hours and cups of coffee ☕. If you’d like to support its continued growth, your contribution would be highly appreciated.
+</p>
 
+<br>
 	
 <p align="center">
   <a href="https://www.buymeacoffee.com/berkanktk" target="_blank">
@@ -4120,9 +4123,12 @@ Running `python pret.py` will start an automatic printer discovery in your local
   <strong>I hope you found this useful! 🚀</strong>
 </h2>
 
-<p align="center">If you think others could benefit, please consider sharing it with your network or giving it a star ⭐ on GitHub. Every bit of support helps this project grow and reach out to more people. Enjoying the content as much as I am? Feel free to fuel it with caffeine ☕!</p>
+<p align="center">If you think others could benefit, please consider sharing it with your network or giving it a star ⭐ on GitHub - every bit of support helps this project grow and reach more people. And if you’re enjoying the content as much as I am, a little ☕ goes a long way in keeping it fueled!</p>
 
 <p align="center">Thank you for being part of this journey, and happy hacking! </p>
+
+<br>
+
 
 <p align="center">
   <a href="https://www.buymeacoffee.com/berkanktk" target="_blank">
