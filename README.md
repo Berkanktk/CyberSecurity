@@ -1165,6 +1165,12 @@ Switches:
 
 Example:  
 `gzip -d file.gz`
+## 7z
+7z is a file archiver with a high compression ratio.
+
+**Example usage:**  
+`7z a <Zip folder> <Files or *> -p<SECRET>`
+
 ## grep
 Search the contents of files for specific values   
 `grep "hello world" file.txt`
@@ -3225,7 +3231,12 @@ Install steghide with `sudo apt install steghide`
 **Useful commands:**  
 `steghide info <filepath>`  displays info about whether a file has embedded data or not.  
 `steghide extract -sf <filepath>`  extracts embedded data from a stegofile  
-`steghide embed -cf <filepath> -ef <textfile>`  embed data from a coverfile to a embedfile
+`steghide embed -cf <filepath> -ef <textfile>`  embed data from a coverfile to a embedfile  
+`steghide info <filepath>`  displays total embeddable data size in the coverfile  
+
+**Example:**  
+Embed a zip file into a jpg file  
+`steghide embed -cf original.jpg -ef test.zip`
 
 ### Stegsolve
 Sometimes there is a message or a text hidden in the image itself and in order to view it you
@@ -3281,8 +3292,9 @@ Strings is a linux tool that displays printable strings in a file. That simple t
 Sometimes important stuff is hidden in the metadata of the image or the file , exiftool can be
 very helpful to view the metadata of the files.
 
-**Useful commands:**  
-`exiftool file`  shows the metadata of the given file
+**Useful commands:**   
+`exiftool file`  shows the metadata of the given file  
+`exiftool -Comment="something" file`  to add a comment to the metadata of the file
 
 ### Exiv2
 A tool similar to exiftool.
@@ -3360,6 +3372,19 @@ Sonic visualizer is a tool for viewing and analyzing the contents of audio files
 helpful when dealing with audio steganography. You can reveal hidden shapes in audio files or use it to se hidden images inside audio files.
 
 `Layer->Add Spectrogram` should work
+
+<details>
+<summary>Making a spectrogram</summary>  
+
+1. Create a small white text on a black background
+2. Convert the text to audio using this [imagetoaudio](https://nsspot.herokuapp.com/imagetoaudio/) tool
+3. Open Audacity and import the audio file. 
+4. Select another track and import the audio file again
+5. Now merge the two tracks by selecting the first track and then the second track and then `Tracks->Mix->Mix and Render`
+6. Now select the mixed track and then `Tracks->Add New->Spectrogram`
+
+Now you should see the hidden text in the spectrogram
+</details>
 
 ### Zero-Width Characters
 Zero-width characters are characters that have no width when displayed, but can be used to hide information in text. These characters are often used in steganography to hide messages in plain sight. A useful tool for detecting zero-width characters is [Unicode Steganography with Zero-Width Characters
