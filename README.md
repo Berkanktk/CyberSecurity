@@ -3427,6 +3427,24 @@ Remember to append the `--output-dir <directory>` flag to save the output to a d
 ## Disk imaging
 `TO BE ADDED`
 
+### Sleuthkit
+The Sleuth Kit is a collection of command-line tools for analyzing disk images and recovering data. It is used by digital forensics professionals and law enforcement agencies to investigate computer crimes.
+
+Examples of tools in The Sleuth Kit:
+```bash
+mmls disk.flag.img # see partitions
+fsstat -o 2048 disk.flag.img # determine file system
+fls -o 2048 dds2-alpine.flag.img # list files
+fls -o 2048 dds2-alpine.flag.img 18290 # list files in a directory
+icat -o 2048 dds2-alpine.flag.img 18291 # extract a file
+fls -i raw -f ext4 -o 360448 -r disk.flag.img | grep flag # search for files with flag in the name
+icat -i raw -f ext4 -o 360448 -r disk.flag.img 2371 # extract a file by inode
+
+-i is the image type, 
+-f is the file system type
+-r is to recursively display directories
+```
+
 # Binary Exploitation
 ## Registers
 `TO BE ADDED`
