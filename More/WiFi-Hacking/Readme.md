@@ -48,7 +48,7 @@ The keys for WPA are derived from both the ESSID and the password for the networ
 Using the Aircrack-ng suite, we can start attacking a wifi network. This will walk you through attacking a network yourself, assuming you have a monitor mode enabled NIC.
 
 ## Wireless Adapter Requirements
-1. Monitor mode
+1. Monitor mode (See [this](https://github.com/morrownr/USB-WiFi/blob/main/home/USB_WiFi_Chipsets.md) list for chipsets that support monitor mode)
 2. Packet injection
 3. AP mode
 
