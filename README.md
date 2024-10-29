@@ -182,6 +182,7 @@
 [k8s-security](https://github.com/kabachook/k8s-security) - kubernetes security notes and best practices.      
 [Kali Linux Tutorials](https://www.tutorialspoint.com/kali_linux/index.htm) - Kali Linux Tutorials  
 [Keybase](https://keybase.io/) - it's open source and powered by public-key cryptography.    
+[LabEx](https://labex.io/skilltrees/cybersecurity)  - an online platform for enhancing your Linux and cyber security skills through hands-on labs 
 [LFI](https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/) - learn about local file inclusion   
 [Linux Commands](https://www.mediacollege.com/linux/command/linux-command.html) - a list of linux commands       
 [malc0de](http://malc0de.com/database) - malware search engine.    
