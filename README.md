@@ -1,5 +1,28 @@
 <h2 align="center">Remember to take a look at the <code>/More</code> folder! ;)</h2>
 
+<br>
+
+<div align="center">
+
+![Visitor Count](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=Berkanktk/CyberSecurity&title=Visitor%20Count)
+![GitHub Stars](https://img.shields.io/github/stars/Berkanktk/CyberSecurity)
+![GitHub Forks](https://img.shields.io/github/forks/Berkanktk/CyberSecurity)
+![GitHub Watchers](https://img.shields.io/github/watchers/Berkanktk/CyberSecurity)
+![Discussions](https://img.shields.io/github/discussions/Berkanktk/CyberSecurity)
+![Last Commit](https://img.shields.io/github/last-commit/Berkanktk/CyberSecurity)
+![Repo Size](https://img.shields.io/github/repo-size/Berkanktk/CyberSecurity)
+
+</div>
+
+<p align="center">Thank you for exploring this project! I hope you found it valuable and perhaps even worth sharing with others. This project represents years of work and dedication, fueled by countless hours and cups of coffee ☕. If you’d like to support its continued growth and reach, your contribution would be genuinely appreciated.</p>
+
+	
+<p align="center">
+  <a href="https://www.buymeacoffee.com/berkanktk" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50px">
+  </a>
+</p>
+
 # List of Contents
 1. [Links](#links)
 2. [CTF Sites](#ctf-sites)
@@ -4093,4 +4116,26 @@ Running `python pret.py` will start an automatic printer discovery in your local
 
 ---
 
-<h3 align="center"><strong>Did you make it this far without considering a star? :p</strong></h3>
+<h3 align="center">
+  <strong>I hope you found this useful! 🚀</strong>
+</h2>
+
+<p align="center">If you think others could benefit, please consider sharing it with your network or giving it a star ⭐ on GitHub. Every bit of support helps this project grow and reach out to more people. Enjoying the content as much as I am? Feel free to fuel it with caffeine ☕!</p>
+
+<p align="center">Thank you for being part of this journey, and happy hacking! </p>
+
+<p align="center">
+  <a href="https://www.buymeacoffee.com/berkanktk" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50px">
+  </a>
+</p>
+
+---
+<div align="center">
+	
+[![Share on LinkedIn](https://img.shields.io/badge/Share%20on-LinkedIn-blue?logo=linkedin&style=flat-square)](https://www.linkedin.com/sharing/share-offsite/?url=https://github.com/Berkanktk/CyberSecurity)
+[![Share on Twitter](https://img.shields.io/badge/Share%20on-Twitter-blue?logo=x&style=flat-square)](https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20cybersecurity%20resource!&url=https://github.com/Berkanktk/CyberSecurity&hashtags=cybersecurity,opensource,github)
+[![Share on Facebook](https://img.shields.io/badge/Share%20on-Facebook-blue?logo=facebook&style=flat-square)](https://www.facebook.com/sharer/sharer.php?u=https://github.com/Berkanktk/CyberSecurity)
+[![Share on WhatsApp](https://img.shields.io/badge/Share%20on-WhatsApp-brightgreen?logo=whatsapp&style=flat-square)](https://api.whatsapp.com/send?text=Check%20out%20this%20awesome%20cybersecurity%20resource!%20https://github.com/Berkanktk/CyberSecurity)
+
+</div>
