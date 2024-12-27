@@ -1,4 +1,6 @@
 # POP3 Commands
+The Post Office Protocol version 3 (POP3) is designed to allow the client to communicate with a mail server and retrieve email messages.
+
 | Command | Description | Example |
 |---|---|---|
 | USER [username] | 1st login command | USER Stan +OK Please enter a password |
