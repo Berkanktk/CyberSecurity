@@ -1114,6 +1114,17 @@ tcpdump is a command-line utility that allows you to capture and analyze network
 
 Example usage:  
 `tcpdump -i wlan0mon` - to capture all network traffic on the wlan0mon interface
+
+**Options:**  
+`-i` to specify the interface to capture traffic on  
+`-n` to display IP addresses instead of hostnames (stops DNS lookups)  
+`-w` to write the captured packets to a file  
+`-r <file>.pcap` to read packets from a file  
+`-q` to get brief packet information  
+`-e` to include MAC addresses  
+`-A` to print packet data as ASCII  
+`-c <number>` to specify the number of packets to capture  
+`-v` to increase verbosity (use -vv for more)  
 ## whatweb
 Whatweb is a handy tool and contains much functionality to automate web application enumeration across a network. We can extract the version of web servers, supporting frameworks, and applications using the command-line tool.
 
