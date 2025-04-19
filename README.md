@@ -3,12 +3,11 @@
 <br>
 
 <div align="center">
-
-![Visitor Count](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=Berkanktk/CyberSecurity&title=Visitor%20Count)
+	
+![Hits](https://hits.sh/github.com/Berkanktk/CyberSecurity.svg?label=Visitors)
 ![GitHub Stars](https://img.shields.io/github/stars/Berkanktk/CyberSecurity)
 ![GitHub Forks](https://img.shields.io/github/forks/Berkanktk/CyberSecurity)
 ![GitHub Watchers](https://img.shields.io/github/watchers/Berkanktk/CyberSecurity)
-![Discussions](https://img.shields.io/github/discussions/Berkanktk/CyberSecurity)
 ![Last Commit](https://img.shields.io/github/last-commit/Berkanktk/CyberSecurity)
 ![Repo Size](https://img.shields.io/github/repo-size/Berkanktk/CyberSecurity)
 
@@ -19,12 +18,14 @@ Thank you for exploring this project! I hope you will find the content valuable 
 </p>
 
 <br>
-	
+
+<!--
 <p align="center">
   <a href="https://www.buymeacoffee.com/berkanktk" target="_blank">
     <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50px">
   </a>
 </p>
+-->
 
 # List of Contents
 1. [Links](#links)
