@@ -1,103 +1,205 @@
-# Powershell
-Powershell is the Windows Scripting Language and shell environment built using the .NET framework.
+# PowerShell Basics
 
-This also allows Powershell to execute .NET functions directly from its shell. Most Powershell commands, called cmdlets, are written in .NET. Unlike other scripting languages and shell environments, the output of these cmdlets are objects - making Powershell somewhat object-oriented.
+PowerShell is a Windows scripting language and shell environment built on the **.NET Framework**.
+It can run **.NET functions directly** from the shell, and most commands (called **cmdlets**) are written in .NET.
 
-The normal format of a cmdlet is represented using Verb-Noun.
+Unlike many shells, PowerShell outputs **objects** instead of plain text, making it more **object-oriented**.
 
-**Common verbs to use include:** Get, Start, Stop, Read, Write, New & Out
+**Cmdlet format:**
+`Verb-Noun` (e.g., `Get-Process`, `Start-Service`)
 
-## Get help
-The `“Get-Help”` command can be used to get help on any cmdlet. To get help with a particular command, run the following:
-`Get-Help {command}`
+**Common verbs:**
+`Get`, `Start`, `Stop`, `Read`, `Write`, `New`, `Out`
 
-## Start a process
-The `"Start-Process"` command can be used to start a process.
 
-## Get all commands
-`Get-Command` is useful to list all available commands.
+## Get Help
 
-## Get all processes
-`Get-Proces`s is useful to list all running processes.
+Get help for any cmdlet:
 
-## Print working directory
-`Get-Location` is useful to print the current working directory.
+```powershell
+Get-Help {command}
+```
 
-## Command outputs
-Especially with command outputs that may be difficult to read or need further processing appending the `“Export-Csv”` command will create a CSV file with the output of the first command.
+## Basic Commands
 
-## Piping commands
-Piping commands is a common practice in Powershell. This is done by using the `“|”` character. For example, to list all processes and then export them to a CSV file, the following command can be used:
-`Get-Process | Export-Csv processes.csv`
+* **Start a process**
 
-## Reading files
-Similar to `“cat”` on Linux and `“type”` on the Windows command-line, `“Get-Content”` can be used to display the content of a file.
+```powershell
+Start-Process {program}
+```
 
-## Copy and move
-Files can be copied and moved with `“Copy-Item”` and `“Move-Item”`, respectively.
+* **List all commands**
 
-## Filtering Objects
-Objects can be filtered using the `“Where-Object”` command. For example, to filter processes that are not system processes, the following command can be used:
-`Get-Process | Where-Object {$_.Name -notlike "System*"}`
+```powershell
+Get-Command
+```
 
-## Sort-Object
-Objects can be sorted using the `“Sort-Object”` command. For example, to sort processes by CPU usage, the following command can be used:
-`Get-Process | Sort-Object`
+* **List all running processes**
 
-## File hashes
-Although not directly related to penetration tests, hashes are handy to compare files or search for malware samples on platforms such as VirusTotal. The built-in `“Get-FileHash”` command can be used to obtain hashes on most formats.  
-`Get-FileHash -Algorithm MD5 .\powerview.ps1`
+```powershell
+Get-Process
+```
 
-## Execution bypass
-Bypasses the prevention of the execution of PowerShell scripts on Windows systems  
-`Powershell -ExecutionPolicy Bypass - File {file_path}`
+* **Print working directory**
 
-## Make web requests
-Powershell can be used to make web requests. For example, to download a file from a URL, the following command can be used:
-`Invoke-WebRequest -Uri {url} -OutFile {output_file}`
+```powershell
+Get-Location
+```
+
+* **Read a file** (like `cat` in Linux or `type` in cmd)
+
+```powershell
+Get-Content {file}
+```
+
+* **Copy / Move files**
+
+```powershell
+Copy-Item {source} {destination}
+Move-Item {source} {destination}
+```
+
+
+## Exporting & Piping
+
+* **Export to CSV**
+
+```powershell
+{command} | Export-Csv file.csv
+```
+
+* **Pipe commands**
+
+```powershell
+Get-Process | Export-Csv processes.csv
+```
+
+* **Save output to a file**
+
+```powershell
+{command} | Out-File file.txt
+```
+
+* **Send errors to null**
+
+```powershell
+{command} 2> $null
+```
+
+
+## Filtering & Sorting
+
+* **Filter objects**
+
+```powershell
+Get-Process | Where-Object {$_.Name -notlike "System*"}
+```
+
+* **Sort objects**
+
+```powershell
+Get-Process | Sort-Object CPU
+```
+
+
+## File Hashes
+
+Calculate file hashes (useful for malware analysis or file comparison):
+
+```powershell
+Get-FileHash -Algorithm MD5 .\powerview.ps1
+```
+
+
+## Execution Policy Bypass
+
+Run a PowerShell script ignoring execution restrictions:
+
+```powershell
+PowerShell -ExecutionPolicy Bypass -File {file_path}
+```
+
+
+## Web Requests
+
+Download a file:
+
+```powershell
+Invoke-WebRequest -Uri {url} -OutFile {output_file}
+```
 
 # Enumeration
 
-## Get total users
-To get the total number of users on a system, the following command can be used:
-`Get-LocalUser | Measure-Object`. Remove `Measure-Object` to list all users.
+* **Count total users**
 
-## Get total groups
-To get the total number of groups on a system, the following command can be used:
-`Get-LocalGroup | Measure-Object`. Remove `Measure-Object` to list all groups.
+```powershell
+Get-LocalUser | Measure-Object
+```
 
-## Check password requirements
-To check the password requirements on a system, the following command can be used:  
-`Get-LocalUser | Where-Object -Property PasswordRequired -Match false`
+(remove `Measure-Object` to list them)
 
-## Get IP Address information
-To get IP address information, the following command can be used:
-`Get-NetIPAddress`
+* **Count total groups**
 
-## Get listening ports
-To get a list of listening ports, the following command can be used:
-`Get-NetTCPConnection | Where-Object -Property State -Match Listen | measure`. Remove `measure` to list all listening ports.
+```powershell
+Get-LocalGroup | Measure-Object
+```
 
-## See Patch History
-To see the patch history of a system, the following command can be used:
-`Get-HotFix`
+* **Check password requirements**
 
-## Scheduled Tasks
-To see the scheduled tasks on a system, the following command can be used:
-`Get-ScheduledTask`
+```powershell
+Get-LocalUser | Where-Object -Property PasswordRequired -Match false
+```
 
-## Find strings in files
-To find strings in files, the following command can be used:
-`findstr hello`
+* **Get IP info**
 
-## Save output to a file
-To save the output of a command to a file, the following command can be used:
-`{command} | Out-File {output_file}`
+```powershell
+Get-NetIPAddress
+```
 
-## Send errors to null
-To send errors to null, the following command can be used:
-`{command} 2> $null`
+* **List listening ports**
 
-## List SMB Shares
-To list SMB shares on a system, the following command can be used:
-`Get-SmbShare`
+```powershell
+Get-NetTCPConnection | Where-Object -Property State -Match Listen | Measure-Object
+```
+
+* **View patch history**
+
+```powershell
+Get-HotFix
+```
+
+* **List scheduled tasks**
+
+```powershell
+Get-ScheduledTask
+```
+
+* **Search text in files**
+
+```powershell
+findstr hello
+```
+
+* **List SMB shares**
+
+```powershell
+Get-SmbShare
+```
+
+## DNS Queries
+
+* **Query TXT records for a domain**
+
+```powershell
+Resolve-DnsName -Name google.com -Type TXT
+```
+
+**Explanation:** This queries DNS for **TXT records** (free-form text stored in DNS).
+They are often used for:
+
+* SPF records (email anti-spoofing)
+* DKIM public keys
+* DMARC policies
+* Site verification (Google, Microsoft, etc.)
+
+Example output for `google.com` might include SPF rules, verification tokens, and other service-related text.
