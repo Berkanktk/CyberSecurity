@@ -892,8 +892,26 @@ To specify that it was modified less than 7 days ago, the option `-mtime -7` is 
 When you want to specify that a file was modified within the last 24 hours, the option `-mtime 0` is used.
 
 **Note**  
-1. Suppress the output of any possible errors to make the output more readable. This is done by appending `2> /dev/null` to your command. This way, you won’t see any results you’re not allowed to access.
+1. Suppress the output of any possible errors to make the output more readable. This is done by appending `2> /dev/null` to your command. This way, you won't see any results you're not allowed to access.
 2. The second thing is the `-exec` flag. You can use it in your find command to execute a new command, following the -exec flag, like so: `-exec whoami \;`. (can be used for privilege escalation)'
+
+## ln (symbolic links)
+Creates symbolic links (shortcuts) to files or directories.
+
+```bash
+ln -s /root/flag.txt banner
+```
+
+`ln -s` → creates a symbolic link (shortcut) in Linux/Unix.  
+`/root/flag.txt` → the real file (probably a CTF flag or sensitive file).  
+`banner` → the name of the symlink that will point to /root/flag.txt.
+
+**Example:**
+```bash
+ln -s /etc/passwd mylink
+```
+Now `cat mylink` will show the contents of /etc/passwd.
+
 ## where
 This tool returns the path to the file or link that should be executed.
 
@@ -2593,6 +2611,11 @@ $(`whoami`)
 & whoami
 && whoami
 ```	
+
+To test for a security misconfiguration in Python, we can use the `os` module to execute commands:
+```python
+import os; print(os.popen("ls -l").read())
+```
 
 When found `cat /etc/os-release` can be used to find the OS version and other useful information.
 
