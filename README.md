@@ -664,7 +664,7 @@ Hackers are sorted into three hats, where their ethics and motivations behind th
 | Red Teamer | Plays the role of an adversary, attacking an organisation and providing feedback from an enemies perspective |
 
 # Linux Commands 
-Essential command-line tools for cybersecurity work. Practice these commands in a safe environment before using them in production.
+Essential command-line tools for cybersecurity work.
 
 <details>
 <summary>List of contents</summary>
@@ -754,58 +754,93 @@ Essential command-line tools for cybersecurity work. Practice these commands in 
 Display file contents or combine multiple files.
 
 ```bash
-cat file.txt                    # Show file contents
-cat -n file.txt                 # Show with line numbers
-cat file1.txt file2.txt         # Combine files
+cat file.txt            # Show file contents
+cat -b file.txt         # Show line numbers for non-blank lines (-n for all)
 ```
 
-**Common options**: `-n` (line numbers), `-A` (show all characters)  
+**Key options**:  
+`-n` = show numbers  
+`-b` = show numbers for non-blank lines  
 ## ls
 List files and directories.
-
 ```bash
-ls                              # List current directory
-ls -la                          # Detailed list with hidden files
-ls -lh                          # Human-readable file sizes
+ls 
 ```
 
-**Key options**: `-l` (details), `-a` (hidden files), `-h` (readable sizes), `-t` (sort by time)  
+**Key options**:   
+`-l` = long listing format  
+`-a` = include hidden files (starting with `.`)  
+`-h` = human-readable sizes (e.g., KB, MB)  
+`-t` = sort by modification time (newest first)  
+`-r` = reverse order of sort  
+`-S` = sort by file size
+
+You can combine options, e.g., `ls -lahtrS`
 ## mkdir
-Created directories
+Used for creating directories.
 
-**Syntax**  
-`mkdir <name>`
-
-The command mkdir has an option marked -p to add parent directories.  
-`mkdir -p Folder/i/am/in`
+```bash
+mkdir <name>
+```
+**Key options**:  
+`-p` = create parent directories as needed (e.g., `mkdir -p Folder/i/am/in`)   
+`-v` = verbose output, showing created directories
 ## touch
-Creates a file
+Used to create an empty file.
 
-Example: 
-`touch file.txt`
+```bash
+touch <filename>
+```
 ## tree
-We can look at the whole structure after creating the parent directories with the tool tree.
+Displays the directory structure in a tree-like format.
 
-Syntax:  
-`tree .` 
+```bash
+tree -a 
+```
+**Key options:**  
+`-a` = show hidden files  
+`-d` = list directories only  
+`-L <level>` = limit the depth of the directory tree displayed  
+`-h` = human-readable sizes  
+`-f` = print the full path prefix for each file
 ## ps
-Shows the processes for the current shell 
+Show the current running processes.
 
-**PID** – the unique process ID   
-**TTY** – terminal type that the user is logged into   
-**TIME** – amount of CPU in minutes and seconds that the process has been running   
-**CMD** – name of the command that launched the process.   
+```bash
+ps aux 
 
-`-a` all processes from all users   
-`-u` user-oriented format, details  
+# PID = Process ID
+# TTY = Terminal type
+# TIME = CPU time used by the process
+# CMD = Command that launched the process
+``` 
+
+**Key options**:   
+`-f` = full format listing  
+`-o` = user-defined output format (e.g., `ps -eo pid,comm`)   
+`-a` = all processes from all users   
+`-u` user-oriented format  
 `-x` will display all processes even those not associated with the current tty  
 `-t` Processes associated with the terminal run
+## top
+top command is used to show the Linux processes. It provides a dynamic real-time view of the running system
+
+```bash
+top
+```
+
+**Key options**:  
+`-i <seconds>` = delay between updates (default is 3 seconds)  
 ## htop
-[htop](https://htop.dev/) is an interactive process viewer for Unix systems
+[htop](https://htop.dev/) is an interactive process viewer for Unix systems.
 
-`sudo apt install htop`
+```bash
+htop -d 10    # Show processes with a delay of 10 tenths of seconds
+htop -u john  # Show processes owned by a specific user e.g. john
+```
 
-**Options**  
+**Key options**:  
+`-C` Use colors in the output  
 `-d` Delay between updates, in tenths of seconds  
 `-u` Show only processes owned by a specified user  
 `-p` Show only processes with specified process IDs  
@@ -813,67 +848,70 @@ Shows the processes for the current shell
 `-t` Tree view  
 `-U` Do not use unicode but plain ASCII
 ## rm
-Deletes files
+Used to remove files or directories.
 
-Example:  
-`rm -rf /tmp/*`
-
-`-r` Deletes every file in the directory  
-`-f` Suppresses all warning prompts 
+```bash
+rm file.txt       # Remove a file
+rm -r directory/  # Remove a directory and its contents
+rm -rf /tmp/*     # Remove all files in /tmp directory
+```
+**Key options**:  
+`-v` = Verbose output, showing what is being removed  
+`-r` = Deletes every file in the directory   
+`-f` = Suppresses all warning prompts 
 ## mv
-Moves/renames files  
+Move or rename files and directories.
 
-Example (relocate):  
-`mv file.txt /tmp`
-
-Example (rename):  
-`mv file.txt file2.txt`
-## top
-top command is used to show the Linux processes. It provides a dynamic real-time view of the running system
+```bash
+mv source.txt destination.txt  # Rename a file
+mv file.txt /tmp               # Move a file to another directory
+```
 ## lsof
-lsof stands for list open files. It is a command-line utility that lists all the open files and the processes that opened them.
+Displays information about files opened by processes. It can be used to identify which processes are using specific files, network connections, or devices.
 
-**Syntax**  
-`lsof <options> <file>`
+```bash
+lsof /etc/passwd        # Show processes using the /etc/passwd file
+lsof -i :80             # Show processes using port 80 (HTTP)
+lsof -i | grep openvpn  # Show openvpn processes
+```
 
-**Examples**  
-Only show openvpn processes  
-`lsof -i | grep openvpn` 
+**Key options**:   
+`-i` = Show network connections (e.g., `lsof -i :80` for port 80)    
+`-u` = Show files opened by a specific user (e.g., `lsof -u username`)   
+`-p <PID>` = Show files opened by a specific process ID  
+`-n` = Show numerical addresses instead of resolving hostnames
 ## kill
-Used to kill a process
+Used for terminating processes by their Process ID (PID).
 
-The most commonly used signals are:
+```bash
+kill <PID>          # Terminate a process by PID
+kill -9 <PID>       # Forcefully terminate a process by PID
+```
 
+**The most commonly used signals:**  
 1 (HUP) - Reload a process.  
 9 (KILL) - Kill a process.  
 15 (TERM) - Gracefully stop a process.
-
-`kill -9 PID_ID`
 ## find
-The find command is used to search and locate the list of files and directories  
+Used to search and locate files and directories based on various criterias.
 
-**Syntax**  
-`find <location> <options>`
+Syntax: `find <location> <options>`
 
-**Examples**
-Find all config files that are bigger than 25kilobytes and are newer than 2020-03-03, and then execure the ls -la command without printing the error in the terminal  
-`find / -type f -name *.conf -size +25k -newermt 2020-03-03 -exec ls -al {} \; 2>/dev/null`  
+```bash
+find / -name "*.txt"                    # Find all .txt files in the specified path
+find / -group users -type f              # Find files owned by the 'users' group
+find / -type f -name "passwords.txt"    # Find a specific file by name
+find / -name "*.txt"                    # Find any file with the extension .txt
+find / -type d -name "backup"           # Find directories named "backup"
+find / -type f -perm 644                # Find files with specific permissions (e.g., 644)
+find / -type f -user root               # Find files owned by the root user
+find / -type f -size +1M                # Find files larger than 1 megabyte
 
-Search for files from root  
-`find / -type f -name passwords.txt`
+#Find config files larger than 25KB and newer than a specific date
+find / -type f -size +25k -newermt 2020-03-03 -exec ls -al {} \; 2>/dev/null 
+```
 
-Find any file with the extension of ".txt"  
-`find / -name *.txt`
-
-Check the permissions for what the ‘users’ group can do  
-`find / -group users -type f 2>/dev/null`
-
-**Location specific options**   
-No specification = this folder  
-/ = root folder  
-. = this folder and its subdirectories  
-
-**Other options**  
+**Key options**  
 `-name` = specify file specific name/descriptions to be found  
 `-iname` = Like -name, but the match is case insensitive.  
 `-print` = It prints the pathname of the current file to standard output.  
@@ -881,10 +919,23 @@ No specification = this folder
 `-type` = With -type, you can use d to only find directories, and f to only find files.  
 `-user` = specify owner  
 `-size` = specify size  
-`-perm` = specify permissions
+`-perm` = specify permissions  
+`-exec` = Execute a command on the found files. The command must end with `\;`    
+`-newer` = Find files that are newer than a specified file.  
+`-newermt` = Find files modified after a specific date.  
 
-**Time specific**  
-min and time. a(acessed), m(modified), c
+**Location specific options**   
+No specification = current folder  
+`/` = root folder  
+`.` = this folder and its subdirectories  
+
+**Time specific options**  
+`-amin <n>` = Access time in minutes.  
+`-mmin <n>` = Modification time in minutes.  
+`-ctime <n>` = Change time in minutes.  
+`-atime <n>` = Access time in days.  
+`-mtime <n>` = Modification time in days.  
+`-ctime <n>` = Change time in days.
 
 To put it all together: in order to specify that a file was last accessed more than 30 minutes ago, the option `-amin +30` is used. 
 
@@ -899,143 +950,195 @@ When you want to specify that a file was modified within the last 24 hours, the 
 Creates symbolic links (shortcuts) to files or directories.
 
 ```bash
-ln -s /root/flag.txt banner
+ln -s /root/flag.txt flag
 ```
 
-`ln -s` → creates a symbolic link (shortcut) in Linux/Unix.  
-`/root/flag.txt` → the real file (probably a CTF flag or sensitive file).  
-`banner` → the name of the symlink that will point to /root/flag.txt.
+This creates a symbolic link named `flag` that points to the file `/root/flag.txt`.
 
-**Example:**
+You can also use it with other commands, such as `cat` to read the contents of the file through the symbolic link:
 ```bash
-ln -s /etc/passwd mylink
+cat flag 
 ```
-Now `cat mylink` will show the contents of /etc/passwd.
+Which will display the contents of the file `/root/flag.txt`.
 ## where
-This tool returns the path to the file or link that should be executed.
+Returns the path to the file or link that should be executed.
 
-Syntax  
-`where python3`
+```bash
+where <command>
+```
+
+> Good for finding the location of a command or executable file in the system.
 ## whatis
-This tool is used to get a short description of a command.
+Returns a a short description of a command.
 
-Syntax  
-`whatis <command>`
+```bash 
+whatis <command>
+```
 ## locate
 This tool is used to find files by their name.
 
-Syntax  
-`locate <file_name>`
+```bash
+locate <file_name>
+```
 ## apropos
-This tool is used to search for a command by its description.
+Used to search for a command by its description.
 
-Syntax  
-`apropos <something>`
-
-Example  
-`apropos hexeditor`
+```bash
+apropos hexeditor       # Search for commands related to hex editors
+```
 ## stat
-Displays detailed information about given files or file systems. These informations can be: file name, file size, blocks, type, inode, UID, GID, access, modify, change and creation times.
+Displays detailed information about given files or file systems. 
 
-Example usage:  
-`stat file.txt`
+```bash
+stat file.txt
+```
+
+**These informations can be:** file name, file size, blocks, type, inode, UID, GID, access, modify, change and creation times.
 ## df
-df is a command-line utility for reporting file system disk space usage
+Shows disk space usage of file systems.
 
-Example usage:  
-get the size of the file system in gigabytes  
-`df -BG` 
+```bash
+df -h     # Show disk space usage in human-readable format  
+df -i     # Show inode usage
+df -BG    # Show disk space usage in gigabytes
+```
 
-**Options:**  
-`--block-size=SIZE` scale sizes by SIZE. E.g., `-BM` prints sizes in units of 1,048,576 bytes.  
-`--exclude-type=TYPE` exclude file systems of type TYPE  
-`-h` print sizes in human readable format (e.g., 1K 234M 2G)    
-`-T` print file system type  
-`-t` limit listing to file systems of type TYPE  
+**Key options:**  
+`--block-size=SIZE` = scale sizes by SIZE. E.g., `-BM` prints sizes in units of 1,048,576 bytes.  
+`--exclude-type=TYPE` = exclude file systems of type TYPE  
+`-h` = print sizes in human readable format (e.g., 1K 234M 2G)    
+`-T` = print file system type  
+`-t` = limit listing to file systems of type TYPE  
 ## du
-du is a command that can be used to estimate file space usage. It is a part of the GNU coreutils suite.
+Estimates file and directory space usage.
 
-**Example usage:**  
-`du -shL BreachCompilation`
+```bash
+du -sh BreachCompilation  # Show total size of the BreachCompilation directory
+```
 
-**Options:**  
-`-a` to display an entry for each file in a file hierarchy  
-`-c` displays total size at the end  
-`-d <number>` to specify the depth of the directory tree to be displayed  
-`-h` to get a human-readable output  
-`-L` dereference all symbolic links  
-`-s` to get the total size of the directory  
+**Key options:**  
+`-a` = to display an entry for each file in a file hierarchy  
+`-c` = displays total size at the end  
+`-d <number>` = to specify the depth of the directory tree to be displayed  
+`-h` = to get a human-readable output  
+`-L` = dereference all symbolic links  
+`-s` = to get the total size of the directory  
 `--time` get the results with timestamps of last modification
 ## ncdu
-ncdu is a disk usage analyzer with an ncurses interface. It is a part of the ncdu suite.
+Disk usage analyzer with an ncurses interface (Part of the ncdu suite).
 
-**Example usage:**   
-`ncdu -x --si BreachCompilation`
+```bash
+ncdu -x --si <file_or_directory>
+```
 
 **Options:**    
-`-x` - This option prevents ncdu from following symbolic links.  
-`--si` -  This option tells ncdu to use SI units (powers of 10) to display the file sizes, which makes them easier to read than the default binary units (powers of 2).
+`-x` = This option prevents ncdu from following symbolic links.  
+`--si` =  This option makes ncdu use powers of 1000 instead of 1024 for sizes.  
 ## free
-free is a command-line utility that displays the total amount of free and used physical and swap memory in the system, as well as the buffers and caches used by the kernel.
+Displays memory usage statistics.
 
-Example usage:
-`free -h`
+```bash
+free -h 
+```
 
 **Options:**  
-`-b` - to display the amount of memory in bytes  
-`-k` - to display the amount of memory in kilobytes  
-`-m` - to display the amount of memory in megabytes  
-`-g` - to display the amount of memory in gigabytes  
-`-h` - to display the amount of memory in a human-readable format  
-`-s N` - to update the output every N seconds
+`-b` = to display the amount of memory in bytes  
+`-k` = to display the amount of memory in kilobytes  
+`-m` = to display the amount of memory in megabytes  
+`-g` = to display the amount of memory in gigabytes  
+`-h` = to display the amount of memory in a human-readable format  
+`-s <sec>` = to update the output every X seconds
 ## uniq
-uniq is a command-line utility that removes duplicate lines from a sorted file.
+Remove duplicate lines from a sorted file.
 
-**Example**   
-`uniq file.txt` 
+```bash
+uniq file.txt # Remove duplicate lines from file.txt
+uniq -c file.txt # Count occurrences of each line
+uniq -d file.txt # Print only duplicate lines
+uniq -u file.txt # Print only unique lines
+```
 
-**Options**  
-`-c` count the number of occurrences of each line  
-`-d` only print duplicate lines  
-`-u` only print unique lines  
-`-i` to ignore case  
+**Key options**  
+`-c` = count the number of occurrences of each line  
+`-d` = only print duplicate lines  
+`-u` = only print unique lines  
+`-i` = to ignore case  
 ## sort
-sort is a command-line utility that sorts lines of text files.
+Sorts lines of text files.
 
-Syntax:  
-`sort [OPTION] [FILE] `
+```bash
+sort file.txt                 # Sort lines in file.txt
+sort -r file.txt              # Sort lines in reverse order
+sort -n file.txt              # Sort lines numerically
+sort -u file.txt              # Sort lines and remove duplicates
+sort -b file.txt              # Ignore leading blanks
+sort -o sorted.txt file.txt   # Sort lines and write output to sorted.txt
+```
 
 **Options:**   
-`-b` - ignore leading blanks  
-`-c` - check if the file is sorted   
-`-r` - to sort in reverse order  
-`-o` - to write output to a file  
-`-u` - sort and remove duplicate lines  
-`-n` - to sort numerically   
-`-g` - to sort general-numeric  
-`-h` - to sort human readable numbers  
-`-f` - ignore case  
+`-b` = ignore leading blanks  
+`-c` = check if the file is sorted   
+`-r` = to sort in reverse order  
+`-o` = to write output to a file  
+`-u` = sort and remove duplicate lines  
+`-n` = to sort numerically   
+`-g` = to sort general-numeric  
+`-h` = to sort human readable numbers  
+`-f` = ignore case  
 ## diff
-diff is a command-line utility that allows you to compare two files line by line
+Compares files line by line and shows differences.
 
-Example usage:
-`diff a.txt b.txt`
+```bash
+diff file1.txt file2.txt  # Compare two files
+diff -u file1.txt file2.txt  # Unified diff format
+diff -i file1.txt file2.txt  # Ignore case differences
+diff -w file1.txt file2.txt  # Ignore all white space
+```
+**Key options:**  
+`-u` = unified diff format (shows context)  
+`-c` = context diff format (shows more context)  
+`-i` = ignore case differences  
+`-w` = ignore all white space  
+`-b` = ignore changes in the amount of white space  
+`-B` = ignore changes whose lines are all blank
 ## tail/head
-The tail/head command, as the name implies, print the last/first N number of data of the given input
+`tail` and `head` commands are used to display the beginning or end of a file.
 
-Options:  
-`-n <number>` number of lines to show  
-`-c <numbers>` number of bytes  
-`sort` to sort
+```bash
+head file.txt          # Show the first 10 lines of file.txt
+tail file.txt          # Show the last 10 lines of file.txt
+
+head -n 5 file.txt     # Show the first 5 lines of file.txt
+tail -n 5 file.txt     # Show the last 5 lines of file.txt
+
+# Live tailing of a file
+tail -f file.txt       # Follow the file and display new lines as they are added
+
+# Sorting
+head -n 20 file.txt | sort -r  # Show the first 20 lines and sort them in reverse order
+```
+
+**Key options:**  
+`-n <number>` = number of lines to show  
+`-c <numbers>` = number of bytes  
 ## history
-`history` command in Linux is a built-in shell tool that displays a list of commands used in the terminal session
+Displays a list of commands used in the terminal session
+
+```bash
+history 
+```
 ## pwd
 Find the full Path to our current working directory
-## chmod
-Chmod allows you to set the different permissions for a file
 
-Example:
-`chmod 777 file.txt`
+```bash
+pwd
+```
+## chmod
+Chmod allows you to change the permissions of a file or directory.
+
+```bash
+chmod <permissions> <file>
+```
 
 **Permissions**
 | Digit    |      Meaning   | 
@@ -1049,28 +1152,38 @@ Example:
 | 7  | That file can be read, written to, and executed |
 
 To make a binary file just executable for the owner of the file, you can use:  
-`chmod u+x file.txt`
+```bash
+chmod u+x file.txt
+```
 ## chown
-Change the user and group for any file
+Change the owner and/or group of a file or directory.
 
-**Syntax:**  
-`chown user:group file` change user/group  
+```bash
+chown <user>:<group> <file>
 
-**Example (change the owner):**  
-`chown berkan file.txt`
+# Example
+chown root:admin file.txt  # Change owner to root and group to admin
+```
 
-`-R` to operate on every file in the directory at once
+**Key options:**  
+`-R` = recursively change ownership of files and directories within a directory  
+`-v` = verbose output, showing what is being changed  
 ## curl
-The curl command transfers data to or from a network server, using one of the supported protocols (HTTP, HTTPS, FTP, FTPS, SCP, SFTP, TFTP, DICT, TELNET, LDAP or FILE). 
+Tool for transferring data with URLs. It supports various protocols, including HTTP, HTTPS, FTP, and more. It is commonly used to download files, interact with APIs, and perform web requests.
 
-**Syntax:**  
-`curl <URL>` simply fetches the URL and prints it to the terminal.  
+```bash
+# Fetch the content of a URL 
+curl <URL> 
 
-**Options:**  
+# Downloading a file (save it with the same name as in the URL)
+curl -O <URL>
+```
+
+**Key options:**  
 `-s` to suppress the output (statistics)  
 `-#` show progress bar   
 `-o page.html <URL>` to save the output to a file  
-`-O <URL>` to save the output to a file with the same name as the file in the URL  
+`-O <URL>` to save the output to a file with the same name as the file in the URL  (download)  
 `-I <URL>` to get the headers only  
 `-L <URL>` to follow redirects  
 `-b <NAME1=VALUE1;NAME2=VALUE2>` specify cookies  
@@ -1086,124 +1199,164 @@ The curl command transfers data to or from a network server, using one of the su
 `-H "Accept-Language: da-DK" <URL>` to change the Accept-Language header (ex. Danish)  
 `-H "Date: Mon, 23 11 2018 23:23:23 GMT" <URL>` to change the date  
 
-**Example:**  
-Real use case example  
+**Demo of advanced use case**  
 ```bash
-# Download a file
-curl -O http://example.com/file.txt
-
-# Advanced curl command to get the flag
-curl -s -A "PicoBrowser" -H "Date: Mon, 23 11 2018 23:23:23 GMT" -H "DNT: 1" -H "X-Forwarded-For: 2.71.255.255" -H "Accept-Language: sv-SE" --referer http://mercury.picoctf.net:36622 http://mercury.picoctf.net:36622/ | grep -oI "picoCTF{.*}"`
+curl -s -A "PicoBrowser" -H "Date: Mon, 23 11 2018 23:23:23 GMT" -H "DNT: 1" -H "X-Forwarded-For: 2.71.255.255" -H "Accept-Language: sv-SE" --referer http://mercury.picoctf.net:36622 http://mercury.picoctf.net:36622/ | grep -oI "picoCTF{.*}"
 ```
 ## wget
 The wget command downloads files from HTTP, HTTPS, or FTP connection a network.  
 
-Get ftp files recursively  
-`wget -r ftp://ftpuser:<USER>@<IP>`
+```bash
+# Download a file from a URL
+wget <URL>
 
+# Download files from an FTP server recursively
+wget -r ftp://ftpuser:<USER>@<IP> 
+```
 
-**Options:**  
-`-O` to specify the output file  
-`-b` to run in the background  
-`-r` to download recursively  
-`-q` to download in quiet mode  
+**Key options:**  
+`-O` = to specify the output file  
+`-b` = to run in the background  
+`-r` = to download recursively  
+`-q` = to download in quiet mode  
 ## wash
-Wash is a tool that can be used to crack WPA/WPA2 handshakes. It is a part of the aircrack-ng suite.
+Wash is a tool that scans for WPS-enabled networks and displays information about them (part of the `aircrack-ng` suite).
 
-Example usage:
-`wash -i wlan0mon` - to scan for WPA/WPA2 networks
+```bash
+wash -i wlan0mon  # Scan for networks using the wlan0mon interface
+wash -i wlan0mon -C  # Scan for networks and show the channelerrors
+```
 ## netdiscover
-Netdiscover is a tool that can be used to scan for live hosts on a network. It is a part of the aircrack-ng suite.
+Netdiscover is a tool that can be used to scan for live hosts on a network (part of the `aircrack-ng` suite).
 
-Example usage:  
-`netdiscover -i wlan0mon` or `netdiscover -r <ip>/24` - to scan for live hosts on a network  
+> It is particularly useful for identifying active devices on a network, especially in environments where DHCP is not available or when you want to quickly discover devices without using more complex tools.
+
+```bash
+netdiscover -i wlan0mon  # Scan for live hosts on the wlan0mon interface
+netdiscover -r <ip>/24  # Scan a specific IP range
+```
 ## netstat
-Netstat is a command-line utility that displays network connections for TCP (both incoming and outgoing)
- 
-Example usage:  
-`netstat -tulpn` - to display all active listening ports
+Displays network connections and listening ports. It can show both TCP and UDP connections, as well as the processes using those connections.
+
+```bash
+netstat -tulpn  # Display all active listening ports
+```
+**Key options:**  
+`-t` = show TCP connections  
+`-u` = show UDP connections  
+`-l` = show only listening sockets  
+`-p` = show the process using the socket  
+`-n` = show numerical addresses instead of resolving hostnames (stops DNS lookups)  
+`-a` = show all connections and listening ports  
+`-r` = display the routing table
+
+> 'ss' is now a better alternative to netstat, see below.
 ## ss
-ss is a command-line utility that displays network connections for TCP, UDP, Unix sockets, and more. (modern)
+Displays socket statistics and information about network connections. It is a replacement for the `netstat` command and provides more detailed information about sockets.
 
-Example usage:  
-`ss -tulpn` - to display all active listening ports
+```bash
+ss -tulpn  # Display all active listening ports with process information
+```
 ## tcpdump
-tcpdump is a command-line utility that allows you to capture and analyze network traffic going through your system
+Packet analyzer tool used to capture and analyze network traffic. 
+> It allows users to intercept and display the packets being transmitted or received over a network.
 
-Example usage:  
-`tcpdump -i wlan0mon` - to capture all network traffic on the wlan0mon interface
+```bash
+tcpdump -i <interface>  # Capture packets on a specific network interface
 
-**Options:**  
-`-i` to specify the interface to capture traffic on  
-`-n` to display IP addresses instead of hostnames (stops DNS lookups)  
-`-w` to write the captured packets to a file  
-`-r <file>.pcap` to read packets from a file  
-`-q` to get brief packet information  
-`-e` to include MAC addresses  
-`-A` to print packet data as ASCII  
-`-c <number>` to specify the number of packets to capture  
-`-v` to increase verbosity (use -vv for more)  
+# Examples
+tcpdump -i wlan0mon -n  # Capture packets on the wlan0mon interface without resolving hostnames
+tcpdump -i wlan0mon -w capture.pcap  # Capture packets and save them to a file
+tcpdump -i wlan0mon -r capture.pcap  # Read packets from a file
+tcpdump -i wlan0mon -c 100  # Capture only 100 packets
+tcpdump -i wlan0mon -q  # Capture packets with brief output
+tcpdump -i wlan0mon -e  # Capture packets and include MAC addresses
+tcpdump -i wlan0mon -A  # Capture packets and print packet data as ASCII
+```
+
+**Key options:**  
+`-i` = to specify the interface to capture traffic on  
+`-n` = to display IP addresses instead of hostnames (stops DNS lookups)  
+`-w` = to write the captured packets to a file  
+`-r <file>.pcap` = to read packets from a file  
+`-q` = to get brief packet information  
+`-e` = to include MAC addresses  
+`-A` = to print packet data as ASCII  
+`-c <number>` = to specify the number of packets to capture  
+`-v` = to increase verbosity (use -vv for more)  
 ## whatweb
-Whatweb is a handy tool and contains much functionality to automate web application enumeration across a network. We can extract the version of web servers, supporting frameworks, and applications using the command-line tool.
+WhatWeb is a web scanner that identifies websites and their technologies. It can detect web servers, programming languages, frameworks, and more.
 
-Example usage:  
-`whatweb --no-errors 10.10.10.0/24`
+```bash
+whatweb <URL>  # Scan a specific URL
 
-**Options:**  
-`-a=LEVEL` Aggresion level  
-`-U=AGENT` User agent  
-`--header` HTTP header  
-`--max-redirects=NUM` Maximum number of redirects   
-`-u=<user:password>` Basic authentication  
-`-c=COOKIES` Use cookies  
-`--cookie-jar=FILE` Read cookies from a file  
-`-g=STRING|REGEXP` Search for a string  
-`--no-errors` Suppress error messages  
-`-p=LIST` List all plugins  
-`-l` List all plugins  
-`-v` Verbose mode  
-`-q` Quiet output  
-`-h` to show help (highly recommended)  
+# Example usage:
+whatweb --no-errors 10.10.10.0/24 # Scan a range of IP addresses
+```
+
+**Key options:**  
+`-a=LEVEL` = Aggresion level  
+`-U=AGENT` = User agent  
+`--header` = HTTP header  
+`--max-redirects=NUM` = Maximum number of redirects   
+`-u=<user:password>` = Basic authentication  
+`-c=COOKIES` = Use cookies  
+`--cookie-jar=FILE` = Read cookies from a file  
+`-g=STRING|REGEXP` = Search for a string  
+`--no-errors` = Suppress error messages  
+`-p=LIST` = List all plugins  
+`-l` = List all plugins  
+`-v` = Verbose mode  
+`-q` = Quiet output  
+`-h` = to show help (highly recommended)  
 ## apt
-apt is a command-line utility for installing, updating, removing, and otherwise managing deb packages
-`sudo apt update` This will pull the latest changes from the APT repositories:
+apt is a command-line utility for installing, updating, removing, and otherwise managing debian packages.
 
-`sudo apt upgrade` To upgrade the installed packages to their latest versions
-
-`sudo apt full-upgrade` The difference between **upgrade** and **full-upgrade** is that the later will remove the installed packages if that is needed to upgrade the whole system.
-
-`sudo apt install package_name` Install packages
-
-`sudo apt remove package_name` Remove packages
-
-`sudo apt autoremove` Remove unused packages
-
-`sudo apt list` List packages
+```bash 
+sudo apt update                 # Update the package list
+sudo apt upgrade                # Upgrade installed packages
+sudo apt full-upgrade           # Full upgrade (may remove packages if necessary)
+sudo apt install <package_name> # Install a package
+sudo apt remove <package_name>  # Remove a package
+sudo apt autoremove             # Remove unused packages
+sudo apt list --installed       # List installed packages
+```
 ## dig
-dig command stands for Domain Information Groper. It is used for retrieving information about DNS name servers
+Retrieve information about domain names, IP addresses, and other DNS records.
 
-`dig [server] [name] [type]`  
-`dig google.com` 
+```bash
+dig <domain> <type>  
 
-Options:  
-`-x` Specify IP adress  
-`+noall +answer` Detailed information  
+# Example:
+dig example.com A +short  # Get the A record for example.com in short format
+```
+* `<domain>` = The domain name to query (e.g., `example.com`)  
+* `<type>` = The type of DNS record to query (e.g., `A`, `MX`, `CNAME`, `NS`, etc.)  
 
-Save to a file:  
-`dig -f domain_research.txt +short`  
+**Key options:**  
+`+short` = Short output format  
+`+trace` = Trace the delegation path from the root servers  
+`+noall +answer` = Show only the answer section of the response  
+`-x` = Specify IP adress  
+`-f` = save to a file  
 ## tar
-tar is a command that allows creating, maintaining, modifying, and extracting files that are archived in the tar format (tar, gzip, zip).
+`tar` is a command that allows creating, maintaining, modifying, and extracting files that are archived in the tar format (tar, gzip, zip).
 
-The most common example for tar extraction would be:
-`tar -xf archive.tar`
+```bash
+# Creating a tar archive
+tar -cf archive.tar file1.txt file2.txt 
 
-**Compressing files with tar**  
-`tar -czvf stuff.tar.gz`
+# Extracting a tar archive (most common)
+tar -xf archive.tar 
 
-**Uncompressing files with tar**  
-`tar -xvzf myfolder.tar.gz -C myfolder/` 
+# Compressing files with tar
+tar -czvf stuff.tar.gz file1.txt file2.txt 
 
-**Options:**  
+# Uncompressing files with tar
+tar -xvzf myfolder.tar.gz -C myfolder/  # Extract the contents into the myfolder directory
+```
+
+**Key options:**  
 `-c` tells tar to create an archive.  
 `-z` tells tar to compress the archive with gzip.  
 `-v` tells tar to be verbose.  
@@ -1211,111 +1364,197 @@ The most common example for tar extraction would be:
 `-C` tells tar to change to the directory specified before performing any operations.	   
 `-x` tells tar to extract files from an archive.  
 ## gzip
-gzip - a file format and a software application used for file compression and decompression. gzip-compressed files have .gz extension.
+`gzip` is a file format and a software application used for file compression and decompression. gzip-compressed files have a `.gz` extension.
 
-`gzip filename.txt` compression
+```bash
+# Compress a file
+gzip filename.txt 
 
-Switches:  
-`-d` decompression
+# Compress a directory (recursively)
+gzip -r directory/ 
 
-Example:  
-`gzip -d file.gz`
+# Compress multiple files
+gzip file1.txt file2.txt 
+
+# Decompress a file
+gzip -d filename.txt.gz  # or use 'gunzip filename.txt.gz'
+```
+
+**Key options:**  
+`-d` = decompress a file  
+`-k` = keep the original file after compression  
+`-r` = recursively compress files in directories  
+`-v` = verbose output, showing compression details  
+`-1` to `-9` = set compression level (1 is fastest, 9 is best compression)
 ## 7z
 7z is a file archiver with a high compression ratio.
 
-**Example usage:**  
-`7z a <Zip folder> <Files or *> -p<SECRET>`
+```bash
+# Create a 7z archive
+7z a archive.7z file1.txt file2.txt
 
+# Extract a 7z archive
+7z x archive.7z
+
+# Compress a directory
+7z a archive.7z directory/
+
+# Create a password-protected 7z archive
+7z a -p<SECRET> archive.7z file1.txt file2.txt
+
+# Extract a password-protected 7z archive
+7z x archive.7z -p<SECRET>
+```
+
+**Key options:**  
+`a` = add files to an archive (`-tzip` for zip archives)  
+`x` = extract files from an archive  
+`l` = list contents of an archive    
+`-p<SECRET>` = create or extract a password-protected archive  
+`-m0=LZMA2` = use LZMA2 compression method (default)  
+`-mem=AES256` = use AES-256 encryption for the archive  
+`-mx=9` = set compression level (0-9, where 9 is the highest compression)  
+`-t7z` = specify the archive type as 7z  
+`-o<output_directory>` = specify the output directory for extraction
+
+**Demo use case:**
+```bash
+# Create a password-protected 7z archive  
+7z a <Zip folder> <Files or *> -p<SECRET>
+
+# Extract a password-protected 7z archive  
+7z x <Zip folder> -p<SECRET>
+```
+
+**Advanced Example**
+```bash
+7z a -tzip -p123 -mem=AES256 secret.zip secret
+```
+> Without `-mem=AES256`, the contents will be compressed but the file names will still be visible (no filename encryption).
+
+This command creates a password-protected zip archive named `secret.zip` containing the `secret` directory, using AES-256 encryption.
+
+For simple version `zip -e -r secret.zip secret` can also be used (legacy).
 ## grep
-Search the contents of files for specific values   
-`grep "hello world" file.txt`
+Searching plain-text data for lines that match an expression. It is commonly used to search through files or output from other commands.
 
-Search for an ip using regular expressions  
+```bash
+# Basic usage
+grep "search_term" file.txt  # Search for a specific term in a file
+
+# ----- Example usage -----
+# Search for a specific term in a file and show line numbers
+grep -n "search_term" file.txt  
+
+# Search recursively in all files in a directory
+grep -R "search_term" /path/to/directory  # or '.' for current directory
+
+# Search for an ip using regular expressions  
 `grep -Eo '[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}'`  
 
-Search for binaries (ex. "/usr/bin/sudo")  
+# Search for binaries (ex. "/usr/bin/sudo")  
 `grep '^/.../.../....$'` 
 
-Grep for CTF flag 1/2  
+# Grep for CTF flag version 1  
 `grep -oi '\S*flag\S*' <path>`
 
-Grep for CTF flag 2/2  
+# Grep for CTF flag version 2  
 `grep "flag{.*}"`
+```
 
-**Options**  
-`-n` line numbers for every string found  
-`-E` regular expressions  
-`-R` recursive grep  
-`-i` case insensitive
+**Key options**  
+`-i` = ignore case (case insensitive search)    
+`-o` = show only the matching part of the line  
+`-l` = show only the names of files with matching lines  
+`-c` = count the number of matching lines  
+`-n` = line numbers for every string found  
+`-w` = match whole words only  
+`-x` = match whole lines only  
+`-E` = regular expressions  
+`-R` = recursive grep  
 ## wc
-Word count  
-`wc -l file.txt` get numbers of entries  
+Count lines, words, and characters in files.
 
-**Options**  
-`-l` count number of lines  
-`-c` count number of bytes  
-`-w` count number of words   
-`-m` count number of characters  
+```bash
+wc file.txt
+```
+
+**Key options**  
+`-l` = count number of lines  
+`-w` = count number of words  
+`-c` = count number of bytes  
+`-m` = count number of characters  
 ## cut
-Cut parts of lines from specified files or piped data and print the result to standard output.
+Extract sections from each line of input files or standard input.
 
-**Syntax**  
-`cut OPTION FILE`
+```bash
+cut <OPTION> <FILE>
 
-**Example usage**  
-`/etc/passwd | cut -d":" -f1`
+# Extract the first field from a file using ':' as a delimiter
+cut -d':' -f1 /etc/passwd  
+```
 
-**Options**  
-`-f` - Select by specifying a field, a set of fields, or a range of fields. This is the most commonly used option.  
-`-c` - Select by specifying a character, a set of characters, or a range of characters.  
-`-d`  - Specify a delimiter that will be used instead of the default “TAB” delimiter.  
+**Key options**  
+`-f` = Select by specifying a field, a set of fields, or a range of fields.  
+`-c` = Select by specifying a character, a set of characters, or a range of characters.  
+`-d` = Specify a delimiter that will be used instead of the default “TAB” delimiter.  
 ## tr
-Another possibility to replace certain characters from a line with characters defined by us is the tool tr
+Tool used to replace, delete, or squeeze repeated characters.
 
-**Example usage**  
-Change delimeter from ":" to " " (space).  
-`tr ":" " "`
+```bash
+tr [options] SET1 [SET2]
 
-Change from lowercase to uppercase  
-`tr 'a-z' 'A-Z`
+# Replace all occurrences of ':' with ' '
+tr ':' ' ' < file.txt
 
-**Options**  
+# Delete all digits from a file
+tr -d '0-9' < file.txt
+
+# Squeeze repeated spaces into a single space
+tr -s ' ' < file.txt
+
+# Convert lowercase letters to uppercase
+tr 'a-z' 'A-Z' < file.txt
+```
+
+**Key options**    
 `-d` delete characters  
-`-s` squeeze characters
+`-s` squeeze repeated characters
 ## column
-Since such results can often have an unclear representation, the tool column is well suited to display such results in tabular form using the "`-t`"
+The `column` command formats text input into a table-like structure, aligning columns based on whitespace or a specified delimiter.
 
-**Example usage:**  
-`column -t`
+```bash
+column -t file.txt
+
+# Format output from a command into columns
+echo -e "Name:Age\nAlice:30\nBob:25" | column -t
+```
 ## awk
-Awk is a utility that enables a programmer to write tiny but effective programs in the form of statement
+Manipulate and analyze text files. It is particularly useful for processing structured data, such as CSV files or log files.
 
-**Syntax**  
-`awk [flags] [select pattern/find(sort)/commands] [input file]`
+```bash
+# Print the first and second fields of each line in file.txt
+awk '{print $1, $2}' file.txt 
 
-**Example usage**  
-Print the first and second field of a file    
-`awk '{print $1, $2}` 
+# Print the first and third fields of /etc/passwd
+awk -F: '{print $1, $3}' /etc/passwd 
+```
 
-Print number of lines  
-`awk '{print NR, $0}` 
+**Key options:**  
+`-F` = specify the field separator (default is whitespace)  
+`-v` = assign a variable value before processing the input  
+`-o` = output file (not commonly used)
 
-**Options**  
-`-F` field separator (without 'Begin')  
-`-v` variable assignment  
-`-o` output file  
-`$0`: Represents the entire line of text.  
-`$1`: Represents the first field.  
-`$2`: Represents the second field.  
-`$7`: Represents the seventh field.  
-`$45`: Represents the 45th field.  
-`$NF`: Stands for “number of fields,” and represents the last field.  
-`$NR`: Number the lines  
-`$FS`: Field separator  
-`$RS`: Record separator  
-`$OFS`: Output field separator  
-`$ORS`: Output record separator  
-`/<pattern>/`: Represents a pattern to match.   
+**Commonly used variables:**  
+`$0` = Represents the entire line of text.  
+`$1`, `$2`, ... = Represents the first, second, etc., fields in the line.  
+`$NF` = Represents the last field in the line.  
+`$NR` = Represents the current record number (line number).  
+`$FS` = Field separator (default is whitespace).  
+`$RS` = Record separator (default is newline).  
+`$OFS` = Output field separator (default is space).  
+`$ORS` = Output record separator (default is newline).  
+`/<pattern>/` = Represents a pattern to match in the input. 
 
 <details>
 <summary>Advanced examples</summary> <br>
@@ -1343,246 +1582,389 @@ stok:1234
 awk 'BEGIN {ORS=","} {print $1}' file.txt
 ippsec,john,thecybermentor,liveoverflow,nahamsec,stok
 ```
-
 </details>
+
 ## sed
-sed looks for patterns we have defined in the form of regular expressions (regex) and replaces them with another pattern that we have also defined
+Sed is a stream editor that can perform basic text transformations on an input stream (a file or input from a pipeline). It is commonly used for text substitution, deletion, and insertion.
 
-**Example usage**  
-Replace the word "bin" with "BK."  
-`sed 's/bin/BK/g'`
+```bash
+# Replace the first occurrence of 'pattern' with 'replacement' in file.txt
+sed 's/pattern/replacement/' file.txt
 
-Format trailing space with a colon  
-`sed 's/ */:/g' file.txt`
+# Replace all occurrences of 'pattern' with 'replacement'
+sed 's/pattern/replacement/g' file.txt
 
-Only get alphanumeric values  
-`sed 's/[[:digit:]]//g' file.txt`
+# Format trailing space with a colon  
+sed 's/ */:/g' file.txt
+
+# Only get alphanumeric values  
+sed 's/[[:digit:]]//g' file.txt
+```
 
 The "s" flag at the beginning stands for the substitute command. Then we specify the pattern we want to replace. After the slash (/), we enter the pattern we want to use as a replacement in the third position. Finally, we use the "g" flag, which stands for replacing all matches.
 ## whoami
-Find out what user we're currently logged in as
-## uname
-Prints basic information about the operating system name and system hardware
+See the current user that is logged in to the system.
 
-`uname -a` will print all available information
+```bash
+whoami
+```
+## uname
+See basic information about the operating system name and system hardware.
+
+```bash
+uname -a 
+```
+
+**Key options:**  
+`-a` = print all information  
+`-s` = print the kernel name  
+`-n` = print the network node hostname  
+`-r` = print the kernel release  
+`-v` = print the kernel version  
+`-m` = print the machine hardware name  
+`-p` = print the processor type (if available)  
+`-o` = print the operating system name
 ## ftp
 FTP or File Transfer Protocol is a network communication protocol that enables two computers to communicate
 
-Standard use  
-`ftp <IP>` 
+```bash
+ftp <IP> 
+```
 
 Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username and password of "`anonymous`".
 
-Commands:  
-`ls` - list files  
-`cd` - change directory  
-`get` - download file  
-`put` - upload file  
-`quit` - exit  
+**Key Commands:**    
+`ls` = list files in the current directory  
+`cd <directory>` = change directory  
+`get <file>` = download a file from the server  
+`put <file>` = upload a file to the server  
+`more <file>` = view the contents of a file  
+`quit` = exit the FTP session
 
-See more commands [here](/More/FTP/Commands.md).
+See more commands [here](/More/FTP/Readme.md).
 ## ssh
 SSH or Secure Shell is a network communication protocol that enables two computers to communicate
 
-Standard use  
-`ssh user@ip` and type the password
+```bash
+ssh user@ip
+```
+And then type the password to log in. If you have a private key, you can use it to log in without a password.
 
-Login with a key  
-`ssh -i path_to_pem user@ip`
+```bash
+ssh -i path_to_pem user@ip
+```
 
-Specify other ports than 22  
-`ssh user@ip -p <port>`
-
-Create an SSH tunnel  
+Creating an SSH tunnel  
 ```bash
 ssh -D 8080 -C -q -N user@ip # Create a tunnel
 chromium --no-sandbox --proxy-server="socks5://localhost:8080" # Use the tunnel
 ```
+
+**Key options:**  
+`-i <path_to_pem>` = specify the path to the private key file  
+`-p <port>` = specify the port to connect to (default is 22)  
+`-v` = verbose mode (useful for debugging)  
+`-X` = enable X11 forwarding (allows running GUI applications over SSH)  
+`-C` = enable compression (useful for slow connections)  
+`-N` = do not execute a remote command (useful for port forwarding)  
+`-L <local_port>:<remote_host>:<remote_port>` = local port forwarding  
+`-R <remote_port>:<local_host>:<local_port>` = remote port forwarding
 ## scp
 SCP or Secure Copy Protocol is a network communication protocol that enables two computers to communicate and transfer files between them using the SSH protocol.
 
-Copy a file to a remote server  
-`scp /path/to/file user@ip:/path/to/remote/file`
+```bash
+scp [options] source destination
 
-Copy a file from a remote server to a local server  
-`scp user@ip:/path/to/remote/file /path/to/file`
+# Copy a file to a remote server  
+scp /path/to/file user@ip:/path/to/remote/file
 
-Example (file to a remote server ):  
-`scp example.txt berkan@192.168.100.123:/home/berkan/`
+# Copy a file from a remote server to a local server  
+scp user@ip:/path/to/remote/file /path/to/file
+
+# Example (file to a remote server ):  
+scp example.txt berkan@192.168.100.123:/home/berkan/
+```
+**Key options:**  
+`-r` = copy directories recursively  
+`-P <port>` = specify the port to connect to (uppercase P)  
+`-i <path_to_pem>` = specify the path to the private key file  
+`-v` = verbose mode (useful for debugging)  
+`-p` = preserve file attributes (permissions, timestamps, etc.)  
 ## searchsploit
-Searchsploit is a command line search tool for the offline version of Exploit-DB  
+Searchsploit is a command line search tool for the offline version of Exploit-DB.
 
-Usage:  
-`searchsploit [options] term1 term2 term3 ...`
+```bash
+searchsploit [options] term1 term2 term3 ...
 
-Example:  
-`searchsploit afd windows local`
+# Example usage
+searchsploit windows local
+```
 
-Options:  
-`-c, --case [Term]` - Perform a case-sensitive search (Default is inSEnsITiVe)  
-`-e, --exact [Term]` - Perform an EXACT search (e.g. "WordPress 4.1" would not detect "WordPress Core 4.1")  
-`-s, --strict` - Perform a strict search, so input values must exist("1.1" would not be detected in "1.0 < 1.3")  
-`-t, --title [Term]` - Search JUST the exploit title (Default is title AND the file's path   
-`-p, --path [EDB-ID]` -  Show the full path to an exploit    
-`-w, --www` - Show URLs to Exploit-DB.com rather than the local path  
-`--exclude="term"` Remove values from results. By using "|" to separate, you can chain  multiple values e.g. --exclude="term1|term2|term3”  
+**Key options:**  
+`-c [Term]` = Perform a case-sensitive search  
+`-e [Term]` = Perform an EXACT search  
+`-s` = Perform a strict search ("1.1" would not be detected in "1.0 < 1.3")  
+`-t [Term]` = Search JUST the exploit title (Default is title AND the file's path   
+`-p [EDB-ID]` =  Show the full path to an exploit    
+`-w` = Show URLs to Exploit-DB.com rather than the local path  
+`--exclude="term1|term2"` = Exclude results matching terms (use "|" to separate multiple)
 ## xfreerdp
-xfreerdp is an X11 Remote Desktop Protocol (RDP) client 
+xfreerdp is an X11 Remote Desktop Protocol (RDP) client.
 
-Usage:  
-`xfreerdp [options] server[:port] [[options] server[:port] ...]`
+```bash
+xfreerdp [options] server[:port] [[options] server[:port] ...]
 
-Options:   
+# Example usage
+xfreerdp /u:username /p:password /v:hostname:port /cert:ignore /ipv6
+```
+
+**Key options:**   
 `/u:<username>` - Username  
 `/p:<password>` - Password  
 `/v:<hostname>:<port>` - Server hostname  
 `/cert:ignore` - Ignore certificate  
 `/ipv6`, `/6` - Prefer IPv6 AAA record over IPv4 A record
 ## hexeditor
-Read and modify hex of a file (This tool is also helpful when it comes to CTFs and text is hidden inside a file or when the magic number of a file was altered.) Alternatives are: xxd, hexedit, GHex (GNOME GUI) & HxD (Windows).
+Read and modify binary files in hexadecimal format.
 
-**Example usage**  
-`hexeditor -n file.txt`
+```bash
+hexeditor [options] <file>
 
-**Options**  
+# Example usage
+hexeditor -n file.txt
+```
+
+**Key options**  
 `-a` Print all text characters.  
 `-n` Force Gray scale, no colors.
 
-**Controls:**
-CTRL + F - Go to last line  
-CTRL + C - Exit without saving  
-CTRL + X - Exit and save  
-CTRL + U - Undo  
-CTRL + W - Search
+**-- Shortcuts --**  
+**CTRL + F** = Go to last line  
+**CTRL + C** = Exit without saving  
+**CTRL + X** = Exit and save  
+**CTRL + U** = Undo  
+**CTRL + W** = Search
 ## binwalk
-Binwalk allows users to analyze and extract firmware images and helps in identifying code, files, and other information embedded in those, or inside another file
+Binwalk allows users to analyze and extract firmware images and helps in identifying code, files, and other information embedded in those, or inside another file.
 
-**Usage:**  
-`binwalk [options] <file>`
+```bash
+binwalk [options] <file>
 
-**Examples:**  
-`binwalk -e firmware.bin` - Extract files  
-`binwalk -Me firmware.bin` - Recursively scan extracted files (matryoshka) 
+# Example usage
+binwalk -e firmware.bin # Extract files from firmware.bin
+binwalk -Me firmware.bin # Recursively scan extracted files (matryoshka)
+```
 
-`binwalk -e firmware.bin` - Extract files    
-`-e` - Extract files  
-`-M` - Recursively scan extracted files (matryoshka)  
-`-v` - Verbose output    
-`-q` - Quiet output  
+**Key options:**  
+`-e` = Extract files  
+`-M` = Recursively scan extracted files (matryoshka)  
+`-v` = Verbose output  
+`-q` = Quiet output (suppress non-error messages)  
 ## sudo
-Sudo is Linux's 'run as administrator' command
+Sudo allows a permitted user to execute a command as the superuser or another user, as specified by the security policy.
 
-**Options**  
-`-u <user>` specify user   
-`su` change to root  
-`-l` list current sudo priviliges   
+```bash
+sudo [options] command
+
+# Example usage
+sudo ls /root           # List files in the /root directory as root user
+sudo -u <user> command  # Run a command as a different user
+sudo su                 # Switch to root user
+sudo -l                 # List current sudo privileges
+```
+
+**Key options:**  
+`-u <user>` = specify user   
+`su` = change to root  
+`-l` = list current sudo priviliges   
 ## hashid
 Hashid will analyze and output the potential algorithm that is used to hash your input.  Supports over 250 hash types.  
-`hashid option hash`
 
-`-e` - list all possible hash algorithms including salted passwords  
-`-m` - include corresponding hashcat mode in output  
-`-j` - include corresponding JohnTheRipper format in output  
-`-o FILE` - write output to file (default: STDOUT)  
-`-h` - show help message and exit  
+```bash
+hashid [options] hash
+
+# Example usage
+hashid 5d7845ac6ee7cfffafc5fe5f35cf666d
+```
+
+**Key options:**  
+`-e` = list all possible hash algorithms including salted passwords  
+`-m` = include corresponding hashcat mode in output  
+`-j` = include corresponding JohnTheRipper format in output  
+`-o FILE` = write output to file (default: STDOUT)  
+`-h` = show help message and exit  
 ## hash-identifier
 Hash-identifier will analyze and output the potential algorithm that is used to hash your input. I would say that it is a better alternative to hashid. Supports over 100 hash types.
 
-Usage:  
-`hash-identifier hash`
-
-Example:  
-`hash-identifier 5d7845ac6ee7cfffafc5fe5f35cf666d`
+```bash
+hash-identifier <hash>
+```
 ## haiti
-Haiti is another great tool to identify a hash type. It also returns the format that can be used with john the ripper and hashcat to crack the hash. Supports over 500 hash types.
+Haiti is another great tool to identify a hash type. It also returns the format that can be used with john the ripper and hashcat to crack the hash. It supports over 500 hash types.
 
-Installation:  
-`gem install haiti-hash`
+Installation: `gem install haiti-hash`
 
-Usage:  
-`haiti hash`
-
-Example:  
-`haiti 5d7845ac6ee7cfffafc5fe5f35cf666d`
+```bash
+haiti <hash>
+```
 ## shasums
 **Find SHA1 hash for a file**  
-`sha1sum file.txt`
+```bash
+shasum file.txt
+```
+
+**Find SHA256 hash for a file**
+```bash
+sha256sum file.txt
+```
 
 **Find MD5 hash for a file**  
-`md5sum file.txt`
+```bash
+md5sum file.txt
+```
 ## base64
 Decrypt base64  
-`base64 -d file.txt`
-## gpg
-Gpg encrypt a file  
-`gpg -c data.txt`  
-Enter keyphrase
+```bash
+base64 -d file.txt
+```
+The `-d` option is used to decode the base64 encoded data.
 
-Decrypt the file  
-`gpg -d data.txt.gpg`  
-Enter keyphrase
+Encrypt base64  
+```bash
+base64 -i input.txt -o output.txt
+```
+The `-i` option is used to specify the input file, and the `-o` option is used to specify the output file. If no output file is specified, it will print the encoded data to standard output.
+## gpg
+To encrypt a file:  
+```bash
+gpg -c data.txt
+```
+> Enter a passphrase when prompted. This will create an encrypted file named `data.txt.gpg`.
+
+To **decrypt** the file:  
+```bash
+gpg -d data.txt.gpg
+```
+> Enter the same passphrase you used to encrypt the file. This will output the decrypted content to standard output.
 ## hexdump
 hexdump is used to filter and display the specified files, or standard input in a human readable specified format.  
 
-**Syntax**  
-hd {options} {files}
+```bash
+hexdump [options] {files}
 
-**Options**  
-`-c` One-byte character display.   
-`-C` Canonical hex + ASCII display.
+# Example usage
+hexdump -C file.txt
+```
+
+**Key options**  
+`-C` = Canonical hex + ASCII display.  
+`-c` = One-byte character display.  
+`-d` = Decimal display.  
+`-e <FORMAT>` = Specify the output format.  
+`-n <N>` = Stop after reading N bytes.  
+`-s <OFFSET>` = Start reading at OFFSET bytes.  
+`-v` = Display all data, even if it is repeated.
 ## xxd
 xxd is a hex editor that can be used to convert binary files to hex and vice versa.
 
-**Syntax**  
-`xxd [options] [infile [outfile]]`
+```bash
+xxd [options] [infile [outfile]]
 
-**Example**  
-Hexdump to binary and then to plain text  
-`xxd -r -p file.txt` 
+# Example usage
+xxd -p file.txt  # Convert file.txt to plain hex dump
+```
 
-**Options**    
-`-b` binary digit dump  
-`-p` plain hex dump (continuous string)  
-`-e` little-endian dump  
-`-l <LEN>` stop after <len> octets.  
-`-r` hex dump to binary (plain text)  
-`-d` show offset in decimal instead of hex.  
-`-u` use upper case hex letters.  
-`-i` output in C include file style.  
-`-s` start at offset.  
+**Key options**    
+`-b` = binary digit dump  
+`-p` = plain hex dump (continuous string)  
+`-e` = little-endian dump  
+`-l <LEN>` = stop after <len> octets.  
+`-r` = hex dump to binary (plain text)  
+`-d` = show offset in decimal instead of hex.  
+`-u` = use upper case hex letters.  
+`-i` = output in C include file style.  
+`-s` = start at offset.  
 ## objdump
 objdump is a command-line utility that displays information about one or more object files. It can be used to disassemble object files, executable files, shared libraries, and core dumps.
 
-**Syntax**  
-`objdump [options] [file]`
+```bash
+objdump [options] <file>
 
-**Example**  
-Dump the contents of a file  
-`objdump -d file`
+# Dumps the disassembly of the file
+objdump -d file 
 
-Get the return address  
-`objdump -d file | grep ret`
+# Get the return address  
+objdump -d file | grep ret
+```
+
+**Key options:**  
+`-d` = disassemble the file  
+`-s` = display the full contents of the file  
+`-t` = display the symbol table  
+`-x` = display all headers and sections  
+`-f` = display the file header information  
+`-h` = display the section headers
+## strings
+strings is a command-line utility that extracts printable strings from binary files. It is commonly used to find human-readable text in executables, libraries, and other binary files.
+
+```bash
+strings [options] <file>
+
+# Example usage
+strings -a file.bin  # Extract all printable strings from file.bin
+```
 ## exiftool
 Is a command-line application for reading, writing and editing meta information in a wide variety of files.
 
-Install with:  
-`sudo apt install libimage-exiftool-perl`
+Install with: `sudo apt install libimage-exiftool-perl`
 
-Usage  
-`exiftool file.jpeg`
+```bash
+exiftool [options] <file>
+
+# To view metadata of a file
+exiftool file.jpeg 
+
+ # Remove all metadata from the file
+exiftool -all= file.jpeg
+
+# To add GPS metadata to an image
+exiftool \
+-GPSLatitude=51.500718 \
+-GPSLatitudeRef=N \
+-GPSLongitude=-0.124614 \
+-GPSLongitudeRef=W \
+-file image.png
+
+# To add a comment to an image
+exiftool -Comment="London trip." image.png
+
+# To add a user comment to an image
+exiftool -UserComment="Super cool!" image.png
+```
+
+**Key options:**  
+`-all=` = remove all metadata from the file  
+`-s` = short output format  
+`-h` = HTML output format  
+`-json` = JSON output format  
+`-r` = recursive processing of directories  
+`-overwrite_original` = overwrite the original file with the modified file
 ## fcrackzip 
-Is a password cracker that runs on .zip files 
+Is a password cracker that runs on `.zip` files. It can use brute force or dictionary attacks to crack the password of a zip file.
 
-Install  
-`sudo apt-get install fcrackzip`
+Install: `sudo apt-get install fcrackzip`
 
-Usage  
-`fcrackzip -vbDp <wordlist path> <filepath>`
+```bash
+fcrackzip [options] <wordlist path> <filepath>
 
-Example  
-`fcrackzip -Dp /usr/share/wordlists/rockyou.txt secret.zip -v`
+# To use a dictionary attack with a wordlist and unzip a file
+fcrackzip -Dupvb /usr/share/wordlists/rockyou.txt secret.zip
 
-**Options**  
+# To unzip a file with a password
+fcrackzip -u -p <password> secret.zip
+```
+
+**Key options**  
 `-b` for using brute force algorithms.   
 `-D` for using a dictionary.  
 `-v` for verbose mode.  
@@ -1591,48 +1973,52 @@ Example
 ## neofetch
 [Neofetch](https://github.com/dylanaraps/neofetch) displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.
 
-Install    
-`sudo apt install neofetch` or see [here](https://github.com/dylanaraps/neofetch/wiki/Installation).
+Install: `sudo apt install neofetch` or see [here](https://github.com/dylanaraps/neofetch/wiki/Installation).
 
-Usage  
-`neofetch`
+```bash
+neofetch
+```
 ## crunch
 Crunch is a wordlist generator that can generate all possible combinations and permutations.
 
-Install  
-`sudo apt-get install crunch`
+Install: `sudo apt-get install crunch`
 
-Usage  
-`crunch <min> <max> <characters>`
+```bash
+crunch <min> <max> <characters>
 
-Example  
-`crunch 8 8 abcdefghijklmnopqrstuvwxyz -t @@dog@@@-o wordlist.txt`
+# Generate a wordlist with all combinations of 8 characters from the alphabet
+crunch 8 8 abcdefghijklmnopqrstuvwxyz -o wordlist.txt
+```
 
-**Options**  
+**Key options:**  
 `-t` for adding a pattern to the generated wordlist.  
 `-o` for saving the generated wordlist to a file.
 ## cewl 
 Cewl is a tool that spiders a given url to a specified depth, optionally following external links, and returns a list of words which can then be used for password crackers such as John the Ripper. See more [here](/More/Password%20Cracking/Wordlist-generation.md/cewl/Readme.md).
 
-Install  
-`sudo apt-get install cewl`
+Install: `sudo apt-get install cewl`
 
-Usage  
-`cewl <url> -w <output file>`
+```bash
+cewl <url> -w <output file>
 
-**Options**  
+# Example usage
+cewl https://example.com -w wordlist.txt
+```
+
+**Key options:**  
 - `-w` for saving the generated wordlist to a file.
 - `-d` for setting the depth of the spider.
 - `-m` for setting the minimum word length.
 - `-x` for setting the maximum number of words to return.
 ## rax2 
-rax2 comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
+rax2 (part of the Radare2 suite) comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
 
-**Syntax**  
-`rax2 <options> <value>`
+```bash
+rax2 <options> <value>
 
-**Example**  
-`rax2 -s 0x424b`
+# Convert hex string to raw bytes
+rax2 -s 0x424b  
+```
 
 **A list of most useful flags:**   
 ```bash
@@ -1659,36 +2045,57 @@ rax2 comes in handy when there is a need to make base conversions between hexade
 -w      signed word          ;  rax2 -w 16 0xffff
 ```
 ## jq
-jq is a lightweight and flexible command-line JSON processor. It is used to parse, filter, and transform JSON data. It is written in C and has no external dependencies.
+jq is a lightweight and flexible command-line JSON processor. It is used to parse, filter, and transform JSON data. 
 
 To install use `sudo apt install jq`
 
-**Syntax**  
-`jq <options> <filter> <input>`
+```bash
+jq <options> <filter> <input>
 
-**Example**  
-`jq . sample.json` one way of prettifying json data  
-`cat sample.json | jq` another way of prettifying json data  
-`jq -c < pretty.json` minify json data
+# Prettify JSON data
+jq . sample.json 
+
+# Another way of prettifying JSON data (most common)
+cat sample.json | jq
+
+# Minify JSON data
+jq -c < pretty.json  # Minify JSON data from pretty.json
+```
+
+**Key options:**  
+`-c` = compact output (minified JSON)  
+`-r` = raw output (without quotes)  
+`-s` = read input as an array of JSON objects  
+`-f <file>` = read filter from a file  
 ## gcc
 gcc is a compiler that can be used to compile C as well as Python code to an executable file.
 
-**Syntax:**  
-`gcc <options> <input>`
+```bash
+gcc [options] <input>
 
-**Example:**  
-`gcc hello.c -o hello` Compile the program  
-`./hello` Run the compiled program
+# Compile hello.c to an executable named hello
+$ gcc -o hello hello.c 
+$ ./hello  # Run the compiled program
+```
+
+**Key options:**  
+`-o <output>` = specify the output file name  
 ## adduser & addgroup
+In Linux, `adduser` and `addgroup` are commands used to create new users and groups, respectively.
+
 The syntax for both of these commands are `adduser username` and `addgroup groupname`.
 
 Add a user to a group  
-`usermod -a -G <groups seperated by commas> <user>`
+```bash
+usermod -a -G groupname username
+```
+> You can add a user to multiple groups by separating the group names with commas.
 ## Operators
-`>` is the operator for output redirection. Meaning that you can redirect the output of any command to a file  
-`>>` does mainly the same thing as >, with one key difference. >> appends the output of a command to a file, instead of erasing it.
+`>` redirects command output to a file, replacing its contents.  
+`>>` appends command output to the end of a file, keeping existing data.  
+`|` pipes the output of one command as input to another command.
 ## File Descriptors
-A file descriptor (FD) in Unix/Linux operating systems is an indicator of connection maintained by the kernel to perform Input/Output (I/O) operations. In Windows-based operating systems, it is called filehandle. It is the connection (generally to a file) from the Operating system to perform I/O operations (Input/Output of Bytes). By default, the first three file descriptors in Linux are:
+In Unix-like operating systems, file descriptors are integer handles used to access files or input/output streams. The standard file descriptors are:
 
 **Data Stream for Input**  
 `STDIN – 0`  
@@ -2467,10 +2874,6 @@ hstshijack/hstshijack # Works for websites using HTTPS and not HSTS
 
 # Web Exploitation
 Common web application vulnerabilities and how to exploit them.
-
-Learning order: Start with content discovery, then SQL injection and XSS, followed by authentication bypass and other injection attacks.
-
-Use tools like Burp Suite and test only on authorized targets. 
 
 ## Content Discovery
 Content discovery is divided into four parts, being manual, automated, OSINT and subdomain enumeration.
