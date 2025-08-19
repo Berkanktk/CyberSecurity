@@ -2097,19 +2097,19 @@ usermod -a -G groupname username
 ## File Descriptors
 In Unix-like operating systems, file descriptors are integer handles used to access files or input/output streams. The standard file descriptors are:
 
-**Data Stream for Input**  
-`STDIN – 0`  
-**Data Stream for Output**    
-`STDOUT – 1`  
-**Data Stream for Output that relates to an error occurring.**    
-`STDERR – 2`  
+**Data Stream for Input**  → `STDIN – 0`  
+**Data Stream for Output** → `STDOUT – 1`  
+**Data Stream for Output that relates to an error occurring.** →`STDERR – 2`  
 
-Redirects the file descriptors for the errors (STDERR) to "`/dev/null`" This way, we redirect the resulting errors to the "null device," which discards all data.  
-`find /etc/ -name shadow 2>/dev/null > results.txt`
+To redirect Redirect STDERR to /dev/null, which is a special file that discards all data written to it, you add `2>/dev/null` to your command. This is useful for suppressing error messages.
+```bash 
+find /etc/ -name shadow 2>/dev/null 
+```
 
 **Redirect STDOUT and STDERR to Separate Files**  
-`find /etc/ -name shadow 2> stderr.txt 1> stdout.txt`
-
+```bash
+find /etc/ -name shadow 2> stderr.txt 1> stdout.txt
+```
 
 # Tools (CLI)
 Command-line tools for security testing and analysis. Start with Nmap for network discovery, then web tools like Gobuster.
