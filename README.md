@@ -750,11 +750,10 @@ Essential command-line tools for cybersecurity work.
 
 </details>
 
-- [File & Directory Management](#file--directory-management)
-
 
 <h1 align="center">File & Directory Management</h1>
 
+In this section: 
 
 ## cat
 Display file contents or combine multiple files.
@@ -798,55 +797,46 @@ Used to create an empty file.
 touch <filename>
 ```
 
-##  <!-- Empty -->
-<p id="file-directory-management" style="display: block; text-align: center; font-size: 2rem; font-weight: bold;">
-  File & Directory Management
-</p>
+In this section: 
 
-##  <!-- Empty -->
-<p id="lc-file-management" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  User & Permission Management
-</p>
+##  <!-- User & Permission Management -->
+<h1 align="center">User & Permission Management</h1>
 
-##  <!-- Empty -->
-<p id="lx-process" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  Process & System Monitoring
-</p>
+In this section: 
+##  <!-- Process & System Monitoring -->
+<h1 align="center">Process & System Monitoring</h1>
 
-##  <!-- Empty -->
-<p id="ls-file-inspection" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  File Inspection & Forensics
-</p>
+In this section: 
+##  <!-- File Inspection & Forensics -->
+<h1 align="center">File Inspection & Forensics</h1>
 
-##  <!-- Empty -->
-<p id="lc-text-search" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  Searching & Text Processing
-</p>
+In this section: 
+##  <!-- Searching & Text Processing -->
+<h1 align="center">Searching & Text Processing</h1>
 
-##  <!-- Empty -->
-<p id="lc-networking" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  Networking Tools
-</p>
+In this section: 
+##  <!-- Networking Tools -->
+<h1 align="center">Networking Tools</h1>
 
-##  <!-- Empty -->
-<p id="lc-comression" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  Compression & Archiving
-</p>
+In this section: 
+##  <!-- Compression & Archiving -->
+<h1 align="center">Compression & Archiving</h1>
 
-##  <!-- Empty -->
-<p id="lc-crypto" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  Cryptography & Encoding
-</p>
+In this section: 
+##  <!-- Cryptography & Encoding -->
+<h1 align="center">Cryptography & Encoding</h1>
 
-##  <!-- Empty -->
-<p id="lc-pentest" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  Exploitation & Pentesting Tools
-</p>
+In this section: 
+##  <!-- Exploitation & Pentesting Tools -->
+<h1 align="center">Exploitation & Pentesting Tools</h1>
 
-##  <!-- Empty -->
-<p id="lc-compilers" style="text-align: center; font-size: 2rem; font-weight: bold;">
-  Compilers
-</p>
+In this section: 
+##  <!-- Compilers -->
+<h1 align="center">Compilers</h1>
+
+In this section: 
+
+--
 
 ## tree
 Displays the directory structure in a tree-like format.
