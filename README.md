@@ -750,6 +750,11 @@ Essential command-line tools for cybersecurity work.
 
 </details>
 
+
+<p id="file-directory-management" style="text-align: center; font-size: 2rem; font-weight: bold; border: none">
+  File & Directory Management
+</p>
+
 ## cat
 Display file contents or combine multiple files.
 
@@ -791,6 +796,57 @@ Used to create an empty file.
 ```bash
 touch <filename>
 ```
+
+##  <!-- Empty -->
+<p id="file-directory-management" style="display: block; text-align: center; font-size: 2rem; font-weight: bold;">
+  File & Directory Management
+</p>
+
+##  <!-- Empty -->
+<p id="lc-file-management" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  User & Permission Management
+</p>
+
+##  <!-- Empty -->
+<p id="lx-process" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  Process & System Monitoring
+</p>
+
+##  <!-- Empty -->
+<p id="ls-file-inspection" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  File Inspection & Forensics
+</p>
+
+##  <!-- Empty -->
+<p id="lc-text-search" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  Searching & Text Processing
+</p>
+
+##  <!-- Empty -->
+<p id="lc-networking" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  Networking Tools
+</p>
+
+##  <!-- Empty -->
+<p id="lc-comression" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  Compression & Archiving
+</p>
+
+##  <!-- Empty -->
+<p id="lc-crypto" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  Cryptography & Encoding
+</p>
+
+##  <!-- Empty -->
+<p id="lc-pentest" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  Exploitation & Pentesting Tools
+</p>
+
+##  <!-- Empty -->
+<p id="lc-compilers" style="text-align: center; font-size: 2rem; font-weight: bold;">
+  Compilers
+</p>
+
 ## tree
 Displays the directory structure in a tree-like format.
 
