@@ -750,10 +750,11 @@ Essential command-line tools for cybersecurity work.
 
 </details>
 
+- [File & Directory Management](#file--directory-management)
 
-<p id="file-directory-management" style="text-align: center; font-size: 2rem; font-weight: bold; border: none">
-  File & Directory Management
-</p>
+
+<h1 align="center">File & Directory Management</h1>
+
 
 ## cat
 Display file contents or combine multiple files.
