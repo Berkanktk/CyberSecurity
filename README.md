@@ -2046,7 +2046,7 @@ For simple version `zip -e -r secret.zip secret` can also be used (legacy).
 ##  <!-- Cryptography & Encoding -->
 <h1 align="center">Cryptography & Encoding</h1>
 
-In this section: [base64](#base64), [rax2](#rax2), [hashid](#hashid), [hash-identifier](#hash-identifier), [haiti](#haiti), [shasums](#shasums), [gpg](#gpg)
+In this section: [base64 (Encoding)](#base64), [rax2 (Base Conversion)](#rax2), [hashid (Hash Identification)](#hashid), [hash-identifier (Hash Identification)](#hash-identifier), [haiti (Hash Analysis)](#haiti), [shasums (SHA Checksums)](#shasums), [gpg (Encryption/Decryption)](#gpg)
 
 <Details open>
 <summary>Hide Cryptography & Encoding Commands</summary>
