@@ -75,7 +75,7 @@ Thank you for exploring this project! I hope you will find the content valuable 
     9.  [Nikto](#nikto-2)
     10. [Nmap](#nmap)
     11. [SQLMap](#sqlmap)
-9. [Tools (GUI)](#tools-gui)
+9.  [Tools (GUI)](#tools-gui)
     1.  [Autopsy](#autopsy)
     2.  [Burp Suite](#burp)
     3.  [Nessus](#nessus)
@@ -664,114 +664,32 @@ Hackers are sorted into three hats, where their ethics and motivations behind th
 | Red Teamer | Plays the role of an adversary, attacking an organisation and providing feedback from an enemies perspective |
 
 # Linux Commands 
-Essential command-line tools for cybersecurity work.
+Essential command-line tools for cybersecurity work as well as some other external tools that are useful for various tasks.
 
 <details>
 <summary>List of contents</summary>
 
-1. [cat](#cat)
-2. [ls](#ls)
-3. [mkdir](#mkdir)
-4. [touch](#touch)
-5. [tree](#tree)
-6. [ps](#ps)
-7. [htop](#htop)
-8. [rm](#rm)
-9. [mv](#mv)
-10. [top](#top)
-11. [lsof](#lsof)
-12. [kill](#kill)
-13. [find](#find)
-14. [where](#where)
-15. [whatis](#whatis)
-16. [locate](#locate)
-17. [apropos](#apropos)
-18. [stat](#stat)
-19. [df](#df)
-20. [du](#du)
-21. [ncdu](#ncdu)
-22. [free](#free)
-23. [uniq](#uniq)
-24. [sort](#sort)
-25. [diff](#diff)
-26. [tail-head](#tailhead)
-27. [history](#history)
-28. [pwd](#pwd)
-29. [chmod](#chmod)
-30. [chown](#chown)
-31. [curl](#curl)
-32. [wget](#wget)
-33. [wash](#wash)
-34. [netdiscover](#netdiscover)
-35. [netstat](#netstat)
-36. [ss](#ss)
-37. [tcpdump](#tcpdump)
-38. [whatweb](#whatweb)
-39. [apt](#apt)
-40. [dig](#dig)
-41. [tar](#tar)
-42. [gzip](#gzip)
-43. [grep](#grep)
-44. [wc](#wc)
-45. [cut](#cut)
-46. [tr](#tr)
-47. [column](#column)
-48. [awk](#awk)
-49. [sed](#sed)
-50. [whoami](#whoami)
-51. [uname](#uname)
-52. [ftp](#ftp)
-53. [ssh](#ssh)
-54. [scp](#scp)
-55. [searchsploit](#searchsploit)
-56. [xfreerdp](#xfreerdp)
-57. [hexeditor](#hexeditor)
-58. [binwalk](#binwalk)
-59. [sudo](#sudo)
-60. [hashid](#hashid)
-61. [hash-identifier](#hash-identifier)
-62. [haiti](#haiti)
-63. [shasums](#shasums)
-64. [base64](#base64)
-65. [gpg](#gpg)
-66. [hexdump](#hexdump)
-67. [xxd](#xxd)
-68. [objdump](#objdump)
-69. [exiftool](#exiftool)
-70. [fcrackzip](#fcrackzip)
-71. [neofetch](#neofetch)
-72. [crunch](#crunch)
-73. [cewl](#cewl)
-74. [rax2](#rax2)
-75. [jq](#jq)
-76. [gcc](#gcc)
-77. [adduser](#adduser)
-78. [addgroup](#addgroup)
+1. [File & Directory Management](#file--directory-management)
+2. [User & Permission Management](#user--permission-management)
 
 </details>
 
-
+##  <!-- File & Directory Management -->
 <h1 align="center">File & Directory Management</h1>
 
-In this section: 
+In this section: [pwd](#pwd), [ls](#ls), [tree](#tree), [mkdir](#mkdir), [touch](#touch), [cat](#cat), [stat](#stat), [mv](#mv), [rm](#rm), [ln (symbolic links)](#ln-symbolic-links), [apt](#apt), [Operators](#operators), [File Descriptors](#file-descriptors)
 
-## cat
-Display file contents or combine multiple files.
+## pwd
+Find the full Path to our current working directory
 
 ```bash
-cat file.txt            # Show file contents
-cat -b file.txt         # Show line numbers for non-blank lines (-n for all)
+pwd
 ```
-
-**Key options**:  
-`-n` = show numbers  
-`-b` = show numbers for non-blank lines  
 ## ls
 List files and directories.
 ```bash
 ls 
 ```
-
 **Key options**:   
 `-l` = long listing format  
 `-a` = include hidden files (starting with `.`)  
@@ -781,6 +699,18 @@ ls
 `-S` = sort by file size
 
 You can combine options, e.g., `ls -lahtrS`
+## tree
+Displays the directory structure in a tree-like format.
+
+```bash
+tree -a 
+```
+**Key options:**  
+`-a` = show hidden files  
+`-d` = list directories only  
+`-L <level>` = limit the depth of the directory tree displayed  
+`-h` = human-readable sizes  
+`-f` = print the full path prefix for each file 
 ## mkdir
 Used for creating directories.
 
@@ -796,60 +726,171 @@ Used to create an empty file.
 ```bash
 touch <filename>
 ```
+## cat
+Display file contents or combine multiple files.
 
-In this section: 
+```bash
+cat file.txt            # Show file contents
+cat -b file.txt         # Show line numbers for non-blank lines (-n for all)
+```
+
+**Key options**:  
+`-n` = show numbers  
+`-b` = show numbers for non-blank lines 
+## stat
+Displays detailed information about given files or file systems. 
+
+```bash
+stat file.txt
+```
+
+**These informations can be:** file name, file size, blocks, type, inode, UID, GID, access, modify, change and creation times.
+## mv
+Move or rename files and directories.
+
+```bash
+mv source.txt destination.txt  # Rename a file
+mv file.txt /tmp               # Move a file to another directory
+```
+## rm
+Used to remove files or directories.
+
+```bash
+rm file.txt       # Remove a file
+rm -r directory/  # Remove a directory and its contents
+rm -rf /tmp/*     # Remove all files in /tmp directory
+```
+**Key options**:  
+`-v` = Verbose output, showing what is being removed  
+`-r` = Deletes every file in the directory   
+`-f` = Suppresses all warning prompts 
+## ln (symbolic links)
+Creates symbolic links (shortcuts) to files or directories.
+
+```bash
+ln -s /root/flag.txt flag
+```
+
+This creates a symbolic link named `flag` that points to the file `/root/flag.txt`.
+
+You can also use it with other commands, such as `cat` to read the contents of the file through the symbolic link:
+```bash
+cat flag 
+```
+Which will display the contents of the file `/root/flag.txt`.
+## apt
+apt is a command-line utility for installing, updating, removing, and otherwise managing debian packages.
+
+```bash 
+sudo apt update                 # Update the package list
+sudo apt upgrade                # Upgrade installed packages
+sudo apt full-upgrade           # Full upgrade (may remove packages if necessary)
+sudo apt install <package_name> # Install a package
+sudo apt remove <package_name>  # Remove a package
+sudo apt autoremove             # Remove unused packages
+sudo apt list --installed       # List installed packages
+```
+## Operators
+`>` redirects command output to a file, replacing its contents.  
+`>>` appends command output to the end of a file, keeping existing data.  
+`|` pipes the output of one command as input to another command.
+## File Descriptors
+In Unix-like operating systems, file descriptors are integer handles used to access files or input/output streams. The standard file descriptors are:
+
+**Data Stream for Input**  → `STDIN – 0`  
+**Data Stream for Output** → `STDOUT – 1`  
+**Data Stream for Output that relates to an error occurring.** →`STDERR – 2`  
+
+To redirect Redirect STDERR to /dev/null, which is a special file that discards all data written to it, you add `2>/dev/null` to your command. This is useful for suppressing error messages.
+```bash 
+find /etc/ -name shadow 2>/dev/null 
+```
+
+**Redirect STDOUT and STDERR to Separate Files**  
+```bash
+find /etc/ -name shadow 2> stderr.txt 1> stdout.txt
+```
 
 ##  <!-- User & Permission Management -->
 <h1 align="center">User & Permission Management</h1>
 
-In this section: 
+In this section: [whoami](#whoami) | [adduser & addgroup](#adduser--addgroup) | [chmod](#chmod) | [chown](#chown) | [sudo](#sudo)
+
+## whoami
+See the current user that is logged in to the system.
+
+```bash
+whoami
+```
+## adduser & addgroup
+In Linux, `adduser` and `addgroup` are commands used to create new users and groups, respectively.
+
+The syntax for both of these commands are `adduser username` and `addgroup groupname`.
+
+Add a user to a group  
+```bash
+usermod -a -G groupname username
+```
+> You can add a user to multiple groups by separating the group names with commas.
+## chmod
+Chmod allows you to change the permissions of a file or directory.
+
+```bash
+chmod <permissions> <file>
+```
+
+**Permissions**
+| Digit    |      Meaning   | 
+|----------|:-------------:|
+| 1  | That file can be executed |
+| 2  | That file can be written to   | 
+| 3  | That file can be executed and written to |
+| 4  | That file can be read |
+| 5  | That file can be read and executed |
+| 6  | That file can be written to and read |
+| 7  | That file can be read, written to, and executed |
+
+To make a binary file just executable for the owner of the file, you can use:  
+```bash
+chmod u+x file.txt
+```
+## chown
+Change the owner and/or group of a file or directory.
+
+```bash
+chown <user>:<group> <file>
+
+# Example
+chown root:admin file.txt  # Change owner to root and group to admin
+```
+
+**Key options:**  
+`-R` = recursively change ownership of files and directories within a directory  
+`-v` = verbose output, showing what is being changed  
+## sudo
+Sudo allows a permitted user to execute a command as the superuser or another user, as specified by the security policy.
+
+```bash
+sudo [options] command
+
+# Example usage
+sudo ls /root           # List files in the /root directory as root user
+sudo -u <user> command  # Run a command as a different user
+sudo su                 # Switch to root user
+sudo -l                 # List current sudo privileges
+```
+
+**Key options:**  
+`-u <user>` = specify user   
+`su` = change to root  
+`-l` = list current sudo priviliges   
+
+
 ##  <!-- Process & System Monitoring -->
 <h1 align="center">Process & System Monitoring</h1>
 
-In this section: 
-##  <!-- File Inspection & Forensics -->
-<h1 align="center">File Inspection & Forensics</h1>
+In this section: [ps](#ps), [top](#top), [htop](#htop), [lsof](#lsof), [kill](#kill), [free](#free), [df](#df), [du](#du), [ncdu](#ncdu), [history](#history), [uname](#uname)
 
-In this section: 
-##  <!-- Searching & Text Processing -->
-<h1 align="center">Searching & Text Processing</h1>
-
-In this section: 
-##  <!-- Networking Tools -->
-<h1 align="center">Networking Tools</h1>
-
-In this section: 
-##  <!-- Compression & Archiving -->
-<h1 align="center">Compression & Archiving</h1>
-
-In this section: 
-##  <!-- Cryptography & Encoding -->
-<h1 align="center">Cryptography & Encoding</h1>
-
-In this section: 
-##  <!-- Exploitation & Pentesting Tools -->
-<h1 align="center">Exploitation & Pentesting Tools</h1>
-
-In this section: 
-##  <!-- Compilers -->
-<h1 align="center">Compilers</h1>
-
-In this section: 
-
---
-
-## tree
-Displays the directory structure in a tree-like format.
-
-```bash
-tree -a 
-```
-**Key options:**  
-`-a` = show hidden files  
-`-d` = list directories only  
-`-L <level>` = limit the depth of the directory tree displayed  
-`-h` = human-readable sizes  
-`-f` = print the full path prefix for each file
 ## ps
 Show the current running processes.
 
@@ -894,25 +935,6 @@ htop -u john  # Show processes owned by a specific user e.g. john
 `-s` Sort by specified column (use --sort-key help for a list)  
 `-t` Tree view  
 `-U` Do not use unicode but plain ASCII
-## rm
-Used to remove files or directories.
-
-```bash
-rm file.txt       # Remove a file
-rm -r directory/  # Remove a directory and its contents
-rm -rf /tmp/*     # Remove all files in /tmp directory
-```
-**Key options**:  
-`-v` = Verbose output, showing what is being removed  
-`-r` = Deletes every file in the directory   
-`-f` = Suppresses all warning prompts 
-## mv
-Move or rename files and directories.
-
-```bash
-mv source.txt destination.txt  # Rename a file
-mv file.txt /tmp               # Move a file to another directory
-```
 ## lsof
 Displays information about files opened by processes. It can be used to identify which processes are using specific files, network connections, or devices.
 
@@ -939,6 +961,247 @@ kill -9 <PID>       # Forcefully terminate a process by PID
 1 (HUP) - Reload a process.  
 9 (KILL) - Kill a process.  
 15 (TERM) - Gracefully stop a process.
+## free
+Displays memory usage statistics.
+
+```bash
+free -h 
+```
+
+**Options:**  
+`-b` = to display the amount of memory in bytes  
+`-k` = to display the amount of memory in kilobytes  
+`-m` = to display the amount of memory in megabytes  
+`-g` = to display the amount of memory in gigabytes  
+`-h` = to display the amount of memory in a human-readable format  
+`-s <sec>` = to update the output every X seconds
+## df
+Shows disk space usage of file systems.
+
+```bash
+df -h     # Show disk space usage in human-readable format  
+df -i     # Show inode usage
+df -BG    # Show disk space usage in gigabytes
+```
+
+**Key options:**  
+`--block-size=SIZE` = scale sizes by SIZE. E.g., `-BM` prints sizes in units of 1,048,576 bytes.  
+`--exclude-type=TYPE` = exclude file systems of type TYPE  
+`-h` = print sizes in human readable format (e.g., 1K 234M 2G)    
+`-T` = print file system type  
+`-t` = limit listing to file systems of type TYPE  
+## du
+Estimates file and directory space usage.
+
+```bash
+du -sh BreachCompilation  # Show total size of the BreachCompilation directory
+```
+
+**Key options:**  
+`-a` = to display an entry for each file in a file hierarchy  
+`-c` = displays total size at the end  
+`-d <number>` = to specify the depth of the directory tree to be displayed  
+`-h` = to get a human-readable output  
+`-L` = dereference all symbolic links  
+`-s` = to get the total size of the directory  
+`--time` get the results with timestamps of last modification
+## ncdu
+Disk usage analyzer with an ncurses interface (Part of the ncdu suite).
+
+```bash
+ncdu -x --si <file_or_directory>
+```
+
+**Options:**    
+`-x` = This option prevents ncdu from following symbolic links.  
+`--si` =  This option makes ncdu use powers of 1000 instead of 1024 for sizes.  
+## history
+Displays a list of commands used in the terminal session
+
+```bash
+history 
+```
+## uname
+See basic information about the operating system name and system hardware.
+
+```bash
+uname -a 
+```
+
+**Key options:**  
+`-a` = print all information  
+`-s` = print the kernel name  
+`-n` = print the network node hostname  
+`-r` = print the kernel release  
+`-v` = print the kernel version  
+`-m` = print the machine hardware name  
+`-p` = print the processor type (if available)  
+`-o` = print the operating system name
+## neofetch
+[Neofetch](https://github.com/dylanaraps/neofetch) displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.
+
+Install: `sudo apt install neofetch` or see [here](https://github.com/dylanaraps/neofetch/wiki/Installation).
+
+```bash
+neofetch
+```
+
+##  <!-- File Inspection & Forensics -->
+<h1 align="center">File Inspection & Forensics</h1>
+
+In this section: [file](#file), [strings](#strings), [exiftool](#exiftool), [hexdump](#hexdump), [xxd](#xxd), [objdump](#objdump), [hexeditor](#hexeditor), [binwalk](#binwalk)
+
+## file
+The `file` command is used to determine the type of a file by examining its contents rather than relying on file extensions.
+
+```bash
+file <file_name>
+```
+## strings
+strings is a command-line utility that extracts printable strings from binary files. It is commonly used to find human-readable text in executables, libraries, and other binary files.
+
+```bash
+strings [options] <file>
+
+# Example usage
+strings -a file.bin  # Extract all printable strings from file.bin
+```
+## exiftool
+Is a command-line application for reading, writing and editing meta information in a wide variety of files.
+
+Install with: `sudo apt install libimage-exiftool-perl`
+
+```bash
+exiftool [options] <file>
+
+# To view metadata of a file
+exiftool file.jpeg 
+
+ # Remove all metadata from the file
+exiftool -all= file.jpeg
+
+# To add GPS metadata to an image
+exiftool \
+-GPSLatitude=51.500718 \
+-GPSLatitudeRef=N \
+-GPSLongitude=-0.124614 \
+-GPSLongitudeRef=W \
+-file image.png
+
+# To add a comment to an image
+exiftool -Comment="London trip." image.png
+
+# To add a user comment to an image
+exiftool -UserComment="Super cool!" image.png
+```
+
+**Key options:**  
+`-all=` = remove all metadata from the file  
+`-s` = short output format  
+`-h` = HTML output format  
+`-json` = JSON output format  
+`-r` = recursive processing of directories  
+`-overwrite_original` = overwrite the original file with the modified file
+## hexdump
+hexdump is used to filter and display the specified files, or standard input in a human readable specified format.  
+
+```bash
+hexdump [options] {files}
+
+# Example usage
+hexdump -C file.txt
+```
+
+**Key options**  
+`-C` = Canonical hex + ASCII display.  
+`-c` = One-byte character display.  
+`-d` = Decimal display.  
+`-e <FORMAT>` = Specify the output format.  
+`-n <N>` = Stop after reading N bytes.  
+`-s <OFFSET>` = Start reading at OFFSET bytes.  
+`-v` = Display all data, even if it is repeated.
+## xxd
+xxd is a hex editor that can be used to convert binary files to hex and vice versa.
+
+```bash
+xxd [options] [infile [outfile]]
+
+# Example usage
+xxd -p file.txt  # Convert file.txt to plain hex dump
+```
+
+**Key options**    
+`-b` = binary digit dump  
+`-p` = plain hex dump (continuous string)  
+`-e` = little-endian dump  
+`-l <LEN>` = stop after <len> octets.  
+`-r` = hex dump to binary (plain text)  
+`-d` = show offset in decimal instead of hex.  
+`-u` = use upper case hex letters.  
+`-i` = output in C include file style.  
+`-s` = start at offset.  
+## objdump
+objdump is a command-line utility that displays information about one or more object files. It can be used to disassemble object files, executable files, shared libraries, and core dumps.
+
+```bash
+objdump [options] <file>
+
+# Dumps the disassembly of the file
+objdump -d file 
+
+# Get the return address  
+objdump -d file | grep ret
+```
+
+**Key options:**  
+`-d` = disassemble the file  
+`-s` = display the full contents of the file  
+`-t` = display the symbol table  
+`-x` = display all headers and sections  
+`-f` = display the file header information  
+`-h` = display the section headers
+## hexeditor
+Read and modify binary files in hexadecimal format.
+
+```bash
+hexeditor [options] <file>
+
+# Example usage
+hexeditor -n file.txt
+```
+
+**Key options**  
+`-a` Print all text characters.  
+`-n` Force Gray scale, no colors.
+
+**-- Shortcuts --**  
+**CTRL + F** = Go to last line  
+**CTRL + C** = Exit without saving  
+**CTRL + X** = Exit and save  
+**CTRL + U** = Undo  
+**CTRL + W** = Search
+## binwalk
+Binwalk allows users to analyze and extract firmware images and helps in identifying code, files, and other information embedded in those, or inside another file.
+
+```bash
+binwalk [options] <file>
+
+# Example usage
+binwalk -e firmware.bin # Extract files from firmware.bin
+binwalk -Me firmware.bin # Recursively scan extracted files (matryoshka)
+```
+
+**Key options:**  
+`-e` = Extract files  
+`-M` = Recursively scan extracted files (matryoshka)  
+`-v` = Verbose output  
+`-q` = Quiet output (suppress non-error messages) 
+
+##  <!-- Searching & Text Processing -->
+<h1 align="center">Searching & Text Processing</h1>
+
+In this section: [find](#find), [where](#where), [locate](#locate), [whatis](#whatis), [apropos](#apropos), [grep](#grep), [uniq](#uniq), [sort](#sort), [diff](#diff), [tail/head](#tailhead), [wc](#wc), [cut](#cut), [tr](#tr), [column](#column), [jq](#jq), [sed](#sed), [awk](#awk)
+
 ## find
 Used to search and locate files and directories based on various criterias.
 
@@ -993,20 +1256,6 @@ When you want to specify that a file was modified within the last 24 hours, the 
 **Note**  
 1. Suppress the output of any possible errors to make the output more readable. This is done by appending `2> /dev/null` to your command. This way, you won't see any results you're not allowed to access.
 2. The second thing is the `-exec` flag. You can use it in your find command to execute a new command, following the -exec flag, like so: `-exec whoami \;`. (can be used for privilege escalation)'
-## ln (symbolic links)
-Creates symbolic links (shortcuts) to files or directories.
-
-```bash
-ln -s /root/flag.txt flag
-```
-
-This creates a symbolic link named `flag` that points to the file `/root/flag.txt`.
-
-You can also use it with other commands, such as `cat` to read the contents of the file through the symbolic link:
-```bash
-cat flag 
-```
-Which will display the contents of the file `/root/flag.txt`.
 ## where
 Returns the path to the file or link that should be executed.
 
@@ -1015,17 +1264,17 @@ where <command>
 ```
 
 > Good for finding the location of a command or executable file in the system.
-## whatis
-Returns a a short description of a command.
-
-```bash 
-whatis <command>
-```
 ## locate
 This tool is used to find files by their name.
 
 ```bash
 locate <file_name>
+```
+## whatis
+Returns a a short description of a command.
+
+```bash 
+whatis <command>
 ```
 ## apropos
 Used to search for a command by its description.
@@ -1033,68 +1282,43 @@ Used to search for a command by its description.
 ```bash
 apropos hexeditor       # Search for commands related to hex editors
 ```
-## stat
-Displays detailed information about given files or file systems. 
+## grep
+Searching plain-text data for lines that match an expression. It is commonly used to search through files or output from other commands.
 
 ```bash
-stat file.txt
+# Basic usage
+grep "search_term" file.txt  # Search for a specific term in a file
+
+# ----- Example usage -----
+# Search for a specific term in a file and show line numbers
+grep -n "search_term" file.txt  
+
+# Search recursively in all files in a directory
+grep -R "search_term" /path/to/directory  # or '.' for current directory
+
+# Search for an ip using regular expressions  
+`grep -Eo '[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}'`  
+
+# Search for binaries (ex. "/usr/bin/sudo")  
+`grep '^/.../.../....$'` 
+
+# Grep for CTF flag version 1  
+`grep -oi '\S*flag\S*' <path>`
+
+# Grep for CTF flag version 2  
+`grep "flag{.*}"`
 ```
 
-**These informations can be:** file name, file size, blocks, type, inode, UID, GID, access, modify, change and creation times.
-## df
-Shows disk space usage of file systems.
-
-```bash
-df -h     # Show disk space usage in human-readable format  
-df -i     # Show inode usage
-df -BG    # Show disk space usage in gigabytes
-```
-
-**Key options:**  
-`--block-size=SIZE` = scale sizes by SIZE. E.g., `-BM` prints sizes in units of 1,048,576 bytes.  
-`--exclude-type=TYPE` = exclude file systems of type TYPE  
-`-h` = print sizes in human readable format (e.g., 1K 234M 2G)    
-`-T` = print file system type  
-`-t` = limit listing to file systems of type TYPE  
-## du
-Estimates file and directory space usage.
-
-```bash
-du -sh BreachCompilation  # Show total size of the BreachCompilation directory
-```
-
-**Key options:**  
-`-a` = to display an entry for each file in a file hierarchy  
-`-c` = displays total size at the end  
-`-d <number>` = to specify the depth of the directory tree to be displayed  
-`-h` = to get a human-readable output  
-`-L` = dereference all symbolic links  
-`-s` = to get the total size of the directory  
-`--time` get the results with timestamps of last modification
-## ncdu
-Disk usage analyzer with an ncurses interface (Part of the ncdu suite).
-
-```bash
-ncdu -x --si <file_or_directory>
-```
-
-**Options:**    
-`-x` = This option prevents ncdu from following symbolic links.  
-`--si` =  This option makes ncdu use powers of 1000 instead of 1024 for sizes.  
-## free
-Displays memory usage statistics.
-
-```bash
-free -h 
-```
-
-**Options:**  
-`-b` = to display the amount of memory in bytes  
-`-k` = to display the amount of memory in kilobytes  
-`-m` = to display the amount of memory in megabytes  
-`-g` = to display the amount of memory in gigabytes  
-`-h` = to display the amount of memory in a human-readable format  
-`-s <sec>` = to update the output every X seconds
+**Key options**  
+`-i` = ignore case (case insensitive search)    
+`-o` = show only the matching part of the line  
+`-l` = show only the names of files with matching lines  
+`-c` = count the number of matching lines  
+`-n` = line numbers for every string found  
+`-w` = match whole words only  
+`-x` = match whole lines only  
+`-E` = regular expressions  
+`-R` = recursive grep  
 ## uniq
 Remove duplicate lines from a sorted file.
 
@@ -1168,53 +1392,279 @@ head -n 20 file.txt | sort -r  # Show the first 20 lines and sort them in revers
 **Key options:**  
 `-n <number>` = number of lines to show  
 `-c <numbers>` = number of bytes  
-## history
-Displays a list of commands used in the terminal session
+## wc
+Count lines, words, and characters in files.
 
 ```bash
-history 
-```
-## pwd
-Find the full Path to our current working directory
-
-```bash
-pwd
-```
-## chmod
-Chmod allows you to change the permissions of a file or directory.
-
-```bash
-chmod <permissions> <file>
+wc file.txt
 ```
 
-**Permissions**
-| Digit    |      Meaning   | 
-|----------|:-------------:|
-| 1  | That file can be executed |
-| 2  | That file can be written to   | 
-| 3  | That file can be executed and written to |
-| 4  | That file can be read |
-| 5  | That file can be read and executed |
-| 6  | That file can be written to and read |
-| 7  | That file can be read, written to, and executed |
+**Key options**  
+`-l` = count number of lines  
+`-w` = count number of words  
+`-c` = count number of bytes  
+`-m` = count number of characters  
+## cut
+Extract sections from each line of input files or standard input.
 
-To make a binary file just executable for the owner of the file, you can use:  
 ```bash
-chmod u+x file.txt
+cut <OPTION> <FILE>
+
+# Extract the first field from a file using ':' as a delimiter
+cut -d':' -f1 /etc/passwd  
 ```
-## chown
-Change the owner and/or group of a file or directory.
+
+**Key options**  
+`-f` = Select by specifying a field, a set of fields, or a range of fields.  
+`-c` = Select by specifying a character, a set of characters, or a range of characters.  
+`-d` = Specify a delimiter that will be used instead of the default “TAB” delimiter.  
+## tr
+Tool used to replace, delete, or squeeze repeated characters.
 
 ```bash
-chown <user>:<group> <file>
+tr [options] SET1 [SET2]
 
-# Example
-chown root:admin file.txt  # Change owner to root and group to admin
+# Replace all occurrences of ':' with ' '
+tr ':' ' ' < file.txt
+
+# Delete all digits from a file
+tr -d '0-9' < file.txt
+
+# Squeeze repeated spaces into a single space
+tr -s ' ' < file.txt
+
+# Convert lowercase letters to uppercase
+tr 'a-z' 'A-Z' < file.txt
+```
+
+**Key options**    
+`-d` delete characters  
+`-s` squeeze repeated characters
+## column
+The `column` command formats text input into a table-like structure, aligning columns based on whitespace or a specified delimiter.
+
+```bash
+column -t file.txt
+
+# Format output from a command into columns
+echo -e "Name:Age\nAlice:30\nBob:25" | column -t
+```
+## jq
+jq is a lightweight and flexible command-line JSON processor. It is used to parse, filter, and transform JSON data. 
+
+To install use `sudo apt install jq`
+
+```bash
+jq <options> <filter> <input>
+
+# Prettify JSON data
+jq . sample.json 
+
+# Another way of prettifying JSON data (most common)
+cat sample.json | jq
+
+# Minify JSON data
+jq -c < pretty.json  # Minify JSON data from pretty.json
 ```
 
 **Key options:**  
-`-R` = recursively change ownership of files and directories within a directory  
-`-v` = verbose output, showing what is being changed  
+`-c` = compact output (minified JSON)  
+`-r` = raw output (without quotes)  
+`-s` = read input as an array of JSON objects  
+`-f <file>` = read filter from a file   
+## sed  
+Sed is a stream editor that can perform basic text transformations on an input stream (a file or input from a pipeline). It is commonly used for text substitution, deletion, and insertion.
+
+```bash
+# Replace the first occurrence of 'pattern' with 'replacement' in file.txt
+sed 's/pattern/replacement/' file.txt
+
+# Replace all occurrences of 'pattern' with 'replacement'
+sed 's/pattern/replacement/g' file.txt
+
+# Format trailing space with a colon  
+sed 's/ */:/g' file.txt
+
+# Only get alphanumeric values  
+sed 's/[[:digit:]]//g' file.txt
+```
+
+The "s" flag at the beginning stands for the substitute command. Then we specify the pattern we want to replace. After the slash (/), we enter the pattern we want to use as a replacement in the third position. Finally, we use the "g" flag, which stands for replacing all matches.  
+## awk
+Manipulate and analyze text files. It is particularly useful for processing structured data, such as CSV files or log files.
+
+```bash
+# Print the first and second fields of each line in file.txt
+awk '{print $1, $2}' file.txt 
+
+# Print the first and third fields of /etc/passwd
+awk -F: '{print $1, $3}' /etc/passwd 
+```
+
+**Key options:**  
+`-F` = specify the field separator (default is whitespace)  
+`-v` = assign a variable value before processing the input  
+`-o` = output file (not commonly used)
+
+**Commonly used variables:**  
+`$0` = Represents the entire line of text.  
+`$1`, `$2`, ... = Represents the first, second, etc., fields in the line.  
+`$NF` = Represents the last field in the line.  
+`$NR` = Represents the current record number (line number).  
+`$FS` = Field separator (default is whitespace).  
+`$RS` = Record separator (default is newline).  
+`$OFS` = Output field separator (default is space).  
+`$ORS` = Output record separator (default is newline).  
+`/<pattern>/` = Represents a pattern to match in the input. 
+
+<details>
+<summary>Advanced examples</summary> <br>
+
+```bash	 
+# Split on space
+awk -F: '{RS=" "} {print $1}'
+
+# Print the first and third field of the /etc/passwd file
+awk -F: '{print $1, $3}' /etc/passwd
+
+# Print the first and third field of a file, split on "o" and print the total number of rows
+awk 'BEGIN {FS="o"} {print $1,$3} END{print "Total Rows=",NR}' 
+
+# Print the first and fourth field of file and print as "Name:ID"
+awk 'BEGIN {FS=" "; OFS=":"} {print $1,$4}' file.txt
+ippsec:34024
+john:50024
+thecybermentor:25923
+liveoverflow:45345
+nahamsec:12365
+stok:1234
+
+# Print the first field of a file and separate with a comma
+awk 'BEGIN {ORS=","} {print $1}' file.txt
+ippsec,john,thecybermentor,liveoverflow,nahamsec,stok
+```
+</details>
+
+##  <!-- Networking Tools -->
+<h1 align="center">Networking Tools</h1>
+
+
+In this section: [ip](#ip), [ping](#ping), [traceroute](#traceroute), [telnet](#telnet), [curl](#curl), [wget](#wget), [ftp](#ftp), [ssh](#ssh), [scp](#scp), [xfreerdp](#xfreerdp), [netdiscover](#netdiscover), [netstat](#netstat), [ss](#ss), [tcpdump](#tcpdump), [dig](#dig), [wash](#wash), [whatweb](#whatweb)
+
+## ip
+The `ip` command is used to show and manipulate routing, devices, policy routing, and tunnels. It is a powerful tool for managing network interfaces and configurations.
+
+```bash
+ip [options] object {command | help}
+
+# Show all network interfaces
+ip addr show
+
+# Show a specific network interface
+ip addr show <interface_name>
+
+# Show routing table
+ip route show
+
+# Show ARP table
+ip neigh show
+
+# Show all network interfaces and their status  
+ip link show
+```
+
+<details>
+<summary>Want to see more advanced usage of the <code>ip</code> command?</summary>
+
+```bash
+# Bring up a network interface
+ip link set <interface_name> up
+
+# Bring down a network interface
+ip link set <interface_name> down
+
+# Add a new IP address to an interface
+ip addr add <ip_address>/<subnet_mask> dev <interface_name>
+
+# Delete an IP address from an interface
+ip addr del <ip_address>/<subnet_mask> dev <interface_name>
+
+# Add a new route
+ip route add <destination_network>/<subnet_mask> via <gateway_ip> dev <interface_name>
+
+# Delete a route
+ip route del <destination_network>/<subnet_mask> via <gateway_ip> dev <interface_name>
+```
+
+</details>
+
+## Ping
+The `ping` command is used to check the reachability of a host on a network and measure the round-trip time for messages sent from the originating host to a destination computer.
+
+```bash
+ping <IP_or_hostname>  
+
+# Example usage
+ping 8.8.8.8             # Ping Google's public DNS server
+ping -c 4 example.com    # Ping example.com 4 times
+ping -i 2 8.8.8.8        # Ping 8.8.8.8 with 2 second interval between packets
+ping -t 10 8.8.8.8       # (Windows) Ping 8.8.8.8 10 times
+ping -s 100 8.8.8.8      # Send 100 bytes of data per packet
+ping -W 2 8.8.8.8        # Set timeout to 2 seconds for each reply
+```
+
+**Key options:**  
+`-c <count> `=  Number of packets to send  
+`-i <interval>` = Interval between packets (in seconds)   
+`-s <size> `   = Number of data bytes to be sent  
+`-W <timeout>` = Time to wait for a response (in seconds)  
+`-t <ttl> `    = Set Time To Live (number of hops)  
+`-I <interface>` = Specify the source interface to use
+## traceroute
+The `traceroute` command is used to trace the route that packets take from the source host to a destination host. It shows the IP addresses of the routers along the path and the time taken for each hop.
+
+```bash
+traceroute <IP_or_hostname>
+
+# Example usage
+traceroute google.com        # Trace the route to google.com
+traceroute 8.8.8.8           # Trace the route to an IP address
+traceroute -n google.com     # Trace the route to google.com without resolving hostnames
+```
+
+> On Windows, use `tracert` instead of `traceroute`.
+```bash
+tracert <IP_or_hostname>
+
+# Example usage
+tracert google.com        # Trace the route to google.com
+tracert 8.8.8.8           # Trace the route to an IP address
+tracert -d google.com     # Trace the route to google.com without resolving hostnames
+```
+
+**Key options:**  
+`-n` = Do not resolve hostnames (show only IPs)  
+`-m <max_ttl>` = Set the max number of hops (max TTL)  
+`-w <timeout>` = Set the timeout (in seconds) for each reply  
+`-q <nprobes>` = Number of probe packets per hop  
+`-I` = Use ICMP ECHO instead of UDP packets (like Windows tracert)  
+`-T` = Use TCP SYN packets instead of UDP
+## telnet
+The `telnet` command is used to connect to remote servers using the Telnet protocol. It allows you to interact with remote systems over a network.
+
+```bash
+telnet <IP_or_hostname> <port>
+
+# Example usage
+telnet example.com 23     # Connect to example.com on port 23 (default Telnet port)
+```
+
+**Key commands inside a Telnet session:**
+- `Ctrl + ]` = Escape to telnet prompt
+- `quit`     = Exit telnet
+- `open <host> <port>` = Connect to another host/port
+- `close`    = Close current connection
+- `status`   = Print status information
 ## curl
 Tool for transferring data with URLs. It supports various protocols, including HTTP, HTTPS, FTP, and more. It is commonly used to download files, interact with APIs, and perform web requests.
 
@@ -1266,13 +1716,88 @@ wget -r ftp://ftpuser:<USER>@<IP>
 `-b` = to run in the background  
 `-r` = to download recursively  
 `-q` = to download in quiet mode  
-## wash
-Wash is a tool that scans for WPS-enabled networks and displays information about them (part of the `aircrack-ng` suite).
+## ftp
+FTP or File Transfer Protocol is a network communication protocol that enables two computers to communicate
 
 ```bash
-wash -i wlan0mon  # Scan for networks using the wlan0mon interface
-wash -i wlan0mon -C  # Scan for networks and show the channelerrors
+ftp <IP> 
 ```
+
+Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username and password of "`anonymous`".
+
+**Key Commands:**    
+`ls` = list files in the current directory  
+`cd <directory>` = change directory  
+`get <file>` = download a file from the server  
+`put <file>` = upload a file to the server  
+`more <file>` = view the contents of a file  
+`quit` = exit the FTP session
+
+See more commands [here](/More/FTP/Readme.md).
+## ssh
+SSH or Secure Shell is a network communication protocol that enables two computers to communicate
+
+```bash
+ssh user@ip
+```
+And then type the password to log in. If you have a private key, you can use it to log in without a password.
+
+```bash
+ssh -i path_to_pem user@ip
+```
+
+Creating an SSH tunnel  
+```bash
+ssh -D 8080 -C -q -N user@ip # Create a tunnel
+chromium --no-sandbox --proxy-server="socks5://localhost:8080" # Use the tunnel
+```
+
+**Key options:**  
+`-i <path_to_pem>` = specify the path to the private key file  
+`-p <port>` = specify the port to connect to (default is 22)  
+`-v` = verbose mode (useful for debugging)  
+`-X` = enable X11 forwarding (allows running GUI applications over SSH)  
+`-C` = enable compression (useful for slow connections)  
+`-N` = do not execute a remote command (useful for port forwarding)  
+`-L <local_port>:<remote_host>:<remote_port>` = local port forwarding  
+`-R <remote_port>:<local_host>:<local_port>` = remote port forwarding
+## scp
+SCP or Secure Copy Protocol is a network communication protocol that enables two computers to communicate and transfer files between them using the SSH protocol.
+
+```bash
+scp [options] source destination
+
+# Copy a file to a remote server  
+scp /path/to/file user@ip:/path/to/remote/file
+
+# Copy a file from a remote server to a local server  
+scp user@ip:/path/to/remote/file /path/to/file
+
+# Example (file to a remote server ):  
+scp example.txt berkan@192.168.100.123:/home/berkan/
+```
+**Key options:**  
+`-r` = copy directories recursively  
+`-P <port>` = specify the port to connect to (uppercase P)  
+`-i <path_to_pem>` = specify the path to the private key file  
+`-v` = verbose mode (useful for debugging)  
+`-p` = preserve file attributes (permissions, timestamps, etc.)  
+## xfreerdp
+xfreerdp is an X11 Remote Desktop Protocol (RDP) client.
+
+```bash
+xfreerdp [options] server[:port] [[options] server[:port] ...]
+
+# Example usage
+xfreerdp /u:username /p:password /v:hostname:port /cert:ignore /ipv6
+```
+
+**Key options:**   
+`/u:<username>` - Username  
+`/p:<password>` - Password  
+`/v:<hostname>:<port>` - Server hostname  
+`/cert:ignore` - Ignore certificate  
+`/ipv6`, `/6` - Prefer IPv6 AAA record over IPv4 A record
 ## netdiscover
 Netdiscover is a tool that can be used to scan for live hosts on a network (part of the `aircrack-ng` suite).
 
@@ -1331,6 +1856,31 @@ tcpdump -i wlan0mon -A  # Capture packets and print packet data as ASCII
 `-A` = to print packet data as ASCII  
 `-c <number>` = to specify the number of packets to capture  
 `-v` = to increase verbosity (use -vv for more)  
+## dig
+Retrieve information about domain names, IP addresses, and other DNS records.
+
+```bash
+dig <domain> <type>  
+
+# Example:
+dig example.com A +short  # Get the A record for example.com in short format
+```
+* `<domain>` = The domain name to query (e.g., `example.com`)  
+* `<type>` = The type of DNS record to query (e.g., `A`, `MX`, `CNAME`, `NS`, etc.)  
+
+**Key options:**  
+`+short` = Short output format  
+`+trace` = Trace the delegation path from the root servers  
+`+noall +answer` = Show only the answer section of the response  
+`-x` = Specify IP adress  
+`-f` = save to a file  
+## wash
+Wash is a tool that scans for WPS-enabled networks and displays information about them (part of the `aircrack-ng` suite).
+
+```bash
+wash -i wlan0mon  # Scan for networks using the wlan0mon interface
+wash -i wlan0mon -C  # Scan for networks and show the channelerrors
+```
 ## whatweb
 WhatWeb is a web scanner that identifies websites and their technologies. It can detect web servers, programming languages, frameworks, and more.
 
@@ -1356,36 +1906,12 @@ whatweb --no-errors 10.10.10.0/24 # Scan a range of IP addresses
 `-v` = Verbose mode  
 `-q` = Quiet output  
 `-h` = to show help (highly recommended)  
-## apt
-apt is a command-line utility for installing, updating, removing, and otherwise managing debian packages.
 
-```bash 
-sudo apt update                 # Update the package list
-sudo apt upgrade                # Upgrade installed packages
-sudo apt full-upgrade           # Full upgrade (may remove packages if necessary)
-sudo apt install <package_name> # Install a package
-sudo apt remove <package_name>  # Remove a package
-sudo apt autoremove             # Remove unused packages
-sudo apt list --installed       # List installed packages
-```
-## dig
-Retrieve information about domain names, IP addresses, and other DNS records.
+##  <!-- Compression & Archiving -->
+<h1 align="center">Compression & Archiving</h1>
 
-```bash
-dig <domain> <type>  
+In this section: [Tar](#tar), [Gzip](#gzip), [7z](#7z)
 
-# Example:
-dig example.com A +short  # Get the A record for example.com in short format
-```
-* `<domain>` = The domain name to query (e.g., `example.com`)  
-* `<type>` = The type of DNS record to query (e.g., `A`, `MX`, `CNAME`, `NS`, etc.)  
-
-**Key options:**  
-`+short` = Short output format  
-`+trace` = Trace the delegation path from the root servers  
-`+noall +answer` = Show only the answer section of the response  
-`-x` = Specify IP adress  
-`-f` = save to a file  
 ## tar
 `tar` is a command that allows creating, maintaining, modifying, and extracting files that are archived in the tar format (tar, gzip, zip).
 
@@ -1482,348 +2008,58 @@ gzip -d filename.txt.gz  # or use 'gunzip filename.txt.gz'
 This command creates a password-protected zip archive named `secret.zip` containing the `secret` directory, using AES-256 encryption.
 
 For simple version `zip -e -r secret.zip secret` can also be used (legacy).
-## grep
-Searching plain-text data for lines that match an expression. It is commonly used to search through files or output from other commands.
+
+##  <!-- Cryptography & Encoding -->
+<h1 align="center">Cryptography & Encoding</h1>
+
+In this section: [base64](#base64), [rax2](#rax2), [hashid](#hashid), [hash-identifier](#hash-identifier), [haiti](#haiti), [shasums](#shasums), [gpg](#gpg)
+ 
+## base64
+Decrypt base64  
+```bash
+base64 -d file.txt
+```
+The `-d` option is used to decode the base64 encoded data.
+
+Encrypt base64  
+```bash
+base64 -i input.txt -o output.txt
+```
+The `-i` option is used to specify the input file, and the `-o` option is used to specify the output file. If no output file is specified, it will print the encoded data to standard output.
+## rax2 
+rax2 (part of the Radare2 suite) comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
 
 ```bash
-# Basic usage
-grep "search_term" file.txt  # Search for a specific term in a file
+rax2 <options> <value>
 
-# ----- Example usage -----
-# Search for a specific term in a file and show line numbers
-grep -n "search_term" file.txt  
-
-# Search recursively in all files in a directory
-grep -R "search_term" /path/to/directory  # or '.' for current directory
-
-# Search for an ip using regular expressions  
-`grep -Eo '[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}'`  
-
-# Search for binaries (ex. "/usr/bin/sudo")  
-`grep '^/.../.../....$'` 
-
-# Grep for CTF flag version 1  
-`grep -oi '\S*flag\S*' <path>`
-
-# Grep for CTF flag version 2  
-`grep "flag{.*}"`
+# Convert hex string to raw bytes
+rax2 -s 0x424b  
 ```
 
-**Key options**  
-`-i` = ignore case (case insensitive search)    
-`-o` = show only the matching part of the line  
-`-l` = show only the names of files with matching lines  
-`-c` = count the number of matching lines  
-`-n` = line numbers for every string found  
-`-w` = match whole words only  
-`-x` = match whole lines only  
-`-E` = regular expressions  
-`-R` = recursive grep  
-## wc
-Count lines, words, and characters in files.
-
+**A list of most useful flags:**   
 ```bash
-wc file.txt
+-a      show ascii table     ;  rax2 -a
+-b      bin -> str           ;  rax2 -b 01000010 01001011 # BK
+-B      str -> bin           ;  rax2 -B hello # 0110100001100101011011000110110001101111
+-d      force integer        ;  rax2 -d 3 -> 3 instead of 0x3
+-D      base64 decode        ;  rax2 -D SGVsbG8gd29ybGQ= # Hello world
+-E      base64 encode        ;  rax2 -E Hello world # SGVsbG8gd29ybGQ=
+-f      floating point       ;  rax2 -f 6.3+2.1
+-I      IP address <-> LONG  ;  rax2 -I 3530468537 # 185.172.110.210
+-k      keep base            ;  rax2 -k 33+3 -> 36
+-K      randomart            ;  rax2 -K 0x34 1020304050
+-L      bin -> hex(bignum)   ;  rax2 -L 111111111 # 0x1ff
+-n      binary number        ;  rax2 -n 0x1234 # 34120000
+-o      octalstr -> raw      ;  rax2 -o \162 \62 # r2
+-N      binary number        ;  rax2 -N 0x1234 # \x34\x12\x00\x00
+-r      multiple outputs     ;  rax2 -r 0x1234 
+-s      hexstr -> raw        ;  rax2 -s 42 4b # BK
+-S      raw -> hexstr        ;  rax2 -S < /bin/ls > ls.hex
+-t      tstamp -> str        ;  rax2 -t 1234567890 # Sat Feb 14 00:31:30 2009
+-x      hash string          ;  rax2 -x linux #0x5ca62a43
+-u      units                ;  rax2 -u 389289238 # 317.0M
+-w      signed word          ;  rax2 -w 16 0xffff
 ```
-
-**Key options**  
-`-l` = count number of lines  
-`-w` = count number of words  
-`-c` = count number of bytes  
-`-m` = count number of characters  
-## cut
-Extract sections from each line of input files or standard input.
-
-```bash
-cut <OPTION> <FILE>
-
-# Extract the first field from a file using ':' as a delimiter
-cut -d':' -f1 /etc/passwd  
-```
-
-**Key options**  
-`-f` = Select by specifying a field, a set of fields, or a range of fields.  
-`-c` = Select by specifying a character, a set of characters, or a range of characters.  
-`-d` = Specify a delimiter that will be used instead of the default “TAB” delimiter.  
-## tr
-Tool used to replace, delete, or squeeze repeated characters.
-
-```bash
-tr [options] SET1 [SET2]
-
-# Replace all occurrences of ':' with ' '
-tr ':' ' ' < file.txt
-
-# Delete all digits from a file
-tr -d '0-9' < file.txt
-
-# Squeeze repeated spaces into a single space
-tr -s ' ' < file.txt
-
-# Convert lowercase letters to uppercase
-tr 'a-z' 'A-Z' < file.txt
-```
-
-**Key options**    
-`-d` delete characters  
-`-s` squeeze repeated characters
-## column
-The `column` command formats text input into a table-like structure, aligning columns based on whitespace or a specified delimiter.
-
-```bash
-column -t file.txt
-
-# Format output from a command into columns
-echo -e "Name:Age\nAlice:30\nBob:25" | column -t
-```
-## awk
-Manipulate and analyze text files. It is particularly useful for processing structured data, such as CSV files or log files.
-
-```bash
-# Print the first and second fields of each line in file.txt
-awk '{print $1, $2}' file.txt 
-
-# Print the first and third fields of /etc/passwd
-awk -F: '{print $1, $3}' /etc/passwd 
-```
-
-**Key options:**  
-`-F` = specify the field separator (default is whitespace)  
-`-v` = assign a variable value before processing the input  
-`-o` = output file (not commonly used)
-
-**Commonly used variables:**  
-`$0` = Represents the entire line of text.  
-`$1`, `$2`, ... = Represents the first, second, etc., fields in the line.  
-`$NF` = Represents the last field in the line.  
-`$NR` = Represents the current record number (line number).  
-`$FS` = Field separator (default is whitespace).  
-`$RS` = Record separator (default is newline).  
-`$OFS` = Output field separator (default is space).  
-`$ORS` = Output record separator (default is newline).  
-`/<pattern>/` = Represents a pattern to match in the input. 
-
-<details>
-<summary>Advanced examples</summary> <br>
-
-```bash	 
-# Split on space
-awk -F: '{RS=" "} {print $1}'
-
-# Print the first and third field of the /etc/passwd file
-awk -F: '{print $1, $3}' /etc/passwd
-
-# Print the first and third field of a file, split on "o" and print the total number of rows
-awk 'BEGIN {FS="o"} {print $1,$3} END{print "Total Rows=",NR}' 
-
-# Print the first and fourth field of file and print as "Name:ID"
-awk 'BEGIN {FS=" "; OFS=":"} {print $1,$4}' file.txt
-ippsec:34024
-john:50024
-thecybermentor:25923
-liveoverflow:45345
-nahamsec:12365
-stok:1234
-
-# Print the first field of a file and separate with a comma
-awk 'BEGIN {ORS=","} {print $1}' file.txt
-ippsec,john,thecybermentor,liveoverflow,nahamsec,stok
-```
-</details>
-
-## sed
-Sed is a stream editor that can perform basic text transformations on an input stream (a file or input from a pipeline). It is commonly used for text substitution, deletion, and insertion.
-
-```bash
-# Replace the first occurrence of 'pattern' with 'replacement' in file.txt
-sed 's/pattern/replacement/' file.txt
-
-# Replace all occurrences of 'pattern' with 'replacement'
-sed 's/pattern/replacement/g' file.txt
-
-# Format trailing space with a colon  
-sed 's/ */:/g' file.txt
-
-# Only get alphanumeric values  
-sed 's/[[:digit:]]//g' file.txt
-```
-
-The "s" flag at the beginning stands for the substitute command. Then we specify the pattern we want to replace. After the slash (/), we enter the pattern we want to use as a replacement in the third position. Finally, we use the "g" flag, which stands for replacing all matches.
-## whoami
-See the current user that is logged in to the system.
-
-```bash
-whoami
-```
-## uname
-See basic information about the operating system name and system hardware.
-
-```bash
-uname -a 
-```
-
-**Key options:**  
-`-a` = print all information  
-`-s` = print the kernel name  
-`-n` = print the network node hostname  
-`-r` = print the kernel release  
-`-v` = print the kernel version  
-`-m` = print the machine hardware name  
-`-p` = print the processor type (if available)  
-`-o` = print the operating system name
-## ftp
-FTP or File Transfer Protocol is a network communication protocol that enables two computers to communicate
-
-```bash
-ftp <IP> 
-```
-
-Enter your username and password to log in to the server. Some FTP servers allow anonymous logins with a username and password of "`anonymous`".
-
-**Key Commands:**    
-`ls` = list files in the current directory  
-`cd <directory>` = change directory  
-`get <file>` = download a file from the server  
-`put <file>` = upload a file to the server  
-`more <file>` = view the contents of a file  
-`quit` = exit the FTP session
-
-See more commands [here](/More/FTP/Readme.md).
-## ssh
-SSH or Secure Shell is a network communication protocol that enables two computers to communicate
-
-```bash
-ssh user@ip
-```
-And then type the password to log in. If you have a private key, you can use it to log in without a password.
-
-```bash
-ssh -i path_to_pem user@ip
-```
-
-Creating an SSH tunnel  
-```bash
-ssh -D 8080 -C -q -N user@ip # Create a tunnel
-chromium --no-sandbox --proxy-server="socks5://localhost:8080" # Use the tunnel
-```
-
-**Key options:**  
-`-i <path_to_pem>` = specify the path to the private key file  
-`-p <port>` = specify the port to connect to (default is 22)  
-`-v` = verbose mode (useful for debugging)  
-`-X` = enable X11 forwarding (allows running GUI applications over SSH)  
-`-C` = enable compression (useful for slow connections)  
-`-N` = do not execute a remote command (useful for port forwarding)  
-`-L <local_port>:<remote_host>:<remote_port>` = local port forwarding  
-`-R <remote_port>:<local_host>:<local_port>` = remote port forwarding
-## scp
-SCP or Secure Copy Protocol is a network communication protocol that enables two computers to communicate and transfer files between them using the SSH protocol.
-
-```bash
-scp [options] source destination
-
-# Copy a file to a remote server  
-scp /path/to/file user@ip:/path/to/remote/file
-
-# Copy a file from a remote server to a local server  
-scp user@ip:/path/to/remote/file /path/to/file
-
-# Example (file to a remote server ):  
-scp example.txt berkan@192.168.100.123:/home/berkan/
-```
-**Key options:**  
-`-r` = copy directories recursively  
-`-P <port>` = specify the port to connect to (uppercase P)  
-`-i <path_to_pem>` = specify the path to the private key file  
-`-v` = verbose mode (useful for debugging)  
-`-p` = preserve file attributes (permissions, timestamps, etc.)  
-## searchsploit
-Searchsploit is a command line search tool for the offline version of Exploit-DB.
-
-```bash
-searchsploit [options] term1 term2 term3 ...
-
-# Example usage
-searchsploit windows local
-```
-
-**Key options:**  
-`-c [Term]` = Perform a case-sensitive search  
-`-e [Term]` = Perform an EXACT search  
-`-s` = Perform a strict search ("1.1" would not be detected in "1.0 < 1.3")  
-`-t [Term]` = Search JUST the exploit title (Default is title AND the file's path   
-`-p [EDB-ID]` =  Show the full path to an exploit    
-`-w` = Show URLs to Exploit-DB.com rather than the local path  
-`--exclude="term1|term2"` = Exclude results matching terms (use "|" to separate multiple)
-## xfreerdp
-xfreerdp is an X11 Remote Desktop Protocol (RDP) client.
-
-```bash
-xfreerdp [options] server[:port] [[options] server[:port] ...]
-
-# Example usage
-xfreerdp /u:username /p:password /v:hostname:port /cert:ignore /ipv6
-```
-
-**Key options:**   
-`/u:<username>` - Username  
-`/p:<password>` - Password  
-`/v:<hostname>:<port>` - Server hostname  
-`/cert:ignore` - Ignore certificate  
-`/ipv6`, `/6` - Prefer IPv6 AAA record over IPv4 A record
-## hexeditor
-Read and modify binary files in hexadecimal format.
-
-```bash
-hexeditor [options] <file>
-
-# Example usage
-hexeditor -n file.txt
-```
-
-**Key options**  
-`-a` Print all text characters.  
-`-n` Force Gray scale, no colors.
-
-**-- Shortcuts --**  
-**CTRL + F** = Go to last line  
-**CTRL + C** = Exit without saving  
-**CTRL + X** = Exit and save  
-**CTRL + U** = Undo  
-**CTRL + W** = Search
-## binwalk
-Binwalk allows users to analyze and extract firmware images and helps in identifying code, files, and other information embedded in those, or inside another file.
-
-```bash
-binwalk [options] <file>
-
-# Example usage
-binwalk -e firmware.bin # Extract files from firmware.bin
-binwalk -Me firmware.bin # Recursively scan extracted files (matryoshka)
-```
-
-**Key options:**  
-`-e` = Extract files  
-`-M` = Recursively scan extracted files (matryoshka)  
-`-v` = Verbose output  
-`-q` = Quiet output (suppress non-error messages)  
-## sudo
-Sudo allows a permitted user to execute a command as the superuser or another user, as specified by the security policy.
-
-```bash
-sudo [options] command
-
-# Example usage
-sudo ls /root           # List files in the /root directory as root user
-sudo -u <user> command  # Run a command as a different user
-sudo su                 # Switch to root user
-sudo -l                 # List current sudo privileges
-```
-
-**Key options:**  
-`-u <user>` = specify user   
-`su` = change to root  
-`-l` = list current sudo priviliges   
 ## hashid
 Hashid will analyze and output the potential algorithm that is used to hash your input.  Supports over 250 hash types.  
 
@@ -1869,18 +2105,6 @@ sha256sum file.txt
 ```bash
 md5sum file.txt
 ```
-## base64
-Decrypt base64  
-```bash
-base64 -d file.txt
-```
-The `-d` option is used to decode the base64 encoded data.
-
-Encrypt base64  
-```bash
-base64 -i input.txt -o output.txt
-```
-The `-i` option is used to specify the input file, and the `-o` option is used to specify the output file. If no output file is specified, it will print the encoded data to standard output.
 ## gpg
 To encrypt a file:  
 ```bash
@@ -1893,109 +2117,62 @@ To **decrypt** the file:
 gpg -d data.txt.gpg
 ```
 > Enter the same passphrase you used to encrypt the file. This will output the decrypted content to standard output.
-## hexdump
-hexdump is used to filter and display the specified files, or standard input in a human readable specified format.  
+
+##  <!-- Exploitation & Pentesting Tools -->
+<h1 align="center">Exploitation & Pentesting Tools</h1>
+
+In this section: [searchsploit](#searchsploit), [cewl](#cewl), [crunch](#crunch), [fcrackzip](#fcrackzip)
+
+## searchsploit
+Searchsploit is a command line search tool for the offline version of Exploit-DB.
 
 ```bash
-hexdump [options] {files}
+searchsploit [options] term1 term2 term3 ...
 
 # Example usage
-hexdump -C file.txt
-```
-
-**Key options**  
-`-C` = Canonical hex + ASCII display.  
-`-c` = One-byte character display.  
-`-d` = Decimal display.  
-`-e <FORMAT>` = Specify the output format.  
-`-n <N>` = Stop after reading N bytes.  
-`-s <OFFSET>` = Start reading at OFFSET bytes.  
-`-v` = Display all data, even if it is repeated.
-## xxd
-xxd is a hex editor that can be used to convert binary files to hex and vice versa.
-
-```bash
-xxd [options] [infile [outfile]]
-
-# Example usage
-xxd -p file.txt  # Convert file.txt to plain hex dump
-```
-
-**Key options**    
-`-b` = binary digit dump  
-`-p` = plain hex dump (continuous string)  
-`-e` = little-endian dump  
-`-l <LEN>` = stop after <len> octets.  
-`-r` = hex dump to binary (plain text)  
-`-d` = show offset in decimal instead of hex.  
-`-u` = use upper case hex letters.  
-`-i` = output in C include file style.  
-`-s` = start at offset.  
-## objdump
-objdump is a command-line utility that displays information about one or more object files. It can be used to disassemble object files, executable files, shared libraries, and core dumps.
-
-```bash
-objdump [options] <file>
-
-# Dumps the disassembly of the file
-objdump -d file 
-
-# Get the return address  
-objdump -d file | grep ret
+searchsploit windows local
 ```
 
 **Key options:**  
-`-d` = disassemble the file  
-`-s` = display the full contents of the file  
-`-t` = display the symbol table  
-`-x` = display all headers and sections  
-`-f` = display the file header information  
-`-h` = display the section headers
-## strings
-strings is a command-line utility that extracts printable strings from binary files. It is commonly used to find human-readable text in executables, libraries, and other binary files.
+`-c [Term]` = Perform a case-sensitive search  
+`-e [Term]` = Perform an EXACT search  
+`-s` = Perform a strict search ("1.1" would not be detected in "1.0 < 1.3")  
+`-t [Term]` = Search JUST the exploit title (Default is title AND the file's path   
+`-p [EDB-ID]` =  Show the full path to an exploit    
+`-w` = Show URLs to Exploit-DB.com rather than the local path  
+`--exclude="term1|term2"` = Exclude results matching terms (use "|" to separate multiple)
+## cewl 
+Cewl is a tool that spiders a given url to a specified depth, optionally following external links, and returns a list of words which can then be used for password crackers such as John the Ripper. See more [here](/More/Password%20Cracking/Wordlist-generation.md/cewl/Readme.md).
+
+Install: `sudo apt-get install cewl`
 
 ```bash
-strings [options] <file>
+cewl <url> -w <output file>
 
 # Example usage
-strings -a file.bin  # Extract all printable strings from file.bin
-```
-## exiftool
-Is a command-line application for reading, writing and editing meta information in a wide variety of files.
-
-Install with: `sudo apt install libimage-exiftool-perl`
-
-```bash
-exiftool [options] <file>
-
-# To view metadata of a file
-exiftool file.jpeg 
-
- # Remove all metadata from the file
-exiftool -all= file.jpeg
-
-# To add GPS metadata to an image
-exiftool \
--GPSLatitude=51.500718 \
--GPSLatitudeRef=N \
--GPSLongitude=-0.124614 \
--GPSLongitudeRef=W \
--file image.png
-
-# To add a comment to an image
-exiftool -Comment="London trip." image.png
-
-# To add a user comment to an image
-exiftool -UserComment="Super cool!" image.png
+cewl https://example.com -w wordlist.txt
 ```
 
 **Key options:**  
-`-all=` = remove all metadata from the file  
-`-s` = short output format  
-`-h` = HTML output format  
-`-json` = JSON output format  
-`-r` = recursive processing of directories  
-`-overwrite_original` = overwrite the original file with the modified file
+- `-w` for saving the generated wordlist to a file.
+- `-d` for setting the depth of the spider.
+- `-m` for setting the minimum word length.
+- `-x` for setting the maximum number of words to return.
+## crunch
+Crunch is a wordlist generator that can generate all possible combinations and permutations.
+
+Install: `sudo apt-get install crunch`
+
+```bash
+crunch <min> <max> <characters>
+
+# Generate a wordlist with all combinations of 8 characters from the alphabet
+crunch 8 8 abcdefghijklmnopqrstuvwxyz -o wordlist.txt
+```
+
+**Key options:**  
+`-t` for adding a pattern to the generated wordlist.  
+`-o` for saving the generated wordlist to a file.
 ## fcrackzip 
 Is a password cracker that runs on `.zip` files. It can use brute force or dictionary attacks to crack the password of a zip file.
 
@@ -2017,103 +2194,12 @@ fcrackzip -u -p <password> secret.zip
 `-v` for verbose mode.  
 `-p` for using a string as a password.  
 `-u` for unzipping.
-## neofetch
-[Neofetch](https://github.com/dylanaraps/neofetch) displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.
 
-Install: `sudo apt install neofetch` or see [here](https://github.com/dylanaraps/neofetch/wiki/Installation).
+##  <!-- Compilers -->
+<h1 align="center">Compilers</h1>
 
-```bash
-neofetch
-```
-## crunch
-Crunch is a wordlist generator that can generate all possible combinations and permutations.
+In this section: [gcc](#gcc)
 
-Install: `sudo apt-get install crunch`
-
-```bash
-crunch <min> <max> <characters>
-
-# Generate a wordlist with all combinations of 8 characters from the alphabet
-crunch 8 8 abcdefghijklmnopqrstuvwxyz -o wordlist.txt
-```
-
-**Key options:**  
-`-t` for adding a pattern to the generated wordlist.  
-`-o` for saving the generated wordlist to a file.
-## cewl 
-Cewl is a tool that spiders a given url to a specified depth, optionally following external links, and returns a list of words which can then be used for password crackers such as John the Ripper. See more [here](/More/Password%20Cracking/Wordlist-generation.md/cewl/Readme.md).
-
-Install: `sudo apt-get install cewl`
-
-```bash
-cewl <url> -w <output file>
-
-# Example usage
-cewl https://example.com -w wordlist.txt
-```
-
-**Key options:**  
-- `-w` for saving the generated wordlist to a file.
-- `-d` for setting the depth of the spider.
-- `-m` for setting the minimum word length.
-- `-x` for setting the maximum number of words to return.
-## rax2 
-rax2 (part of the Radare2 suite) comes in handy when there is a need to make base conversions between hexadecimal representations, floating point values, hex-pair strings to ASCII, binary, octal, integer and so on.
-
-```bash
-rax2 <options> <value>
-
-# Convert hex string to raw bytes
-rax2 -s 0x424b  
-```
-
-**A list of most useful flags:**   
-```bash
--a      show ascii table     ;  rax2 -a
--b      bin -> str           ;  rax2 -b 01000010 01001011 # BK
--B      str -> bin           ;  rax2 -B hello # 0110100001100101011011000110110001101111
--d      force integer        ;  rax2 -d 3 -> 3 instead of 0x3
--D      base64 decode        ;  rax2 -D SGVsbG8gd29ybGQ= # Hello world
--E      base64 encode        ;  rax2 -E Hello world # SGVsbG8gd29ybGQ=
--f      floating point       ;  rax2 -f 6.3+2.1
--I      IP address <-> LONG  ;  rax2 -I 3530468537 # 185.172.110.210
--k      keep base            ;  rax2 -k 33+3 -> 36
--K      randomart            ;  rax2 -K 0x34 1020304050
--L      bin -> hex(bignum)   ;  rax2 -L 111111111 # 0x1ff
--n      binary number        ;  rax2 -n 0x1234 # 34120000
--o      octalstr -> raw      ;  rax2 -o \162 \62 # r2
--N      binary number        ;  rax2 -N 0x1234 # \x34\x12\x00\x00
--r      multiple outputs     ;  rax2 -r 0x1234 
--s      hexstr -> raw        ;  rax2 -s 42 4b # BK
--S      raw -> hexstr        ;  rax2 -S < /bin/ls > ls.hex
--t      tstamp -> str        ;  rax2 -t 1234567890 # Sat Feb 14 00:31:30 2009
--x      hash string          ;  rax2 -x linux #0x5ca62a43
--u      units                ;  rax2 -u 389289238 # 317.0M
--w      signed word          ;  rax2 -w 16 0xffff
-```
-## jq
-jq is a lightweight and flexible command-line JSON processor. It is used to parse, filter, and transform JSON data. 
-
-To install use `sudo apt install jq`
-
-```bash
-jq <options> <filter> <input>
-
-# Prettify JSON data
-jq . sample.json 
-
-# Another way of prettifying JSON data (most common)
-cat sample.json | jq
-
-# Minify JSON data
-jq -c < pretty.json  # Minify JSON data from pretty.json
-```
-
-**Key options:**  
-`-c` = compact output (minified JSON)  
-`-r` = raw output (without quotes)  
-`-s` = read input as an array of JSON objects  
-`-f <file>` = read filter from a file  
 ## gcc
 gcc is a compiler that can be used to compile C as well as Python code to an executable file.
 
@@ -2126,37 +2212,9 @@ $ ./hello  # Run the compiled program
 ```
 
 **Key options:**  
-`-o <output>` = specify the output file name  
-## adduser & addgroup
-In Linux, `adduser` and `addgroup` are commands used to create new users and groups, respectively.
+`-o <output>` = specify the output file name 
 
-The syntax for both of these commands are `adduser username` and `addgroup groupname`.
-
-Add a user to a group  
-```bash
-usermod -a -G groupname username
-```
-> You can add a user to multiple groups by separating the group names with commas.
-## Operators
-`>` redirects command output to a file, replacing its contents.  
-`>>` appends command output to the end of a file, keeping existing data.  
-`|` pipes the output of one command as input to another command.
-## File Descriptors
-In Unix-like operating systems, file descriptors are integer handles used to access files or input/output streams. The standard file descriptors are:
-
-**Data Stream for Input**  → `STDIN – 0`  
-**Data Stream for Output** → `STDOUT – 1`  
-**Data Stream for Output that relates to an error occurring.** →`STDERR – 2`  
-
-To redirect Redirect STDERR to /dev/null, which is a special file that discards all data written to it, you add `2>/dev/null` to your command. This is useful for suppressing error messages.
-```bash 
-find /etc/ -name shadow 2>/dev/null 
-```
-
-**Redirect STDOUT and STDERR to Separate Files**  
-```bash
-find /etc/ -name shadow 2> stderr.txt 1> stdout.txt
-```
+## <!-- ---------------------------------------------------------------------------- -->
 
 # Tools (CLI)
 Command-line tools for security testing and analysis. Start with Nmap for network discovery, then web tools like Gobuster.
