@@ -679,6 +679,9 @@ Essential command-line tools for cybersecurity work as well as some other extern
 
 In this section: [pwd](#pwd), [ls](#ls), [tree](#tree), [mkdir](#mkdir), [touch](#touch), [cat](#cat), [stat](#stat), [mv](#mv), [rm](#rm), [ln (symbolic links)](#ln-symbolic-links), [apt](#apt), [Operators](#operators), [File Descriptors](#file-descriptors)
 
+<Details open>
+<summary>Hide File & Directory Management Commands</summary>
+
 ## pwd
 Find the full Path to our current working directory
 
@@ -811,10 +814,15 @@ find /etc/ -name shadow 2>/dev/null
 find /etc/ -name shadow 2> stderr.txt 1> stdout.txt
 ```
 
+</Details>
+
 ##  <!-- User & Permission Management -->
 <h1 align="center">User & Permission Management</h1>
 
-In this section: [whoami](#whoami) | [adduser & addgroup](#adduser--addgroup) | [chmod](#chmod) | [chown](#chown) | [sudo](#sudo)
+In this section: [whoami](#whoami), [adduser & addgroup](#adduser--addgroup), [chmod](#chmod), [chown](#chown), [sudo](#sudo)
+
+<Details open>
+<summary>Hide User & Permission Management Commands</summary>
 
 ## whoami
 See the current user that is logged in to the system.
@@ -885,11 +893,15 @@ sudo -l                 # List current sudo privileges
 `su` = change to root  
 `-l` = list current sudo priviliges   
 
+</Details>
 
 ##  <!-- Process & System Monitoring -->
 <h1 align="center">Process & System Monitoring</h1>
 
 In this section: [ps](#ps), [top](#top), [htop](#htop), [lsof](#lsof), [kill](#kill), [free](#free), [df](#df), [du](#du), [ncdu](#ncdu), [history](#history), [uname](#uname)
+
+<Details open>
+<summary>Hide Process & System Monitoring Commands</summary>
 
 ## ps
 Show the current running processes.
@@ -1046,10 +1058,15 @@ Install: `sudo apt install neofetch` or see [here](https://github.com/dylanaraps
 neofetch
 ```
 
+</Details>
+
 ##  <!-- File Inspection & Forensics -->
 <h1 align="center">File Inspection & Forensics</h1>
 
 In this section: [file](#file), [strings](#strings), [exiftool](#exiftool), [hexdump](#hexdump), [xxd](#xxd), [objdump](#objdump), [hexeditor](#hexeditor), [binwalk](#binwalk)
+
+<Details open>
+<summary>Hide File Inspection & Forensics Commands</summary>
 
 ## file
 The `file` command is used to determine the type of a file by examining its contents rather than relying on file extensions.
@@ -1197,10 +1214,15 @@ binwalk -Me firmware.bin # Recursively scan extracted files (matryoshka)
 `-v` = Verbose output  
 `-q` = Quiet output (suppress non-error messages) 
 
+</Details>
+
 ##  <!-- Searching & Text Processing -->
 <h1 align="center">Searching & Text Processing</h1>
 
 In this section: [find](#find), [where](#where), [locate](#locate), [whatis](#whatis), [apropos](#apropos), [grep](#grep), [uniq](#uniq), [sort](#sort), [diff](#diff), [tail/head](#tailhead), [wc](#wc), [cut](#cut), [tr](#tr), [column](#column), [jq](#jq), [sed](#sed), [awk](#awk)
+
+<Details open>
+<summary>Hide Searching & Text Processing Commands</summary>
 
 ## find
 Used to search and locate files and directories based on various criterias.
@@ -1545,11 +1567,16 @@ ippsec,john,thecybermentor,liveoverflow,nahamsec,stok
 ```
 </details>
 
+</Details>
+
 ##  <!-- Networking Tools -->
 <h1 align="center">Networking Tools</h1>
 
 
 In this section: [ip](#ip), [ping](#ping), [traceroute](#traceroute), [telnet](#telnet), [curl](#curl), [wget](#wget), [ftp](#ftp), [ssh](#ssh), [scp](#scp), [xfreerdp](#xfreerdp), [netdiscover](#netdiscover), [netstat](#netstat), [ss](#ss), [tcpdump](#tcpdump), [dig](#dig), [wash](#wash), [whatweb](#whatweb)
+
+<Details open>
+<summary>Hide Networking Tools Commands</summary>
 
 ## ip
 The `ip` command is used to show and manipulate routing, devices, policy routing, and tunnels. It is a powerful tool for managing network interfaces and configurations.
@@ -1907,10 +1934,15 @@ whatweb --no-errors 10.10.10.0/24 # Scan a range of IP addresses
 `-q` = Quiet output  
 `-h` = to show help (highly recommended)  
 
+</Details>
+
 ##  <!-- Compression & Archiving -->
 <h1 align="center">Compression & Archiving</h1>
 
 In this section: [Tar](#tar), [Gzip](#gzip), [7z](#7z)
+
+<Details open>
+<summary>Hide Compression & Archiving Commands</summary>
 
 ## tar
 `tar` is a command that allows creating, maintaining, modifying, and extracting files that are archived in the tar format (tar, gzip, zip).
@@ -2009,10 +2041,15 @@ This command creates a password-protected zip archive named `secret.zip` contain
 
 For simple version `zip -e -r secret.zip secret` can also be used (legacy).
 
+</Details>
+
 ##  <!-- Cryptography & Encoding -->
 <h1 align="center">Cryptography & Encoding</h1>
 
 In this section: [base64](#base64), [rax2](#rax2), [hashid](#hashid), [hash-identifier](#hash-identifier), [haiti](#haiti), [shasums](#shasums), [gpg](#gpg)
+
+<Details open>
+<summary>Hide Cryptography & Encoding Commands</summary>
  
 ## base64
 Decrypt base64  
@@ -2118,10 +2155,15 @@ gpg -d data.txt.gpg
 ```
 > Enter the same passphrase you used to encrypt the file. This will output the decrypted content to standard output.
 
+</Details>
+
 ##  <!-- Exploitation & Pentesting Tools -->
 <h1 align="center">Exploitation & Pentesting Tools</h1>
 
 In this section: [searchsploit](#searchsploit), [cewl](#cewl), [crunch](#crunch), [fcrackzip](#fcrackzip)
+
+<Details open>
+<summary>Hide Exploitation & Pentesting Tools Commands</summary>
 
 ## searchsploit
 Searchsploit is a command line search tool for the offline version of Exploit-DB.
@@ -2195,10 +2237,15 @@ fcrackzip -u -p <password> secret.zip
 `-p` for using a string as a password.  
 `-u` for unzipping.
 
+</Details>
+
 ##  <!-- Compilers -->
 <h1 align="center">Compilers</h1>
 
 In this section: [gcc](#gcc)
+
+<Details open>
+<summary>Hide Compilers Commands</summary>
 
 ## gcc
 gcc is a compiler that can be used to compile C as well as Python code to an executable file.
@@ -2214,7 +2261,7 @@ $ ./hello  # Run the compiled program
 **Key options:**  
 `-o <output>` = specify the output file name 
 
-## <!-- ---------------------------------------------------------------------------- -->
+</Details>
 
 # Tools (CLI)
 Command-line tools for security testing and analysis. Start with Nmap for network discovery, then web tools like Gobuster.
