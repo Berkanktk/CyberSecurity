@@ -180,7 +180,7 @@ Thank you for exploring this project! I hope you will find the content valuable 
 [DNSDumpster](https://dnsdumpster.com) - free domain research tool that can discover hosts related to a domain   
 [DogBolt](https://dogbolt.org/) - decompiler explorer  
 [EmailHippo](https://emailhippo.com) - a free email verification tool.     
-[Emkei] (https://emkei.cz) - fake mail generator  
+[Emkei](https://emkei.cz) - fake mail generator  
 [Explain Shell](https://explainshell.com) - a tool to help you understand shell commands.  
 [ExploitDB](https://www.exploit-db.com) - searchable archive from The Exploit Database.      
 [fakenamegenerator](https://www.fakenamegenerator.com) - your randomly generated identity.     
