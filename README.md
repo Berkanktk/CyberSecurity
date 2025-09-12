@@ -17,7 +17,7 @@
 Thank you for exploring this project! I hope you will find the content valuable and perhaps even worth sharing with others. This project represents years of dedication, learning, and refinement, fueled by countless hours and cups of coffee ☕. If you’d like to support its continued growth, your contribution would be highly appreciated.
 </p>
 
-<br>
+<!-- <br> -->
 
 <!--
 <p align="center">
