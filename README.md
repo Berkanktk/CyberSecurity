@@ -292,6 +292,8 @@ Thank you for exploring this project! I hope you will find the content valuable 
 
 
 # Services
+A variety of services that can be useful for cybersecurity professionals.
+
 ## Network security
 An Intrusion Detection and Prevention System (IDPS) or simply Intrusion Prevention System (IPS) is a system that can detect and prevent network intrusions. IDS setups can be divided based on their location in the network into:
 
@@ -335,7 +337,7 @@ Some of these providers are:
 | Dynamic SSH Tunneling                | Dynamic port forwarding turns your SSH client into a SOCKS proxy server.                                                                     |
 | Encoding                             | A form of data representation (e.g., base64), not encryption, and immediately reversible.                                                     |
 | Encryption                           | Transforming data into ciphertext using a cipher.                                                                                            |
-| Firewall appliance                   | A firewall restricts connections based on predefined rules, controlling what can enter or leave a network.                                    |
+| Firewall                             | A firewall restricts connections based on predefined rules, controlling what can enter or leave a network.                                    |
 | Hash collision                       | When two different inputs generate the same hash output.                                                                                      |
 | IDOR                                 | Insecure Direct Object Reference, a type of access control vulnerability.                                                                    |
 | IP Spoofing                          | Creating IP packets with a modified source address to hide the sender's identity or impersonate another system.                               |
@@ -361,6 +363,7 @@ Some of these providers are:
 | Red Teamer                           | Plays the role of an adversary, simulating attacks on an organization.                                                                        |
 | Reverse SSH Connection               | A remote system initiates a connection to your local system.                                                                                  |
 | SAM                                  | Security Account Manager, a Windows database storing user accounts and security descriptors.                                                  |
+| SIEM                                 | Security Information and Event Management, a system that aggregates and analyzes security data.                                               |
 | SSH Tunneling                        | Transporting arbitrary data over an encrypted SSH connection.                                                                                 |
 | SSL/TLS                              | Cryptographic protocols for secure data transmission; SSL is outdated, TLS is the modern version.                                              |
 | Security Engineer                    | Designs, monitors, and maintains security controls to prevent cyberattacks.                                                                   |
@@ -370,7 +373,7 @@ Some of these providers are:
 | XSS                                  | Cross-Site Scripting, a vulnerability in web applications that can be used to execute malicious scripts.                                       |
 
 
-## Forms of Malware/Attacks
+## Forms of Malwares/Attacks
 There are several types of malware and attacks that can compromise systems and data. Here are some common ones.
 
 | Term                | Description                                                                                                                                 |
@@ -1460,8 +1463,8 @@ tr 'a-z' 'A-Z' < file.txt
 ```
 
 **Key options**    
-`-d` delete characters  
-`-s` squeeze repeated characters
+`-d` = delete characters  
+`-s` = squeeze repeated characters
 ## column
 The `column` command formats text input into a table-like structure, aligning columns based on whitespace or a specified delimiter.
 
@@ -3991,10 +3994,12 @@ Steghide is a steganography program that hides data in various kinds of image an
 Install steghide with `sudo apt install steghide`
 
 **Useful commands:**  
-`steghide info <filepath>`  displays info about whether a file has embedded data or not.  
-`steghide extract -sf <filepath>`  extracts embedded data from a stegofile  
-`steghide embed -cf <filepath> -ef <textfile>`  embed data from a coverfile to a embedfile  
-`steghide info <filepath>`  displays total embeddable data size in the coverfile  
+```bash
+steghide info <filepath>  # displays total embeddable data size in the coverfile    
+steghide extract -sf <filepath>  # extracts embedded data from a stegofile  
+steghide embed -cf <filepath> -ef <textfile/zip> -p <password>  # embeds a text file or a zip file into a coverfile
+```
+> Password is optional, if you don’t provide a password it will ask you to enter one.
 
 **Example:**  
 Embed a zip file into a jpg file  
@@ -4133,7 +4138,7 @@ Retrieve the hidden message from the image:
 Sonic visualizer is a tool for viewing and analyzing the contents of audio files, however it can be
 helpful when dealing with audio steganography. You can reveal hidden shapes in audio files or use it to se hidden images inside audio files.
 
-`Layer->Add Spectrogram` should work
+`Layer → Add Spectrogram` should work
 
 <details>
 <summary>Making a spectrogram</summary>  
@@ -5024,10 +5029,9 @@ Improve basic reverse shells to make them more usable and stable.
 
 **Python TTY Method:**
 ```bash
-python -c 'import pty; pty.spawn("/bin/bash")'
-export TERM=xterm
-# Background with Ctrl+Z
-stty raw -echo; fg
+$ python -c 'import pty; pty.spawn("/bin/bash")'
+$ export TERM=xterm
+$ stty raw -echo; fg # Background with Ctrl+Z
 ```
 
 **Other Methods:**
@@ -5043,10 +5047,7 @@ rlwrap nc -lvnp 4444
 ```
 
 **Full Stabilization Process:**
-1. Spawn TTY shell
-2. Set terminal type
-3. Configure stty settings
-4. Resize terminal if needed
+1. Spawn TTY shell → 2. Set terminal type → 3. Configure stty settings → 4. Resize terminal 
 
 ## Privilege Escalation 
 Check for root password
@@ -5155,8 +5156,8 @@ Is similar to smishing, but instead of using text messages for the social engine
 * **Smtp.mailfrom/header.from** - The domain the email was sent from (these headers are within Authentication-Results)
 * **Reply-To** - This is the email address a reply email will be sent to instead of the From email address
 
-In case the mail is encoded using base64, the following command can be used to decrypt the message:  
-`base64 -d <filename> > decrypted.<filetype>` 
+In case the mail is encoded using base64, the following command can be used to decrypt the message:   
+`base64 -d <filename> > decoded.txt` 
 
 #### Phishing security
 Hyperlinks and IP addresses should be [defanged](https://www.ibm.com/docs/en/rsoa-and-rp/32.0?topic=SSBRUQ_32.0.0/com.ibm.resilient.doc/install/resilient_install_defangURLs.htm).
@@ -5239,15 +5240,8 @@ You can see the actual website the shortened link is redirecting you to by appen
 Example: 
 [tinyurl.com/mv2h897s+](https://tinyurl.com/mv2h897s+)
 
-Example providers:
-- bit.ly
-- goo.gl
-- ow.ly
-- s.id
-- smarturl.it
-- tiny.pl
-- tinyurl.com
-- x.co
+Other providers: [bit.ly](https://bitly.com/), [goo.gl](https://goo.gl/), [ow.ly](https://ow.ly/), [t.co](https://t.co/), [tinyurl.com](https://tinyurl.com/), [x.co](https://x.co/), [s.id](https://s.id/), [tiny.pl](https://tiny.pl/) & [smarturl.it](https://smarturl.it/)
+
 
 ## Reading SQL databases
 Ensure you have the knowlege of SQL DBs first. See [here](/More/Databases).
