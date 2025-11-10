@@ -6,10 +6,11 @@
 	
 ![Hits](https://hits.sh/github.com/Berkanktk/CyberSecurity.svg?label=Visitors)
 ![GitHub Stars](https://img.shields.io/github/stars/Berkanktk/CyberSecurity)
-![GitHub Forks](https://img.shields.io/github/forks/Berkanktk/CyberSecurity)
-![GitHub Watchers](https://img.shields.io/github/watchers/Berkanktk/CyberSecurity)
 ![Last Commit](https://img.shields.io/github/last-commit/Berkanktk/CyberSecurity)
 ![Repo Size](https://img.shields.io/github/repo-size/Berkanktk/CyberSecurity)
+
+<!-- ![GitHub Forks](https://img.shields.io/github/forks/Berkanktk/CyberSecurity)
+![GitHub Watchers](https://img.shields.io/github/watchers/Berkanktk/CyberSecurity) -->
 
 </div>
 
