@@ -221,6 +221,8 @@ Thank you for exploring this project! I hope you will find the content valuable 
 [Morse Code Sound & Vibration Listener](https://databorder.com/transfer/morse-sound-receiver/) - a morse code sound & vibration listener  
 [Namechk](https://namechk.com) - check if your desired username is available on over 500 social networks (username OSINT).  
 [NerdyData](https://www.nerdydata.com) - the search engine for source code  
+[NullSec Framework](https://github.com/bad-antics/nullsec) - modular WiFi security framework with 150+ modules for wireless auditing, network reconnaissance, and pentesting.  
+[NullSec Linux](https://github.com/bad-antics/nullsec-linux) - security-focused Linux distribution with 100+ pre-configured pentesting tools.  
 [ntlm.pw](https://ntlm.pw) - NTLM password cracker  
 [Observatory by Mozilla](https://observatory.mozilla.org)- set of tools to analyze your website.    
 [Office Recovery](https://online.officerecovery.com/pixrecovery/) - repair corrupt JPEG, PNG, GIF, BMP, TIFF, and RAW images.  
