@@ -15,15 +15,26 @@ TCP/IP is a communication protocol that allows hosts to connect to the Internet.
 
 OSI, on the other hand, is a communication gateway between the network and end-users. The OSI model is usually referred to as the reference model because it is older. It is also known for its strict protocol and limitations.
 
-| Layer | OSI Model | TCP/IP Model | Protocols | Protocol Data Unit | Description |
-|---|---|---|---|---|---|
-| 7 | Application | Application | FTP, HTTP, Telnet, SMTP, DNS, SSH | Data | Network Process to application |
-| 6 | Presentation | Application | JPEG, PNG, MPEG, Sockets, HTML, IMAP | Data | Data representation and encryption |
-| 5 | Session | Application | NFS, SQL, PAP, RPC, RTP, API's | Data | Interhost communication |
-| 4 | Transport | Transport | TCP, UDP, SSL, TLS | Segment (TCP) / Datagram (UDP) | End-to-end connection and reliability |
-| 3 | Network | Internet | IPv4, IPv6, ICMP | Packet | Path determination (Logical addressing) |
-| 2 | Data Link | Network Access | ARP, CDP, STP, VLAN, Switch, Bridge | Frame | MAC and LLC (Physical addressing) |
-| 1 | Physical | Network Access | Ethernet, WI-FI, CAT, DSL, RJ45, 100Base-TX, Hub, Repeater | Bits | Media, signal and binary transmission |
+
+| Layer | OSI Model    | TCP/IP Model   | PDU                | Addressing    | Hardware Device          | Protocols / Examples           | Primary Function                           |
+| ----- | ------------ | -------------- | ------------------ | ------------- | ------------------------ | ------------------------------ | ------------------------------------------ |
+| 7     | Application  | Application    | Data               | URL / FQDN    | L7 Firewall, Gateway     | HTTP, DNS, SMTP, FTP           | Network process to application             |
+| 6     | Presentation | Application    | Data               | N/A           | N/A                      | SSL/TLS, JPEG, GIF             | Data formatting & encryption               |
+| 5     | Session      | Application    | Data               | Session ID    | N/A                      | RPC, NetBIOS, PAP, APIs        | Managing logical sessions                  |
+| 4     | Transport    | Transport      | Segment / Datagram | Port Numbers  | L4 Switch, Load Balancer | Segment (TCP) / Datagram (UDP) | End-to-end reliability & flow control      |
+| 3     | Network      | Internet       | Packet             | IP Addresses  | Router, L3 Switch        | IPv4, IPv6, ICMP               | Routing & path determination               |
+| 2     | Data Link    | Network Access | Frame              | MAC Addresses | Switch, Bridge, NIC      | ARP, Ethernet, Wi-Fi           | Local network delivery and error detection |
+| 1     | Physical     | Network Access | Bits               | N/A           | Hub, Repeater, Modem     | DSL, Fiber, Cat6               | Binary transmission over physical media    |
+
+FQDN - Fully Qualified Domain Name
+
+| Layer | TCP/IP Model   | Additions                                                                                                                                            | Encapsulates                                                                   |
+| ----- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| 4     | Application    | Application headers (HTTP) and data (payload) and may include encryption (SSL/TLS) and formatting (JPEG, GIF).                                       | Data                                                                           |
+| 3     | Transport      | Source and Destination Port Numbers and adds flags (e.g., SYN, ACK) and sequence numbers for reliability.                                            | Application Data & Transport Header                                            |
+| 2     | Internet       | Source and Destination IP Addresses, Time to Live (TTL), and fragmentation information (offset, length).                                             | Application Data, Transport Header, and Internet Header                        |
+| 1     | Network Access | Source and Destination MAC Addresses, Ethernet type, and error-checking information (CRC). The data is transmitted as bits over the physical medium. | Application Data, Transport Header, Internet Header, and Network Access Header |
+
 
 <details>
 <summary><h3>What are Packets and Frames?</h3></summary>
