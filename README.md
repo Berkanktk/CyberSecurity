@@ -270,6 +270,7 @@ Thank you for exploring this project! I hope you will find the content valuable 
 # CTF Sites
 [TryHackMe](https://tryhackme.com) - TryHackMe is a free online platform for learning cyber security, using hands-on exercises and labs.  
 [HackTheBox](https://www.hackthebox.com/) - HackTheBox is a massive, online cybersecurity practical training platform.  
+[Code Review Lab](https://www.codereviewlab.com/) - Hands-on secure code review training platform.
 [CTFLearn](https://ctflearn.com) - An online platform built to help ethical hackers learn, practice, and compete.   
 [Challenges](https://challenges.re) - Reverse engineering CTF training platform     
 [Cryptohack](https://cryptohack.org) - Cryptography learning platform.  
