@@ -250,6 +250,7 @@ Thank you for exploring this project! I hope you will find the content valuable 
 [SSL Blacklist](https://sslbl.abuse.ch) - a free SSL blacklist that can be used to detect malicious SSL certificates.  
 [Tabulate](https://pypi.org/project/tabulate/) - create clean looking tables  
 [Talos Intelligence](https://talosintelligence.com) - threat intelligence from Cisco.  
+[Text Machine](https://textmachine.org/en/text-tools/cipher-identifier) - identifies unknown ciphertext and decodes it in the browser, with auto-solvers for Vigenère and substitution ciphers.  
 [Threat Fox](https://threatfox.abuse.ch) - a resource for sharing indicators of compromise (IOCs).  
 [TIO](https://tio.run/#) - TIO is a free online interpreter, compiler and REPL.  
 [URL Haus](https://urlhaus.abuse.ch) - a project by abuse.ch to collect and classify malicious URLs.  
